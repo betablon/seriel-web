@@ -37,66 +37,54 @@
             </div>
         </section>
 
-        <!-- Device Mockup -->
-        <section class="mockup-section">
-            <div class="device-frame">
-                <div class="device-notch"></div>
-                <img src="images/screenshot-1.png" alt="Seriel app screenshot" class="device-screen">
-            </div>
-        </section>
+        <!-- Feature Sections -->
+        <section class="feature-showcase">
 
-        <!-- Features -->
-        <section class="features">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 11 12 14 22 4"></polyline>
-                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-                        </svg>
-                    </div>
-                    <h3>Track</h3>
-                    <p>Always know where you left off</p>
+            <!-- 1. My Shows -->
+            <div class="feature-row">
+                <div class="feature-device">
+                    <img src="images/screenshots/my_shows.png" alt="My Shows overview" class="screenshot">
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                        </svg>
-                    </div>
-                    <h3>Rate</h3>
-                    <p>Build your personal taste profile</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-                        </svg>
-                    </div>
-                    <h3>Watchlist</h3>
-                    <p>Save shows for later</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                    </div>
-                    <h3>Discover</h3>
-                    <p>Find your next favorite</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                        </svg>
-                    </div>
-                    <h3>Alerts</h3>
-                    <p>Know when episodes drop</p>
+                <div class="feature-text">
+                    <h2>Always know where you left off</h2>
+                    <p>Your personal dashboard shows what to watch next. Mark episodes watched and pick up right where you stopped. Everything syncs with Trakt.</p>
                 </div>
             </div>
+
+            <!-- 2. Show Detail — paired devices -->
+            <div class="feature-row reverse">
+                <div class="feature-device feature-device-pair">
+                    <img src="images/screenshots/show_detail.png" alt="Show detail" class="screenshot">
+                    <img src="images/screenshots/show_detail_episodes.png" alt="Episode list" class="screenshot">
+                </div>
+                <div class="feature-text">
+                    <h2>Every detail at a glance</h2>
+                    <p>Immersive show pages with episode guides, progress tracking, and season navigation. Everything about a show, in one place.</p>
+                </div>
+            </div>
+
+            <!-- 3. Episode Detail — ratings & reviews -->
+            <div class="feature-row">
+                <div class="feature-device">
+                    <img src="images/screenshots/episode_detail.png" alt="Episode ratings and reviews" class="screenshot">
+                </div>
+                <div class="feature-text">
+                    <h2>Rate, review, discuss</h2>
+                    <p>See what the community thinks. Add your own ratings and reviews, read other viewers' takes, and build your personal taste profile.</p>
+                </div>
+            </div>
+
+            <!-- 4. Search & Discover -->
+            <div class="feature-row reverse">
+                <div class="feature-device">
+                    <img src="images/screenshots/search.png" alt="Discover new shows" class="screenshot">
+                </div>
+                <div class="feature-text">
+                    <h2>Find your next favorite</h2>
+                    <p>Browse trending and popular shows. Build your watchlist so you never run out of things to watch.</p>
+                </div>
+            </div>
+
         </section>
 
         <!-- Powered by Trakt -->
@@ -110,6 +98,13 @@
 
     <!-- Footer -->
     <footer>
+        <div class="footer-links">
+            <a href="/impressum">Impressum</a>
+            <span class="footer-sep">&middot;</span>
+            <a href="/privacy">Privacy Policy</a>
+            <span class="footer-sep">&middot;</span>
+            <a href="/terms">Terms of Service</a>
+        </div>
         <p>&copy; 2026 Seriel. All rights reserved.</p>
     </footer>
 

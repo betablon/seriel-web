@@ -1,0 +1,143 @@
+/* Legal pages — Privacy Policy & Terms of Service */
+
+.legal-page {
+    background: var(--bg);
+}
+
+.legal-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.back-link {
+    color: var(--turquoise);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+}
+
+.back-link:hover {
+    opacity: 0.7;
+}
+
+.lang-toggle {
+    display: flex;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    padding: 2px;
+}
+
+.lang-btn {
+    display: block;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.lang-btn.active {
+    background: var(--turquoise);
+    color: var(--bg);
+}
+
+.lang-btn:not(.active):hover {
+    color: var(--text-primary);
+}
+
+.legal-content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+}
+
+.legal-text h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.legal-date {
+    font-size: 14px;
+    color: var(--text-tertiary);
+    margin-bottom: 40px;
+}
+
+.legal-text h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.legal-text h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 28px;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.legal-text p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.legal-text ul {
+    margin-bottom: 16px;
+    padding-left: 24px;
+}
+
+.legal-text li {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+.legal-text a {
+    color: var(--turquoise);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.legal-text a:hover {
+    opacity: 0.7;
+}
+
+.legal-text strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .legal-content {
+        padding: 32px 20px 60px;
+    }
+
+    .legal-text h1 {
+        font-size: 26px;
+    }
+
+    .legal-text h2 {
+        font-size: 18px;
+    }
+}
