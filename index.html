@@ -10,7 +10,11 @@
     <meta property="og:description" content="Track, rate, and never forget your TV shows. Powered by Trakt. Coming soon to the App Store.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://seriel.app">
-    <link rel="icon" type="image/png" href="images/app-icon.png">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <meta property="og:image" content="https://seriel.app/images/app-icon-512.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -23,14 +27,11 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <img src="images/app-icon.png" alt="Seriel app icon" class="app-icon" width="120" height="120">
+                <img src="images/app-icon-512.png" alt="Seriel app icon" class="app-icon" width="120" height="120">
                 <h1 class="app-name">Seriel</h1>
                 <p class="tagline">Seriel <span class="highlight">remembers</span> for you.</p>
                 <p class="subtitle">Your TV shows. Tracked, rated, and never forgotten.</p>
                 <div class="app-store-badge">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 16.99 2.97 12.5 4.7 9.48C5.55 7.98 7.13 7.01 8.82 6.99C10.1 6.97 11.32 7.87 12.11 7.87C12.89 7.87 14.37 6.78 15.92 6.95C16.57 6.98 18.39 7.21 19.56 8.91C19.47 8.97 17.39 10.15 17.41 12.68C17.44 15.71 20.06 16.67 20.09 16.68C20.06 16.75 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" fill="currentColor"/>
-                    </svg>
                     <span>Coming Soon on the App Store</span>
                 </div>
             </div>
@@ -101,10 +102,8 @@
         <!-- Powered by Trakt -->
         <section class="trakt-section">
             <a href="https://trakt.tv" target="_blank" rel="noopener noreferrer" class="trakt-badge">
-                <span class="trakt-text">Powered by</span>
-                <svg class="trakt-logo" width="80" height="24" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <text x="0" y="45" font-family="-apple-system, system-ui, sans-serif" font-size="48" font-weight="700" fill="#ED1C24">trakt</text>
-                </svg>
+                <img src="images/trakt-badge.svg" alt="Trakt" class="trakt-logo">
+                <span class="trakt-text">Powered by trakt.tv</span>
             </a>
         </section>
     </main>

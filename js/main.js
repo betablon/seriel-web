@@ -2,33 +2,38 @@
 (function () {
     'use strict';
 
-    // Popular TV show TMDB poster paths (w342 size)
+    // Popular TV show TMDB poster paths (w342 size) — fetched from TMDB API
     const POSTERS = [
-        '/bQLrHIRNEVE3PdIWQrZbL96SOuk.jpg',  // Breaking Bad
-        '/u3bZgnGQ9T01sWNhyveQz0wH0Ht.jpg',  // Game of Thrones
-        '/7WUHnWGx5OO145IRxPDUkQSh4C7.jpg',  // Stranger Things
-        '/zU0htwkhNvBQdVSIKB9s6hgVeFK.jpg',  // The Last of Us
-        '/aQ2Z2Y39jq5cTBb6jnM9YzGe4YE.jpg',  // Severance
-        '/qGQf2OHIBh81vQ5alPBUSHr23kx.jpg',  // The Bear
-        '/9faGSFi5jam6pDWGNd0p8JcJgXQ.jpg',  // Arcane
-        '/rqbCbjB19amtOtFQbb3K2lgm2zv.jpg',  // Wednesday
-        '/uDgy6hyPd82kOHh6I95FLtM8gZp.jpg',  // House of the Dragon
-        '/f5uNbUC76oGt1nFBZQS0QjSWaQD.jpg',  // Succession
-        '/fwTv3RPRAIy0maOMns5eYRRwnDk.jpg',  // Shogun
-        '/hJfI6sGbl80HB6FkyIl1yI2MLcG.jpg',  // Dark
-        '/58PB4IYI7mB18UPMWq4VxcAZ1co.jpg',  // Chernobyl
-        '/z0iCS5Znx7TeRwlYSd4c01Z0lFp.jpg',  // Yellowjackets
-        '/sjx6zjQI2dLGYNkay6PxSnKWYNh.jpg',  // True Detective
-        '/49WJfeN0moxb9IPfGn8AIqMGskD.jpg',  // The Mandalorian
-        '/wRbjVBdDo5qHAQZKbNfU8VUmMQo.jpg',  // Peaky Blinders
-        '/4Tavsh0YPFPTH7YUqMwiGGxyYyS.jpg',  // Reacher
-        '/jtnfNzqZwGjTFnRvtJFEHaAVgsC.jpg',  // Euphoria
-        '/t6jVlbPMtZOJoAqDYT9LfdYzibW.jpg',  // Loki
-        '/gmbsR4SsHTDqYMCJuMxMI7GXUXA.jpg',  // Ted Lasso
-        '/6kbAMLteGO8yyewYau6bJ683sw7.jpg',  // The Boys
-        '/6tfT03sGp9k4c0J3dypjrI8TSAI.jpg',  // Fargo
-        '/ggFHVNu6YYI5L9pCfOacjizRGt.jpg',   // Better Call Saul
-        '/oKt4J3TFjWirVwBqoHyIvv5IImd.jpg',  // Slow Horses
+        '/z4jgyI5TpoRZiJTNchkVkMrGQyz.jpg',
+        '/acb9g0rlsFhy3LBPDvMF7Tso9Q0.jpg',
+        '/eyTu5c8LniVciRZIOSHTvvkkgJa.jpg',
+        '/uWpG7GqfKGQqX4YMAo3nv5OrglV.jpg',
+        '/u40gJarLPlIkwouKlzGdobQOV9k.jpg',
+        '/4uaguchJwBK0bl4zjluU6af8J7V.jpg',
+        '/hjJkrLXhWvGHpLeLBDFznpBTY1S.jpg',
+        '/mBcu8d6x6zB1el3MPNl7cZQEQ31.jpg',
+        '/haJ9eHytVO3H3JooMJG1DiWwDNm.jpg',
+        '/iofokHZoUB4Qhik4PflvJl8TT6a.jpg',
+        '/70kTz0OmjjZe7zHvIDrq2iKW7PJ.jpg',
+        '/sBVfyRYPmKSARRTodsTbwHqgcRA.jpg',
+        '/3PFsEuAiyLkWsP4GG6dIV37Q6gu.jpg',
+        '/vUUqzWa2LnHIVqkaKVlVGkVcZIW.jpg',
+        '/gYAb6GCVEFsU9hzMCG5rxaxoIv3.jpg',
+        '/i5hmoRjHNWady4AtAGICTUXknKH.jpg',
+        '/7sizkzLu7RNowjfojv6eUn2tAzA.jpg',
+        '/onSD9UXfJwrMXWhq7UY7hGF2S1h.jpg',
+        '/3Cz7ySOQJmqiuTdrc6CY0r65yDI.jpg',
+        '/nD1ZQBKbgKSmKcrAkWTofohsScj.jpg',
+        '/ixcfyK7it6FjRM36Te4OdblAq4X.jpg',
+        '/4tblBrslcKSifMVZ3TmtT2ukMor.jpg',
+        '/kIi3T7X0kmiV9vGDme146P2d979.jpg',
+        '/acYXu4KaDj1NIkMgObnhe4C4a0T.jpg',
+        '/3KUjDt8XY7w2Ku70UE0SECmv1zP.jpg',
+        '/1N4o5PmmqhlVDrcdJ2RlCFWbLGX.jpg',
+        '/w8enSKCf6Zm0topeQ2XPccDqsqp.jpg',
+        '/2DIBDFHiKQawz4WPsYekl9DHwyA.jpg',
+        '/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg',
+        '/9ZN1P32SHviL3SV51qLivxycvcx.jpg',
     ];
 
     const TMDB_BASE = 'https://image.tmdb.org/t/p/w342';
