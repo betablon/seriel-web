@@ -134,7 +134,7 @@ main {
 .app-icon {
     width: 120px;
     height: 120px;
-    border-radius: 27px; /* iOS icon radius for 120px */
+    border-radius: 27px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     margin-bottom: 24px;
 }
@@ -184,106 +184,106 @@ main {
     background: rgba(255, 255, 255, 0.15);
 }
 
-.app-store-badge svg {
-    flex-shrink: 0;
-}
-
 /* ========================================
-   Device Mockup
+   Feature Showcase — alternating rows
    ======================================== */
 
-.mockup-section {
-    display: flex;
-    justify-content: center;
-    padding: 0 24px 80px;
-    animation: fadeInUp 1s ease-out 0.3s both;
-}
-
-.device-frame {
-    position: relative;
-    width: 280px;
-    padding: 12px;
-    background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 100%);
-    border-radius: 40px;
-    box-shadow:
-        0 40px 80px rgba(0, 0, 0, 0.6),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transform: perspective(1000px) rotateY(-2deg) rotateX(2deg);
-}
-
-.device-notch {
-    position: absolute;
-    top: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 32px;
-    background: #000;
-    border-radius: 0 0 18px 18px;
-    z-index: 2;
-}
-
-.device-screen {
-    width: 100%;
-    border-radius: 28px;
-    display: block;
-    background: #111;
-    aspect-ratio: 9 / 19.5;
-    object-fit: cover;
-}
-
-/* ========================================
-   Features
-   ======================================== */
-
-.features {
-    padding: 40px 24px 80px;
-    max-width: 900px;
+.feature-showcase {
+    max-width: 960px;
     margin: 0 auto;
+    padding: 0 24px 60px;
 }
 
-.features-grid {
+.feature-row {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-}
-
-.feature-card {
-    text-align: center;
-    padding: 24px 12px;
-    background: var(--bg-card);
-    border-radius: var(--radius);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.feature-card:hover {
-    background: var(--bg-card-hover);
-    transform: translateY(-2px);
-}
-
-.feature-icon {
-    width: 48px;
-    height: 48px;
-    display: flex;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
     align-items: center;
-    justify-content: center;
-    margin: 0 auto 16px;
-    color: var(--turquoise);
+    padding: 80px 0;
 }
 
-.feature-card h3 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 6px;
+.feature-row + .feature-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.feature-row.reverse {
+    direction: rtl;
+}
+
+.feature-row.reverse > * {
+    direction: ltr;
+}
+
+.feature-device {
+    display: flex;
+    justify-content: center;
+}
+
+.screenshot {
+    width: 260px;
+    display: block;
+}
+
+/* Paired screenshots — side by side */
+.feature-device-pair {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.feature-device-pair .screenshot {
+    width: 200px;
+}
+
+.feature-text {
+    max-width: 380px;
+}
+
+.feature-text h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
     color: var(--text-primary);
 }
 
-.feature-card p {
-    font-size: 13px;
+.feature-text p {
+    font-size: 17px;
     font-weight: 400;
+    line-height: 1.6;
     color: var(--text-secondary);
-    line-height: 1.4;
+}
+
+/* ========================================
+   Feature Pills — compact summary
+   ======================================== */
+
+.feature-pills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 20px 24px 80px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.pill-icon {
+    color: var(--turquoise);
+    font-size: 15px;
 }
 
 /* ========================================
@@ -337,6 +337,24 @@ footer {
     font-size: 13px;
 }
 
+.footer-links {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: var(--text-tertiary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--text-secondary);
+}
+
+.footer-sep {
+    margin: 0 8px;
+}
+
 /* ========================================
    Animations
    ======================================== */
@@ -365,21 +383,31 @@ footer {
         font-size: 20px;
     }
 
-    .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+    .feature-row {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 60px 0;
+        text-align: center;
     }
 
-    /* Center the 5th card */
-    .feature-card:last-child {
-        grid-column: 1 / -1;
-        max-width: 50%;
-        margin: 0 auto;
+    .feature-row.reverse {
+        direction: ltr;
     }
 
-    .device-frame {
-        width: 240px;
-        transform: none;
+    .feature-text {
+        max-width: 100%;
+    }
+
+    .feature-device {
+        order: -1;
+    }
+
+    .screenshot {
+        width: 220px;
+    }
+
+    .feature-device-pair .screenshot {
+        width: 170px;
     }
 }
 
@@ -407,34 +435,29 @@ footer {
         font-size: 15px;
     }
 
-    .features-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
+    .feature-text h2 {
+        font-size: 24px;
     }
 
-    .feature-card:last-child {
-        max-width: 100%;
+    .feature-text p {
+        font-size: 15px;
     }
 
-    .feature-card {
-        display: flex;
-        align-items: center;
-        text-align: left;
-        padding: 16px 20px;
-        gap: 16px;
+    .screenshot {
+        width: 200px;
     }
 
-    .feature-icon {
-        margin: 0;
-        flex-shrink: 0;
+    .feature-device-pair .screenshot {
+        width: 150px;
     }
 
-    .feature-card h3 {
-        margin-bottom: 2px;
+    .feature-pills {
+        gap: 8px;
     }
 
-    .device-frame {
-        width: 220px;
+    .pill {
+        padding: 8px 16px;
+        font-size: 13px;
     }
 }
 
@@ -444,8 +467,7 @@ footer {
         animation: none !important;
     }
 
-    .hero-content,
-    .mockup-section {
+    .hero-content {
         animation: none !important;
         opacity: 1;
     }
