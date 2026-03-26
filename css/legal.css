@@ -127,6 +127,52 @@
     font-weight: 600;
 }
 
+/* Subscription card */
+.subscription-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.subscription-card h3 {
+    margin-top: 0;
+    color: #fff;
+}
+
+/* FAQ details/summary */
+details {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1rem 0;
+}
+
+details summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #fff;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+details summary::after {
+    content: '+';
+    color: var(--turquoise, #00CEC8);
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+}
+
+details[open] summary::after {
+    content: '−';
+}
+
+details p {
+    margin-top: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
 /* Responsive */
 @media (max-width: 480px) {
     .legal-content {
