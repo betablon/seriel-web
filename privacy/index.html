@@ -32,8 +32,10 @@
                 J&uuml;tlandring 2<br>
                 22419 Hamburg<br>
                 Deutschland<br>
+                Telefon: <a href="tel:+447933902919">+44 7933 902919</a><br>
                 E-Mail: <a href="mailto:feedback@seriel.app">feedback@seriel.app</a>
             </p>
+            <p>Die Bestellung eines Datenschutzbeauftragten ist nicht erforderlich, da die Voraussetzungen des Art.&nbsp;37 DSGVO bzw. &sect;&nbsp;38 BDSG nicht erf&uuml;llt sind.</p>
 
             <h2>2. &Uuml;bersicht der Datenverarbeitungen</h2>
             <p>Diese Datenschutzerkl&auml;rung gilt f&uuml;r die iOS-App &bdquo;Seriel&ldquo; sowie die Website <a href="https://seriel.app">seriel.app</a>. Wir nehmen den Schutz Ihrer personenbezogenen Daten sehr ernst und verarbeiten diese ausschlie&szlig;lich im Einklang mit der Datenschutz-Grundverordnung (DSGVO), dem Bundesdatenschutzgesetz (BDSG) und dem Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz (TDDDG).</p>
@@ -51,22 +53,25 @@
             <h3>4.1 Trakt-Konto und API-Nutzung</h3>
             <p>Seriel nutzt die <a href="https://trakt.tv" target="_blank" rel="noopener">Trakt.tv</a>-API, um TV-Serien-Tracking-Funktionen bereitzustellen. Durch die Anmeldung mit Ihrem Trakt-Konto &uuml;ber OAuth&nbsp;2.0 werden folgende Daten verarbeitet:</p>
             <ul>
-                <li>Trakt-Benutzer-ID und OAuth-Token (lokal auf Ihrem Ger&auml;t gespeichert)</li>
+                <li>Trakt-Benutzer-ID und OAuth-Token (sicher im iOS Keychain gespeichert)</li>
                 <li>Beobachtete Serien und Episoden</li>
                 <li>Ihre Bewertungen und Rezensionen</li>
+                <li>Ihre Kommentare und Rezensionen zu Serien und Episoden</li>
+                <li>Ihre Kommentar-Likes</li>
                 <li>Ihre Watchlist</li>
+                <li>Aktivit&auml;tszeitstempel (letzte Synchronisation)</li>
             </ul>
             <p>Diese Daten werden zwischen Ihrem Ger&auml;t und den Trakt-Servern synchronisiert. Die Verarbeitung durch Trakt unterliegt der <a href="https://trakt.tv/privacy" target="_blank" rel="noopener">Datenschutzerkl&auml;rung von Trakt</a>.</p>
 
-            <h3>4.2 TMDB-Bilddaten</h3>
-            <p>Seriel l&auml;dt Bilder (Poster, Hintergr&uuml;nde) von <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">The Movie Database (TMDB)</a>. Dabei wird Ihre IP-Adresse an TMDB-Server &uuml;bermittelt. Es werden keine personenbezogenen Daten an TMDB weitergegeben. Es gilt die <a href="https://www.themoviedb.org/privacy-policy" target="_blank" rel="noopener">Datenschutzerkl&auml;rung von TMDB</a>.</p>
+            <h3>4.2 TMDB-Bild- und Metadaten</h3>
+            <p>Seriel l&auml;dt Bilder (Poster, Hintergr&uuml;nde, Episodenbilder) und Metadaten (Serien-, Staffel- und Episodeninformationen) von <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">The Movie Database (TMDB)</a> &uuml;ber deren API. Dabei werden Ihre IP-Adresse sowie technische Anfragedaten an TMDB-Server &uuml;bermittelt. Es werden keine personenbezogenen Daten an TMDB weitergegeben. Die Verarbeitung erfolgt auf Grundlage von Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO (berechtigtes Interesse an der visuellen Darstellung von Serieninformationen). Es gilt die <a href="https://www.themoviedb.org/privacy-policy" target="_blank" rel="noopener">Datenschutzerkl&auml;rung von TMDB</a>.</p>
 
             <h3>4.3 Lokale Datenspeicherung</h3>
-            <p>Die App speichert folgende Daten ausschlie&szlig;lich lokal auf Ihrem Ger&auml;t (mittels SwiftData/Core Data und UserDefaults):</p>
+            <p>Die App speichert folgende Daten ausschlie&szlig;lich lokal auf Ihrem Ger&auml;t (mittels SwiftData, UserDefaults und dem iOS Keychain f&uuml;r OAuth-Token):</p>
             <ul>
                 <li>Zwischengespeicherte Seriendaten (Titel, Episoden, Fortschritt)</li>
                 <li>Ihre Einstellungen und Benachrichtigungspr&auml;ferenzen</li>
-                <li>OAuth-Token f&uuml;r die Trakt-Authentifizierung</li>
+                <li>OAuth-Token f&uuml;r die Trakt-Authentifizierung (im iOS Keychain)</li>
                 <li>Zwischengespeicherte Bilddaten</li>
             </ul>
             <p>Es erfolgt <strong>keine &Uuml;bermittlung</strong> dieser lokalen Daten an unsere Server oder Dritte.</p>
@@ -78,7 +83,13 @@
             <p>Seriel verwendet <strong>keine</strong> Analyse-, Tracking- oder Werbe-SDKs von Drittanbietern. Wir setzen kein Firebase, Mixpanel, Sentry oder vergleichbare Dienste ein.</p>
 
             <h3>4.6 Apple App Analytics</h3>
-            <p>Apple kann anonymisierte, aggregierte Nutzungsdaten erfassen, sofern Sie in den iOS-Einstellungen unter &bdquo;Analyse &amp; Verbesserungen&ldquo; die Option &bdquo;Mit App-Entwicklern teilen&ldquo; aktiviert haben. Diese Daten sind f&uuml;r uns nicht personenbeziehbar. Weitere Informationen finden Sie in der <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Datenschutzerkl&auml;rung von Apple</a>.</p>
+            <p>Apple kann anonymisierte, aggregierte Nutzungsdaten erfassen, sofern Sie in den iOS-Einstellungen unter &bdquo;Analyse &amp; Verbesserungen&ldquo; die Option &bdquo;Mit App-Entwicklern teilen&ldquo; aktiviert haben. Diese Daten sind f&uuml;r uns nicht personenbeziehbar. Apple handelt hierbei als eigenst&auml;ndiger Verantwortlicher auf Grundlage Ihrer Einwilligung gegen&uuml;ber Apple. Weitere Informationen finden Sie in der <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Datenschutzerkl&auml;rung von Apple</a>.</p>
+
+            <h3>4.7 KI-gest&uuml;tzte Bewertungszusammenfassungen</h3>
+            <p>Seriel kann &ouml;ffentlich verf&uuml;gbare Rezensionen von Trakt mithilfe von Apples On-Device Foundation Models zusammenfassen. Diese Verarbeitung erfolgt vollst&auml;ndig lokal auf Ihrem Ger&auml;t. Es werden keine Rezensionsdaten an externe Server &uuml;bermittelt. Es handelt sich nicht um eine automatisierte Entscheidungsfindung im Sinne von Art.&nbsp;22 DSGVO, da die Zusammenfassungen ausschlie&szlig;lich informativen Charakter haben und keine rechtlichen oder &auml;hnlichen Auswirkungen auf Sie entfalten.</p>
+
+            <h3>4.8 Hintergrundaktualisierung</h3>
+            <p>Wenn Sie die iOS-Hintergrundaktualisierung aktiviert haben, f&uuml;hrt Seriel regelm&auml;&szlig;ig im Hintergrund eine Synchronisation mit der Trakt-API durch, um Ihre Seriendaten aktuell zu halten und Sie &uuml;ber neue Episoden zu benachrichtigen. Dabei werden die gleichen Daten wie in Abschnitt 4.1 beschrieben verarbeitet. Sie k&ouml;nnen die Hintergrundaktualisierung jederzeit in den iOS-Einstellungen unter &bdquo;Allgemein &gt; Hintergrundaktualisierung&ldquo; deaktivieren. Die Verarbeitung erfolgt auf Grundlage von Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO (Vertragserf&uuml;llung).</p>
 
             <h2>5. Datenverarbeitung auf der Website</h2>
 
@@ -94,13 +105,13 @@
             <p>Die Verarbeitung erfolgt auf Grundlage von Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO (berechtigtes Interesse an der technischen Bereitstellung). Es gilt die <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerkl&auml;rung von GitHub</a>.</p>
 
             <h3>5.2 Cloudflare DNS</h3>
-            <p>Wir nutzen <strong>Cloudflare</strong> (Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA) f&uuml;r DNS-Dienste. Cloudflare kann dabei technische Verbindungsdaten verarbeiten. Es gilt die <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Datenschutzerkl&auml;rung von Cloudflare</a>.</p>
+            <p>Wir nutzen <strong>Cloudflare</strong> (Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA) f&uuml;r DNS-Dienste. Cloudflare kann dabei technische Verbindungsdaten verarbeiten. Die Verarbeitung erfolgt auf Grundlage von Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO (berechtigtes Interesse an der sicheren und effizienten Bereitstellung der Website). Es gilt die <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Datenschutzerkl&auml;rung von Cloudflare</a>.</p>
 
             <h3>5.3 TMDB-Bilder auf der Website</h3>
-            <p>Die Website l&auml;dt Bilder von TMDB-Servern f&uuml;r die Hintergrunddarstellung. Dabei wird Ihre IP-Adresse an TMDB &uuml;bermittelt. Siehe Abschnitt 4.2.</p>
+            <p>Die Website l&auml;dt Bilder von TMDB-Servern f&uuml;r die Hintergrunddarstellung. Dabei wird Ihre IP-Adresse an TMDB &uuml;bermittelt. Die Verarbeitung erfolgt auf Grundlage von Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO. Siehe Abschnitt 4.2.</p>
 
             <h3>5.4 Keine Cookies</h3>
-            <p>Diese Website verwendet <strong>keine Cookies</strong> und setzt keine Tracking-Technologien ein.</p>
+            <p>Diese Website verwendet <strong>keine Cookies</strong> und setzt keine Tracking-Technologien ein. Es werden gem&auml;&szlig; &sect;&nbsp;25 TDDDG keine Informationen auf Ihrem Endger&auml;t gespeichert oder darauf zugegriffen, die nicht technisch notwendig sind.</p>
 
             <h2>6. Datenweitergabe an Drittl&auml;nder</h2>
             <p>Durch die Nutzung von Trakt (USA), TMDB (USA), GitHub Pages (USA) und Cloudflare (USA) k&ouml;nnen personenbezogene Daten (insbesondere IP-Adressen) in die USA &uuml;bermittelt werden. Die &Uuml;bermittlung erfolgt auf Grundlage von:</p>
@@ -108,8 +119,12 @@
                 <li>dem EU-US Data Privacy Framework (soweit die Anbieter zertifiziert sind)</li>
                 <li>Standardvertragsklauseln gem&auml;&szlig; Art. 46 Abs. 2 lit. c DSGVO</li>
             </ul>
+            <p>Mit GitHub (f&uuml;r Hosting) und Cloudflare (f&uuml;r DNS) bestehen Datenverarbeitungsvertr&auml;ge bzw. deren Standardvertragsklauseln enthalten entsprechende Regelungen. Trakt und TMDB werden als eigenst&auml;ndige Verantwortliche im Sinne der DSGVO bzw. als Drittanbieter angesehen, auf deren Datenschutzerkl&auml;rungen verwiesen wird.</p>
 
-            <h2>7. Ihre Rechte</h2>
+            <h2>7. Speicherdauer</h2>
+            <p>Lokal gespeicherte Daten (Cache, Einstellungen, OAuth-Token) werden so lange aufbewahrt, wie die App auf Ihrem Ger&auml;t installiert ist. Zwischengespeicherte Seriendaten werden bei jeder Synchronisation aktualisiert. OAuth-Token werden so lange gespeichert, bis Sie sich abmelden oder die App deinstallieren. Bei Deinstallation der App werden alle lokalen Daten automatisch gel&ouml;scht. Die Aufbewahrungsdauer der an Trakt, TMDB und GitHub &uuml;bermittelten Daten richtet sich nach den jeweiligen Datenschutzerkl&auml;rungen dieser Anbieter.</p>
+
+            <h2>8. Ihre Rechte</h2>
             <p>Sie haben gem&auml;&szlig; DSGVO folgende Rechte:</p>
             <ul>
                 <li><strong>Auskunft</strong> (Art. 15 DSGVO) &ndash; &Uuml;ber die von uns verarbeiteten Daten</li>
@@ -117,21 +132,26 @@
                 <li><strong>L&ouml;schung</strong> (Art. 17 DSGVO) &ndash; L&ouml;schung Ihrer Daten verlangen</li>
                 <li><strong>Einschr&auml;nkung</strong> (Art. 18 DSGVO) &ndash; Verarbeitung einschr&auml;nken lassen</li>
                 <li><strong>Daten&uuml;bertragbarkeit</strong> (Art. 20 DSGVO) &ndash; Ihre Daten in maschinenlesbarem Format erhalten</li>
-                <li><strong>Widerspruch</strong> (Art. 21 DSGVO) &ndash; Der Verarbeitung widersprechen</li>
                 <li><strong>Widerruf der Einwilligung</strong> (Art. 7 Abs. 3 DSGVO) &ndash; Jederzeit mit Wirkung f&uuml;r die Zukunft</li>
             </ul>
             <p>Zur Aus&uuml;bung Ihrer Rechte kontaktieren Sie uns unter <a href="mailto:feedback@seriel.app">feedback@seriel.app</a>.</p>
 
-            <h2>8. Beschwerderecht</h2>
-            <p>Sie haben das Recht, sich bei einer Datenschutzaufsichtsbeh&ouml;rde zu beschweren (Art.&nbsp;77 DSGVO). Zust&auml;ndig ist in der Regel die Aufsichtsbeh&ouml;rde Ihres Bundeslandes.</p>
+            <h3>Widerspruchsrecht (Art. 21 DSGVO)</h3>
+            <p><strong>Soweit wir personenbezogene Daten auf Grundlage von berechtigten Interessen (Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO) verarbeiten, haben Sie das Recht, jederzeit aus Gr&uuml;nden, die sich aus Ihrer besonderen Situation ergeben, Widerspruch gegen die Verarbeitung einzulegen. Wir verarbeiten die personenbezogenen Daten dann nicht mehr, es sei denn, wir k&ouml;nnen zwingende schutzw&uuml;rdige Gr&uuml;nde f&uuml;r die Verarbeitung nachweisen.</strong></p>
 
-            <h2>9. Datensicherheit</h2>
+            <h2>9. Beschwerderecht</h2>
+            <p>Sie haben das Recht, sich bei einer Datenschutzaufsichtsbeh&ouml;rde zu beschweren (Art.&nbsp;77 DSGVO). Die f&uuml;r uns zust&auml;ndige Aufsichtsbeh&ouml;rde ist: Der Hamburgische Beauftragte f&uuml;r Datenschutz und Informationsfreiheit, Kurt-Schumacher-Allee 4, 20097 Hamburg, <a href="https://datenschutz-hamburg.de" target="_blank" rel="noopener">datenschutz-hamburg.de</a>.</p>
+
+            <h2>10. Datensicherheit</h2>
             <p>Wir setzen technische und organisatorische Ma&szlig;nahmen ein, um Ihre Daten zu sch&uuml;tzen. Die Kommunikation zwischen App und Drittanbietern erfolgt ausschlie&szlig;lich &uuml;ber verschl&uuml;sselte HTTPS-Verbindungen. OAuth-Token werden sicher im iOS Keychain gespeichert.</p>
 
-            <h2>10. L&ouml;schung Ihrer Daten</h2>
+            <h2>11. L&ouml;schung Ihrer Daten</h2>
             <p>Sie k&ouml;nnen alle lokal gespeicherten Daten jederzeit l&ouml;schen, indem Sie die App deinstallieren. Ihr Trakt-Konto und die dort gespeicherten Daten k&ouml;nnen Sie direkt &uuml;ber <a href="https://trakt.tv/settings" target="_blank" rel="noopener">trakt.tv</a> verwalten und l&ouml;schen.</p>
 
-            <h2>11. &Auml;nderungen dieser Datenschutzerkl&auml;rung</h2>
+            <h2>12. Erforderlichkeit der Datenbereitstellung</h2>
+            <p>Die Bereitstellung personenbezogener Daten ist weder gesetzlich noch vertraglich vorgeschrieben. Die Nutzung der App erfordert jedoch eine Verbindung mit einem Trakt.tv-Konto (OAuth-Authentifizierung). Ohne diese Verbindung k&ouml;nnen die Kernfunktionen der App nicht genutzt werden. Die Nutzung der Website ist ohne Angabe personenbezogener Daten m&ouml;glich; technische Verbindungsdaten (z.&nbsp;B. IP-Adresse) werden jedoch automatisch beim Seitenaufruf verarbeitet.</p>
+
+            <h2>13. &Auml;nderungen dieser Datenschutzerkl&auml;rung</h2>
             <p>Wir behalten uns vor, diese Datenschutzerkl&auml;rung anzupassen, um sie an ge&auml;nderte rechtliche Anforderungen oder &Auml;nderungen der App anzupassen. Die aktuelle Version ist stets auf dieser Seite abrufbar.</p>
         </article>
 
@@ -146,11 +166,13 @@
                 J&uuml;tlandring 2<br>
                 22419 Hamburg<br>
                 Germany<br>
+                Phone: <a href="tel:+447933902919">+44 7933 902919</a><br>
                 Email: <a href="mailto:feedback@seriel.app">feedback@seriel.app</a>
             </p>
+            <p>The appointment of a Data Protection Officer is not required, as the conditions of Art.&nbsp;37 GDPR and &sect;&nbsp;38 BDSG are not met.</p>
 
             <h2>2. Overview</h2>
-            <p>This privacy policy applies to the iOS app "Seriel" and the website <a href="https://seriel.app">seriel.app</a>. We take the protection of your personal data seriously and process it exclusively in accordance with the General Data Protection Regulation (GDPR) and applicable German data protection laws.</p>
+            <p>This privacy policy applies to the iOS app "Seriel" and the website <a href="https://seriel.app">seriel.app</a>. We take the protection of your personal data seriously and process it exclusively in accordance with the General Data Protection Regulation (GDPR) and applicable German data protection laws (BDSG, TDDDG).</p>
 
             <h2>3. Legal Basis for Processing</h2>
             <p>We process personal data based on the following legal grounds:</p>
@@ -165,22 +187,25 @@
             <h3>4.1 Trakt Account and API Usage</h3>
             <p>Seriel uses the <a href="https://trakt.tv" target="_blank" rel="noopener">Trakt.tv</a> API to provide TV show tracking features. By signing in with your Trakt account via OAuth 2.0, the following data is processed:</p>
             <ul>
-                <li>Trakt user ID and OAuth token (stored locally on your device)</li>
+                <li>Trakt user ID and OAuth token (securely stored in the iOS Keychain)</li>
                 <li>Watched shows and episodes</li>
                 <li>Your ratings and reviews</li>
+                <li>Your comments and reviews on shows and episodes</li>
+                <li>Your comment likes</li>
                 <li>Your watchlist</li>
+                <li>Activity timestamps (last sync)</li>
             </ul>
             <p>This data is synchronized between your device and Trakt's servers. Processing by Trakt is subject to <a href="https://trakt.tv/privacy" target="_blank" rel="noopener">Trakt's Privacy Policy</a>.</p>
 
-            <h3>4.2 TMDB Image Data</h3>
-            <p>Seriel loads images (posters, backdrops) from <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">The Movie Database (TMDB)</a>. Your IP address is transmitted to TMDB servers in the process. No personal data is shared with TMDB. See <a href="https://www.themoviedb.org/privacy-policy" target="_blank" rel="noopener">TMDB's Privacy Policy</a>.</p>
+            <h3>4.2 TMDB Image and Metadata</h3>
+            <p>Seriel loads images (posters, backdrops, episode stills) and metadata (show, season, and episode information) from <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">The Movie Database (TMDB)</a> via their API. Your IP address and technical request data are transmitted to TMDB servers in the process. No personal data is shared with TMDB. Processing is based on Art.&nbsp;6(1)(f) GDPR (legitimate interest in visual presentation of show information). See <a href="https://www.themoviedb.org/privacy-policy" target="_blank" rel="noopener">TMDB's Privacy Policy</a>.</p>
 
             <h3>4.3 Local Data Storage</h3>
-            <p>The app stores the following data exclusively on your device (using SwiftData and UserDefaults):</p>
+            <p>The app stores the following data exclusively on your device (using SwiftData, UserDefaults, and the iOS Keychain for OAuth tokens):</p>
             <ul>
                 <li>Cached show data (titles, episodes, progress)</li>
                 <li>Your settings and notification preferences</li>
-                <li>OAuth token for Trakt authentication</li>
+                <li>OAuth token for Trakt authentication (in iOS Keychain)</li>
                 <li>Cached image data</li>
             </ul>
             <p>This local data is <strong>never transmitted</strong> to our servers or third parties.</p>
@@ -192,7 +217,13 @@
             <p>Seriel does <strong>not use</strong> any third-party analytics, tracking, or advertising SDKs. We do not use Firebase, Mixpanel, Sentry, or similar services.</p>
 
             <h3>4.6 Apple App Analytics</h3>
-            <p>Apple may collect anonymized, aggregated usage data if you have enabled "Share with App Developers" under "Analytics &amp; Improvements" in iOS Settings. This data cannot be linked to you personally. See <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a> for details.</p>
+            <p>Apple may collect anonymized, aggregated usage data if you have enabled "Share with App Developers" under "Analytics &amp; Improvements" in iOS Settings. This data cannot be linked to you personally. Apple acts as an independent controller for this processing based on your consent given to Apple. See <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a> for details.</p>
+
+            <h3>4.7 AI-Powered Review Summaries</h3>
+            <p>Seriel may summarize publicly available Trakt reviews using Apple's on-device Foundation Models. This processing occurs entirely on your device. No review data is sent to external servers. This does not constitute automated decision-making within the meaning of Art. 22 GDPR, as the summaries are purely informational and have no legal or similarly significant effects on you.</p>
+
+            <h3>4.8 Background Refresh</h3>
+            <p>If you have Background App Refresh enabled in iOS, Seriel periodically syncs with the Trakt API in the background to keep your show data up to date and notify you about new episodes. The same data described in Section 4.1 is processed. You can disable Background App Refresh at any time in iOS Settings under General &gt; Background App Refresh. Processing is based on Art. 6(1)(b) GDPR (performance of contract).</p>
 
             <h2>5. Data Processing on the Website</h2>
 
@@ -208,13 +239,13 @@
             <p>Processing is based on Art. 6(1)(f) GDPR (legitimate interest in technical operation). See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's Privacy Statement</a>.</p>
 
             <h3>5.2 Cloudflare DNS</h3>
-            <p>We use <strong>Cloudflare</strong> (Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA) for DNS services. Cloudflare may process technical connection data. See <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare's Privacy Policy</a>.</p>
+            <p>We use <strong>Cloudflare</strong> (Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA) for DNS services. Cloudflare may process technical connection data. Processing is based on Art.&nbsp;6(1)(f) GDPR (legitimate interest in secure and efficient website operation). See <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare's Privacy Policy</a>.</p>
 
             <h3>5.3 TMDB Images on the Website</h3>
-            <p>The website loads images from TMDB servers for the background display. Your IP address is transmitted to TMDB in the process. See Section 4.2.</p>
+            <p>The website loads images from TMDB servers for the background display. Your IP address is transmitted to TMDB in the process. Processing is based on Art.&nbsp;6(1)(f) GDPR. See Section 4.2.</p>
 
             <h3>5.4 No Cookies</h3>
-            <p>This website does <strong>not use cookies</strong> and does not employ any tracking technologies.</p>
+            <p>This website does <strong>not use cookies</strong> and does not employ any tracking technologies. In accordance with Section 25 TDDDG, no information is stored on or accessed from your device that is not technically necessary.</p>
 
             <h2>6. Data Transfers to Third Countries</h2>
             <p>Through the use of Trakt (USA), TMDB (USA), GitHub Pages (USA), and Cloudflare (USA), personal data (particularly IP addresses) may be transferred to the United States. These transfers are based on:</p>
@@ -222,8 +253,12 @@
                 <li>The EU-US Data Privacy Framework (where providers are certified)</li>
                 <li>Standard Contractual Clauses pursuant to Art. 46(2)(c) GDPR</li>
             </ul>
+            <p>Data processing agreements or equivalent Standard Contractual Clauses are in place with GitHub (hosting) and Cloudflare (DNS). Trakt and TMDB are considered independent controllers or third-party services, whose own privacy policies apply.</p>
 
-            <h2>7. Your Rights</h2>
+            <h2>7. Data Retention</h2>
+            <p>Locally stored data (cache, settings, OAuth tokens) is retained as long as the app is installed on your device. Cached show data is updated with each sync. OAuth tokens are stored until you sign out or uninstall the app. Uninstalling the app automatically deletes all local data. Retention periods for data transmitted to Trakt, TMDB, and GitHub are governed by their respective privacy policies.</p>
+
+            <h2>8. Your Rights</h2>
             <p>Under the GDPR, you have the following rights:</p>
             <ul>
                 <li><strong>Access</strong> (Art. 15 GDPR) &ndash; Information about your processed data</li>
@@ -231,27 +266,41 @@
                 <li><strong>Erasure</strong> (Art. 17 GDPR) &ndash; Deletion of your data</li>
                 <li><strong>Restriction</strong> (Art. 18 GDPR) &ndash; Restriction of processing</li>
                 <li><strong>Data portability</strong> (Art. 20 GDPR) &ndash; Receive your data in a machine-readable format</li>
-                <li><strong>Objection</strong> (Art. 21 GDPR) &ndash; Object to processing</li>
                 <li><strong>Withdrawal of consent</strong> (Art. 7(3) GDPR) &ndash; At any time with future effect</li>
             </ul>
             <p>To exercise your rights, contact us at <a href="mailto:feedback@seriel.app">feedback@seriel.app</a>.</p>
 
-            <h2>8. Right to Lodge a Complaint</h2>
-            <p>You have the right to lodge a complaint with a data protection supervisory authority (Art. 77 GDPR). The competent authority is generally the supervisory authority of your German federal state.</p>
+            <h3>Right to Object (Art. 21 GDPR)</h3>
+            <p><strong>Where we process personal data based on legitimate interests (Art. 6(1)(f) GDPR), you have the right to object to such processing at any time for reasons arising from your particular situation. We will then no longer process your personal data unless we can demonstrate compelling legitimate grounds for the processing.</strong></p>
 
-            <h2>9. Data Security</h2>
+            <h2>9. Right to Lodge a Complaint</h2>
+            <p>You have the right to lodge a complaint with a data protection supervisory authority (Art. 77 GDPR). The supervisory authority responsible for us is: The Hamburg Commissioner for Data Protection and Freedom of Information, Kurt-Schumacher-Allee 4, 20097 Hamburg, <a href="https://datenschutz-hamburg.de" target="_blank" rel="noopener">datenschutz-hamburg.de</a>.</p>
+
+            <h2>10. Data Security</h2>
             <p>We employ technical and organizational measures to protect your data. All communication between the app and third-party services is exclusively via encrypted HTTPS connections. OAuth tokens are securely stored in the iOS Keychain.</p>
 
-            <h2>10. Deleting Your Data</h2>
+            <h2>11. Deleting Your Data</h2>
             <p>You can delete all locally stored data at any time by uninstalling the app. Your Trakt account and its data can be managed and deleted directly at <a href="https://trakt.tv/settings" target="_blank" rel="noopener">trakt.tv</a>.</p>
 
-            <h2>11. Changes to This Privacy Policy</h2>
+            <h2>12. Necessity of Providing Data</h2>
+            <p>The provision of personal data is neither legally nor contractually required. However, using the app requires connecting a Trakt.tv account (OAuth authentication). Without this connection, the app's core features cannot be used. The website can be used without providing personal data, though technical connection data (e.g., IP address) is automatically processed when accessing the site.</p>
+
+            <h2>13. Changes to This Privacy Policy</h2>
             <p>We reserve the right to update this privacy policy to reflect changes in legal requirements or app functionality. The current version is always available on this page.</p>
         </article>
 
     </main>
 
     <footer>
+        <div class="footer-links">
+            <a href="/impressum">Impressum</a>
+            <span class="footer-sep">&middot;</span>
+            <a href="/privacy">Privacy Policy</a>
+            <span class="footer-sep">&middot;</span>
+            <a href="/terms">Terms of Service</a>
+            <span class="footer-sep">&middot;</span>
+            <a href="/support">Support</a>
+        </div>
         <p>&copy; 2026 Seriel. All rights reserved.</p>
     </footer>
 

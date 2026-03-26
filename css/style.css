@@ -472,3 +472,47 @@ footer {
         opacity: 1;
     }
 }
+
+/* ========================================
+   Footer
+   ======================================== */
+
+footer {
+    text-align: center;
+    padding: 3rem 1.5rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+footer p {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+}
+
+.footer-links {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--turquoise);
+}
+
+.footer-sep {
+    color: var(--text-muted);
+    margin: 0 0.5rem;
+}
+
+.trademark-notice {
+    font-size: 0.7rem !important;
+    color: rgba(255, 255, 255, 0.25) !important;
+    max-width: 600px;
+    margin: 1rem auto 0 !important;
+    line-height: 1.5;
+}
