@@ -297,8 +297,9 @@ main {
 
 .trakt-badge {
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     text-decoration: none;
     color: var(--text-tertiary);
     font-size: 14px;
@@ -313,12 +314,14 @@ main {
     font-weight: 400;
 }
 
-.trakt-logo text {
-    transition: fill 0.2s ease;
+.trakt-logo {
+    height: 36px;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
 }
 
-.trakt-badge:hover .trakt-logo text {
-    fill: #FF2222;
+.trakt-badge:hover .trakt-logo {
+    opacity: 0.8;
 }
 
 /* ========================================
