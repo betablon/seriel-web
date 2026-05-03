@@ -1,114 +1,525 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="ink" data-lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seriel — Your TV shows, remembered.</title>
-    <meta name="description" content="Track, rate, and never forget your TV shows. Powered by Trakt. Coming soon to the App Store.">
-    <meta name="theme-color" content="#00CEC8">
-    <meta property="og:title" content="Seriel — Your TV shows, remembered.">
-    <meta property="og:description" content="Track, rate, and never forget your TV shows. Powered by Trakt. Coming soon to the App Store.">
+    <title>Seriel — Television is a habit.</title>
+    <meta name="description" content="Seriel keeps the record — what you watched, what's coming, and what you thought of it all. A personal TV broadsheet. Coming soon to the App Store.">
+    <meta name="theme-color" content="#0B0C10" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#F5F2EB" media="(prefers-color-scheme: light)">
+    <meta property="og:title" content="Seriel — Television is a habit.">
+    <meta property="og:description" content="Seriel keeps the record — what you watched, what's coming, and what you thought of it all.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://seriel.app">
+    <meta property="og:image" content="https://seriel.app/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Seriel — Television is a habit.">
+    <meta name="twitter:description" content="A personal TV broadsheet. Track, rate, remember every show you watch — powered by Trakt.">
+    <meta name="twitter:image" content="https://seriel.app/images/og-image.png">
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <meta property="og:image" content="https://seriel.app/images/app-icon-512.png">
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        // Pre-paint init: theme + language. Stored prefs win, otherwise the
+        // OS theme + browser language decide. Setting attributes on <html>
+        // before paint avoids both flashes — wrong colour AND wrong language.
+        (function () {
+            try {
+                var stored = localStorage.getItem('seriel.theme');
+                var sysLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+                document.documentElement.setAttribute('data-theme', stored || (sysLight ? 'paper' : 'ink'));
+            } catch (e) {}
+            try {
+                var lang = localStorage.getItem('seriel.lang');
+                if (!lang) {
+                    var nav = (navigator.language || 'en').toLowerCase();
+                    lang = nav.indexOf('de') === 0 ? 'de' : 'en';
+                }
+                document.documentElement.setAttribute('data-lang', lang);
+                document.documentElement.setAttribute('lang', lang);
+            } catch (e) {}
+        })();
+    </script>
 </head>
 <body>
-    <!-- Poster Mosaic Background -->
-    <div class="mosaic-container" id="mosaic">
-        <div class="mosaic-overlay"></div>
-    </div>
 
-    <!-- Hero Section -->
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <img src="images/app-icon-512.png" alt="Seriel app icon" class="app-icon" width="120" height="120">
-                <h1 class="app-name">Seriel</h1>
-                <p class="tagline">Seriel <span class="highlight">remembers</span> for you.</p>
-                <p class="subtitle">Your TV shows. Tracked, rated, and never forgotten.</p>
-                <div class="app-store-badge">
-                    <span>Coming Soon on the App Store</span>
+    <!-- ============================================================== -->
+    <!-- MASTHEAD                                                        -->
+    <!-- ============================================================== -->
+    <header class="masthead" role="banner">
+        <div class="masthead-inner">
+            <div class="masthead-folio masthead-folio-left">
+                <span class="folio-label" id="issue-line">VOL. 00 · ISSUE 00</span>
+            </div>
+            <a href="/" class="wordmark" aria-label="Seriel">SERIEL</a>
+            <div class="masthead-folio masthead-folio-right">
+                <div class="lang-toggle" role="tablist" aria-label="Language">
+                    <button type="button" class="lang-btn" data-lang-set="en">EN</button>
+                    <button type="button" class="lang-btn" data-lang-set="de">DE</button>
+                </div>
+                <button type="button" class="theme-toggle" aria-label="Toggle theme" id="theme-toggle">
+                    <span class="theme-toggle-label" data-when="ink" data-lang="en">PAPER</span>
+                    <span class="theme-toggle-label" data-when="ink" data-lang="de">PAPIER</span>
+                    <span class="theme-toggle-label" data-when="paper" data-lang="en">INK</span>
+                    <span class="theme-toggle-label" data-when="paper" data-lang="de">TINTE</span>
+                </button>
+            </div>
+        </div>
+        <div class="hairline"></div>
+    </header>
+
+    <main id="main">
+
+        <!-- ========================================================== -->
+        <!-- COVER                                                       -->
+        <!-- ========================================================== -->
+        <section class="cover" aria-labelledby="cover-headline">
+            <div class="cover-inner">
+                <p class="eyebrow eyebrow-accent" data-lang="en">A PERSONAL TV BROADSHEET</p>
+                <p class="eyebrow eyebrow-accent" data-lang="de">EIN PERS&Ouml;NLICHES TV-MAGAZIN</p>
+
+                <h1 id="cover-headline" class="cover-headline" data-lang="en">Television<br>is a habit.</h1>
+                <h1 class="cover-headline" data-lang="de">Fernsehen<br>ist Gewohnheit.</h1>
+
+                <p class="cover-deck" data-lang="en">
+                    Seriel keeps the record &mdash; what you watched,<br class="br-md">
+                    what&rsquo;s coming, and what you thought of it all.
+                </p>
+                <p class="cover-deck" data-lang="de">
+                    Seriel f&uuml;hrt das Protokoll &mdash; was du gesehen hast,<br class="br-md">
+                    was kommt, und was du davon hieltest.
+                </p>
+
+                <div class="cover-cta">
+                    <span class="capsule capsule-static">
+                        <span data-lang="en">Coming soon on the App Store</span>
+                        <span data-lang="de">Bald im App Store</span>
+                    </span>
+                    <p class="cover-meta">
+                        <span class="mono">EST. 2026</span><span class="dot">&middot;</span>
+                        <span class="mono" data-lang="en">FOR&nbsp;iPHONE</span>
+                        <span class="mono" data-lang="de">F&Uuml;R&nbsp;iPHONE</span>
+                    </p>
+                </div>
+            </div>
+            <div class="hairline hairline-cover"></div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!-- TABLE OF CONTENTS                                           -->
+        <!-- ========================================================== -->
+        <section class="toc" aria-labelledby="toc-eyebrow">
+            <div class="page">
+                <div class="toc-grid">
+                    <div class="toc-head">
+                        <p class="eyebrow" id="toc-eyebrow" data-lang="en">IN THIS ISSUE</p>
+                        <p class="eyebrow" data-lang="de">IN DIESER AUSGABE</p>
+
+                        <h2 class="toc-title" data-lang="en">Four sections.<br>One reading habit.</h2>
+                        <h2 class="toc-title" data-lang="de">Vier Rubriken.<br>Eine Lesegewohnheit.</h2>
+                    </div>
+                    <ol class="toc-list" aria-label="Sections">
+                        <li>
+                            <a href="#today">
+                                <span class="toc-num">01</span>
+                                <span class="toc-name" data-lang="en">Today</span>
+                                <span class="toc-name" data-lang="de">Heute</span>
+                                <span class="toc-rule" aria-hidden="true"></span>
+                                <span class="toc-page">P. 02</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#schedule">
+                                <span class="toc-num">02</span>
+                                <span class="toc-name" data-lang="en">Schedule</span>
+                                <span class="toc-name" data-lang="de">Programm</span>
+                                <span class="toc-rule" aria-hidden="true"></span>
+                                <span class="toc-page">P. 03</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#file">
+                                <span class="toc-num">03</span>
+                                <span class="toc-name" data-lang="en">The File</span>
+                                <span class="toc-name" data-lang="de">Das Dossier</span>
+                                <span class="toc-rule" aria-hidden="true"></span>
+                                <span class="toc-page">P. 04</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#archive">
+                                <span class="toc-num">04</span>
+                                <span class="toc-name" data-lang="en">Archive</span>
+                                <span class="toc-name" data-lang="de">Archiv</span>
+                                <span class="toc-rule" aria-hidden="true"></span>
+                                <span class="toc-page">P. 05</span>
+                            </a>
+                        </li>
+                    </ol>
                 </div>
             </div>
         </section>
 
-        <!-- Feature Sections -->
-        <section class="feature-showcase">
-
-            <!-- 1. My Shows -->
-            <div class="feature-row">
-                <div class="feature-device">
-                    <img src="images/screenshots/my_shows.png" alt="My Shows overview" class="screenshot">
+        <!-- ========================================================== -->
+        <!-- SPREAD 01 — TODAY                                           -->
+        <!-- ========================================================== -->
+        <section class="spread spread-today" id="today" aria-labelledby="today-h">
+            <div class="page">
+                <div class="spread-folio">
+                    <span class="folio-label" data-lang="en">P. 02 &middot; TODAY</span>
+                    <span class="folio-label" data-lang="de">S. 02 &middot; HEUTE</span>
+                    <span class="folio-rule" aria-hidden="true"></span>
                 </div>
-                <div class="feature-text">
-                    <h2>Always know where you left off</h2>
-                    <p>Your personal dashboard shows what to watch next. Mark episodes watched and pick up right where you stopped. Everything syncs with Trakt.</p>
+
+                <div class="spread-grid">
+                    <header class="spread-head">
+                        <p class="eyebrow eyebrow-accent" data-lang="en">YOUR QUEUE</p>
+                        <p class="eyebrow eyebrow-accent" data-lang="de">WEITERSCHAUEN</p>
+
+                        <h2 class="spread-title" id="today-h" data-lang="en">Pick up where<br>you left off.</h2>
+                        <h2 class="spread-title" data-lang="de">Weiter, wo du<br>aufgeh&ouml;rt hast.</h2>
+
+                        <p class="spread-deck" data-lang="en">A daily front page, set the moment you open the app. The show you&rsquo;re in the middle of leads. Everything else queues behind it, in the order you last touched it.</p>
+                        <p class="spread-deck" data-lang="de">Eine t&auml;gliche Titelseite, gesetzt im Moment des &Ouml;ffnens. Die Serie, in der du gerade steckst, f&uuml;hrt. Alles andere reiht sich dahinter ein &mdash; in der Reihenfolge, in der du es zuletzt angefasst hast.</p>
+                    </header>
+
+                    <div class="spread-stage" aria-hidden="true">
+                        <article class="mock-headline">
+                            <p class="mock-eyebrow" data-lang="en">TODAY&rsquo;S HEADLINE</p>
+                            <p class="mock-eyebrow" data-lang="de">DER AUFMACHER</p>
+                            <p class="mock-display">Severance</p>
+                            <p class="mock-tagline">The work is mysterious and important.</p>
+                            <div class="mock-meta">
+                                <span class="mono">S02E07</span>
+                                <span class="dot">&middot;</span>
+                                <span class="mono">47 MIN</span>
+                                <span class="dot">&middot;</span>
+                                <span class="mono">APPLE TV+</span>
+                            </div>
+                            <div class="mock-progress" aria-hidden="true">
+                                <div class="mock-progress-bar"></div>
+                            </div>
+                        </article>
+
+                        <div class="mock-queue">
+                            <p class="mock-section-eyebrow" data-lang="en">YOUR QUEUE&nbsp;&nbsp;<span class="dim">&middot;&nbsp;&nbsp;3</span></p>
+                            <p class="mock-section-eyebrow" data-lang="de">WARTESCHLANGE&nbsp;&nbsp;<span class="dim">&middot;&nbsp;&nbsp;3</span></p>
+                            <ul class="mock-queue-list">
+                                <li>
+                                    <span class="mock-queue-title">The Diplomat</span>
+                                    <span class="mock-queue-meta mono" data-lang="en">S02E04 &middot; UP NEXT</span>
+                                    <span class="mock-queue-meta mono" data-lang="de">S02E04 &middot; ALS N&Auml;CHSTES</span>
+                                </li>
+                                <li>
+                                    <span class="mock-queue-title">Slow Horses</span>
+                                    <span class="mock-queue-meta mono" data-lang="en">S04E02 &middot; UP NEXT</span>
+                                    <span class="mock-queue-meta mono" data-lang="de">S04E02 &middot; ALS N&Auml;CHSTES</span>
+                                </li>
+                                <li>
+                                    <span class="mock-queue-title">Andor</span>
+                                    <span class="mock-queue-meta mono" data-lang="en">S02E05 &middot; UP NEXT</span>
+                                    <span class="mock-queue-meta mono" data-lang="de">S02E05 &middot; ALS N&Auml;CHSTES</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <!-- 2. Show Detail — paired devices -->
-            <div class="feature-row reverse">
-                <div class="feature-device feature-device-pair">
-                    <img src="images/screenshots/show_detail.png" alt="Show detail" class="screenshot">
-                    <img src="images/screenshots/show_detail_episodes.png" alt="Episode list" class="screenshot">
-                </div>
-                <div class="feature-text">
-                    <h2>Every detail at a glance</h2>
-                    <p>Immersive show pages with episode guides, progress tracking, and season navigation. Everything about a show, in one place.</p>
-                </div>
-            </div>
-
-            <!-- 3. Episode Detail — ratings & reviews -->
-            <div class="feature-row">
-                <div class="feature-device">
-                    <img src="images/screenshots/episode_detail.png" alt="Episode ratings and reviews" class="screenshot">
-                </div>
-                <div class="feature-text">
-                    <h2>Rate, review, discuss</h2>
-                    <p>See what the community thinks. Add your own ratings and reviews, read other viewers' takes, and build your personal taste profile.</p>
-                </div>
-            </div>
-
-            <!-- 4. Search & Discover -->
-            <div class="feature-row reverse">
-                <div class="feature-device">
-                    <img src="images/screenshots/search.png" alt="Discover new shows" class="screenshot">
-                </div>
-                <div class="feature-text">
-                    <h2>Find your next favorite</h2>
-                    <p>Browse trending and popular shows. Build your watchlist so you never run out of things to watch.</p>
-                </div>
-            </div>
-
         </section>
 
-        <!-- Powered by Trakt -->
-        <section class="trakt-section">
-            <a href="https://trakt.tv" target="_blank" rel="noopener noreferrer" class="trakt-badge">
-                <img src="images/trakt-badge.svg" alt="Trakt" class="trakt-logo">
-                <span class="trakt-text">Powered by trakt.tv</span>
-            </a>
+        <!-- ========================================================== -->
+        <!-- SPREAD 02 — SCHEDULE                                        -->
+        <!-- ========================================================== -->
+        <section class="spread spread-schedule" id="schedule" aria-labelledby="schedule-h">
+            <div class="page">
+                <div class="spread-folio">
+                    <span class="folio-label" data-lang="en">P. 03 &middot; SCHEDULE</span>
+                    <span class="folio-label" data-lang="de">S. 03 &middot; PROGRAMM</span>
+                    <span class="folio-rule" aria-hidden="true"></span>
+                </div>
+
+                <div class="spread-grid spread-grid-reverse">
+                    <header class="spread-head">
+                        <p class="eyebrow eyebrow-accent" data-lang="en">WEEK AHEAD</p>
+                        <p class="eyebrow eyebrow-accent" data-lang="de">DIE WOCHE</p>
+
+                        <h2 class="spread-title" id="schedule-h" data-lang="en">Always know<br>what&rsquo;s airing.</h2>
+                        <h2 class="spread-title" data-lang="de">Immer wissen,<br>was l&auml;uft.</h2>
+
+                        <p class="spread-deck" data-lang="en">A dated TV-guide for the week ahead &mdash; tracked shows, premieres, save-the-date drops. A heads-up before the episode lands, never after.</p>
+                        <p class="spread-deck" data-lang="de">Ein TV-Programm f&uuml;r die kommende Woche &mdash; verfolgte Serien, Premieren, Save-the-Date-Termine. Eine Vorwarnung, bevor die Folge da ist, nicht hinterher.</p>
+                    </header>
+
+                    <div class="spread-stage" aria-hidden="true">
+                        <div class="mock-listing">
+                            <p class="mock-section-eyebrow" data-lang="en">THIS WEEK&nbsp;&nbsp;<span class="dim">&middot;&nbsp;&nbsp;4</span></p>
+                            <p class="mock-section-eyebrow" data-lang="de">DIESE WOCHE&nbsp;&nbsp;<span class="dim">&middot;&nbsp;&nbsp;4</span></p>
+                            <ol class="mock-guide">
+                                <li class="mock-guide-row">
+                                    <span class="mock-guide-date mono" data-lang="en">TUE&nbsp;&nbsp;06 MAY</span>
+                                    <span class="mock-guide-date mono" data-lang="de">DI&nbsp;&nbsp;06. MAI</span>
+                                    <span class="mock-guide-title">The Last of Us</span>
+                                    <span class="mock-guide-ep mono">S02E03</span>
+                                </li>
+                                <li class="mock-guide-row">
+                                    <span class="mock-guide-date mono" data-lang="en">THU&nbsp;&nbsp;08 MAY</span>
+                                    <span class="mock-guide-date mono" data-lang="de">DO&nbsp;&nbsp;08. MAI</span>
+                                    <span class="mock-guide-title">Hacks</span>
+                                    <span class="mock-guide-ep mono">S04E07</span>
+                                </li>
+                                <li class="mock-guide-row">
+                                    <span class="mock-guide-date mono" data-lang="en">FRI&nbsp;&nbsp;09 MAY</span>
+                                    <span class="mock-guide-date mono" data-lang="de">FR&nbsp;&nbsp;09. MAI</span>
+                                    <span class="mock-guide-title">Murderbot</span>
+                                    <span class="mock-guide-ep mono">PREMIERE</span>
+                                </li>
+                                <li class="mock-guide-row">
+                                    <span class="mock-guide-date mono" data-lang="en">SUN&nbsp;&nbsp;11 MAY</span>
+                                    <span class="mock-guide-date mono" data-lang="de">SO&nbsp;&nbsp;11. MAI</span>
+                                    <span class="mock-guide-title">The Righteous Gemstones</span>
+                                    <span class="mock-guide-ep mono">S04E01</span>
+                                </li>
+                            </ol>
+
+                            <p class="mock-section-eyebrow mock-section-eyebrow-spaced" data-lang="en">MARK YOUR CALENDAR</p>
+                            <p class="mock-section-eyebrow mock-section-eyebrow-spaced" data-lang="de">VORMERKEN</p>
+                            <ol class="mock-guide">
+                                <li class="mock-guide-row">
+                                    <span class="mock-guide-date mono" data-lang="en">JUN&nbsp;&nbsp;05</span>
+                                    <span class="mock-guide-date mono" data-lang="de">05. JUNI</span>
+                                    <span class="mock-guide-title">The Bear</span>
+                                    <span class="mock-guide-ep mono">S04 PREMIERE</span>
+                                </li>
+                                <li class="mock-guide-row">
+                                    <span class="mock-guide-date mono" data-lang="en">JUL&nbsp;&nbsp;13</span>
+                                    <span class="mock-guide-date mono" data-lang="de">13. JULI</span>
+                                    <span class="mock-guide-title">Foundation</span>
+                                    <span class="mock-guide-ep mono">S03 PREMIERE</span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
+
+        <!-- ========================================================== -->
+        <!-- SPREAD 03 — THE FILE                                        -->
+        <!-- ========================================================== -->
+        <section class="spread spread-file" id="file" aria-labelledby="file-h">
+            <div class="page">
+                <div class="spread-folio">
+                    <span class="folio-label" data-lang="en">P. 04 &middot; THE FILE</span>
+                    <span class="folio-label" data-lang="de">S. 04 &middot; DAS DOSSIER</span>
+                    <span class="folio-rule" aria-hidden="true"></span>
+                </div>
+
+                <div class="spread-grid">
+                    <header class="spread-head">
+                        <p class="eyebrow eyebrow-accent" data-lang="en">EVERY SHOW, ON RECORD</p>
+                        <p class="eyebrow eyebrow-accent" data-lang="de">JEDE SERIE, AKTENKUNDIG</p>
+
+                        <h2 class="spread-title" id="file-h" data-lang="en">Every detail, set<br>like an editorial.</h2>
+                        <h2 class="spread-title" data-lang="de">Jedes Detail,<br>wie eine Reportage.</h2>
+
+                        <p class="spread-deck" data-lang="en">One long-scroll page per show: the masthead, the cast, the season hub, the episodes &mdash; and the things you said about it. Your ratings, your reviews, the date you finished it. All of it, kept.</p>
+                        <p class="spread-deck" data-lang="de">Eine lange Seite pro Serie: der Aufmacher, der Cast, die Staffel-&Uuml;bersicht, die Folgen &mdash; und was du dazu gesagt hast. Deine Bewertungen, deine Notizen, der Tag, an dem du sie beendet hast. Alles, gespeichert.</p>
+                    </header>
+
+                    <div class="spread-stage" aria-hidden="true">
+                        <article class="mock-file">
+                            <p class="mock-section-eyebrow" data-lang="en">FROM THE FILE</p>
+                            <p class="mock-section-eyebrow" data-lang="de">AUS DEM DOSSIER</p>
+
+                            <p class="mock-display">The Leftovers</p>
+                            <p class="mock-tagline">Let the mystery be.</p>
+
+                            <div class="mock-file-meta">
+                                <div>
+                                    <p class="mock-meta-label" data-lang="en">CREATOR</p>
+                                    <p class="mock-meta-label" data-lang="de">AUTOR</p>
+                                    <p class="mock-meta-value">Damon Lindelof</p>
+                                </div>
+                                <div>
+                                    <p class="mock-meta-label" data-lang="en">RUN</p>
+                                    <p class="mock-meta-label" data-lang="de">LAUFZEIT</p>
+                                    <p class="mock-meta-value">2014 &mdash; 2017</p>
+                                </div>
+                                <div>
+                                    <p class="mock-meta-label" data-lang="en">EPISODES</p>
+                                    <p class="mock-meta-label" data-lang="de">FOLGEN</p>
+                                    <p class="mock-meta-value">28</p>
+                                </div>
+                                <div>
+                                    <p class="mock-meta-label" data-lang="en">YOUR RATING</p>
+                                    <p class="mock-meta-label" data-lang="de">BEWERTUNG</p>
+                                    <p class="mock-meta-value mock-rating">9.4<span class="mock-rating-suffix">/10</span></p>
+                                </div>
+                            </div>
+
+                            <div class="mock-divider" aria-hidden="true"></div>
+
+                            <p class="mock-section-eyebrow" data-lang="en">YOUR NOTE&nbsp;&nbsp;<span class="dim">&middot;&nbsp;&nbsp;FINISHED 12 MAR 2026</span></p>
+                            <p class="mock-section-eyebrow" data-lang="de">DEINE NOTIZ&nbsp;&nbsp;<span class="dim">&middot;&nbsp;&nbsp;BEENDET 12. M&Auml;RZ 2026</span></p>
+
+                            <p class="mock-note" data-lang="en">A show that never asked you to solve it. Three seasons that earned every inch of their ending. I&rsquo;ll come back to it.</p>
+                            <p class="mock-note" data-lang="de">Eine Serie, die dich nie aufgefordert hat, sie zu l&ouml;sen. Drei Staffeln, die jeden Zentimeter ihres Endes verdient haben. Ich werde zur&uuml;ckkommen.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!-- SPREAD 04 — ARCHIVE / RECAP                                 -->
+        <!-- ========================================================== -->
+        <section class="spread spread-archive" id="archive" aria-labelledby="archive-h">
+            <div class="page">
+                <div class="spread-folio">
+                    <span class="folio-label" data-lang="en">P. 05 &middot; ARCHIVE</span>
+                    <span class="folio-label" data-lang="de">S. 05 &middot; ARCHIV</span>
+                    <span class="folio-rule" aria-hidden="true"></span>
+                </div>
+
+                <div class="spread-grid">
+                    <header class="spread-head">
+                        <p class="eyebrow eyebrow-accent" data-lang="en">FROM THE ARCHIVE</p>
+                        <p class="eyebrow eyebrow-accent" data-lang="de">AUS DEM ARCHIV</p>
+
+                        <h2 class="spread-title" id="archive-h" data-lang="en">A long memory<br>for things you loved.</h2>
+                        <h2 class="spread-title" data-lang="de">Ein langes Ged&auml;chtnis<br>f&uuml;r das, was du liebtest.</h2>
+
+                        <p class="spread-deck" data-lang="en">A monthly recap, a years-ago kicker, a record of every show you finished. Seriel doesn&rsquo;t just track what&rsquo;s next &mdash; it remembers everything that came before.</p>
+                        <p class="spread-deck" data-lang="de">Ein monatlicher R&uuml;ckblick, eine Erinnerung an die Jahre davor, eine Liste jeder Serie, die du beendet hast. Seriel verfolgt nicht nur, was kommt &mdash; es erinnert sich an alles, was vorher war.</p>
+                    </header>
+
+                    <div class="spread-stage" aria-hidden="true">
+                        <div class="mock-recap">
+                            <p class="mock-section-eyebrow" data-lang="en">LAST MONTH&nbsp;&nbsp;<span class="dim">&middot;&nbsp;&nbsp;APRIL 2026</span></p>
+                            <p class="mock-section-eyebrow" data-lang="de">LETZTER MONAT&nbsp;&nbsp;<span class="dim">&middot;&nbsp;&nbsp;APRIL 2026</span></p>
+
+                            <div class="mock-stat-grid">
+                                <div class="mock-stat">
+                                    <p class="mock-stat-num">47</p>
+                                    <p class="mock-stat-label mono" data-lang="en">EPISODES</p>
+                                    <p class="mock-stat-label mono" data-lang="de">FOLGEN</p>
+                                </div>
+                                <div class="mock-stat">
+                                    <p class="mock-stat-num">21<span class="mock-stat-unit">h</span></p>
+                                    <p class="mock-stat-label mono" data-lang="en">SCREEN TIME</p>
+                                    <p class="mock-stat-label mono" data-lang="de">SEHZEIT</p>
+                                </div>
+                                <div class="mock-stat">
+                                    <p class="mock-stat-num">3</p>
+                                    <p class="mock-stat-label mono" data-lang="en">FINISHED</p>
+                                    <p class="mock-stat-label mono" data-lang="de">BEENDET</p>
+                                </div>
+                            </div>
+
+                            <div class="mock-divider" aria-hidden="true"></div>
+
+                            <p class="mock-section-eyebrow eyebrow-accent" data-lang="en">FROM THE ARCHIVE&nbsp;&nbsp;<span class="dim">&middot;&nbsp;&nbsp;THREE YEARS AGO</span></p>
+                            <p class="mock-section-eyebrow eyebrow-accent" data-lang="de">AUS DEM ARCHIV&nbsp;&nbsp;<span class="dim">&middot;&nbsp;&nbsp;VOR DREI JAHREN</span></p>
+
+                            <p class="mock-archive-line" data-lang="en">You finished</p>
+                            <p class="mock-archive-line" data-lang="de">Du hast beendet</p>
+
+                            <p class="mock-archive-title">Better Call Saul</p>
+
+                            <p class="mock-archive-meta mono" data-lang="en">MAY 2023&nbsp;&nbsp;&middot;&nbsp;&nbsp;63 EPISODES&nbsp;&nbsp;&middot;&nbsp;&nbsp;9&star;</p>
+                            <p class="mock-archive-meta mono" data-lang="de">MAI 2023&nbsp;&nbsp;&middot;&nbsp;&nbsp;63 FOLGEN&nbsp;&nbsp;&middot;&nbsp;&nbsp;9&star;</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================== -->
+        <!-- ABOUT — Why Trakt + Hamburg                                 -->
+        <!-- ========================================================== -->
+        <section class="about" id="about" aria-labelledby="about-h">
+            <div class="page">
+                <div class="about-folio">
+                    <span class="folio-label" data-lang="en">P. 06 &middot; ABOUT THIS PAPER</span>
+                    <span class="folio-label" data-lang="de">S. 06 &middot; &Uuml;BER DIESES BLATT</span>
+                    <span class="folio-rule" aria-hidden="true"></span>
+                </div>
+
+                <header class="about-lead">
+                    <h2 class="about-title" id="about-h" data-lang="en">Independent.<br>Made in Hamburg.<br>Built around <em>Trakt</em>.</h2>
+                    <h2 class="about-title" data-lang="de">Unabh&auml;ngig.<br>Gemacht in Hamburg.<br>Gebaut auf <em>Trakt</em>.</h2>
+                </header>
+
+                <div class="about-blocks">
+                    <article class="about-block">
+                        <p class="eyebrow eyebrow-accent" data-lang="en">WHY TRAKT?</p>
+                        <p class="eyebrow eyebrow-accent" data-lang="de">WARUM TRAKT?</p>
+
+                        <h3 class="about-block-title" data-lang="en">Your library, somewhere it won&rsquo;t get lost.</h3>
+                        <h3 class="about-block-title" data-lang="de">Deine Bibliothek, an einem Ort, an dem sie nicht verloren geht.</h3>
+
+                        <p class="about-block-body" data-lang="en">Seriel doesn&rsquo;t run its own servers. It plugs into <a href="https://trakt.tv" target="_blank" rel="noopener">Trakt</a> &mdash; a community service that&rsquo;s tracked TV for over a decade. Your shows, ratings and reviews live on Trakt, sync to every device, and stay yours if you ever switch apps. A free Trakt account is all you need to sign in.</p>
+                        <p class="about-block-body" data-lang="de">Seriel hat keine eigenen Server. Es l&auml;uft auf <a href="https://trakt.tv" target="_blank" rel="noopener">Trakt</a> &mdash; einem unabh&auml;ngigen Dienst, der seit &uuml;ber zehn Jahren Serien f&uuml;r die Community verfolgt. Deine Serien, Bewertungen und Notizen liegen bei Trakt, synchronisieren auf jedem Ger&auml;t und bleiben dir erhalten, falls du die App jemals wechselst. Ein kostenloses Trakt-Konto reicht, um dich anzumelden.</p>
+                    </article>
+
+                    <article class="about-block">
+                        <p class="eyebrow eyebrow-accent" data-lang="en">MADE IN HAMBURG</p>
+                        <p class="eyebrow eyebrow-accent" data-lang="de">IN HAMBURG GEBAUT</p>
+
+                        <h3 class="about-block-title" data-lang="en">By a fan. For other fans.</h3>
+                        <h3 class="about-block-title" data-lang="de">Von einem Fan. F&uuml;r andere Fans.</h3>
+
+                        <p class="about-block-body" data-lang="en">Seriel is independent. One developer, in Hamburg, on weekends and late nights &mdash; built because nothing on the App Store remembered TV the way real fans remember it: by season, by note, by the date you finished it. No team, no tracking, no ads. Just an app that respects what you watched.</p>
+                        <p class="about-block-body" data-lang="de">Seriel ist unabh&auml;ngig. Ein Entwickler, in Hamburg, an Wochenenden und in sp&auml;ten N&auml;chten &mdash; entstanden, weil keine andere App das Fernsehen so erinnert hat, wie echte Fans erinnern: nach Staffel, nach Notiz, nach dem Tag, an dem du es beendet hast. Kein Team, kein Tracking, keine Werbung. Eine App, die respektiert, was du gesehen hast.</p>
+                    </article>
+                </div>
+
+                <div class="about-attribution">
+                    <div class="hairline"></div>
+                    <p class="attribution-line">
+                        <span class="mono">DATA &middot;</span>
+                        <a href="https://trakt.tv" target="_blank" rel="noopener">Trakt.tv</a>
+                        <span class="dim">&amp;</span>
+                        <a href="https://www.themoviedb.org" target="_blank" rel="noopener">The Movie Database</a>
+                    </p>
+                    <p class="attribution-note">This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-links">
-            <a href="/impressum">Impressum</a>
-            <span class="footer-sep">&middot;</span>
-            <a href="/privacy">Privacy Policy</a>
-            <span class="footer-sep">&middot;</span>
-            <a href="/terms">Terms of Service</a>
-            <span class="footer-sep">&middot;</span>
-            <a href="/support">Support</a>
+    <!-- ============================================================== -->
+    <!-- FOOTER                                                          -->
+    <!-- ============================================================== -->
+    <footer class="footer" role="contentinfo">
+        <div class="page">
+            <div class="footer-inner">
+                <div class="footer-mast">
+                    <span class="wordmark wordmark-sm">SERIEL</span>
+                    <span class="folio-label" id="footer-issue">VOL. 00 · ISSUE 00</span>
+                </div>
+                <div class="hairline"></div>
+                <nav class="footer-links" aria-label="Legal">
+                    <a href="/impressum">Impressum</a>
+                    <a href="/privacy"><span data-lang="en">Privacy</span><span data-lang="de">Datenschutz</span></a>
+                    <a href="/terms"><span data-lang="en">Terms</span><span data-lang="de">AGB</span></a>
+                    <a href="/support">Support</a>
+                    <a href="mailto:feedback@seriel.app"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
+                </nav>
+                <p class="footer-copy">&copy; 2026 Seriel. Hamburg.</p>
+                <p class="footer-disclaimer" data-lang="en">
+                    Seriel is not affiliated with, endorsed by, or sponsored by Apple Inc., Trakt.tv, or The Movie Database (TMDB). Apple, the Apple logo, iPhone, and App Store are trademarks of Apple Inc. Trakt is a trademark of Trakt.tv. All other trademarks are the property of their respective owners.
+                </p>
+                <p class="footer-disclaimer" data-lang="de">
+                    Seriel steht in keiner Verbindung zu Apple Inc., Trakt.tv oder The Movie Database (TMDB) und wird von diesen weder unterst&uuml;tzt noch gesponsert. Apple, das Apple-Logo, iPhone und App Store sind Marken von Apple Inc. Trakt ist eine Marke von Trakt.tv. Alle weiteren Marken sind Eigentum ihrer jeweiligen Inhaber.
+                </p>
+            </div>
         </div>
-        <p>&copy; 2026 Seriel. All rights reserved.</p>
-        <p class="trademark-notice">Seriel is not affiliated with, endorsed by, or sponsored by Apple Inc., Trakt.tv, or The Movie Database (TMDB). Apple, the Apple logo, iPhone, and App Store are trademarks of Apple Inc. Trakt is a trademark of Trakt.tv. All other trademarks are the property of their respective owners.</p>
     </footer>
 
     <script src="js/main.js"></script>

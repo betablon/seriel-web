@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!--
+    Seriel app icon, web rasterisation source. Mirrors the iOS AppIcon.icon
+    (Seriel/AppIcon.icon/icon.json): tv.fill SF Symbol on the brand turquoise
+    automatic-gradient (srgb 0.000, 0.812, 0.780 ≈ #00CFC7), white@~85%.
+  -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1FDDD5"/>
+      <stop offset="1" stop-color="#00B0A8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <!--
+    tv.fill viewBox is 124.512 × 99.659. Scale 4.819 → 600×480, centre on
+    1024 canvas: x=212, y=272.
+  -->
+  <g transform="translate(212, 272) scale(4.819)" fill="white" fill-opacity="0.92">
+    <path d="M12.7998 82.6758L111.712 82.6758C120.229 82.6758 124.512 78.542 124.512 69.876L124.512 12.7998C124.512 4.13379 120.229 0 111.712 0L12.7998 0C4.33301 0 0 4.13379 0 12.7998L0 69.876C0 78.542 4.33301 82.6758 12.7998 82.6758ZM37.2041 99.5596L87.3076 99.5596C89.499 99.5596 91.3418 97.7666 91.3418 95.5254C91.3418 93.2842 89.499 91.4912 87.3076 91.4912L37.2041 91.4912C35.0127 91.4912 33.1699 93.2842 33.1699 95.5254C33.1699 97.7666 35.0127 99.5596 37.2041 99.5596Z"/>
+  </g>
+</svg>

@@ -1,125 +1,150 @@
-/* Legal pages — Privacy Policy & Terms of Service */
+/* =================================================================
+ * SERIEL — Legal pages
+ * Editorial article register: serif headings, sans body, mono eyebrows.
+ * Body text content is preserved verbatim from the prior version;
+ * only the type/colour treatment changes.
+ * ================================================================= */
 
-.legal-page {
-    background: var(--bg);
+/* -------------------------------------------------------------- */
+/* Document folio                                                 */
+/* -------------------------------------------------------------- */
+
+.doc-folio {
+    border-bottom: 1px solid var(--hairline);
 }
 
-.legal-header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 24px;
-    background: rgba(10, 10, 10, 0.9);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+.doc-folio-inner {
+    max-width: var(--page-max);
+    margin: 0 auto;
+    padding: var(--sp-xxl) var(--gutter);
 }
 
-.back-link {
-    color: var(--turquoise);
-    text-decoration: none;
-    font-size: 16px;
+.doc-kind {
+    font-family: var(--mono);
     font-weight: 500;
-    transition: opacity 0.2s ease;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin: 0 0 var(--sp-sm);
 }
 
-.back-link:hover {
-    opacity: 0.7;
-}
-
-.lang-toggle {
-    display: flex;
-    gap: 4px;
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 8px;
-    padding: 2px;
-}
-
-.lang-btn {
-    display: block;
-    padding: 6px 14px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 13px;
+.doc-title {
+    font-family: var(--serif);
     font-weight: 600;
-    color: var(--text-secondary);
-    transition: all 0.2s ease;
-}
-
-.lang-btn.active {
-    background: var(--turquoise);
-    color: var(--bg);
-}
-
-.lang-btn:not(.active):hover {
+    font-size: clamp(34px, 4.6vw, 56px);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin: 0;
     color: var(--text-primary);
 }
 
+/* Hide the wrong-language article shell via CSS; setLang JS still sets
+   the [hidden] attribute too, for accessibility (screen readers). */
+:root[data-lang="en"] .legal-text[lang="de"] { display: none; }
+:root[data-lang="de"] .legal-text[lang="en"] { display: none; }
+
+/* -------------------------------------------------------------- */
+/* Article body                                                   */
+/*                                                                */
+/* Left-aligned reading column with the page gutter on the left   */
+/* (mirrors the homepage spreads). The column is constrained to a */
+/* readable measure but anchored to the page margin, not centred  */
+/* in the viewport — long-form text reads as an editorial column, */
+/* not a floating block.                                          */
+/* -------------------------------------------------------------- */
+
 .legal-content {
-    max-width: 720px;
+    max-width: var(--page-max);
     margin: 0 auto;
-    padding: 48px 24px 80px;
+    padding: clamp(40px, 7vh, 72px) var(--gutter) clamp(64px, 10vh, 112px);
+}
+
+.legal-text {
+    max-width: 720px;
 }
 
 .legal-text h1 {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--text-primary);
+    /* The H1 is rendered inside .doc-folio above as .doc-title.
+       Articles still carry their own H1 for accessibility/anchor; we hide
+       it visually here so the editorial folio is the canonical title. */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
 .legal-date {
-    font-size: 14px;
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     color: var(--text-tertiary);
-    margin-bottom: 40px;
+    margin: 0 0 var(--sp-editorial);
 }
 
 .legal-text h2 {
-    font-size: 20px;
+    font-family: var(--serif);
     font-weight: 600;
-    margin-top: 40px;
-    margin-bottom: 12px;
+    font-size: clamp(22px, 2.4vw, 28px);
+    line-height: 1.15;
+    letter-spacing: -0.012em;
+    margin-top: var(--sp-editorial);
+    margin-bottom: var(--sp-md);
     color: var(--text-primary);
 }
 
+.legal-text h2 + p,
+.legal-text h2 + ul { margin-top: 0; }
+
 .legal-text h3 {
-    font-size: 17px;
-    font-weight: 600;
-    margin-top: 28px;
-    margin-bottom: 8px;
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(17px, 1.8vw, 20px);
+    line-height: 1.2;
+    margin-top: var(--sp-xxl);
+    margin-bottom: var(--sp-sm);
     color: var(--text-primary);
+    letter-spacing: -0.005em;
 }
 
 .legal-text p {
-    font-size: 15px;
-    line-height: 1.7;
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
     color: var(--text-secondary);
-    margin-bottom: 16px;
+    margin: 0 0 var(--sp-lg);
 }
 
-.legal-text ul {
-    margin-bottom: 16px;
-    padding-left: 24px;
+.legal-text ul,
+.legal-text ol {
+    margin: 0 0 var(--sp-lg);
+    padding-left: 1.4em;
 }
 
 .legal-text li {
-    font-size: 15px;
-    line-height: 1.7;
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
     color: var(--text-secondary);
     margin-bottom: 6px;
 }
 
 .legal-text a {
-    color: var(--turquoise);
-    text-decoration: none;
-    transition: opacity 0.2s ease;
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--tide);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 200ms ease;
 }
-
 .legal-text a:hover {
-    opacity: 0.7;
+    text-decoration-color: var(--text-primary);
 }
 
 .legal-text strong {
@@ -127,63 +152,50 @@
     font-weight: 600;
 }
 
-/* Subscription card */
+.legal-text em { font-style: italic; }
+
+/* Subscription card / FAQ details */
 .subscription-card {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--surface-1);
+    border: 1px solid var(--hairline);
     border-radius: 14px;
-    padding: 1.5rem;
-    margin: 1.5rem 0;
+    padding: var(--sp-xxl);
+    margin: var(--sp-xxl) 0;
 }
+.subscription-card h3 { margin-top: 0; }
+.subscription-card p:last-child { margin-bottom: 0; }
 
-.subscription-card h3 {
-    margin-top: 0;
-    color: #fff;
-}
-
-/* FAQ details/summary */
 details {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 1rem 0;
+    border-top: 1px solid var(--hairline);
+    padding: var(--sp-lg) 0;
 }
+details:last-of-type { border-bottom: 1px solid var(--hairline); }
 
 details summary {
     cursor: pointer;
-    font-weight: 600;
-    color: #fff;
     list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--sp-md);
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(17px, 1.7vw, 19px);
+    color: var(--text-primary);
+    letter-spacing: -0.005em;
 }
-
+details summary::-webkit-details-marker { display: none; }
 details summary::after {
     content: '+';
-    color: var(--turquoise, #00CEC8);
-    font-size: 1.2rem;
-    transition: transform 0.2s;
+    color: var(--tide);
+    font-family: var(--mono);
+    font-size: 20px;
+    line-height: 1;
+    transition: transform 200ms ease;
 }
-
-details[open] summary::after {
-    content: '−';
-}
+details[open] summary::after { content: '−'; }
 
 details p {
-    margin-top: 0.75rem;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-    .legal-content {
-        padding: 32px 20px 60px;
-    }
-
-    .legal-text h1 {
-        font-size: 26px;
-    }
-
-    .legal-text h2 {
-        font-size: 18px;
-    }
+    margin-top: var(--sp-md);
+    margin-bottom: 0;
 }

@@ -1,23 +1,66 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-theme="ink" data-lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support / Hilfe &mdash; Seriel</title>
-    <meta name="robots" content="noindex">
+    <meta name="description" content="Help &amp; support for Seriel — answers to common questions about Trakt sign-in, sync, and using the app.">
+    <meta name="theme-color" content="#0B0C10" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#F5F2EB" media="(prefers-color-scheme: light)">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/legal.css">
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('seriel.theme');
+                var sysLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+                document.documentElement.setAttribute('data-theme', stored || (sysLight ? 'paper' : 'ink'));
+            } catch (e) {}
+            try {
+                var lang = localStorage.getItem('seriel.lang');
+                if (!lang) {
+                    var nav = (navigator.language || 'de').toLowerCase();
+                    lang = nav.indexOf('en') === 0 ? 'en' : 'de';
+                }
+                document.documentElement.setAttribute('data-lang', lang);
+                document.documentElement.setAttribute('lang', lang);
+            } catch (e) {}
+        })();
+    </script>
 </head>
-<body class="legal-page">
-    <header class="legal-header">
-        <a href="/" class="back-link">&larr; Seriel</a>
-        <div class="lang-toggle">
-            <a href="#de" class="lang-btn active" data-lang="de">DE</a>
-            <a href="#en" class="lang-btn" data-lang="en">EN</a>
+<body>
+    <header class="masthead" role="banner">
+        <div class="masthead-inner">
+            <div class="masthead-folio masthead-folio-left">
+                <span class="folio-label">SERIEL · SUPPORT</span>
+            </div>
+            <a href="/" class="wordmark" aria-label="Seriel">SERIEL</a>
+            <div class="masthead-folio masthead-folio-right">
+                <div class="lang-toggle" role="group" aria-label="Language">
+                    <button type="button" class="lang-btn" data-lang-set="en">EN</button>
+                    <button type="button" class="lang-btn" data-lang-set="de">DE</button>
+                </div>
+                <button type="button" class="theme-toggle" aria-label="Toggle theme" id="theme-toggle">
+                    <span class="theme-toggle-label" data-when="ink" data-lang="en">PAPER</span>
+                    <span class="theme-toggle-label" data-when="ink" data-lang="de">PAPIER</span>
+                    <span class="theme-toggle-label" data-when="paper" data-lang="en">INK</span>
+                    <span class="theme-toggle-label" data-when="paper" data-lang="de">TINTE</span>
+                </button>
+            </div>
         </div>
+        <div class="hairline"></div>
     </header>
+
+    <section class="doc-folio">
+        <div class="doc-folio-inner">
+            <p class="doc-kind">SUPPORT &middot; FOR READERS</p>
+            <p class="doc-title" data-lang="de">Hilfe &amp; Support</p>
+            <p class="doc-title" data-lang="en" hidden>Help &amp; Support</p>
+        </div>
+    </section>
 
     <main class="legal-content">
 
@@ -163,28 +206,67 @@
 
     </main>
 
-    <footer>
-        <div class="footer-links">
-            <a href="/impressum">Impressum</a>
-            <span class="footer-sep">&middot;</span>
-            <a href="/privacy">Privacy Policy</a>
-            <span class="footer-sep">&middot;</span>
-            <a href="/terms">Terms of Service</a>
-            <span class="footer-sep">&middot;</span>
-            <a href="/support">Support</a>
+    <footer class="footer" role="contentinfo">
+        <div class="page">
+            <div class="footer-inner">
+                <div class="footer-mast">
+                    <span class="wordmark wordmark-sm">SERIEL</span>
+                    <span class="folio-label">SUPPORT</span>
+                </div>
+                <div class="hairline"></div>
+                <nav class="footer-links" aria-label="Legal">
+                    <a href="/impressum">Impressum</a>
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="/support">Support</a>
+                    <a href="mailto:feedback@seriel.app">Contact</a>
+                </nav>
+                <p class="footer-copy">&copy; 2026 Seriel. Hamburg.</p>
+            </div>
         </div>
-        <p>&copy; 2026 Seriel. All rights reserved.</p>
     </footer>
 
     <script>
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const lang = btn.dataset.lang;
-                document.querySelectorAll('.legal-text').forEach(t => t.hidden = t.id !== lang);
-                document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+        (function () {
+            var btn = document.getElementById('theme-toggle');
+            if (btn) {
+                btn.addEventListener('click', function () {
+                    var current = document.documentElement.getAttribute('data-theme') || 'ink';
+                    var next = current === 'ink' ? 'paper' : 'ink';
+                    document.documentElement.setAttribute('data-theme', next);
+                    try { localStorage.setItem('seriel.theme', next); } catch (e) {}
+                });
+            }
+        })();
+
+        (function () {
+            function setLang(lang) {
+                if (lang !== 'en' && lang !== 'de') return;
+                document.querySelectorAll('.legal-text').forEach(function (t) {
+                    t.hidden = t.id !== lang;
+                });
+                document.querySelectorAll('[data-lang]').forEach(function (el) {
+                    if (!el.classList.contains('lang-btn')) {
+                        el.hidden = el.dataset.lang !== lang;
+                    }
+                });
+                document.documentElement.setAttribute('lang', lang);
+                document.documentElement.setAttribute('data-lang', lang);
+                try { localStorage.setItem('seriel.lang', lang); } catch (e) {}
+            }
+
+            if (location.hash === '#en' || location.hash === '#de') {
+                setLang(location.hash.slice(1));
+            } else {
+                setLang(document.documentElement.getAttribute('data-lang') || 'de');
+            }
+
+            document.querySelectorAll('.lang-btn[data-lang-set]').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    setLang(btn.dataset.langSet);
+                });
             });
-        });
+        })();
     </script>
 </body>
 </html>
