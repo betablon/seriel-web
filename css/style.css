@@ -356,6 +356,17 @@ a { color: inherit; text-decoration: none; }
     text-align: center;
 }
 
+.cover-icon {
+    display: block;
+    width: clamp(72px, 9vw, 104px);
+    height: auto;
+    margin: 0 auto var(--sp-lg);
+    border-radius: 23%;
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.18) inset,
+        0 10px 30px rgba(0, 0, 0, 0.28);
+}
+
 .cover-headline {
     font-family: var(--serif);
     font-weight: 600;
@@ -409,8 +420,6 @@ a { color: inherit; text-decoration: none; }
     letter-spacing: 0.2em;
     text-transform: uppercase;
 }
-
-.hairline-cover { margin-top: clamp(48px, 10vh, 120px); }
 
 /* Hide the second line in the deck on tiny screens */
 .br-md { display: none; }
@@ -603,15 +612,16 @@ a { color: inherit; text-decoration: none; }
     width: 100%;
 }
 
-/* Two devices side by side (iPhone + iPad) when a plate pairs them. */
+/* Paired plate — the iPad reads as the base plate, the iPhone tucked
+   over its bottom-left corner (a device "duo"). Not two devices side by
+   side but one hand-off: the same screen, sized for each display. */
 .plate-pair {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: center;
-    gap: clamp(16px, 3vw, 32px);
-    flex-wrap: wrap;
-    width: 100%;
+    position: relative;
+    width: min(440px, 100%);
+    margin: 0 auto;
+    /* leave room for the iPhone to hang past the iPad's corner */
+    padding-left: clamp(20px, 5%, 34px);
+    padding-bottom: clamp(24px, 8%, 52px);
 }
 
 /* Physical device frame — a dark bezel, deliberately theme-neutral
@@ -713,13 +723,38 @@ a { color: inherit; text-decoration: none; }
 :root[data-theme="ink"]  .device-shot.shot-ink   { display: block; }
 :root[data-theme="paper"] .device-shot.shot-paper { display: block; }
 
-/* Paired plate — shrink both devices so iPhone + iPad share one stage. */
-.plate-pair .device-iphone { max-width: 190px; }
-.plate-pair .device-ipad   { max-width: 340px; }
+/* iPad is the base plate — fills the duo's width. */
+.plate-pair .device-ipad {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+/* iPhone overlaps the iPad's bottom-left corner. Its frame is scaled
+   down (thinner bezel, tighter radius) so it reads right at ~⅓ size. */
+.plate-pair .device-iphone {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 33%;
+    max-width: none;
+    z-index: 2;
+    --bezel: 6px;
+    border-radius: 30px;
+}
+.plate-pair .device-iphone .device-screen { border-radius: 24px; }
+/* Scale the Dynamic Island to the shrunken iPhone. */
+.plate-pair .device-iphone .device-screen::before {
+    top: 6px;
+    height: 12px;
+}
 @media (max-width: 560px) {
-    .plate-pair { gap: var(--sp-lg); }
-    .plate-pair .device-iphone { max-width: 150px; }
-    .plate-pair .device-ipad   { max-width: 250px; }
+    .plate-pair { padding-bottom: clamp(20px, 9%, 40px); }
+    .plate-pair .device-iphone {
+        width: 36%;
+        --bezel: 5px;
+        border-radius: 24px;
+    }
+    .plate-pair .device-iphone .device-screen { border-radius: 19px; }
 }
 
 .mock-eyebrow,

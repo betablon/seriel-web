@@ -3,18 +3,22 @@
 Drop real iPhone app screenshots here to replace the placeholder plates on the
 homepage. **Light (paper) theme only for now** — dark comes later.
 
-## Expected files (light, iPhone, portrait PNG)
+## Expected files (light, portrait PNG)
 
-| File | Spread | App screen |
-|------|--------|------------|
-| `today-iphone-light.png`    | Today (Plate 01)      | Today front page |
-| `schedule-iphone-light.png` | Schedule (Plate 02)   | Schedule countdowns |
-| `file-iphone-light.png`     | The File (Plate 03)   | A show's "ON FILE" detail |
-| `library-iphone-light.png`  | Library (Plate 04)    | Library grid |
-| `record-iphone-light.png`   | The Record (Plate 05) | Profile → The Record |
+Each plate below is wired to specific device(s). Duo plates (iPhone **&** iPad)
+show the iPad as the base with the iPhone tucked over its bottom-left corner.
 
-Later: `file-ipad-light.png` (iPad, portrait) for the paired File plate, and a
-`*-dark.png` set if/when we wire dark-theme swapping.
+| File | Spread | Device | App screen |
+|------|--------|--------|------------|
+| `today-iphone-light.png`    | Today (Plate 01)    | iPhone | Today front page |
+| `today-ipad-light.png`      | Today (Plate 01)    | iPad   | Today front page |
+| `schedule-ipad-light.png`   | Schedule (Plate 02) | iPad   | Schedule countdowns |
+| `file-iphone-light.png`     | The File (Plate 03) | iPhone | A show's "ON FILE" detail |
+| `file-ipad-light.png`       | The File (Plate 03) | iPad   | A show's "ON FILE" detail |
+| `library-iphone-light.png`  | Library (Plate 04)  | iPhone | Library grid |
+
+Later: a `*-dark.png` set if/when we wire dark-theme swapping. iPad shots are
+**portrait** (≈ 1668×2388, 11").
 
 ## Specs
 

@@ -79,6 +79,8 @@
         <!-- ========================================================== -->
         <section class="cover" aria-labelledby="cover-headline">
             <div class="cover-inner">
+                <img class="cover-icon" src="images/app-icon-512.png"
+                     alt="Seriel app icon" width="512" height="512">
                 <p class="eyebrow eyebrow-accent" data-lang="en">A PERSONAL TV BROADSHEET</p>
                 <p class="eyebrow eyebrow-accent" data-lang="de">EIN PERS&Ouml;NLICHES TV-MAGAZIN</p>
 
@@ -106,71 +108,6 @@
                     </p>
                 </div>
             </div>
-            <div class="hairline hairline-cover"></div>
-        </section>
-
-        <!-- ========================================================== -->
-        <!-- TABLE OF CONTENTS                                           -->
-        <!-- ========================================================== -->
-        <section class="toc" aria-labelledby="toc-eyebrow">
-            <div class="page">
-                <div class="toc-grid">
-                    <div class="toc-head">
-                        <p class="eyebrow" id="toc-eyebrow" data-lang="en">IN THIS ISSUE</p>
-                        <p class="eyebrow" data-lang="de">IN DIESER AUSGABE</p>
-
-                        <h2 class="toc-title" data-lang="en">Five sections.<br>One reading habit.</h2>
-                        <h2 class="toc-title" data-lang="de">F&uuml;nf Rubriken.<br>Eine Lesegewohnheit.</h2>
-                    </div>
-                    <ol class="toc-list" aria-label="Sections">
-                        <li>
-                            <a href="#today">
-                                <span class="toc-num">01</span>
-                                <span class="toc-name" data-lang="en">Today</span>
-                                <span class="toc-name" data-lang="de">Heute</span>
-                                <span class="toc-rule" aria-hidden="true"></span>
-                                <span class="toc-page">P. 02</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#schedule">
-                                <span class="toc-num">02</span>
-                                <span class="toc-name" data-lang="en">Schedule</span>
-                                <span class="toc-name" data-lang="de">Programm</span>
-                                <span class="toc-rule" aria-hidden="true"></span>
-                                <span class="toc-page">P. 03</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#file">
-                                <span class="toc-num">03</span>
-                                <span class="toc-name" data-lang="en">The File</span>
-                                <span class="toc-name" data-lang="de">Das Dossier</span>
-                                <span class="toc-rule" aria-hidden="true"></span>
-                                <span class="toc-page">P. 04</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#library">
-                                <span class="toc-num">04</span>
-                                <span class="toc-name" data-lang="en">Library</span>
-                                <span class="toc-name" data-lang="de">Bibliothek</span>
-                                <span class="toc-rule" aria-hidden="true"></span>
-                                <span class="toc-page">P. 05</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#record">
-                                <span class="toc-num">05</span>
-                                <span class="toc-name" data-lang="en">The Record</span>
-                                <span class="toc-name" data-lang="de">Die Bilanz</span>
-                                <span class="toc-rule" aria-hidden="true"></span>
-                                <span class="toc-page">P. 06</span>
-                            </a>
-                        </li>
-                    </ol>
-                </div>
-            </div>
         </section>
 
         <!-- ========================================================== -->
@@ -192,28 +129,43 @@
                         <h2 class="spread-title" id="today-h" data-lang="en">Pick up where<br>you left off.</h2>
                         <h2 class="spread-title" data-lang="de">Weiter, wo du<br>aufgeh&ouml;rt hast.</h2>
 
-                        <p class="spread-deck" data-lang="en">A daily front page, set the moment you open the app. The show you&rsquo;re in the middle of leads. Everything else queues behind it, in the order you last touched it.</p>
-                        <p class="spread-deck" data-lang="de">Eine t&auml;gliche Titelseite, gesetzt im Moment des &Ouml;ffnens. Die Serie, in der du gerade steckst, f&uuml;hrt. Alles andere reiht sich dahinter ein &mdash; in der Reihenfolge, in der du es zuletzt angefasst hast.</p>
+                        <p class="spread-deck" data-lang="en">A daily front page: the show you&rsquo;re mid-watch leads, everything else queues behind it.</p>
+                        <p class="spread-deck" data-lang="de">Eine t&auml;gliche Titelseite: die Serie, in der du gerade steckst, f&uuml;hrt &mdash; alles andere reiht sich dahinter.</p>
                     </header>
 
                     <figure class="spread-stage spread-stage-plate">
                         <div class="plate">
-                            <div class="device device-iphone" role="img"
-                                 aria-label="Seriel — the Today screen on iPhone">
-                                <div class="device-screen">
-                                    <!-- REAL SCREENSHOT (light): replace the .device-placeholder below with —
-                                         <img class="device-shot" src="images/screenshots/today-iphone-light.png" alt="Seriel Today screen on iPhone" loading="lazy"> -->
-                                    <div class="device-placeholder">
-                                        <span class="device-ph-name" data-lang="en">Today</span>
-                                        <span class="device-ph-name" data-lang="de">Heute</span>
-                                        <span class="device-ph-label" data-lang="en">iPhone screenshot</span>
-                                        <span class="device-ph-label" data-lang="de">iPhone-Screenshot</span>
+                            <!-- Device duo: iPad is the base plate, iPhone tucked over its
+                                 bottom-left corner. iPad first in the DOM so it sits behind. -->
+                            <div class="plate-pair">
+                                <div class="device device-ipad" role="img"
+                                     aria-label="Seriel — the Today screen on iPad">
+                                    <div class="device-screen">
+                                        <!-- REAL SCREENSHOT (light, iPad — coming later): replace .device-placeholder with —
+                                             <img class="device-shot" src="images/screenshots/today-ipad-light.png" alt="Seriel Today screen on iPad" loading="lazy"> -->
+                                        <div class="device-placeholder">
+                                            <span class="device-ph-name" data-lang="en">Today</span>
+                                            <span class="device-ph-name" data-lang="de">Heute</span>
+                                            <span class="device-ph-label">iPad</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="device device-iphone" role="img"
+                                     aria-label="Seriel — the Today screen on iPhone">
+                                    <div class="device-screen">
+                                        <!-- REAL SCREENSHOT (light): replace the .device-placeholder below with —
+                                             <img class="device-shot" src="images/screenshots/today-iphone-light.png" alt="Seriel Today screen on iPhone" loading="lazy"> -->
+                                        <div class="device-placeholder">
+                                            <span class="device-ph-name" data-lang="en">Today</span>
+                                            <span class="device-ph-name" data-lang="de">Heute</span>
+                                            <span class="device-ph-label">iPhone</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <figcaption class="plate-caption">
-                                <span data-lang="en">Plate 01 <span class="dot">&middot;</span> Today <span class="dot">&middot;</span> iPhone</span>
-                                <span data-lang="de">Tafel 01 <span class="dot">&middot;</span> Heute <span class="dot">&middot;</span> iPhone</span>
+                                <span data-lang="en">Plate 01 <span class="dot">&middot;</span> Today <span class="dot">&middot;</span> iPhone &amp; iPad</span>
+                                <span data-lang="de">Tafel 01 <span class="dot">&middot;</span> Heute <span class="dot">&middot;</span> iPhone &amp; iPad</span>
                             </figcaption>
                         </div>
                     </figure>
@@ -240,28 +192,27 @@
                         <h2 class="spread-title" id="schedule-h" data-lang="en">Always know<br>what&rsquo;s airing.</h2>
                         <h2 class="spread-title" data-lang="de">Immer wissen,<br>was l&auml;uft.</h2>
 
-                        <p class="spread-deck" data-lang="en">A dated TV-guide for the week ahead &mdash; tracked shows, premieres, save-the-date drops. A heads-up before the episode lands, never after.</p>
-                        <p class="spread-deck" data-lang="de">Ein TV-Programm f&uuml;r die kommende Woche &mdash; verfolgte Serien, Premieren, Save-the-Date-Termine. Eine Vorwarnung, bevor die Folge da ist, nicht hinterher.</p>
+                        <p class="spread-deck" data-lang="en">A dated guide to the week ahead &mdash; a heads-up before each episode lands, never after.</p>
+                        <p class="spread-deck" data-lang="de">Ein datierter Wochen&uuml;berblick &mdash; eine Vorwarnung, bevor jede Folge da ist, nicht hinterher.</p>
                     </header>
 
                     <figure class="spread-stage spread-stage-plate">
                         <div class="plate">
-                            <div class="device device-iphone" role="img"
-                                 aria-label="Seriel — the Schedule screen on iPhone">
+                            <div class="device device-ipad" role="img"
+                                 aria-label="Seriel — the Schedule screen on iPad">
                                 <div class="device-screen">
-                                    <!-- REAL SCREENSHOT (light): replace .device-placeholder with —
-                                         <img class="device-shot" src="images/screenshots/schedule-iphone-light.png" alt="Seriel Schedule screen on iPhone" loading="lazy"> -->
+                                    <!-- REAL SCREENSHOT (light, iPad — coming later): replace .device-placeholder with —
+                                         <img class="device-shot" src="images/screenshots/schedule-ipad-light.png" alt="Seriel Schedule screen on iPad" loading="lazy"> -->
                                     <div class="device-placeholder">
                                         <span class="device-ph-name" data-lang="en">Schedule</span>
                                         <span class="device-ph-name" data-lang="de">Programm</span>
-                                        <span class="device-ph-label" data-lang="en">iPhone screenshot</span>
-                                        <span class="device-ph-label" data-lang="de">iPhone-Screenshot</span>
+                                        <span class="device-ph-label">iPad</span>
                                     </div>
                                 </div>
                             </div>
                             <figcaption class="plate-caption">
-                                <span data-lang="en">Plate 02 <span class="dot">&middot;</span> Schedule <span class="dot">&middot;</span> iPhone</span>
-                                <span data-lang="de">Tafel 02 <span class="dot">&middot;</span> Programm <span class="dot">&middot;</span> iPhone</span>
+                                <span data-lang="en">Plate 02 <span class="dot">&middot;</span> Schedule <span class="dot">&middot;</span> iPad</span>
+                                <span data-lang="de">Tafel 02 <span class="dot">&middot;</span> Programm <span class="dot">&middot;</span> iPad</span>
                             </figcaption>
                         </div>
                     </figure>
@@ -288,25 +239,15 @@
                         <h2 class="spread-title" id="file-h" data-lang="en">Every detail, set<br>like an editorial.</h2>
                         <h2 class="spread-title" data-lang="de">Jedes Detail,<br>wie eine Reportage.</h2>
 
-                        <p class="spread-deck" data-lang="en">One long-scroll page per show: the masthead, the cast, the season hub, the episodes &mdash; and the things you said about it. Your ratings, your reviews, the date you finished it. All of it, kept.</p>
-                        <p class="spread-deck" data-lang="de">Eine lange Seite pro Serie: der Aufmacher, der Cast, die Staffel-&Uuml;bersicht, die Folgen &mdash; und was du dazu gesagt hast. Deine Bewertungen, deine Notizen, der Tag, an dem du sie beendet hast. Alles, gespeichert.</p>
+                        <p class="spread-deck" data-lang="en">One long page per show &mdash; cast, seasons, episodes, and everything you said about it. Kept.</p>
+                        <p class="spread-deck" data-lang="de">Eine lange Seite pro Serie &mdash; Cast, Staffeln, Folgen und alles, was du dazu gesagt hast. Gespeichert.</p>
                     </header>
 
                     <figure class="spread-stage spread-stage-plate">
                         <div class="plate">
+                            <!-- Device duo: iPad is the base plate, iPhone tucked over its
+                                 bottom-left corner. iPad first in the DOM so it sits behind. -->
                             <div class="plate-pair">
-                                <div class="device device-iphone" role="img"
-                                     aria-label="Seriel — a show's File on iPhone">
-                                    <div class="device-screen">
-                                        <!-- REAL SCREENSHOT (light): replace .device-placeholder with —
-                                             <img class="device-shot" src="images/screenshots/file-iphone-light.png" alt="Seriel show detail on iPhone" loading="lazy"> -->
-                                        <div class="device-placeholder">
-                                            <span class="device-ph-name" data-lang="en">The File</span>
-                                            <span class="device-ph-name" data-lang="de">Dossier</span>
-                                            <span class="device-ph-label">iPhone</span>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="device device-ipad" role="img"
                                      aria-label="Seriel — a show's File on iPad">
                                     <div class="device-screen">
@@ -316,6 +257,18 @@
                                             <span class="device-ph-name" data-lang="en">The File</span>
                                             <span class="device-ph-name" data-lang="de">Dossier</span>
                                             <span class="device-ph-label">iPad</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="device device-iphone" role="img"
+                                     aria-label="Seriel — a show's File on iPhone">
+                                    <div class="device-screen">
+                                        <!-- REAL SCREENSHOT (light): replace .device-placeholder with —
+                                             <img class="device-shot" src="images/screenshots/file-iphone-light.png" alt="Seriel show detail on iPhone" loading="lazy"> -->
+                                        <div class="device-placeholder">
+                                            <span class="device-ph-name" data-lang="en">The File</span>
+                                            <span class="device-ph-name" data-lang="de">Dossier</span>
+                                            <span class="device-ph-label">iPhone</span>
                                         </div>
                                     </div>
                                 </div>
@@ -349,8 +302,8 @@
                         <h2 class="spread-title" id="library-h" data-lang="en">Everything you track,<br>filed by where you are.</h2>
                         <h2 class="spread-title" data-lang="de">Alles, was du verfolgst,<br>nach deinem Stand.</h2>
 
-                        <p class="spread-deck" data-lang="en">In progress, waiting, on the watchlist, finished. A poster wall of every show you follow &mdash; with a quiet nudge toward the ones you&rsquo;ve left untouched for a while.</p>
-                        <p class="spread-deck" data-lang="de">In Arbeit, wartend, auf der Watchlist, beendet. Eine Posterwand jeder Serie, der du folgst &mdash; mit einem leisen Hinweis auf die, die du l&auml;nger nicht angefasst hast.</p>
+                        <p class="spread-deck" data-lang="en">A poster wall of everything you follow &mdash; filed by where you are, from in-progress to finished.</p>
+                        <p class="spread-deck" data-lang="de">Eine Posterwand von allem, dem du folgst &mdash; sortiert nach deinem Stand, von in Arbeit bis beendet.</p>
                     </header>
 
                     <figure class="spread-stage spread-stage-plate">
@@ -379,61 +332,13 @@
         </section>
 
         <!-- ========================================================== -->
-        <!-- SPREAD 05 — THE RECORD                                      -->
-        <!-- ========================================================== -->
-        <section class="spread spread-record" id="record" aria-labelledby="record-h">
-            <div class="page">
-                <div class="spread-folio">
-                    <span class="folio-label" data-lang="en">P. 06 &middot; THE RECORD</span>
-                    <span class="folio-label" data-lang="de">S. 06 &middot; DIE BILANZ</span>
-                    <span class="folio-rule" aria-hidden="true"></span>
-                </div>
-
-                <div class="spread-grid">
-                    <header class="spread-head">
-                        <p class="eyebrow eyebrow-accent" data-lang="en">THE RECORD</p>
-                        <p class="eyebrow eyebrow-accent" data-lang="de">DIE BILANZ</p>
-
-                        <h2 class="spread-title" id="record-h" data-lang="en">A long memory<br>for things you loved.</h2>
-                        <h2 class="spread-title" data-lang="de">Ein langes Ged&auml;chtnis<br>f&uuml;r das, was du liebtest.</h2>
-
-                        <p class="spread-deck" data-lang="en">The days you&rsquo;ve spent, the episodes that add up, the genres you lean on. Every show you finished, kept on the record &mdash; a memory that reaches back years.</p>
-                        <p class="spread-deck" data-lang="de">Die Tage, die du verbracht hast, die Folgen, die sich summieren, die Genres, zu denen du neigst. Jede beendete Serie, festgehalten &mdash; ein Ged&auml;chtnis, das Jahre zur&uuml;ckreicht.</p>
-                    </header>
-
-                    <figure class="spread-stage spread-stage-plate">
-                        <div class="plate">
-                            <div class="device device-iphone" role="img"
-                                 aria-label="Seriel — the Record screen on iPhone">
-                                <div class="device-screen">
-                                    <!-- REAL SCREENSHOT (light): replace .device-placeholder with —
-                                         <img class="device-shot" src="images/screenshots/record-iphone-light.png" alt="Seriel The Record screen on iPhone" loading="lazy"> -->
-                                    <div class="device-placeholder">
-                                        <span class="device-ph-name" data-lang="en">The Record</span>
-                                        <span class="device-ph-name" data-lang="de">Die Bilanz</span>
-                                        <span class="device-ph-label" data-lang="en">iPhone screenshot</span>
-                                        <span class="device-ph-label" data-lang="de">iPhone-Screenshot</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <figcaption class="plate-caption">
-                                <span data-lang="en">Plate 05 <span class="dot">&middot;</span> The Record <span class="dot">&middot;</span> iPhone</span>
-                                <span data-lang="de">Tafel 05 <span class="dot">&middot;</span> Die Bilanz <span class="dot">&middot;</span> iPhone</span>
-                            </figcaption>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========================================================== -->
         <!-- ABOUT — Why Trakt + Hamburg                                 -->
         <!-- ========================================================== -->
         <section class="about" id="about" aria-labelledby="about-h">
             <div class="page">
                 <div class="about-folio">
-                    <span class="folio-label" data-lang="en">P. 07 &middot; ABOUT THIS PAPER</span>
-                    <span class="folio-label" data-lang="de">S. 07 &middot; &Uuml;BER DIESES BLATT</span>
+                    <span class="folio-label" data-lang="en">P. 06 &middot; ABOUT THIS PAPER</span>
+                    <span class="folio-label" data-lang="de">S. 06 &middot; &Uuml;BER DIESES BLATT</span>
                     <span class="folio-rule" aria-hidden="true"></span>
                 </div>
 
