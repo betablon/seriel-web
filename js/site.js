@@ -3,6 +3,7 @@
 //
 //   Language     EN / DE in one page; the root's data-lang picks one.
 //                The first choice is made pre-paint in each page's <head>.
+//   Theme        Light / dark switch; saved choice overrides the system.
 //   Store link   Set APP_STORE_URL once Seriel is live and every
 //                "Coming soon" badge becomes a link to the App Store.
 //   Navigation   Mobile sheet, hairline once the page scrolls.
@@ -55,6 +56,55 @@
         }
       });
     });
+  }
+
+  // ---------- Light / dark -------------------------------------------
+  //
+  // No saved choice: follow the system (no data-theme on the root).
+  // A click saves 'light' or 'dark' and sets data-theme, which the
+  // stylesheet's token blocks key on. Only localStorage, never cookies.
+
+  var systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+  var themeMetaDefaults = [];
+
+  function effectiveTheme() {
+    var set = root.getAttribute('data-theme');
+    if (set === 'light' || set === 'dark') return set;
+    return systemDark.matches ? 'dark' : 'light';
+  }
+
+  function syncThemeUI() {
+    var theme = effectiveTheme();
+    document.querySelectorAll('button[data-theme-set]').forEach(function (btn) {
+      btn.setAttribute('aria-pressed', String(btn.getAttribute('data-theme-set') === theme));
+    });
+    // The browser chrome colour follows a manual choice too.
+    var manual = root.hasAttribute('data-theme');
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta, i) {
+      if (themeMetaDefaults[i] === undefined) themeMetaDefaults[i] = meta.getAttribute('content');
+      meta.setAttribute('content', manual ? (theme === 'dark' ? '#0B0C10' : '#F5F2EB') : themeMetaDefaults[i]);
+    });
+  }
+
+  function setTheme(theme) {
+    try { localStorage.setItem('seriel.theme', theme); } catch (e) {}
+    var swap = function () { root.setAttribute('data-theme', theme); syncThemeUI(); };
+    // A soft cross-fade where the browser can do it, an instant swap otherwise.
+    if (document.startViewTransition && !reduceMotion && theme !== effectiveTheme()) {
+      document.startViewTransition(swap);
+    } else {
+      swap();
+    }
+  }
+
+  function bindTheme() {
+    document.querySelectorAll('button[data-theme-set]').forEach(function (btn) {
+      btn.addEventListener('click', function () { setTheme(btn.getAttribute('data-theme-set')); });
+    });
+    var onSystemChange = function () { syncThemeUI(); };
+    if (systemDark.addEventListener) systemDark.addEventListener('change', onSystemChange);
+    else if (systemDark.addListener) systemDark.addListener(onSystemChange);
+    syncThemeUI();
   }
 
   // ---------- Live dates in the app renderings -----------------------
@@ -332,6 +382,7 @@
   function init() {
     applyLang(currentLang());
     bindLang();
+    bindTheme();
     bindStore();
     bindNav();
     bindReveal();

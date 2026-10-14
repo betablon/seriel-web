@@ -16,6 +16,7 @@
         (function () {
             var d = document.documentElement, l = null;
             d.classList.add('js');
+            try { var th = localStorage.getItem('seriel.theme'); if (th === 'light' || th === 'dark') d.setAttribute('data-theme', th); } catch (e) {}
             try { l = localStorage.getItem('seriel.lang'); } catch (e) {}
             if (l !== 'en' && l !== 'de') {
                 l = ((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase().indexOf('de') === 0 ? 'de' : 'en';

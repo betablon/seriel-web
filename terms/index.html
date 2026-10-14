@@ -18,6 +18,7 @@
         (function () {
             var d = document.documentElement, l = null;
             d.classList.add('js');
+            try { var th = localStorage.getItem('seriel.theme'); if (th === 'light' || th === 'dark') d.setAttribute('data-theme', th); } catch (e) {}
             if (location.hash === '#de' || location.hash === '#en') l = location.hash.slice(1);
             if (!l) { try { l = localStorage.getItem('seriel.lang'); } catch (e) {} }
             if (l !== 'en' && l !== 'de') {
@@ -50,6 +51,10 @@
         <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
         <button type="button" data-lang-set="de" aria-pressed="true">DE</button>
       </div>
+      <div class="lang theme" role="group" aria-label="Appearance" data-label-en="Appearance" data-label-de="Darstellung">
+        <button type="button" data-theme-set="light" aria-pressed="false" aria-label="Light" data-label-en="Light" data-label-de="Hell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></button>
+        <button type="button" data-theme-set="dark" aria-pressed="false" aria-label="Dark" data-label-en="Dark" data-label-de="Dunkel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M19.8 14.6A8.4 8.4 0 0 1 9.4 4.2a8.4 8.4 0 1 0 10.4 10.4z"/></svg></button>
+      </div>
       <button class="nav-menu-btn" type="button" aria-expanded="false" aria-controls="nav-sheet" data-label-en="Menu" data-label-de="Menü" aria-label="Menü"><span></span><span></span></button>
     </div>
   </div>
@@ -60,9 +65,15 @@
       <li><a href="/help/"><span lang="en">Help</span><span lang="de">Hilfe</span></a></li>
       <li><a href="/faq/">FAQ</a></li>
     </ul>
-    <div class="lang" role="group" aria-label="Language / Sprache">
+    <div class="prefs">
+      <div class="lang" role="group" aria-label="Language / Sprache">
       <button type="button" data-lang-set="en" aria-pressed="false">English</button>
       <button type="button" data-lang-set="de" aria-pressed="true">Deutsch</button>
+    </div>
+      <div class="lang theme" role="group" aria-label="Appearance" data-label-en="Appearance" data-label-de="Darstellung">
+        <button type="button" data-theme-set="light" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><span lang="en">Light</span><span lang="de">Hell</span></button>
+        <button type="button" data-theme-set="dark" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M19.8 14.6A8.4 8.4 0 0 1 9.4 4.2a8.4 8.4 0 1 0 10.4 10.4z"/></svg><span lang="en">Dark</span><span lang="de">Dunkel</span></button>
+      </div>
     </div>
   </div>
 </header>
@@ -473,9 +484,15 @@
       <p lang="de">Serieninformationen von <a href="https://trakt.tv" rel="noopener">Trakt</a>. Seriel nutzt die Trakt-API, ist aber nicht von Trakt geprüft oder zertifiziert. Bilder und ergänzende Daten von <a href="https://www.themoviedb.org" rel="noopener">TMDB</a>: Seriel uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB. Streaming-Verfügbarkeit von JustWatch.</p>
       <div class="footer-bottom">
         <span>&copy; <span data-date="year">2026</span> David Cox, Hamburg</span>
-        <div class="lang" role="group" aria-label="Language / Sprache">
+        <div class="prefs">
+          <div class="lang" role="group" aria-label="Language / Sprache">
           <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
           <button type="button" data-lang-set="de" aria-pressed="true">DE</button>
+        </div>
+          <div class="lang theme" role="group" aria-label="Appearance" data-label-en="Appearance" data-label-de="Darstellung">
+            <button type="button" data-theme-set="light" aria-pressed="false" aria-label="Light" data-label-en="Light" data-label-de="Hell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></button>
+            <button type="button" data-theme-set="dark" aria-pressed="false" aria-label="Dark" data-label-en="Dark" data-label-de="Dunkel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M19.8 14.6A8.4 8.4 0 0 1 9.4 4.2a8.4 8.4 0 1 0 10.4 10.4z"/></svg></button>
+          </div>
         </div>
       </div>
     </div>

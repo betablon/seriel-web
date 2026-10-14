@@ -18,6 +18,7 @@
         (function () {
             var d = document.documentElement, l = null;
             d.classList.add('js');
+            try { var th = localStorage.getItem('seriel.theme'); if (th === 'light' || th === 'dark') d.setAttribute('data-theme', th); } catch (e) {}
             if (location.hash === '#de' || location.hash === '#en') l = location.hash.slice(1);
             if (!l) { try { l = localStorage.getItem('seriel.lang'); } catch (e) {} }
             if (l !== 'en' && l !== 'de') {
@@ -50,6 +51,10 @@
         <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
         <button type="button" data-lang-set="de" aria-pressed="true">DE</button>
       </div>
+      <div class="lang theme" role="group" aria-label="Appearance" data-label-en="Appearance" data-label-de="Darstellung">
+        <button type="button" data-theme-set="light" aria-pressed="false" aria-label="Light" data-label-en="Light" data-label-de="Hell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></button>
+        <button type="button" data-theme-set="dark" aria-pressed="false" aria-label="Dark" data-label-en="Dark" data-label-de="Dunkel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M19.8 14.6A8.4 8.4 0 0 1 9.4 4.2a8.4 8.4 0 1 0 10.4 10.4z"/></svg></button>
+      </div>
       <button class="nav-menu-btn" type="button" aria-expanded="false" aria-controls="nav-sheet" data-label-en="Menu" data-label-de="Menü" aria-label="Menü"><span></span><span></span></button>
     </div>
   </div>
@@ -60,9 +65,15 @@
       <li><a href="/help/"><span lang="en">Help</span><span lang="de">Hilfe</span></a></li>
       <li><a href="/faq/">FAQ</a></li>
     </ul>
-    <div class="lang" role="group" aria-label="Language / Sprache">
+    <div class="prefs">
+      <div class="lang" role="group" aria-label="Language / Sprache">
       <button type="button" data-lang-set="en" aria-pressed="false">English</button>
       <button type="button" data-lang-set="de" aria-pressed="true">Deutsch</button>
+    </div>
+      <div class="lang theme" role="group" aria-label="Appearance" data-label-en="Appearance" data-label-de="Darstellung">
+        <button type="button" data-theme-set="light" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><span lang="en">Light</span><span lang="de">Hell</span></button>
+        <button type="button" data-theme-set="dark" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M19.8 14.6A8.4 8.4 0 0 1 9.4 4.2a8.4 8.4 0 1 0 10.4 10.4z"/></svg><span lang="en">Dark</span><span lang="de">Dunkel</span></button>
+      </div>
     </div>
   </div>
 </header>
@@ -215,7 +226,7 @@
         <p>Alle Aufrufe der Website laufen über das Netzwerk der Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA, das die Seiten schnell ausliefert, vor Angriffen schützt und die Domain verwaltet (DNS). Cloudflare verarbeitet dabei als unser Auftragsverarbeiter auf Grundlage seines Auftragsverarbeitungsvertrags die IP-Adresse und die technischen Daten der Anfrage. Cloudflare kann deinen Browser bitten, Verbindungsfehler an Cloudflare zu melden (&bdquo;Network Error Logging&ldquo;); ein solcher Bericht enthält die aufgerufene Adresse, die Art des Fehlers und deine IP-Adresse. Siehe die <a href="https://www.cloudflare.com/de-de/privacypolicy/" rel="noopener">Datenschutzerklärung von Cloudflare</a>.</p>
         <p><strong>Rechtsgrundlage</strong> für 4.1 und 4.2 ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO; unser berechtigtes Interesse ist eine sichere, schnelle und zuverlässige Website.</p>
         <h3>4.3 Keine Cookies, keine eingebundenen Inhalte Dritter</h3>
-        <p>Die Website setzt keine Cookies, nutzt keine Analyse- oder Tracking-Werkzeuge und lädt keine Schriften, Skripte oder Bilder von anderen Anbietern. Wählst du die Sprache der Website, speichert dein Browser diese Wahl im lokalen Speicher (&bdquo;localStorage&ldquo;, Schlüssel <code>seriel.lang</code>); sie wird nicht übertragen und lässt sich in deinem Browser löschen. Das ist nach §&nbsp;25 Abs.&nbsp;2 Nr.&nbsp;2 TDDDG zulässig, weil es für die von dir gewünschte Funktion unbedingt erforderlich ist.</p>
+        <p>Die Website setzt keine Cookies, nutzt keine Analyse- oder Tracking-Werkzeuge und lädt keine Schriften, Skripte oder Bilder von anderen Anbietern. Wählst du über die Schalter die Sprache oder die helle bzw. dunkle Darstellung der Website, speichert dein Browser diese Wahl im lokalen Speicher (&bdquo;localStorage&ldquo;, Schlüssel <code>seriel.lang</code> und <code>seriel.theme</code>), nicht in einem Cookie. Die Wahl wird nur gespeichert, wenn du einen Schalter antippst, nicht an uns oder Dritte übertragen und lässt sich jederzeit in deinem Browser löschen. Das ist nach §&nbsp;25 Abs.&nbsp;2 Nr.&nbsp;2 TDDDG zulässig, weil es für die von dir gewünschte Funktion unbedingt erforderlich ist; eine Einwilligung ist dafür nicht nötig.</p>
         <h3>4.4 Links</h3>
         <p>Links zu anderen Websites (z.&nbsp;B. Trakt, TMDB oder Apple) führen erst beim Anklicken dorthin. Ab dann gilt die Datenschutzerklärung des jeweiligen Anbieters.</p>
       </section>
@@ -429,7 +440,7 @@
         <p>All requests to the website pass through the network of Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA, which delivers the pages quickly, protects them from attacks and runs the domain&rsquo;s DNS. Cloudflare processes the IP address and the technical request data as our processor under its data processing addendum. Cloudflare may ask your browser to report connection errors to Cloudflare (&ldquo;Network Error Logging&rdquo;); such a report contains the address visited, the type of error and your IP address. See <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare&rsquo;s privacy policy</a>.</p>
         <p><strong>Legal basis</strong> for 4.1 and 4.2: Art.&nbsp;6(1)(f) GDPR; our legitimate interest is a secure, fast and reliable website.</p>
         <h3>4.3 No cookies, no third-party content</h3>
-        <p>The website sets no cookies, uses no analytics or tracking tools and loads no fonts, scripts or images from other providers. If you choose the website&rsquo;s language, your browser remembers it in local storage (&ldquo;localStorage&rdquo;, key <code>seriel.lang</code>); it isn&rsquo;t transmitted and you can clear it in your browser. This is permitted under Section&nbsp;25(2) no.&nbsp;2 TDDDG because it is strictly necessary for the function you asked for.</p>
+        <p>The website sets no cookies, uses no analytics or tracking tools and loads no fonts, scripts or images from other providers. If you use the switches to choose the website&rsquo;s language or its light or dark appearance, your browser remembers that choice in local storage (&ldquo;localStorage&rdquo;, keys <code>seriel.lang</code> and <code>seriel.theme</code>), not in a cookie. It is only stored when you tap a switch, is never sent to us or anyone else, and you can clear it in your browser at any time. This is permitted under Section&nbsp;25(2) no.&nbsp;2 TDDDG because it is strictly necessary for the function you asked for, so no consent is needed.</p>
         <h3>4.4 Links</h3>
         <p>Links to other websites (such as Trakt, TMDB or Apple) only take you there when you click them. From then on, that provider&rsquo;s privacy policy applies.</p>
       </section>
@@ -535,9 +546,15 @@
       <p lang="de">Serieninformationen von <a href="https://trakt.tv" rel="noopener">Trakt</a>. Seriel nutzt die Trakt-API, ist aber nicht von Trakt geprüft oder zertifiziert. Bilder und ergänzende Daten von <a href="https://www.themoviedb.org" rel="noopener">TMDB</a>: Seriel uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB. Streaming-Verfügbarkeit von JustWatch.</p>
       <div class="footer-bottom">
         <span>&copy; <span data-date="year">2026</span> David Cox, Hamburg</span>
-        <div class="lang" role="group" aria-label="Language / Sprache">
+        <div class="prefs">
+          <div class="lang" role="group" aria-label="Language / Sprache">
           <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
           <button type="button" data-lang-set="de" aria-pressed="true">DE</button>
+        </div>
+          <div class="lang theme" role="group" aria-label="Appearance" data-label-en="Appearance" data-label-de="Darstellung">
+            <button type="button" data-theme-set="light" aria-pressed="false" aria-label="Light" data-label-en="Light" data-label-de="Hell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg></button>
+            <button type="button" data-theme-set="dark" aria-pressed="false" aria-label="Dark" data-label-en="Dark" data-label-de="Dunkel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M19.8 14.6A8.4 8.4 0 0 1 9.4 4.2a8.4 8.4 0 1 0 10.4 10.4z"/></svg></button>
+          </div>
         </div>
       </div>
     </div>
