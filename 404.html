@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en"
+      data-title-en="Page not found · Seriel"
+      data-title-de="Seite nicht gefunden · Seriel">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Page not found · Seriel</title>
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#F5F2EB" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0B0C10" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="/css/site.css">
+    <script>
+        (function () {
+            var d = document.documentElement, l = null;
+            d.classList.add('js');
+            try { l = localStorage.getItem('seriel.lang'); } catch (e) {}
+            if (l !== 'en' && l !== 'de') {
+                l = ((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase().indexOf('de') === 0 ? 'de' : 'en';
+            }
+            d.setAttribute('data-lang', l); d.setAttribute('lang', l);
+            var t = d.getAttribute('data-title-' + l); if (t) document.title = t;
+        })();
+    </script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="Seriel"><img src="/images/app-icon-192.png" alt="" width="28" height="28">Seriel</a>
+  </div>
+</header>
+<main id="main" class="section closer">
+  <div class="wrap">
+    <img src="/images/app-icon-512.png" alt="" width="96" height="96">
+    <h1 class="h2"><span lang="en">This episode doesn&rsquo;t exist.</span><span lang="de">Diese Folge gibt es nicht.</span></h1>
+    <p class="lead"><span lang="en">The page you were looking for has moved or never aired.</span><span lang="de">Die gesuchte Seite ist umgezogen oder lief nie.</span></p>
+    <div class="hero-actions">
+      <a class="btn btn-ink" href="/"><span lang="en">Back to Seriel</span><span lang="de">Zurück zu Seriel</span></a>
+      <a class="text-link" href="/help/"><span lang="en">Help</span><span lang="de">Hilfe</span></a>
+    </div>
+  </div>
+</main>
+<script src="/js/site.js"></script>
+</body>
+</html>

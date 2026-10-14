@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en"
+      data-title-en="FAQ · Seriel"
+      data-title-de="Häufige Fragen · Seriel">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>FAQ · Seriel</title>
+    <meta name="description" content="Frequently asked questions about Seriel: accounts, Trakt, Seriel Pro, pricing, privacy and features.">
+    <link rel="canonical" href="https://seriel.app/faq/">
+    <meta name="theme-color" content="#F5F2EB" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0B0C10" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="/css/site.css">
+    <script>
+        (function () {
+            var d = document.documentElement, l = null;
+            d.classList.add('js');
+            if (location.hash === '#de' || location.hash === '#en') l = location.hash.slice(1);
+            if (!l) { try { l = localStorage.getItem('seriel.lang'); } catch (e) {} }
+            if (l !== 'en' && l !== 'de') {
+                l = ((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase().indexOf('de') === 0 ? 'de' : 'en';
+            }
+            d.setAttribute('data-lang', l); d.setAttribute('lang', l);
+            var t = d.getAttribute('data-title-' + l); if (t) document.title = t;
+        })();
+    </script>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main"><span lang="en">Skip to content</span><span lang="de">Zum Inhalt</span></a>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="Seriel">
+      <img src="/images/app-icon-192.png" alt="" width="28" height="28">Seriel
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="/#features"><span lang="en">Features</span><span lang="de">Funktionen</span></a></li>
+        <li><a href="/#pro">Pro</a></li>
+        <li><a href="/help/"><span lang="en">Help</span><span lang="de">Hilfe</span></a></li>
+        <li><a href="/faq/" aria-current="page">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="nav-tools">
+      <div class="lang" role="group" aria-label="Language / Sprache">
+        <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang-set="de" aria-pressed="false">DE</button>
+      </div>
+      <button class="nav-menu-btn" type="button" aria-expanded="false" aria-controls="nav-sheet" data-label-en="Menu" data-label-de="Menü" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="nav-sheet" id="nav-sheet">
+    <ul>
+      <li><a href="/#features"><span lang="en">Features</span><span lang="de">Funktionen</span></a></li>
+      <li><a href="/#pro">Seriel Pro</a></li>
+      <li><a href="/help/"><span lang="en">Help</span><span lang="de">Hilfe</span></a></li>
+      <li><a href="/faq/">FAQ</a></li>
+    </ul>
+    <div class="lang" role="group" aria-label="Language / Sprache">
+      <button type="button" data-lang-set="en" aria-pressed="true">English</button>
+      <button type="button" data-lang-set="de" aria-pressed="false">Deutsch</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="doc-hero">
+    <div class="wrap">
+      <p class="eyebrow">FAQ</p>
+      <h1 class="display"><span lang="en">Questions, answered.</span><span lang="de">Fragen und Antworten.</span></h1>
+      <p class="lead">
+        <span lang="en">The things people ask most about Seriel. For step-by-step instructions, see <a class="text-link" href="/help/">Help</a>.</span>
+        <span lang="de">Was am häufigsten zu Seriel gefragt wird. Schritt-für-Schritt-Anleitungen findest du in der <a class="text-link" href="/help/">Hilfe</a>.</span>
+      </p>
+    </div>
+  </section>
+
+  <div class="wrap doc-layout">
+    <nav class="toc" aria-label="Topics">
+      <b><span lang="en">Topics</span><span lang="de">Themen</span></b>
+      <ol>
+        <li><a href="#about"><span lang="en">About Seriel</span><span lang="de">Über Seriel</span></a></li>
+        <li><a href="#accounts"><span lang="en">Accounts and Trakt</span><span lang="de">Konten und Trakt</span></a></li>
+        <li><a href="#pro"><span lang="en">Pro and pricing</span><span lang="de">Pro und Preise</span></a></li>
+        <li><a href="#privacy"><span lang="en">Privacy</span><span lang="de">Datenschutz</span></a></li>
+        <li><a href="#features"><span lang="en">Features</span><span lang="de">Funktionen</span></a></li>
+      </ol>
+    </nav>
+
+    <div>
+      <!-- ========================================================== -->
+      <section class="help-group" id="about" data-toc-section>
+        <h2><span lang="en">About Seriel</span><span lang="de">Über Seriel</span></h2>
+        <div class="faq">
+          <details id="what-is">
+            <summary><span lang="en">What is Seriel?</span><span lang="de">Was ist Seriel?</span></summary>
+            <div class="answer">
+              <p lang="en">A TV tracker for iPhone and iPad. It remembers where you are in every show, tells you when new episodes air and keeps your history, ratings and reviews. It&rsquo;s designed to be calm and private: no account, no ads, no feed.</p>
+              <p lang="de">Ein Serien-Tracker für iPhone und iPad. Seriel merkt sich, wo du in jeder Serie bist, sagt dir, wann neue Folgen laufen, und bewahrt Verlauf, Bewertungen und Rezensionen auf. Ruhig und privat gestaltet: kein Konto, keine Werbung, kein Feed.</p>
+            </div>
+          </details>
+          <details id="who">
+            <summary><span lang="en">Who makes Seriel?</span><span lang="de">Wer macht Seriel?</span></summary>
+            <div class="answer">
+              <p lang="en">One independent developer in Hamburg, Germany. There are no investors and no advertising; the app is funded by people who choose Seriel Pro.</p>
+              <p lang="de">Ein unabhängiger Entwickler in Hamburg. Es gibt keine Investoren und keine Werbung; die App wird von denen getragen, die sich für Seriel Pro entscheiden.</p>
+            </div>
+          </details>
+          <details id="free">
+            <summary><span lang="en">Is Seriel free?</span><span lang="de">Ist Seriel kostenlos?</span></summary>
+            <div class="answer">
+              <p lang="en">Yes. The free plan keeps up to 10 shows in live sync, with alerts for them, plus an unlimited watchlist, ratings, reviews and a one-time Trakt import. <a href="#pro-what">Seriel Pro</a> removes the limit and adds more.</p>
+              <p lang="de">Ja. Der kostenlose Plan hält bis zu 10 Serien aktiv, mit Mitteilungen dafür, dazu eine unbegrenzte Merkliste, Bewertungen, Rezensionen und einen einmaligen Trakt-Import. <a href="#pro-what">Seriel Pro</a> hebt die Grenze auf und bringt mehr.</p>
+            </div>
+          </details>
+          <details id="devices">
+            <summary><span lang="en">Which devices are supported?</span><span lang="de">Welche Geräte werden unterstützt?</span></summary>
+            <div class="answer">
+              <p lang="en">iPhone and iPad with iOS or iPadOS 26 or later. There&rsquo;s no Android, web or Mac version.</p>
+              <p lang="de">iPhone und iPad mit iOS bzw. iPadOS 26 oder neuer. Eine Android-, Web- oder Mac-Version gibt es nicht.</p>
+            </div>
+          </details>
+          <details id="language">
+            <summary><span lang="en">Is the app available in German?</span><span lang="de">Gibt es die App auf Deutsch?</span></summary>
+            <div class="answer">
+              <p lang="en">Not yet. The app, and the show information it gets from Trakt, is currently in English. Artwork such as title logos follows your device&rsquo;s language where TMDB has it.</p>
+              <p lang="de">Noch nicht. Die App und die Serieninformationen von Trakt sind derzeit auf Englisch. Bilder wie Titel-Logos folgen der Sprache deines Geräts, soweit TMDB sie hat.</p>
+            </div>
+          </details>
+          <details id="sources">
+            <summary><span lang="en">Where does the show information come from?</span><span lang="de">Woher kommen die Serieninformationen?</span></summary>
+            <div class="answer">
+              <p lang="en">Shows, episodes, air dates and community reviews come from <a href="https://trakt.tv" rel="noopener">Trakt</a>. Artwork and supplementary details come from <a href="https://www.themoviedb.org" rel="noopener">TMDB</a>, and streaming availability from JustWatch. All three are maintained by their own communities and companies.</p>
+              <p lang="de">Serien, Folgen, Sendetermine und Rezensionen der Community kommen von <a href="https://trakt.tv" rel="noopener">Trakt</a>. Bilder und ergänzende Angaben kommen von <a href="https://www.themoviedb.org" rel="noopener">TMDB</a>, die Streaming-Verfügbarkeit von JustWatch. Alle drei werden von eigenen Communitys und Unternehmen gepflegt.</p>
+            </div>
+          </details>
+          <details id="offline">
+            <summary><span lang="en">Does it work offline?</span><span lang="de">Funktioniert die App offline?</span></summary>
+            <div class="answer">
+              <p lang="en">Mostly. Your library, marking and rating work offline, and shows you&rsquo;ve opened are kept on the device. New information and artwork need a connection.</p>
+              <p lang="de">Größtenteils. Deine Bibliothek, das Abhaken und Bewerten funktionieren offline, und geöffnete Serien bleiben auf dem Gerät. Neue Informationen und Bilder brauchen eine Verbindung.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ========================================================== -->
+      <section class="help-group" id="accounts" data-toc-section>
+        <h2><span lang="en">Accounts and Trakt</span><span lang="de">Konten und Trakt</span></h2>
+        <div class="faq">
+          <details id="account">
+            <summary><span lang="en">Do I need an account?</span><span lang="de">Brauche ich ein Konto?</span></summary>
+            <div class="answer">
+              <p lang="en">No. Seriel works without signing up anywhere. Your library lives on your device from the first tap.</p>
+              <p lang="de">Nein. Seriel funktioniert, ohne dass du dich irgendwo registrierst. Deine Bibliothek liegt ab dem ersten Tipp auf deinem Gerät.</p>
+            </div>
+          </details>
+          <details id="trakt">
+            <summary><span lang="en">What is Trakt?</span><span lang="de">Was ist Trakt?</span></summary>
+            <div class="answer">
+              <p lang="en"><a href="https://trakt.tv" rel="noopener">Trakt</a> is an independent service where many people keep their watch history, shared across lots of apps. Seriel uses Trakt&rsquo;s catalogue for show information. Having your own Trakt account is optional.</p>
+              <p lang="de"><a href="https://trakt.tv" rel="noopener">Trakt</a> ist ein unabhängiger Dienst, bei dem viele ihren Verlauf führen, geteilt über viele Apps. Seriel nutzt Trakts Katalog für Serieninformationen. Ein eigenes Trakt-Konto ist freiwillig.</p>
+            </div>
+          </details>
+          <details id="import-vs-sync">
+            <summary><span lang="en">What&rsquo;s the difference between import and sync?</span><span lang="de">Was ist der Unterschied zwischen Import und Sync?</span></summary>
+            <div class="answer">
+              <p lang="en"><strong>Import</strong> (free) copies a public Trakt profile into Seriel once. Afterwards the two are independent. <strong>Sync</strong> (Seriel Pro) signs you in to Trakt and keeps both in step: what you do in Seriel reaches Trakt, and changes on Trakt come into Seriel. <a href="/help/#trakt">How it works</a>.</p>
+              <p lang="de"><strong>Import</strong> (kostenlos) übernimmt ein öffentliches Trakt-Profil einmalig in Seriel. Danach sind beide unabhängig. <strong>Sync</strong> (Seriel Pro) meldet dich bei Trakt an und hält beides im Gleichschritt: Was du in Seriel tust, landet auf Trakt, und Änderungen auf Trakt kommen in Seriel an. <a href="/help/#trakt">So funktioniert es</a>.</p>
+            </div>
+          </details>
+          <details id="history">
+            <summary><span lang="en">Will Seriel mess up my Trakt history?</span><span lang="de">Bringt Seriel meinen Trakt-Verlauf durcheinander?</span></summary>
+            <div class="answer">
+              <p lang="en">No. Before anything changes, Seriel compares your library with your Trakt account and lists every difference. You pick, item by item, which version stays. Nothing reaches or leaves Trakt that you didn&rsquo;t choose, and watches keep their own dates.</p>
+              <p lang="de">Nein. Bevor sich etwas ändert, vergleicht Seriel deine Bibliothek mit deinem Trakt-Konto und listet jeden Unterschied auf. Du wählst Punkt für Punkt, welche Version bleibt. Nichts kommt auf Trakt oder verschwindet von dort, ohne dass du es gewählt hast, und Folgen behalten ihr eigenes Datum.</p>
+            </div>
+          </details>
+          <details id="other-apps">
+            <summary><span lang="en">Can I keep using other Trakt apps?</span><span lang="de">Kann ich weiter andere Trakt-Apps nutzen?</span></summary>
+            <div class="answer">
+              <p lang="en">Yes. With Trakt sync, anything you log in another Trakt-connected app or on trakt.tv comes into Seriel, and the other way round.</p>
+              <p lang="de">Ja. Mit Trakt-Sync kommt alles, was du in einer anderen mit Trakt verbundenen App oder auf trakt.tv einträgst, in Seriel an, und umgekehrt.</p>
+            </div>
+          </details>
+          <details id="multi-device">
+            <summary><span lang="en">Can I use Seriel on iPhone and iPad?</span><span lang="de">Kann ich Seriel auf iPhone und iPad nutzen?</span></summary>
+            <div class="answer">
+              <p lang="en">Yes. Each device keeps its own library; to keep them in step, connect both to the same Trakt account with Seriel Pro. Pro bought with your Apple Account works on all your devices.</p>
+              <p lang="de">Ja. Jedes Gerät hat seine eigene Bibliothek; damit sie gleich bleiben, verbinde beide mit Seriel Pro mit demselben Trakt-Konto. Pro, gekauft mit deinem Apple Account, gilt auf all deinen Geräten.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ========================================================== -->
+      <section class="help-group" id="pro" data-toc-section>
+        <h2><span lang="en">Pro and pricing</span><span lang="de">Pro und Preise</span></h2>
+        <div class="faq">
+          <details id="pro-what">
+            <summary><span lang="en">What&rsquo;s in Seriel Pro?</span><span lang="de">Was steckt in Seriel Pro?</span></summary>
+            <div class="answer">
+              <p lang="en">Unlimited shows in live sync, two-way Trakt sync, alerts for every show, where to watch for your country, spoiler hiding and a separate section for reality TV.</p>
+              <p lang="de">Unbegrenzt viele aktive Serien, Trakt-Sync in beide Richtungen, Mitteilungen für jede Serie, Streaming-Verfügbarkeit für dein Land, Spoilerschutz und ein eigener Bereich für Reality-TV.</p>
+            </div>
+          </details>
+          <details id="price">
+            <summary><span lang="en">How much does Pro cost?</span><span lang="de">Was kostet Pro?</span></summary>
+            <div class="answer">
+              <p lang="en">Pro is available as a monthly or yearly subscription, or as a one-time Lifetime purchase. Prices vary by country; the App Store shows you the price in your currency, including tax, before you buy.</p>
+              <p lang="de">Pro gibt es als Monats- oder Jahresabo oder als einmaligen Lifetime-Kauf. Die Preise unterscheiden sich je nach Land; der App Store zeigt dir vor dem Kauf den Preis in deiner Währung inklusive Steuern.</p>
+            </div>
+          </details>
+          <details id="lifetime">
+            <summary><span lang="en">What does Lifetime mean?</span><span lang="de">Was bedeutet Lifetime?</span></summary>
+            <div class="answer">
+              <p lang="en">You pay once and Pro stays unlocked for as long as Seriel is offered. It&rsquo;s the lifetime of the app, not a subscription. See the <a href="/terms/#en-4">terms</a> for the details.</p>
+              <p lang="de">Du zahlst einmal, und Pro bleibt freigeschaltet, solange es Seriel gibt. Gemeint ist die Lebensdauer der App, kein Abo. Details stehen in den <a href="/terms/#de-4">Nutzungsbedingungen</a>.</p>
+            </div>
+          </details>
+          <details id="family">
+            <summary><span lang="en">Does Pro work with Family Sharing?</span><span lang="de">Funktioniert Pro mit der Familienfreigabe?</span></summary>
+            <div class="answer">
+              <p lang="en">Yes, every Pro option can be shared with your family group.</p>
+              <p lang="de">Ja, jede Pro-Variante lässt sich mit deiner Familiengruppe teilen.</p>
+            </div>
+          </details>
+          <details id="cancel">
+            <summary><span lang="en">How do I cancel?</span><span lang="de">Wie kündige ich?</span></summary>
+            <div class="answer">
+              <p lang="en">Subscriptions are managed by Apple: Settings &rsaquo; your name &rsaquo; Subscriptions &rsaquo; Seriel. Cancel at least 24 hours before renewal; Pro stays on until the end of the paid period. <a href="/help/#cancel">Step by step</a>.</p>
+              <p lang="de">Abos verwaltet Apple: Einstellungen &rsaquo; dein Name &rsaquo; Abonnements &rsaquo; Seriel. Kündige mindestens 24 Stunden vor der Verlängerung; Pro bleibt bis zum Ende des bezahlten Zeitraums aktiv. <a href="/help/#cancel">Schritt für Schritt</a>.</p>
+            </div>
+          </details>
+          <details id="refund">
+            <summary><span lang="en">Can I get a refund?</span><span lang="de">Kann ich mein Geld zurückbekommen?</span></summary>
+            <div class="answer">
+              <p lang="en">Apple handles payments and refunds. Request one at <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a>. Your statutory rights apply.</p>
+              <p lang="de">Zahlungen und Erstattungen wickelt Apple ab. Beantrage eine Erstattung unter <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a>. Deine gesetzlichen Rechte gelten.</p>
+            </div>
+          </details>
+          <details id="after-pro">
+            <summary><span lang="en">What if I stop paying for Pro?</span><span lang="de">Was, wenn ich Pro nicht mehr bezahle?</span></summary>
+            <div class="answer">
+              <p lang="en">You keep everything. Your library stays as it is, up to ten shows stay live and the rest are paused rather than removed. Trakt sync pauses until you come back.</p>
+              <p lang="de">Du behältst alles. Deine Bibliothek bleibt, wie sie ist, bis zu zehn Serien bleiben aktiv und der Rest wird pausiert statt gelöscht. Der Trakt-Sync pausiert, bis du zurückkommst.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ========================================================== -->
+      <section class="help-group" id="privacy" data-toc-section>
+        <h2><span lang="en">Privacy</span><span lang="de">Datenschutz</span></h2>
+        <div class="faq">
+          <details id="collect">
+            <summary><span lang="en">Does Seriel collect my data?</span><span lang="de">Sammelt Seriel meine Daten?</span></summary>
+            <div class="answer">
+              <p lang="en">No. There are no Seriel servers, no analytics and no ads. Your library stays on your device. To load shows and artwork, the app asks Trakt and TMDB directly, which means they see your IP address and what&rsquo;s requested. All of it is explained in the <a href="/privacy/">privacy policy</a>.</p>
+              <p lang="de">Nein. Es gibt keine Seriel-Server, keine Analyse und keine Werbung. Deine Bibliothek bleibt auf deinem Gerät. Für Serien und Bilder fragt die App direkt bei Trakt und TMDB an; diese sehen dabei deine IP-Adresse und was abgerufen wird. Alles steht in der <a href="/privacy/">Datenschutzerklärung</a>.</p>
+            </div>
+          </details>
+          <details id="public">
+            <summary><span lang="en">Who can see my ratings and reviews?</span><span lang="de">Wer sieht meine Bewertungen und Rezensionen?</span></summary>
+            <div class="answer">
+              <p lang="en">Nobody, unless you sync with Trakt. Then reviews and comments are posted to Trakt, where they&rsquo;re public under your username, and your Trakt privacy settings decide who sees your history and ratings.</p>
+              <p lang="de">Niemand, solange du nicht mit Trakt synchronisierst. Dann werden Rezensionen und Kommentare bei Trakt veröffentlicht und sind dort mit deinem Benutzernamen öffentlich; wer deinen Verlauf und deine Bewertungen sieht, bestimmen deine Trakt-Einstellungen.</p>
+            </div>
+          </details>
+          <details id="ai">
+            <summary><span lang="en">Is the AI review summary private?</span><span lang="de">Ist die KI-Zusammenfassung privat?</span></summary>
+            <div class="answer">
+              <p lang="en">Yes. It&rsquo;s written by Apple Intelligence on your device from public reviews. Nothing is sent anywhere to make it.</p>
+              <p lang="de">Ja. Apple Intelligence erstellt sie auf deinem Gerät aus öffentlichen Rezensionen. Dafür wird nichts versendet.</p>
+            </div>
+          </details>
+          <details id="backup">
+            <summary><span lang="en">Is my library backed up?</span><span lang="de">Wird meine Bibliothek gesichert?</span></summary>
+            <div class="answer">
+              <p lang="en">It&rsquo;s part of your device backup, so iCloud Backup or a backup to your computer includes it. With Trakt sync, your history is on Trakt as well.</p>
+              <p lang="de">Sie ist Teil deines Geräte-Backups, ist also in einem iCloud-Backup oder einem Backup auf deinem Computer enthalten. Mit Trakt-Sync liegt dein Verlauf zusätzlich bei Trakt.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ========================================================== -->
+      <section class="help-group" id="features" data-toc-section>
+        <h2><span lang="en">Features</span><span lang="de">Funktionen</span></h2>
+        <div class="faq">
+          <details id="alerts">
+            <summary><span lang="en">When do new-episode alerts arrive?</span><span lang="de">Wann kommen Mitteilungen zu neuen Folgen?</span></summary>
+            <div class="answer">
+              <p lang="en">Once, at the episode&rsquo;s air time in your time zone. You can also be told about new seasons, renewals and finales. <a href="/help/#alerts-on">Set them up</a>.</p>
+              <p lang="de">Einmal, zur Sendezeit der Folge in deiner Zeitzone. Du kannst dich außerdem über neue Staffeln, Verlängerungen und Serienenden informieren lassen. <a href="/help/#alerts-on">Einrichten</a>.</p>
+            </div>
+          </details>
+          <details id="spoilers">
+            <summary><span lang="en">How does spoiler hiding work?</span><span lang="de">Wie funktioniert der Spoilerschutz?</span></summary>
+            <div class="answer">
+              <p lang="en">With Hide spoilers on (Pro), stills of unwatched episodes are blurred, their titles are held back and their descriptions covered, until you&rsquo;ve watched them. Synopses of seasons ahead of you are covered too. Tap to reveal anything.</p>
+              <p lang="de">Mit Hide spoilers (Pro) werden Standbilder ungesehener Folgen unscharf, ihre Titel zurückgehalten und Beschreibungen verdeckt, bis du sie gesehen hast. Auch Inhaltsangaben späterer Staffeln sind verdeckt. Ein Tipp zeigt alles.</p>
+            </div>
+          </details>
+          <details id="reality">
+            <summary><span lang="en">Why set reality TV apart?</span><span lang="de">Warum Reality-TV getrennt halten?</span></summary>
+            <div class="answer">
+              <p lang="en">Some people like their reality shows out of the same list as their dramas. With Set reality apart (Pro), reality shows leave Today, Schedule and Library and live in their own section, reached from a card on Today. You still get every new episode.</p>
+              <p lang="de">Manche möchten ihre Reality-Shows nicht in derselben Liste wie ihre Dramen. Mit Set reality apart (Pro) verlassen Reality-Shows Today, Schedule und Library und bekommen einen eigenen Bereich, erreichbar über eine Karte auf Today. Neue Folgen verpasst du trotzdem nicht.</p>
+            </div>
+          </details>
+          <details id="where">
+            <summary><span lang="en">Which countries does &ldquo;Where to watch&rdquo; cover?</span><span lang="de">Für welche Länder gibt es &bdquo;Where to watch&rdquo;?</span></summary>
+            <div class="answer">
+              <p lang="en">Every country JustWatch covers, which includes Germany, Austria, Switzerland, the UK, the US and many more. Seriel uses your device&rsquo;s region, and you can change it in Settings.</p>
+              <p lang="de">Alle Länder, die JustWatch abdeckt, darunter Deutschland, Österreich, die Schweiz, Großbritannien, die USA und viele weitere. Seriel nutzt die Region deines Geräts; du kannst sie in Settings ändern.</p>
+            </div>
+          </details>
+          <details id="ratings">
+            <summary><span lang="en">How do ratings work?</span><span lang="de">Wie funktionieren Bewertungen?</span></summary>
+            <div class="answer">
+              <p lang="en">Five stars, with half stars. They match Trakt&rsquo;s 10-point scale exactly, so nothing gets rounded when you sync. Shows rated four and a half stars or more go into your Hall of Fame.</p>
+              <p lang="de">Fünf Sterne, mit halben Sternen. Sie entsprechen genau Trakts 10-Punkte-Skala, beim Sync wird also nichts gerundet. Serien mit viereinhalb Sternen oder mehr kommen in deine Hall of Fame.</p>
+            </div>
+          </details>
+          <details id="rewatches">
+            <summary><span lang="en">Can I track rewatches?</span><span lang="de">Kann ich erneutes Anschauen festhalten?</span></summary>
+            <div class="answer">
+              <p lang="en">Yes. Start a rewatch on a finished show and every episode keeps each time you saw it, with its own date.</p>
+              <p lang="de">Ja. Starte bei einer beendeten Serie ein erneutes Anschauen, und jede Folge behält jedes Mal mit eigenem Datum.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="contact-card">
+        <div>
+          <h2><span lang="en">Didn&rsquo;t find it?</span><span lang="de">Nicht gefunden?</span></h2>
+          <p><span lang="en">Have a look at the <a class="text-link" href="/help/">help pages</a> or write to us.</span><span lang="de">Schau in die <a class="text-link" href="/help/">Hilfe</a> oder schreib uns.</span></p>
+        </div>
+        <a class="btn btn-ink" href="mailto:hello@seriel.app">hello@seriel.app</a>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a class="brand" href="/"><img src="/images/app-icon-192.png" alt="" width="24" height="24">Seriel</a>
+        <p style="margin-top:10px;max-width:22em"><span lang="en">Every show you watch, in one place. For iPhone and iPad.</span><span lang="de">Jede Serie, die du schaust, an einem Ort. Für iPhone und iPad.</span></p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <b>Seriel</b>
+          <ul>
+            <li><a href="/#features"><span lang="en">Features</span><span lang="de">Funktionen</span></a></li>
+            <li><a href="/#pro">Seriel Pro</a></li>
+            <li><a href="/help/"><span lang="en">Help</span><span lang="de">Hilfe</span></a></li>
+            <li><a href="/faq/" aria-current="page">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <b><span lang="en">Legal</span><span lang="de">Rechtliches</span></b>
+          <ul>
+            <li><a href="/privacy/"><span lang="en">Privacy Policy</span><span lang="de">Datenschutz</span></a></li>
+            <li><a href="/terms/"><span lang="en">Terms of Use</span><span lang="de">Nutzungsbedingungen</span></a></li>
+            <li><a href="/impressum/">Impressum</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <b><span lang="en">Contact</span><span lang="de">Kontakt</span></b>
+          <ul><li><a href="mailto:hello@seriel.app">hello@seriel.app</a></li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-fine">
+      <p lang="en">Show information from <a href="https://trakt.tv" rel="noopener">Trakt</a>. Seriel uses the Trakt API but is not endorsed or certified by Trakt. Imagery and supplementary data from <a href="https://www.themoviedb.org" rel="noopener">TMDB</a>: Seriel uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB. Streaming availability by JustWatch.</p>
+      <p lang="de">Serieninformationen von <a href="https://trakt.tv" rel="noopener">Trakt</a>. Seriel nutzt die Trakt-API, ist aber nicht von Trakt geprüft oder zertifiziert. Bilder und ergänzende Daten von <a href="https://www.themoviedb.org" rel="noopener">TMDB</a>: Seriel uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB. Streaming-Verfügbarkeit von JustWatch.</p>
+      <div class="footer-bottom">
+        <span>&copy; <span data-date="year">2026</span> David Cox, Hamburg</span>
+        <div class="lang" role="group" aria-label="Language / Sprache">
+          <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang-set="de" aria-pressed="false">DE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/site.js"></script>
+</body>
+</html>

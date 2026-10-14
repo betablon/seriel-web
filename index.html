@@ -1,420 +1,1118 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="ink" data-lang="en">
+<html lang="en" data-lang="en"
+      data-title-en="Seriel: every show you watch, in one place"
+      data-title-de="Seriel: jede Serie, die du schaust, an einem Ort">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seriel — Television is a habit.</title>
-    <meta name="description" content="Seriel keeps the record — what you watched, what's coming, and what you thought of it all. A personal TV broadsheet. Coming soon to the App Store.">
-    <meta name="theme-color" content="#0B0C10" media="(prefers-color-scheme: dark)">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Seriel: every show you watch, in one place</title>
+    <meta name="description" content="Seriel is a calm, private TV tracker for iPhone and iPad. It remembers where you left off, tells you when the next episode airs and keeps everything you've watched. No account, no ads, no tracking.">
+    <link rel="canonical" href="https://seriel.app/">
     <meta name="theme-color" content="#F5F2EB" media="(prefers-color-scheme: light)">
-    <meta property="og:title" content="Seriel — Television is a habit.">
-    <meta property="og:description" content="Seriel keeps the record — what you watched, what's coming, and what you thought of it all.">
+    <meta name="theme-color" content="#0B0C10" media="(prefers-color-scheme: dark)">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://seriel.app">
+    <meta property="og:url" content="https://seriel.app/">
+    <meta property="og:title" content="Seriel: every show you watch, in one place">
+    <meta property="og:description" content="Where you left off, what airs next, and everything you've watched. No account, no ads, no tracking.">
     <meta property="og:image" content="https://seriel.app/images/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Seriel — Television is a habit.">
-    <meta name="twitter:description" content="A personal TV broadsheet. Track, rate, remember every show you watch — powered by Trakt.">
-    <meta name="twitter:image" content="https://seriel.app/images/og-image.png">
-    <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="/css/site.css">
     <script>
-        // Pre-paint init: theme + language. Stored prefs win, otherwise the
-        // OS theme + browser language decide. Setting attributes on <html>
-        // before paint avoids both flashes — wrong colour AND wrong language.
+        // Before paint: mark JS on, pick the language (saved choice, else the browser's).
         (function () {
-            try {
-                var stored = localStorage.getItem('seriel.theme');
-                var sysLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-                document.documentElement.setAttribute('data-theme', stored || (sysLight ? 'paper' : 'ink'));
-            } catch (e) {}
-            try {
-                var lang = localStorage.getItem('seriel.lang');
-                if (!lang) {
-                    var nav = (navigator.language || 'en').toLowerCase();
-                    lang = nav.indexOf('de') === 0 ? 'de' : 'en';
-                }
-                document.documentElement.setAttribute('data-lang', lang);
-                document.documentElement.setAttribute('lang', lang);
-            } catch (e) {}
+            var d = document.documentElement, l = null;
+            d.classList.add('js');
+            if (location.hash === '#de' || location.hash === '#en') l = location.hash.slice(1);
+            if (!l) { try { l = localStorage.getItem('seriel.lang'); } catch (e) {} }
+            if (l !== 'en' && l !== 'de') {
+                l = ((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase().indexOf('de') === 0 ? 'de' : 'en';
+            }
+            d.setAttribute('data-lang', l); d.setAttribute('lang', l);
+            var t = d.getAttribute('data-title-' + l); if (t) document.title = t;
         })();
     </script>
 </head>
 <body>
 
-    <!-- ============================================================== -->
-    <!-- MASTHEAD                                                        -->
-    <!-- ============================================================== -->
-    <header class="masthead" role="banner">
-        <div class="masthead-inner">
-            <div class="masthead-folio masthead-folio-left">
-                <span class="folio-label" id="issue-line">VOL. 00 · ISSUE 00</span>
+<!-- ================================================================ -->
+<!-- Sprite: icons and the fictional show artwork used in the demos     -->
+<!-- ================================================================ -->
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <linearGradient id="g-salt-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1F2A44"/><stop offset=".42" stop-color="#6C5A7E"/><stop offset=".74" stop-color="#E0957A"/><stop offset="1" stop-color="#F6CB9F"/>
+    </linearGradient>
+    <linearGradient id="g-salt-sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C99A92"/><stop offset=".3" stop-color="#6A5F7C"/><stop offset="1" stop-color="#161D2E"/>
+    </linearGradient>
+    <radialGradient id="g-salt-glow" cx=".62" cy=".62" r=".42">
+      <stop offset="0" stop-color="#FFE2BA" stop-opacity=".95"/><stop offset=".35" stop-color="#F6B98E" stop-opacity=".35"/><stop offset="1" stop-color="#F6B98E" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="g-kes-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9DB3A6"/><stop offset=".6" stop-color="#D9E1D6"/><stop offset="1" stop-color="#E9ECE0"/>
+    </linearGradient>
+    <linearGradient id="g-kes-near" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#21443A"/><stop offset="1" stop-color="#0E211C"/>
+    </linearGradient>
+    <linearGradient id="g-field-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E5D3AE"/><stop offset="1" stop-color="#F4E8CC"/>
+    </linearGradient>
+    <linearGradient id="g-ferry-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#070D1A"/><stop offset="1" stop-color="#1D2C4D"/>
+    </linearGradient>
+    <linearGradient id="g-ferry-sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#15233F"/><stop offset="1" stop-color="#050A14"/>
+    </linearGradient>
+    <radialGradient id="g-ferry-moon" cx=".26" cy=".26" r=".32">
+      <stop offset="0" stop-color="#F2E8C8" stop-opacity=".38"/><stop offset="1" stop-color="#F2E8C8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g-mer-bg" cx=".3" cy=".25" r=".95">
+      <stop offset="0" stop-color="#2D2266"/><stop offset=".65" stop-color="#0C0B1E"/><stop offset="1" stop-color="#05050C"/>
+    </radialGradient>
+    <linearGradient id="g-mer-planet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7C6AF0"/><stop offset=".5" stop-color="#3A7BD5"/><stop offset="1" stop-color="#1FCEC4"/>
+    </linearGradient>
+    <linearGradient id="g-mer-shade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset=".25" stop-color="#05050C" stop-opacity="0"/><stop offset=".9" stop-color="#05050C" stop-opacity=".92"/>
+    </linearGradient>
+    <linearGradient id="g-city-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F2B39B"/><stop offset=".7" stop-color="#F6D9C6"/><stop offset="1" stop-color="#F8E6D7"/>
+    </linearGradient>
+    <pattern id="p-windows" width="18" height="22" patternUnits="userSpaceOnUse">
+      <rect x="4" y="5" width="8" height="10" rx="1" fill="#FCE9D2" opacity=".5"/>
+    </pattern>
+    <linearGradient id="g-isle-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FF8A84"/><stop offset=".55" stop-color="#FFBE9E"/><stop offset="1" stop-color="#FFE0BE"/>
+    </linearGradient>
+    <linearGradient id="g-isle-sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3CCFC4"/><stop offset="1" stop-color="#0E7C82"/>
+    </linearGradient>
+    <linearGradient id="g-cop-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6D3A6"/><stop offset="1" stop-color="#EE9C6C"/>
+    </linearGradient>
+    <linearGradient id="g-north-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C3D4E0"/><stop offset="1" stop-color="#EEF3F5"/>
+    </linearGradient>
+    <linearGradient id="g-north-sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#40607A"/><stop offset="1" stop-color="#1A2A3A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icons: 24×24, drawn as strokes -->
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.6 4.6L19.2 7.5"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="8.1" stroke-width="3" stroke-dasharray="2.55 3.81"/><circle cx="12" cy="12" r="5.7" stroke-width="1.8"/><circle cx="12" cy="12" r="2.2" stroke-width="1.8"/></symbol>
+  <symbol id="i-tv" viewBox="0 0 24 24"><rect x="2.5" y="3.5" width="19" height="13.5" rx="2.6" fill="currentColor"/><path d="M10 7.6v5.3l4.5-2.65z" fill="var(--icon-cut, #fff)"/><rect x="7.5" y="19" width="9" height="1.8" rx=".9" fill="currentColor"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="16" rx="3"/><path d="M3.5 9h17" /><g fill="currentColor" stroke="none"><circle cx="8" cy="12.6" r="1"/><circle cx="12" cy="12.6" r="1"/><circle cx="16" cy="12.6" r="1"/><circle cx="8" cy="16.4" r="1"/><circle cx="12" cy="16.4" r="1"/><circle cx="16" cy="16.4" r="1"/></g></symbol>
+  <symbol id="i-stack" viewBox="0 0 24 24"><rect x="3.5" y="8" width="17" height="12.5" rx="2.6" fill="currentColor"/><rect x="5.5" y="5.2" width="13" height="1.6" rx=".8" fill="currentColor"/><rect x="7.5" y="2.8" width="9" height="1.4" rx=".7" fill="currentColor"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4L20.5 20.5"/></symbol>
+  <symbol id="i-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5l-7 7 7 7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 3.5h10v17l-5-3.6-5 3.6z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 16.5v-5.2a6 6 0 0 1 12 0v5.2l1.6 2H4.4z"/><path d="M10 20.6a2.1 2.1 0 0 0 4 0" stroke-linecap="round"/></symbol>
+  <symbol id="i-eye-slash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2.5 12s3.5-6.3 9.5-6.3S21.5 12 21.5 12s-3.5 6.3-9.5 6.3S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/><path d="M4 4l16 16"/></symbol>
+  <symbol id="i-mask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5c5-1.6 10-1.6 15 0v6.2c0 4.3-3.3 8.3-7.5 8.3s-7.5-4-7.5-8.3z"/><path d="M8 10.2c.6-.6 1.6-.6 2.2 0M13.8 10.2c.6-.6 1.6-.6 2.2 0M9 14c1.6 1.6 4.4 1.6 6 0"/></symbol>
+  <symbol id="i-play-rect" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="6.5" width="15" height="12" rx="2.4"/><path d="M6.5 3.8h12.2a2.3 2.3 0 0 1 2.3 2.3v9.4" stroke-linecap="round"/><path d="M9 10v5l4.2-2.5z" fill="currentColor"/></symbol>
+  <symbol id="i-infinity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7.4 9c-2.5 0-3.9 1.3-3.9 3s1.4 3 3.9 3c3.2 0 6-6 9.2-6 2.5 0 3.9 1.3 3.9 3s-1.4 3-3.9 3c-3.2 0-6-6-9.2-6z"/></symbol>
+  <symbol id="i-sync" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 11.2a7.5 7.5 0 0 1 13.1-4.4"/><path d="M18.4 3.4v3.9h-3.9"/><path d="M19.4 12.8a7.5 7.5 0 0 1-13.1 4.4"/><path d="M5.6 20.6v-3.9h3.9"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.8l2.75 5.7 6.25.86-4.55 4.37 1.1 6.22L12 16.97 6.45 19.95l1.1-6.22L3 9.36l6.25-.86z"/></symbol>
+  <symbol id="i-thumb" viewBox="0 0 24 24" fill="currentColor"><path d="M7.2 10.4l3.6-6.3c1.6 0 2.7 1.2 2.4 2.8l-.6 3.2h5.2c1.4 0 2.4 1.2 2.1 2.6l-1.3 6.1a2.4 2.4 0 0 1-2.3 1.9H7.2zM3 10.4h2.8v10.3H3z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4.8" y="10.5" width="14.4" height="10" rx="2.6"/><path d="M8 10.5V7.8a4 4 0 0 1 8 0v2.7"/></symbol>
+  <symbol id="i-iphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6.5" y="2.5" width="11" height="19" rx="3"/><path d="M10.3 5.3h3.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2.8l7.2 3v5.6c0 4.6-3.1 8.2-7.2 9.8-4.1-1.6-7.2-5.2-7.2-9.8V5.8z"/><path d="M8.8 12.2l2.3 2.3 4.2-4.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.6"/><path d="M12 7.2V12l3.2 2"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12.5V5.8a1.5 1.5 0 0 1 3 0v5.4M11 11V4.4a1.5 1.5 0 0 1 3 0V11M14 11V5.6a1.5 1.5 0 0 1 3 0v7.6c0 4.3-2.5 7.6-6.4 7.6-2.4 0-3.8-1.2-5.2-3.4l-2-3.2a1.5 1.5 0 0 1 2.4-1.8L8 14.4"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24" fill="currentColor"><path d="M10 3.5l1.6 4.9 4.9 1.6-4.9 1.6L10 16.5l-1.6-4.9L3.5 10l4.9-1.6zM17.5 13.5l.9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9z"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M19.8 14.6A8.4 8.4 0 0 1 9.4 4.2a8.4 8.4 0 1 0 10.4 10.4z"/></symbol>
+  <symbol id="i-textsize" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.8 19L8 5l5.2 14M4.9 14h6.2M14 19l3.5-9 3.5 9M15.2 16h4.6"/></symbol>
+  <symbol id="i-ipad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="2.5" width="17" height="19" rx="2.8"/><path d="M10.5 18.6h3" stroke-linecap="round"/></symbol>
+  <symbol id="i-access" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="7.4" r="1.2" fill="currentColor" stroke="none"/><path d="M7.6 9.8l4.4 1 4.4-1M12 10.8v3.4M12 14.2l-2.2 3.8M12 14.2l2.2 3.8"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 21V3.8M5.5 4h11.5l-2.2 4 2.2 4H5.5"/></symbol>
+  <symbol id="i-calendar-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="4.5" width="17" height="16" rx="3"/><path d="M3.5 9h17M12 12v6M9 15h6"/></symbol>
+  <symbol id="i-renew" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M19.2 12.3a7.2 7.2 0 1 1-2.2-5.4"/><path d="M19.2 3.8v3.9h-3.9"/></symbol>
+  <symbol id="i-play-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M10 8.6v6.8l5.6-3.4z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v8.2M8.6 12.6L12 16l3.4-3.4"/></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.8 20.5c.9-3.8 3.8-6 7.2-6s6.3 2.2 7.2 6" stroke-linecap="round"/></symbol>
+  <symbol id="i-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.8 12a8.2 8.2 0 1 0 2.4-5.8L3.8 8.6"/><path d="M3.8 4.4v4.2H8M12 8v4.4l2.8 1.8"/></symbol>
+
+  <!-- Artwork for fictional shows (600×400, cropped to fit) -->
+  <symbol id="art-saltmarsh" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="262" fill="url(#g-salt-sky)"/>
+    <rect y="258" width="600" height="142" fill="url(#g-salt-sea)"/>
+    <rect width="600" height="400" fill="url(#g-salt-glow)"/>
+    <circle cx="372" cy="244" r="28" fill="#FFE9C9"/>
+    <path d="M0 259C90 254 150 256 230 257 300 258 330 255 600 258v4L0 263z" fill="#4A3F5C" opacity=".55"/>
+    <g fill="#FFE6C2" opacity=".6"><rect x="336" y="268" width="72" height="2.2" rx="1.1"/><rect x="346" y="279" width="52" height="2" rx="1"/><rect x="354" y="291" width="36" height="2" rx="1"/><rect x="360" y="305" width="24" height="1.8" rx=".9"/></g>
+    <path d="M0 322c70-22 150-10 230 14 70 21 140 16 210 38 40 12 60 22 70 26H0z" fill="#141A28"/>
+    <path d="M600 296c-48 6-88 26-114 54-16 18-20 36-16 50h130z" fill="#0F1420"/>
+    <g stroke="#141A28" stroke-width="2.4" stroke-linecap="round" fill="none"><path d="M38 326c-2-26-4-36-8-50M52 322c0-22 2-32 6-42M66 318c-2-14 0-22 4-32M88 312c-2-16-4-22-8-30M108 308c0-14 2-20 6-28"/></g>
+    <g stroke="#0F1420" stroke-width="2.4" stroke-linecap="round" fill="none"><path d="M540 304c0-18-2-28-6-38M556 300c0-16 2-24 6-32M574 298c-2-16-4-22-8-28"/></g>
+    <path d="M220 120l8 4 8-4M250 104l6 3 6-3" stroke="#2A2F45" stroke-width="2" fill="none" stroke-linecap="round" opacity=".5"/>
+  </symbol>
+
+  <symbol id="art-kestrel" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" fill="url(#g-kes-sky)"/>
+    <circle cx="452" cy="118" r="34" fill="#F4F1E4" opacity=".75"/>
+    <path d="M0 196c90-28 170-12 250-24 90-14 170 6 350-22v250H0z" fill="#8FA898"/>
+    <path d="M0 244c110-30 200-4 300-18s170 10 300-12v186H0z" fill="#4E7464"/>
+    <path d="M0 292c150-30 260 10 380-8 90-13 160 6 220-4v120H0z" fill="url(#g-kes-near)"/>
+    <path d="M286 400c10-40 32-70 64-94 22-16 54-28 96-34l4 4c-36 8-62 20-82 36-28 24-46 54-52 88z" fill="#E4DFC9" opacity=".9"/>
+    <path d="M446 272c24-4 54-10 84-20l1 2c-28 12-57 19-81 22z" fill="#E4DFC9" opacity=".7"/>
+    <path d="M196 116c8-6 16-6 22 0 6-6 14-6 22 0-8 2-14 6-22 8-8-2-14-6-22-8z" fill="#22302B"/>
+  </symbol>
+
+  <symbol id="art-field" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" fill="url(#g-field-sky)"/>
+    <circle cx="150" cy="118" r="44" fill="#F8E6BB"/>
+    <path d="M0 220c120-16 220-6 320-14s180 4 280-6v200H0z" fill="#A9905E"/>
+    <path d="M0 236l600-14v178H0z" fill="#D6A548"/>
+    <g fill="#C08A32"><path d="M0 262l600-16v12L0 278zM0 304l600-22v16L0 326zM0 356l600-32v20L0 384z"/></g>
+    <g fill="#E4BD68" opacity=".8"><path d="M0 284l600-18v6L0 292zM0 336l600-30v8L0 346z"/></g>
+    <rect x="404" y="168" width="7" height="58" fill="#4B3B22"/>
+    <circle cx="407" cy="160" r="30" fill="#5A4A2A"/><circle cx="388" cy="174" r="20" fill="#5A4A2A"/><circle cx="428" cy="173" r="22" fill="#5A4A2A"/>
+  </symbol>
+
+  <symbol id="art-ferry" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="270" fill="url(#g-ferry-sky)"/>
+    <rect y="266" width="600" height="134" fill="url(#g-ferry-sea)"/>
+    <rect width="600" height="400" fill="url(#g-ferry-moon)"/>
+    <circle cx="156" cy="104" r="24" fill="#F3EAD0"/>
+    <g fill="#F3EAD0" opacity=".7"><circle cx="60" cy="60" r="1.4"/><circle cx="260" cy="44" r="1.2"/><circle cx="340" cy="90" r="1"/><circle cx="470" cy="52" r="1.4"/><circle cx="540" cy="120" r="1"/><circle cx="420" cy="150" r="1"/><circle cx="96" cy="170" r="1"/></g>
+    <path d="M0 266c100-6 200-2 600-4v8L0 272z" fill="#0A1222"/>
+    <path d="M300 262h220l-14 22H314z" fill="#04070D"/>
+    <rect x="336" y="238" width="150" height="25" rx="3" fill="#080C16"/>
+    <rect x="420" y="222" width="46" height="18" rx="2" fill="#080C16"/>
+    <rect x="372" y="214" width="12" height="26" fill="#080C16"/>
+    <g fill="#F7C873"><rect x="346" y="246" width="8" height="6" rx="1"/><rect x="360" y="246" width="8" height="6" rx="1"/><rect x="374" y="246" width="8" height="6" rx="1"/><rect x="388" y="246" width="8" height="6" rx="1"/><rect x="416" y="246" width="8" height="6" rx="1"/><rect x="430" y="246" width="8" height="6" rx="1"/><rect x="444" y="246" width="8" height="6" rx="1"/><rect x="458" y="246" width="8" height="6" rx="1"/><rect x="426" y="228" width="8" height="5" rx="1"/><rect x="440" y="228" width="8" height="5" rx="1"/><rect x="454" y="228" width="6" height="5" rx="1"/></g>
+    <g fill="#F7C873" opacity=".32"><rect x="340" y="292" width="130" height="2" rx="1"/><rect x="352" y="302" width="104" height="2" rx="1"/><rect x="366" y="314" width="78" height="2" rx="1"/><rect x="380" y="328" width="50" height="2" rx="1"/></g>
+    <g fill="#F3EAD0" opacity=".28"><rect x="132" y="290" width="48" height="2" rx="1"/><rect x="140" y="304" width="32" height="2" rx="1"/><rect x="146" y="320" width="20" height="2" rx="1"/></g>
+  </symbol>
+
+  <symbol id="art-meridian" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" fill="url(#g-mer-bg)"/>
+    <g fill="#E6E2FF" opacity=".75"><circle cx="70" cy="50" r="1.3"/><circle cx="200" cy="90" r="1"/><circle cx="310" cy="40" r="1.4"/><circle cx="520" cy="70" r="1.1"/><circle cx="560" cy="160" r="1"/><circle cx="40" cy="210" r="1"/><circle cx="250" cy="200" r="1.2"/></g>
+    <circle cx="150" cy="130" r="14" fill="#BFB8F5" opacity=".9"/>
+    <circle cx="430" cy="360" r="210" fill="url(#g-mer-planet)"/>
+    <circle cx="430" cy="360" r="210" fill="url(#g-mer-shade)"/>
+    <ellipse cx="430" cy="360" rx="300" ry="62" fill="none" stroke="#C9C2FF" stroke-opacity=".5" stroke-width="2" transform="rotate(-14 430 360)"/>
+    <ellipse cx="430" cy="360" rx="334" ry="72" fill="none" stroke="#C9C2FF" stroke-opacity=".22" stroke-width="1.2" transform="rotate(-14 430 360)"/>
+  </symbol>
+
+  <symbol id="art-city" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" fill="url(#g-city-sky)"/>
+    <circle cx="420" cy="138" r="54" fill="#FBE6C9"/>
+    <rect x="20" y="170" width="110" height="230" fill="#6F81A6"/><rect x="140" y="110" width="90" height="290" fill="#4F628A"/><rect x="240" y="190" width="120" height="210" fill="#8A9BBE"/><rect x="372" y="150" width="96" height="250" fill="#5A6E95"/><rect x="480" y="210" width="110" height="190" fill="#7C8EB2"/>
+    <g fill="url(#p-windows)"><rect x="20" y="170" width="110" height="230"/><rect x="140" y="110" width="90" height="290"/><rect x="240" y="190" width="120" height="210"/><rect x="372" y="150" width="96" height="250"/><rect x="480" y="210" width="110" height="190"/></g>
+    <rect y="372" width="600" height="28" fill="#3E4C6B"/>
+  </symbol>
+
+  <symbol id="art-island" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="250" fill="url(#g-isle-sky)"/>
+    <circle cx="300" cy="228" r="52" fill="#FFE7C4"/>
+    <rect y="240" width="600" height="160" fill="url(#g-isle-sea)"/>
+    <g fill="#FFF3DD" opacity=".5"><rect x="250" y="252" width="100" height="2.4" rx="1.2"/><rect x="266" y="264" width="68" height="2" rx="1"/><rect x="60" y="300" width="80" height="2" rx="1"/><rect x="430" y="320" width="90" height="2" rx="1"/></g>
+    <g fill="#2B2A33"><path d="M82 400c10-70 18-130 44-186l8 3c-24 56-32 116-42 183z"/><path d="M128 214c-28-18-58-18-84-4 30-6 56-2 84 8zM128 214c-16-28-12-54 4-74-6 26-4 50 0 74zM128 214c24-24 52-28 78-18-28 2-52 10-74 24zM128 214c22 2 40 18 48 44-14-20-30-30-50-36zM128 214c-20 6-36 24-40 48 12-22 26-34 42-42z"/></g>
+    <g fill="#2B2A33" transform="translate(612 30) scale(-1 1)"><path d="M82 370c10-60 18-110 44-156l8 3c-24 46-32 96-42 153z"/><path d="M128 214c-28-18-58-18-84-4 30-6 56-2 84 8zM128 214c-16-28-12-54 4-74-6 26-4 50 0 74zM128 214c24-24 52-28 78-18-28 2-52 10-74 24zM128 214c22 2 40 18 48 44-14-20-30-30-50-36z"/></g>
+  </symbol>
+
+  <symbol id="art-copper" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" fill="url(#g-cop-sky)"/>
+    <circle cx="300" cy="190" r="60" fill="#FBE3BD" opacity=".9"/>
+    <path d="M0 250h60l20-50h100l20 50h130l16-30h74l16 30h164v150H0z" fill="#B65B34"/>
+    <path d="M0 300h120l30-64h130l30 64h290v100H0z" fill="#86391F"/>
+    <path d="M0 350c150-20 300 10 600-14v64H0z" fill="#4E2015"/>
+  </symbol>
+
+  <symbol id="art-north" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="260" fill="url(#g-north-sky)"/>
+    <path d="M0 236l80-40 50 26 70-52 90 60h310v30H0z" fill="#9FB3C2"/>
+    <rect y="256" width="600" height="144" fill="url(#g-north-sea)"/>
+    <path d="M40 300l110-8 20 12-110 8zM250 340l170-10 20 16-190 6zM470 290l90-4 20 10-100 4z" fill="#E6EEF2"/>
+    <path d="M470 256l130-20v26H470z" fill="#2C3E4F"/>
+    <path d="M540 196h12l4 44h-20z" fill="#F2F5F7"/><rect x="537" y="214" width="18" height="6" fill="#C4553C"/><rect x="541" y="187" width="10" height="9" fill="#F7D774"/>
+  </symbol>
+</svg>
+
+<a class="skip-link" href="#main"><span lang="en">Skip to content</span><span lang="de">Zum Inhalt</span></a>
+
+<!-- ================================================================ -->
+<!-- Navigation                                                        -->
+<!-- ================================================================ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="Seriel">
+      <img src="/images/app-icon-192.png" alt="" width="28" height="28">Seriel
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#features"><span lang="en">Features</span><span lang="de">Funktionen</span></a></li>
+        <li><a href="#pro">Pro</a></li>
+        <li><a href="/help/"><span lang="en">Help</span><span lang="de">Hilfe</span></a></li>
+        <li><a href="/faq/">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="nav-tools">
+      <div class="lang" role="group" aria-label="Language / Sprache">
+        <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang-set="de" aria-pressed="false">DE</button>
+      </div>
+      <span class="store store-small nav-cta" data-store>
+        <b><span data-store-soon><span lang="en">Coming soon</span><span lang="de">Bald verfügbar</span></span><span data-store-live hidden><span lang="en">Download</span><span lang="de">Laden</span></span></b>
+      </span>
+      <button class="nav-menu-btn" type="button" aria-expanded="false" aria-controls="nav-sheet" data-label-en="Menu" data-label-de="Menü" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="nav-sheet" id="nav-sheet">
+    <ul>
+      <li><a href="#features"><span lang="en">Features</span><span lang="de">Funktionen</span></a></li>
+      <li><a href="#pro">Seriel Pro</a></li>
+      <li><a href="/help/"><span lang="en">Help</span><span lang="de">Hilfe</span></a></li>
+      <li><a href="/faq/">FAQ</a></li>
+    </ul>
+    <div class="lang" role="group" aria-label="Language / Sprache">
+      <button type="button" data-lang-set="en" aria-pressed="true">English</button>
+      <button type="button" data-lang-set="de" aria-pressed="false">Deutsch</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================================================== -->
+  <!-- Hero                                                            -->
+  <!-- ============================================================== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <img class="hero-icon rise rise-1" src="/images/app-icon-512.png" alt="" width="76" height="76">
+      <p class="eyebrow rise rise-1"><span lang="en">Seriel for iPhone and iPad</span><span lang="de">Seriel für iPhone und iPad</span></p>
+      <h1 class="display rise rise-2" id="hero-title">
+        <span lang="en">Every show you watch, in one place.</span>
+        <span lang="de">Jede Serie, die du schaust. An einem Ort.</span>
+      </h1>
+      <p class="lead rise rise-3">
+        <span lang="en">Seriel remembers where you left off, tells you when the next episode airs, and keeps everything you&rsquo;ve watched, rated and reviewed. <strong>No account. No ads.</strong></span>
+        <span lang="de">Seriel merkt sich, wo du aufgehört hast, sagt dir, wann die nächste Folge läuft, und bewahrt alles auf, was du gesehen, bewertet und rezensiert hast. <strong>Ohne Konto. Ohne Werbung.</strong></span>
+      </p>
+      <div class="hero-actions rise rise-4">
+        <span class="store" data-store>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="3"/><path d="M10.3 5.3h3.4" stroke-linecap="round"/></svg>
+          <span>
+            <small data-store-soon><span lang="en">Coming soon on the</span><span lang="de">Bald erhältlich im</span></small>
+            <small data-store-live hidden><span lang="en">Download on the</span><span lang="de">Laden im</span></small>
+            <b>App Store</b>
+          </span>
+        </span>
+        <a class="text-link" href="#features"><span lang="en">See what it does</span><span lang="de">Sieh dir an, was sie kann</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <p class="hero-note rise rise-4"><span lang="en">Free to start · iOS 26 or later</span><span lang="de">Kostenlos starten · ab iOS 26</span></p>
+    </div>
+
+    <div class="stage" aria-hidden="false">
+
+      <!-- Schedule -->
+      <div class="phone phone-side phone-left stage-in" role="img" aria-label="Seriel's Schedule: a week strip and today's new episodes with their air times.">
+        <div class="screen">
+          <div class="island"></div>
+          <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 26 12" fill="currentColor"><rect x="0" y="0" width="23" height="12" rx="3.5" fill="none" stroke="currentColor" stroke-opacity=".4"/><rect x="2" y="2" width="17" height="8" rx="2"/><rect x="24" y="4" width="2" height="4" rx="1" opacity=".4"/></svg></span></div>
+          <div class="glass-btn gb-2"><span class="avatar"></span></div>
+          <div class="glass-btn gb-1"><svg><use href="#i-gear"/></svg></div>
+          <div class="app-large-title">Schedule</div>
+          <div class="week" data-week>
+            <div data-day class="is-today"><div class="wd">Wed</div><div class="dn">14</div><div class="dot"></div></div>
+            <div data-day><div class="wd">Thu</div><div class="dn">15</div><div class="dot"></div></div>
+            <div data-day><div class="wd">Fri</div><div class="dn">16</div><div class="dot"></div></div>
+            <div data-day><div class="wd">Sat</div><div class="dn">17</div><div class="dot off"></div></div>
+            <div data-day><div class="wd">Sun</div><div class="dn">18</div><div class="dot"></div></div>
+            <div data-day><div class="wd">Mon</div><div class="dn">19</div><div class="dot"></div></div>
+            <div data-day><div class="wd">Tue</div><div class="dn">20</div><div class="dot"></div></div>
+          </div>
+          <div class="app-day-head"><b>Today</b><span data-date="app-long">Wednesday 14 October</span></div>
+          <div class="feature-card">
+            <svg class="art"><use href="#art-field"/></svg>
+            <div class="fc-text">
+              <div class="fc-kicker">Out now · Premiere · S03E01</div>
+              <div class="fc-title">The Long Field</div>
+              <div class="fc-meta">Atlas</div>
             </div>
-            <a href="/" class="wordmark" aria-label="Seriel">SERIEL</a>
-            <div class="masthead-folio masthead-folio-right">
-                <div class="lang-toggle" role="tablist" aria-label="Language">
-                    <button type="button" class="lang-btn" data-lang-set="en">EN</button>
-                    <button type="button" class="lang-btn" data-lang-set="de">DE</button>
+          </div>
+          <div class="app-rows">
+            <div class="app-row">
+              <div class="still"><svg class="art"><use href="#art-saltmarsh"/></svg></div>
+              <div><div class="code">S02E06</div><div class="t">Saltmarsh</div><div class="m">9:00 pm · Lumen+</div></div>
+              <div></div>
+            </div>
+            <div class="app-row">
+              <div class="still"><svg class="art"><use href="#art-ferry"/></svg></div>
+              <div><div class="code">S01E05</div><div class="t">Night Ferry</div><div class="m">10:15 pm · Halcyon</div></div>
+              <div></div>
+            </div>
+          </div>
+          <div class="tabbar">
+            <div class="tab"><svg><use href="#i-tv"/></svg>Today</div>
+            <div class="tab is-on"><svg><use href="#i-calendar"/></svg>Schedule</div>
+            <div class="tab"><svg><use href="#i-stack"/></svg>Library</div>
+            <div class="tab"><svg><use href="#i-search"/></svg>Search</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Today -->
+      <div class="phone phone-main stage-in" role="img" aria-label="Seriel's Today screen: the next episode of the show you are watching, with a check to mark it watched, and your queue below.">
+        <div class="screen">
+          <div class="island"></div>
+          <div class="statusbar on-dark"><span>9:41</span><span class="sb-icons"><svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 26 12" fill="currentColor"><rect x="0" y="0" width="23" height="12" rx="3.5" fill="none" stroke="currentColor" stroke-opacity=".5"/><rect x="2" y="2" width="17" height="8" rx="2"/><rect x="24" y="4" width="2" height="4" rx="1" opacity=".5"/></svg></span></div>
+          <div class="app-hero">
+            <svg class="art"><use href="#art-saltmarsh"/></svg>
+            <div class="glass-btn on-art gb-2"><span class="avatar"></span></div>
+            <div class="glass-btn on-art gb-1"><svg><use href="#i-gear"/></svg></div>
+            <div class="app-hero-text">
+              <div class="app-title">Saltmarsh</div>
+              <div class="app-hero-meta">
+                <div>
+                  <div class="app-dateline"><span data-date="app-long">Wednesday 14 October</span> · Where you left off</div>
+                  <div class="app-epline">S02E05 · The Low Light · 52 min</div>
                 </div>
-                <button type="button" class="theme-toggle" aria-label="Toggle theme" id="theme-toggle">
-                    <span class="theme-toggle-label" data-when="ink" data-lang="en">PAPER</span>
-                    <span class="theme-toggle-label" data-when="ink" data-lang="de">PAPIER</span>
-                    <span class="theme-toggle-label" data-when="paper" data-lang="en">INK</span>
-                    <span class="theme-toggle-label" data-when="paper" data-lang="de">TINTE</span>
+                <div class="check-disc"><svg><use href="#i-check"/></svg></div>
+              </div>
+            </div>
+          </div>
+          <div class="app-section-title">Your queue</div>
+          <div class="app-rail">
+            <div class="queue-card">
+              <svg class="art"><use href="#art-kestrel"/></svg>
+              <div class="check-disc"><svg><use href="#i-check"/></svg></div>
+              <div class="qc-text"><div class="qc-title">Kestrel Road</div><div class="qc-meta">S01E07 · 4 left</div></div>
+            </div>
+            <div class="queue-card">
+              <svg class="art"><use href="#art-city"/></svg>
+              <div class="qc-text"><div class="qc-title">Twelve Floors</div><div class="qc-meta">S02E08 · 6 left</div></div>
+            </div>
+          </div>
+          <div class="tabbar">
+            <div class="tab is-on"><svg><use href="#i-tv"/></svg>Today</div>
+            <div class="tab"><svg><use href="#i-calendar"/></svg>Schedule</div>
+            <div class="tab"><svg><use href="#i-stack"/></svg>Library</div>
+            <div class="tab"><svg><use href="#i-search"/></svg>Search</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Show page -->
+      <div class="phone phone-side phone-right stage-in" role="img" aria-label="A show page in Seriel: full-bleed artwork with the next episode and its check, then the synopsis.">
+        <div class="screen">
+          <div class="island"></div>
+          <div class="statusbar on-dark"><span>9:41</span><span class="sb-icons"><svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 26 12" fill="currentColor"><rect x="0" y="0" width="23" height="12" rx="3.5" fill="none" stroke="currentColor" stroke-opacity=".5"/><rect x="2" y="2" width="17" height="8" rx="2"/><rect x="24" y="4" width="2" height="4" rx="1" opacity=".5"/></svg></span></div>
+          <div class="app-hero app-show-hero">
+            <svg class="art"><use href="#art-ferry"/></svg>
+            <div class="glass-btn on-art gb-l"><svg><use href="#i-chevron-left"/></svg></div>
+            <div class="glass-btn on-art gb-1"><svg><use href="#i-bookmark"/></svg></div>
+            <div class="app-hero-text">
+              <div class="app-title">Night Ferry</div>
+              <div class="app-hero-meta">
+                <div>
+                  <div class="app-upnext">Up next</div>
+                  <div class="app-epline">S01E04 · Harbour Watch · 48 min</div>
+                </div>
+                <div class="check-disc"><svg><use href="#i-check"/></svg></div>
+              </div>
+            </div>
+          </div>
+          <div class="app-about">
+            <b>About</b>
+            <p>The same crossing, every night. When a passenger goes missing between two ports, the night crew start keeping a closer watch on each other.</p>
+          </div>
+          <div class="tabbar">
+            <div class="tab"><svg><use href="#i-tv"/></svg>Today</div>
+            <div class="tab"><svg><use href="#i-calendar"/></svg>Schedule</div>
+            <div class="tab is-on"><svg><use href="#i-stack"/></svg>Library</div>
+            <div class="tab"><svg><use href="#i-search"/></svg>Search</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- Different by design                                             -->
+  <!-- ============================================================== -->
+  <section class="section" id="why" aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <p class="eyebrow"><span lang="en">Why Seriel</span><span lang="de">Warum Seriel</span></p>
+        <h2 class="h2" id="why-title"><span lang="en">Different, by design.</span><span lang="de">Anders. Mit Absicht.</span></h2>
+        <p class="lead">
+          <span lang="en">A TV tracker should keep your place and then get out of the way. Seriel is a calm, private home for the shows in your life.</span>
+          <span lang="de">Ein Serien-Tracker sollte sich deinen Stand merken und dir sonst nicht im Weg stehen. Seriel ist ein ruhiges, privates Zuhause für die Serien in deinem Leben.</span>
+        </p>
+      </div>
+      <ul class="pillars">
+        <li class="pillar reveal" style="--d:0">
+          <div class="pillar-icon"><svg aria-hidden="true"><use href="#i-iphone"/></svg></div>
+          <h3><span lang="en">No account needed.</span><span lang="de">Kein Konto nötig.</span></h3>
+          <p><span lang="en">Your library lives on your iPhone from the first tap. Start fresh, or bring your Trakt history along.</span><span lang="de">Deine Bibliothek liegt ab dem ersten Tipp auf deinem iPhone. Fang neu an oder bring deinen Trakt-Verlauf mit.</span></p>
+        </li>
+        <li class="pillar reveal" style="--d:1">
+          <div class="pillar-icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></div>
+          <h3><span lang="en">Nobody watching you.</span><span lang="de">Niemand schaut mit.</span></h3>
+          <p><span lang="en">No ads, no analytics, no tracking. Seriel doesn&rsquo;t even have servers of its own.</span><span lang="de">Keine Werbung, keine Analyse, kein Tracking. Seriel hat nicht einmal eigene Server.</span></p>
+        </li>
+        <li class="pillar reveal" style="--d:2">
+          <div class="pillar-icon"><svg aria-hidden="true"><use href="#i-clock"/></svg></div>
+          <h3><span lang="en">Built around air time.</span><span lang="de">Gebaut um die Sendezeit.</span></h3>
+          <p><span lang="en">Today, Schedule and your alerts follow when episodes actually air, in your time zone.</span><span lang="de">Heute, Programm und deine Mitteilungen richten sich danach, wann Folgen wirklich erscheinen, in deiner Zeitzone.</span></p>
+        </li>
+        <li class="pillar reveal" style="--d:3">
+          <div class="pillar-icon"><svg aria-hidden="true"><use href="#i-hand"/></svg></div>
+          <h3><span lang="en">Careful with your history.</span><span lang="de">Sorgsam mit deinem Verlauf.</span></h3>
+          <p><span lang="en">Connect Trakt and Seriel shows you every difference first. Nothing changes until you choose.</span><span lang="de">Verbindest du Trakt, zeigt Seriel dir zuerst jeden Unterschied. Nichts ändert sich, bevor du entscheidest.</span></p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- Today                                                           -->
+  <!-- ============================================================== -->
+  <section class="section section-alt" id="features" aria-labelledby="today-title">
+    <div class="wrap">
+      <div class="chapter-head reveal">
+        <div>
+          <p class="eyebrow"><span lang="en">Today</span><span lang="de">Heute</span></p>
+          <h2 class="h2" id="today-title"><span lang="en">Pick up right where you left off.</span><span lang="de">Weiter, genau da, wo du aufgehört hast.</span></h2>
+        </div>
+        <p class="lead">
+          <span lang="en">Today opens on the next episode of the show you&rsquo;re in the middle of, with the rest of your queue lined up behind it. Watched it? One tap on the check, then say how it was.</span>
+          <span lang="de">Heute öffnet mit der nächsten Folge der Serie, in der du gerade steckst, dahinter wartet der Rest deiner Liste. Gesehen? Ein Tipp auf den Haken, dann sag, wie sie war.</span>
+        </p>
+      </div>
+
+      <div class="panel reveal-scale">
+        <div class="today-panel">
+          <div>
+            <div class="hero-card">
+              <svg class="art" aria-hidden="true"><use href="#art-saltmarsh"/></svg>
+              <div class="hero-card-text">
+                <div>
+                  <div class="hc-title">Saltmarsh</div>
+                  <div class="hc-dateline"><span data-date="app-long">Wednesday 14 October</span> · Where you left off</div>
+                  <div class="hc-ep">S02E05 · The Low Light · 52 min</div>
+                </div>
+                <button class="watch-check" type="button" aria-pressed="false" data-demo="check"
+                        data-label-en="Mark Saltmarsh S02E05 watched" data-label-de="Saltmarsh S02E05 als gesehen markieren" aria-label="Mark Saltmarsh S02E05 watched">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.6 4.6L19.2 7.5"/></svg>
                 </button>
+              </div>
             </div>
+            <p class="try-hint"><span lang="en">Try it: tap the check.</span><span lang="de">Probier es aus: Tippe auf den Haken.</span></p>
+            <div class="rating-card" data-demo="rating" aria-hidden="true">
+              <div><b>How was it?</b><span>Saltmarsh · S02E05</span></div>
+              <div class="stars" role="group" data-label-en="Rate the episode" data-label-de="Folge bewerten" aria-label="Rate the episode">
+                <button type="button" aria-pressed="false" aria-label="1 star"><svg aria-hidden="true"><use href="#i-star"/></svg></button>
+                <button type="button" aria-pressed="false" aria-label="2 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></button>
+                <button type="button" aria-pressed="false" aria-label="3 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></button>
+                <button type="button" aria-pressed="false" aria-label="4 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></button>
+                <button type="button" aria-pressed="false" aria-label="5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <div class="queue-col" aria-hidden="true">
+            <div class="label">Your queue</div>
+            <div class="qcard">
+              <svg class="art"><use href="#art-kestrel"/></svg>
+              <div class="mini-check"><svg><use href="#i-check"/></svg></div>
+              <div class="qtext"><div class="qtitle">Kestrel Road</div><div class="qmeta">S01E07 · 4 left</div></div>
+            </div>
+            <div class="qcard">
+              <svg class="art"><use href="#art-city"/></svg>
+              <div class="mini-check"><svg><use href="#i-check"/></svg></div>
+              <div class="qtext"><div class="qtitle">Twelve Floors</div><div class="qmeta">S02E08 · 6 left</div></div>
+            </div>
+          </div>
         </div>
-        <div class="hairline"></div>
-    </header>
+      </div>
 
-    <main id="main">
+      <ul class="points">
+        <li class="reveal" style="--d:0"><svg aria-hidden="true"><use href="#i-play-circle"/></svg><b><span lang="en">One tap to mark it</span><span lang="de">Ein Tipp zum Abhaken</span></b><span lang="en">The same check everywhere: on Today, on your queue and on every episode.</span><span lang="de">Derselbe Haken überall: auf Heute, in deiner Liste und bei jeder Folge.</span></li>
+        <li class="reveal" style="--d:1"><svg aria-hidden="true"><use href="#i-star"/></svg><b><span lang="en">Rate while it&rsquo;s fresh</span><span lang="de">Bewerten, solange es frisch ist</span></b><span lang="en">Half stars included. Your ratings build your record and your Hall of Fame.</span><span lang="de">Halbe Sterne inklusive. Deine Bewertungen ergeben deine Bilanz und deine Hall of Fame.</span></li>
+        <li class="reveal" style="--d:2"><svg aria-hidden="true"><use href="#i-history"/></svg><b><span lang="en">On this day</span><span lang="de">An diesem Tag</span></b><span lang="en">Years later, Today remembers the day you finished a show.</span><span lang="de">Jahre später erinnert dich Heute an den Tag, an dem du eine Serie beendet hast.</span></li>
+      </ul>
+    </div>
+  </section>
 
-        <!-- ========================================================== -->
-        <!-- COVER                                                       -->
-        <!-- ========================================================== -->
-        <section class="cover" aria-labelledby="cover-headline">
-            <div class="cover-inner">
-                <img class="cover-icon" src="images/app-icon-512.png"
-                     alt="Seriel app icon" width="512" height="512">
-                <p class="eyebrow eyebrow-accent" data-lang="en">A PERSONAL TV BROADSHEET</p>
-                <p class="eyebrow eyebrow-accent" data-lang="de">EIN PERS&Ouml;NLICHES TV-MAGAZIN</p>
-
-                <h1 id="cover-headline" class="cover-headline" data-lang="en">Television<br>is a habit.</h1>
-                <h1 class="cover-headline" data-lang="de">Fernsehen<br>ist Gewohnheit.</h1>
-
-                <p class="cover-deck" data-lang="en">
-                    Seriel keeps the record &mdash; what you watched,<br class="br-md">
-                    what&rsquo;s coming, and what you thought of it all.
-                </p>
-                <p class="cover-deck" data-lang="de">
-                    Seriel f&uuml;hrt das Protokoll &mdash; was du gesehen hast,<br class="br-md">
-                    was kommt, und was du davon hieltest.
-                </p>
-
-                <div class="cover-cta">
-                    <span class="capsule capsule-static">
-                        <span data-lang="en">Coming soon on the App Store</span>
-                        <span data-lang="de">Bald im App Store</span>
-                    </span>
-                    <p class="cover-meta">
-                        <span class="mono">EST. 2026</span><span class="dot">&middot;</span>
-                        <span class="mono" data-lang="en">FOR&nbsp;iPHONE&nbsp;&amp;&nbsp;iPAD</span>
-                        <span class="mono" data-lang="de">F&Uuml;R&nbsp;iPHONE&nbsp;&amp;&nbsp;iPAD</span>
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========================================================== -->
-        <!-- SPREAD 01 — TODAY                                           -->
-        <!-- ========================================================== -->
-        <section class="spread spread-today" id="today" aria-labelledby="today-h">
-            <div class="page">
-                <div class="spread-folio">
-                    <span class="folio-label" data-lang="en">P. 02 &middot; TODAY</span>
-                    <span class="folio-label" data-lang="de">S. 02 &middot; HEUTE</span>
-                    <span class="folio-rule" aria-hidden="true"></span>
-                </div>
-
-                <div class="spread-grid">
-                    <header class="spread-head">
-                        <p class="eyebrow eyebrow-accent" data-lang="en">YOUR QUEUE</p>
-                        <p class="eyebrow eyebrow-accent" data-lang="de">WEITERSCHAUEN</p>
-
-                        <h2 class="spread-title" id="today-h" data-lang="en">Pick up where<br>you left off.</h2>
-                        <h2 class="spread-title" data-lang="de">Weiter, wo du<br>aufgeh&ouml;rt hast.</h2>
-
-                        <p class="spread-deck" data-lang="en">A daily front page: the show you&rsquo;re mid-watch leads, everything else queues behind it.</p>
-                        <p class="spread-deck" data-lang="de">Eine t&auml;gliche Titelseite: die Serie, in der du gerade steckst, f&uuml;hrt &mdash; alles andere reiht sich dahinter.</p>
-                    </header>
-
-                    <figure class="spread-stage spread-stage-plate">
-                        <div class="plate">
-                            <!-- Device duo: iPad is the base plate, iPhone tucked over its
-                                 bottom-left corner. iPad first in the DOM so it sits behind. -->
-                            <div class="plate-pair">
-                                <div class="device device-ipad" role="img"
-                                     aria-label="Seriel — the Today screen on iPad">
-                                    <div class="device-screen">
-                                        <!-- REAL SCREENSHOT (light, iPad — coming later): replace .device-placeholder with —
-                                             <img class="device-shot" src="images/screenshots/today-ipad-light.png" alt="Seriel Today screen on iPad" loading="lazy"> -->
-                                        <div class="device-placeholder">
-                                            <span class="device-ph-name" data-lang="en">Today</span>
-                                            <span class="device-ph-name" data-lang="de">Heute</span>
-                                            <span class="device-ph-label">iPad</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="device device-iphone" role="img"
-                                     aria-label="Seriel — the Today screen on iPhone">
-                                    <div class="device-screen">
-                                        <!-- REAL SCREENSHOT (light): replace the .device-placeholder below with —
-                                             <img class="device-shot" src="images/screenshots/today-iphone-light.png" alt="Seriel Today screen on iPhone" loading="lazy"> -->
-                                        <div class="device-placeholder">
-                                            <span class="device-ph-name" data-lang="en">Today</span>
-                                            <span class="device-ph-name" data-lang="de">Heute</span>
-                                            <span class="device-ph-label">iPhone</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <figcaption class="plate-caption">
-                                <span data-lang="en">Plate 01 <span class="dot">&middot;</span> Today <span class="dot">&middot;</span> iPhone &amp; iPad</span>
-                                <span data-lang="de">Tafel 01 <span class="dot">&middot;</span> Heute <span class="dot">&middot;</span> iPhone &amp; iPad</span>
-                            </figcaption>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========================================================== -->
-        <!-- SPREAD 02 — SCHEDULE                                        -->
-        <!-- ========================================================== -->
-        <section class="spread spread-schedule" id="schedule" aria-labelledby="schedule-h">
-            <div class="page">
-                <div class="spread-folio">
-                    <span class="folio-label" data-lang="en">P. 03 &middot; SCHEDULE</span>
-                    <span class="folio-label" data-lang="de">S. 03 &middot; PROGRAMM</span>
-                    <span class="folio-rule" aria-hidden="true"></span>
-                </div>
-
-                <div class="spread-grid spread-grid-reverse">
-                    <header class="spread-head">
-                        <p class="eyebrow eyebrow-accent" data-lang="en">WEEK AHEAD</p>
-                        <p class="eyebrow eyebrow-accent" data-lang="de">DIE WOCHE</p>
-
-                        <h2 class="spread-title" id="schedule-h" data-lang="en">Always know<br>what&rsquo;s airing.</h2>
-                        <h2 class="spread-title" data-lang="de">Immer wissen,<br>was l&auml;uft.</h2>
-
-                        <p class="spread-deck" data-lang="en">A dated guide to the week ahead &mdash; a heads-up before each episode lands, never after.</p>
-                        <p class="spread-deck" data-lang="de">Ein datierter Wochen&uuml;berblick &mdash; eine Vorwarnung, bevor jede Folge da ist, nicht hinterher.</p>
-                    </header>
-
-                    <figure class="spread-stage spread-stage-plate">
-                        <div class="plate">
-                            <div class="device device-ipad" role="img"
-                                 aria-label="Seriel — the Schedule screen on iPad">
-                                <div class="device-screen">
-                                    <!-- REAL SCREENSHOT (light, iPad — coming later): replace .device-placeholder with —
-                                         <img class="device-shot" src="images/screenshots/schedule-ipad-light.png" alt="Seriel Schedule screen on iPad" loading="lazy"> -->
-                                    <div class="device-placeholder">
-                                        <span class="device-ph-name" data-lang="en">Schedule</span>
-                                        <span class="device-ph-name" data-lang="de">Programm</span>
-                                        <span class="device-ph-label">iPad</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <figcaption class="plate-caption">
-                                <span data-lang="en">Plate 02 <span class="dot">&middot;</span> Schedule <span class="dot">&middot;</span> iPad</span>
-                                <span data-lang="de">Tafel 02 <span class="dot">&middot;</span> Programm <span class="dot">&middot;</span> iPad</span>
-                            </figcaption>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========================================================== -->
-        <!-- SPREAD 03 — THE FILE                                        -->
-        <!-- ========================================================== -->
-        <section class="spread spread-file" id="file" aria-labelledby="file-h">
-            <div class="page">
-                <div class="spread-folio">
-                    <span class="folio-label" data-lang="en">P. 04 &middot; THE FILE</span>
-                    <span class="folio-label" data-lang="de">S. 04 &middot; DAS DOSSIER</span>
-                    <span class="folio-rule" aria-hidden="true"></span>
-                </div>
-
-                <div class="spread-grid">
-                    <header class="spread-head">
-                        <p class="eyebrow eyebrow-accent" data-lang="en">EVERY SHOW, ON RECORD</p>
-                        <p class="eyebrow eyebrow-accent" data-lang="de">JEDE SERIE, AKTENKUNDIG</p>
-
-                        <h2 class="spread-title" id="file-h" data-lang="en">Every detail, set<br>like an editorial.</h2>
-                        <h2 class="spread-title" data-lang="de">Jedes Detail,<br>wie eine Reportage.</h2>
-
-                        <p class="spread-deck" data-lang="en">One long page per show &mdash; cast, seasons, episodes, and everything you said about it. Kept.</p>
-                        <p class="spread-deck" data-lang="de">Eine lange Seite pro Serie &mdash; Cast, Staffeln, Folgen und alles, was du dazu gesagt hast. Gespeichert.</p>
-                    </header>
-
-                    <figure class="spread-stage spread-stage-plate">
-                        <div class="plate">
-                            <!-- Device duo: iPad is the base plate, iPhone tucked over its
-                                 bottom-left corner. iPad first in the DOM so it sits behind. -->
-                            <div class="plate-pair">
-                                <div class="device device-ipad" role="img"
-                                     aria-label="Seriel — a show's File on iPad">
-                                    <div class="device-screen">
-                                        <!-- REAL SCREENSHOT (light, iPad — coming later): replace .device-placeholder with —
-                                             <img class="device-shot" src="images/screenshots/file-ipad-light.png" alt="Seriel show detail on iPad" loading="lazy"> -->
-                                        <div class="device-placeholder">
-                                            <span class="device-ph-name" data-lang="en">The File</span>
-                                            <span class="device-ph-name" data-lang="de">Dossier</span>
-                                            <span class="device-ph-label">iPad</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="device device-iphone" role="img"
-                                     aria-label="Seriel — a show's File on iPhone">
-                                    <div class="device-screen">
-                                        <!-- REAL SCREENSHOT (light): replace .device-placeholder with —
-                                             <img class="device-shot" src="images/screenshots/file-iphone-light.png" alt="Seriel show detail on iPhone" loading="lazy"> -->
-                                        <div class="device-placeholder">
-                                            <span class="device-ph-name" data-lang="en">The File</span>
-                                            <span class="device-ph-name" data-lang="de">Dossier</span>
-                                            <span class="device-ph-label">iPhone</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <figcaption class="plate-caption">
-                                <span data-lang="en">Plate 03 <span class="dot">&middot;</span> The File <span class="dot">&middot;</span> iPhone &amp; iPad</span>
-                                <span data-lang="de">Tafel 03 <span class="dot">&middot;</span> Dossier <span class="dot">&middot;</span> iPhone &amp; iPad</span>
-                            </figcaption>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========================================================== -->
-        <!-- SPREAD 04 — LIBRARY                                 -->
-        <!-- ========================================================== -->
-        <section class="spread spread-library" id="library" aria-labelledby="library-h">
-            <div class="page">
-                <div class="spread-folio">
-                    <span class="folio-label" data-lang="en">P. 05 &middot; LIBRARY</span>
-                    <span class="folio-label" data-lang="de">S. 05 &middot; BIBLIOTHEK</span>
-                    <span class="folio-rule" aria-hidden="true"></span>
-                </div>
-
-                <div class="spread-grid spread-grid-reverse">
-                    <header class="spread-head">
-                        <p class="eyebrow eyebrow-accent" data-lang="en">YOUR COLLECTION</p>
-                        <p class="eyebrow eyebrow-accent" data-lang="de">DEINE SAMMLUNG</p>
-
-                        <h2 class="spread-title" id="library-h" data-lang="en">Everything you track,<br>filed by where you are.</h2>
-                        <h2 class="spread-title" data-lang="de">Alles, was du verfolgst,<br>nach deinem Stand.</h2>
-
-                        <p class="spread-deck" data-lang="en">A poster wall of everything you follow &mdash; filed by where you are, from in-progress to finished.</p>
-                        <p class="spread-deck" data-lang="de">Eine Posterwand von allem, dem du folgst &mdash; sortiert nach deinem Stand, von in Arbeit bis beendet.</p>
-                    </header>
-
-                    <figure class="spread-stage spread-stage-plate">
-                        <div class="plate">
-                            <div class="device device-iphone" role="img"
-                                 aria-label="Seriel — the Library screen on iPhone">
-                                <div class="device-screen">
-                                    <!-- REAL SCREENSHOT (light): replace .device-placeholder with —
-                                         <img class="device-shot" src="images/screenshots/library-iphone-light.png" alt="Seriel Library screen on iPhone" loading="lazy"> -->
-                                    <div class="device-placeholder">
-                                        <span class="device-ph-name" data-lang="en">Library</span>
-                                        <span class="device-ph-name" data-lang="de">Bibliothek</span>
-                                        <span class="device-ph-label" data-lang="en">iPhone screenshot</span>
-                                        <span class="device-ph-label" data-lang="de">iPhone-Screenshot</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <figcaption class="plate-caption">
-                                <span data-lang="en">Plate 04 <span class="dot">&middot;</span> Library <span class="dot">&middot;</span> iPhone</span>
-                                <span data-lang="de">Tafel 04 <span class="dot">&middot;</span> Bibliothek <span class="dot">&middot;</span> iPhone</span>
-                            </figcaption>
-                        </div>
-                    </figure>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========================================================== -->
-        <!-- ABOUT — Why Trakt + Hamburg                                 -->
-        <!-- ========================================================== -->
-        <section class="about" id="about" aria-labelledby="about-h">
-            <div class="page">
-                <div class="about-folio">
-                    <span class="folio-label" data-lang="en">P. 06 &middot; ABOUT THIS PAPER</span>
-                    <span class="folio-label" data-lang="de">S. 06 &middot; &Uuml;BER DIESES BLATT</span>
-                    <span class="folio-rule" aria-hidden="true"></span>
-                </div>
-
-                <header class="about-lead">
-                    <h2 class="about-title" id="about-h" data-lang="en">Independent.<br>Made in Hamburg.<br>Built around <em>Trakt</em>.</h2>
-                    <h2 class="about-title" data-lang="de">Unabh&auml;ngig.<br>Gemacht in Hamburg.<br>Gebaut auf <em>Trakt</em>.</h2>
-                </header>
-
-                <div class="about-blocks">
-                    <article class="about-block">
-                        <p class="eyebrow eyebrow-accent" data-lang="en">WHY TRAKT?</p>
-                        <p class="eyebrow eyebrow-accent" data-lang="de">WARUM TRAKT?</p>
-
-                        <h3 class="about-block-title" data-lang="en">Your library, somewhere it won&rsquo;t get lost.</h3>
-                        <h3 class="about-block-title" data-lang="de">Deine Bibliothek, an einem Ort, an dem sie nicht verloren geht.</h3>
-
-                        <p class="about-block-body" data-lang="en">Seriel doesn&rsquo;t run its own servers. It plugs into <a href="https://trakt.tv" target="_blank" rel="noopener">Trakt</a> &mdash; a community service that&rsquo;s tracked TV for over a decade. Your shows, ratings and reviews live on Trakt, sync to every device, and stay yours if you ever switch apps. A free Trakt account is all you need to sign in.</p>
-                        <p class="about-block-body" data-lang="de">Seriel hat keine eigenen Server. Es l&auml;uft auf <a href="https://trakt.tv" target="_blank" rel="noopener">Trakt</a> &mdash; einem unabh&auml;ngigen Dienst, der seit &uuml;ber zehn Jahren Serien f&uuml;r die Community verfolgt. Deine Serien, Bewertungen und Notizen liegen bei Trakt, synchronisieren auf jedem Ger&auml;t und bleiben dir erhalten, falls du die App jemals wechselst. Ein kostenloses Trakt-Konto reicht, um dich anzumelden.</p>
-                    </article>
-
-                    <article class="about-block">
-                        <p class="eyebrow eyebrow-accent" data-lang="en">MADE IN HAMBURG</p>
-                        <p class="eyebrow eyebrow-accent" data-lang="de">IN HAMBURG GEBAUT</p>
-
-                        <h3 class="about-block-title" data-lang="en">By a fan. For other fans.</h3>
-                        <h3 class="about-block-title" data-lang="de">Von einem Fan. F&uuml;r andere Fans.</h3>
-
-                        <p class="about-block-body" data-lang="en">Seriel is independent. One developer, in Hamburg, on weekends and late nights &mdash; built because nothing on the App Store remembered TV the way real fans remember it: by season, by note, by the date you finished it. No team, no tracking, no ads. Just an app that respects what you watched.</p>
-                        <p class="about-block-body" data-lang="de">Seriel ist unabh&auml;ngig. Ein Entwickler, in Hamburg, an Wochenenden und in sp&auml;ten N&auml;chten &mdash; entstanden, weil keine andere App das Fernsehen so erinnert hat, wie echte Fans erinnern: nach Staffel, nach Notiz, nach dem Tag, an dem du es beendet hast. Kein Team, kein Tracking, keine Werbung. Eine App, die respektiert, was du gesehen hast.</p>
-                    </article>
-                </div>
-
-                <div class="about-attribution">
-                    <div class="hairline"></div>
-                    <p class="attribution-line">
-                        <span class="mono">DATA &middot;</span>
-                        <a href="https://trakt.tv" target="_blank" rel="noopener">Trakt.tv</a>
-                        <span class="dim">&amp;</span>
-                        <a href="https://www.themoviedb.org" target="_blank" rel="noopener">The Movie Database</a>
-                    </p>
-                    <p class="attribution-note">This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- ============================================================== -->
-    <!-- FOOTER                                                          -->
-    <!-- ============================================================== -->
-    <footer class="footer" role="contentinfo">
-        <div class="page">
-            <div class="footer-inner">
-                <div class="footer-mast">
-                    <span class="wordmark wordmark-sm">SERIEL</span>
-                    <span class="folio-label" id="footer-issue">VOL. 00 · ISSUE 00</span>
-                </div>
-                <div class="hairline"></div>
-                <nav class="footer-links" aria-label="Legal">
-                    <a href="/impressum">Impressum</a>
-                    <a href="/privacy"><span data-lang="en">Privacy</span><span data-lang="de">Datenschutz</span></a>
-                    <a href="/terms"><span data-lang="en">Terms</span><span data-lang="de">AGB</span></a>
-                    <a href="/support">Support</a>
-                    <a href="mailto:hello@seriel.app"><span data-lang="en">Contact</span><span data-lang="de">Kontakt</span></a>
-                </nav>
-                <p class="footer-copy">&copy; 2026 Seriel. Hamburg.</p>
-                <p class="footer-disclaimer" data-lang="en">
-                    Seriel is not affiliated with, endorsed by, or sponsored by Apple Inc., Trakt.tv, or The Movie Database (TMDB). Apple, the Apple logo, iPhone, and App Store are trademarks of Apple Inc. Trakt is a trademark of Trakt.tv. All other trademarks are the property of their respective owners.
-                </p>
-                <p class="footer-disclaimer" data-lang="de">
-                    Seriel steht in keiner Verbindung zu Apple Inc., Trakt.tv oder The Movie Database (TMDB) und wird von diesen weder unterst&uuml;tzt noch gesponsert. Apple, das Apple-Logo, iPhone und App Store sind Marken von Apple Inc. Trakt ist eine Marke von Trakt.tv. Alle weiteren Marken sind Eigentum ihrer jeweiligen Inhaber.
-                </p>
-            </div>
+  <!-- ============================================================== -->
+  <!-- Schedule + alerts                                               -->
+  <!-- ============================================================== -->
+  <section class="section" id="schedule" aria-labelledby="schedule-title">
+    <div class="wrap">
+      <div class="chapter-head reveal">
+        <div>
+          <p class="eyebrow"><span lang="en">Schedule and alerts</span><span lang="de">Programm und Mitteilungen</span></p>
+          <h2 class="h2" id="schedule-title"><span lang="en">Know what&rsquo;s on before it&rsquo;s on.</span><span lang="de">Wissen, was läuft, bevor es läuft.</span></h2>
         </div>
-    </footer>
+        <p class="lead">
+          <span lang="en">Your week at a glance, day by day, with air times in your time zone and where each show is on. Turn on alerts and Seriel tells you when a new episode is out: once, at its air time.</span>
+          <span lang="de">Deine Woche auf einen Blick, Tag für Tag, mit Sendezeiten in deiner Zeitzone und dem Sender oder Dienst. Mit Mitteilungen sagt dir Seriel, wenn eine neue Folge da ist: einmal, zur Sendezeit.</span>
+        </p>
+      </div>
 
-    <script src="js/main.js"></script>
+      <div class="panel reveal-scale" data-observe>
+        <div class="schedule-panel">
+          <div class="guide" aria-hidden="true">
+            <div class="guide-card">
+              <div class="guide-week" data-week>
+                <div data-day class="is-today"><span class="wd">Wed</span><span class="dn">14</span><span class="dot"></span></div>
+                <div data-day><span class="wd">Thu</span><span class="dn">15</span><span class="dot"></span></div>
+                <div data-day><span class="wd">Fri</span><span class="dn">16</span><span class="dot"></span></div>
+                <div data-day><span class="wd">Sat</span><span class="dn">17</span><span class="dot off"></span></div>
+                <div data-day><span class="wd">Sun</span><span class="dn">18</span><span class="dot"></span></div>
+                <div data-day><span class="wd">Mon</span><span class="dn">19</span><span class="dot off"></span></div>
+                <div data-day><span class="wd">Tue</span><span class="dn">20</span><span class="dot"></span></div>
+              </div>
+              <div class="guide-day"><b>Today</b><span data-date="app-long">Wednesday 14 October</span></div>
+              <div class="row">
+                <div class="still"><svg class="art"><use href="#art-saltmarsh"/></svg></div>
+                <div><div class="code">S02E06</div><div class="t">Saltmarsh</div><div class="m">Lumen+ · 9:00 pm</div></div>
+                <div class="when">Tonight</div>
+              </div>
+              <div class="row">
+                <div class="still"><svg class="art"><use href="#art-ferry"/></svg></div>
+                <div><div class="code">S01E05</div><div class="t">Night Ferry</div><div class="m">Halcyon · 10:15 pm</div></div>
+                <div class="when">Tonight</div>
+              </div>
+              <div class="guide-day"><b>Upcoming premieres</b></div>
+              <div class="row">
+                <div class="still"><svg class="art"><use href="#art-meridian"/></svg></div>
+                <div><div class="code">Season 4 premiere</div><div class="t">Meridian</div><div class="m">Orbit · Fri 3:00 am</div></div>
+                <div class="count"><b>9</b><span>days</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="lockscreen" role="img" data-label-en="An iPhone lock screen with three Seriel notifications: Now Airing, Coming Up and Renewed." data-label-de="Ein iPhone-Sperrbildschirm mit drei Mitteilungen von Seriel: Now Airing, Coming Up und Renewed." aria-label="An iPhone lock screen with three Seriel notifications: Now Airing, Coming Up and Renewed.">
+            <svg class="art" aria-hidden="true"><use href="#art-ferry"/></svg>
+            <div class="ls-date" data-date="lock">Wednesday 14 October</div>
+            <div class="ls-time">21:00</div>
+            <div class="notes">
+              <div class="note"><img src="/images/app-icon-192.png" alt=""><div><b>Now Airing</b><p>Saltmarsh S02E06, &ldquo;Undertow&rdquo;</p></div><time>now</time></div>
+              <div class="note"><img src="/images/app-icon-192.png" alt=""><div><b>Coming Up</b><p>Meridian returns for Season 4 on Friday</p></div><time>2h ago</time></div>
+              <div class="note"><img src="/images/app-icon-192.png" alt=""><div><b>Renewed</b><p>Night Ferry is coming back</p></div><time>Mon</time></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ul class="alert-kinds reveal">
+        <li><svg aria-hidden="true"><use href="#i-play-circle"/></svg><span lang="en">New episodes</span><span lang="de">Neue Folgen</span></li>
+        <li><svg aria-hidden="true"><use href="#i-calendar-plus"/></svg><span lang="en">New seasons</span><span lang="de">Neue Staffeln</span></li>
+        <li><svg aria-hidden="true"><use href="#i-renew"/></svg><span lang="en">Renewals</span><span lang="de">Verlängerungen</span></li>
+        <li><svg aria-hidden="true"><use href="#i-flag"/></svg><span lang="en">Finales and cancellations</span><span lang="de">Finale und Absetzungen</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- Library                                                         -->
+  <!-- ============================================================== -->
+  <section class="section section-alt" id="library" aria-labelledby="library-title">
+    <div class="wrap">
+      <div class="chapter-head reveal">
+        <div>
+          <p class="eyebrow"><span lang="en">Library</span><span lang="de">Bibliothek</span></p>
+          <h2 class="h2" id="library-title"><span lang="en">Everything you&rsquo;ve watched, kept beautifully.</span><span lang="de">Alles, was du gesehen hast. Schön aufbewahrt.</span></h2>
+        </div>
+        <p class="lead">
+          <span lang="en">In progress, waiting for a new season, saved for later, finished. Every show sits where you are with it, and every watch keeps its date, rewatches included.</span>
+          <span lang="de">Angefangen, wartend auf eine neue Staffel, für später gemerkt, beendet. Jede Serie steht dort, wo du mit ihr bist, und jedes Anschauen behält sein Datum, auch beim zweiten Mal.</span>
+        </p>
+      </div>
+
+      <div class="panel reveal-scale">
+        <div class="library-panel">
+          <div class="pills" role="tablist" data-label-en="Library filters" data-label-de="Bibliotheksfilter" aria-label="Library filters">
+            <button class="pill" type="button" role="tab" aria-selected="true" aria-controls="shelf-progress" id="tab-progress" data-shelf-tab>In progress <small>12</small></button>
+            <button class="pill" type="button" role="tab" aria-selected="false" aria-controls="shelf-waiting" id="tab-waiting" data-shelf-tab tabindex="-1">Waiting <small>8</small></button>
+            <button class="pill" type="button" role="tab" aria-selected="false" aria-controls="shelf-watchlist" id="tab-watchlist" data-shelf-tab tabindex="-1">Watchlist <small>23</small></button>
+            <button class="pill" type="button" role="tab" aria-selected="false" aria-controls="shelf-finished" id="tab-finished" data-shelf-tab tabindex="-1">Finished <small>64</small></button>
+          </div>
+
+          <div class="shelf" id="shelf-progress" role="tabpanel" aria-labelledby="tab-progress">
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-saltmarsh"/></svg><span class="poster-title">Saltmarsh</span></div><div class="meter"><i style="width:62%"></i></div><div class="tt">Saltmarsh</div><div class="tm">3 left</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-kestrel"/></svg><span class="poster-title">Kestrel Road</span></div><div class="meter"><i style="width:58%"></i></div><div class="tt">Kestrel Road</div><div class="tm">4 left</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-city"/></svg><span class="poster-title">Twelve Floors</span></div><div class="meter"><i style="width:40%"></i></div><div class="tt">Twelve Floors</div><div class="tm">6 left</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-ferry"/></svg><span class="poster-title">Night Ferry</span></div><div class="meter"><i style="width:30%"></i></div><div class="tt">Night Ferry</div><div class="tm">5 left</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-field"/></svg><span class="poster-title">The Long Field</span></div><div class="meter"><i style="width:8%"></i></div><div class="tt">The Long Field</div><div class="tm">Season 3 is out</div></div>
+          </div>
+          <div class="shelf" id="shelf-waiting" role="tabpanel" aria-labelledby="tab-waiting" hidden>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-meridian"/></svg><span class="poster-title">Meridian</span></div><div class="tt">Meridian</div><div class="tm tide">Returns in 9 days</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-island"/></svg><span class="poster-title">Island Hearts</span></div><div class="tt">Island Hearts</div><div class="tm">Returning soon</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-north"/></svg><span class="poster-title">Northline</span></div><div class="tt">Northline</div><div class="tm">Renewed</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-copper"/></svg><span class="poster-title">Copper Basin</span></div><div class="tt">Copper Basin</div><div class="tm">Returning later</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-kestrel"/></svg><span class="poster-title">Kestrel Road</span></div><div class="tt">Kestrel Road</div><div class="tm">Indefinite</div></div>
+          </div>
+          <div class="shelf" id="shelf-watchlist" role="tabpanel" aria-labelledby="tab-watchlist" hidden>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-north"/></svg><span class="poster-title">Northline</span></div><div class="tt">Northline</div><div class="tm">3 seasons</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-copper"/></svg><span class="poster-title">Copper Basin</span></div><div class="tt">Copper Basin</div><div class="tm">5 seasons</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-meridian"/></svg><span class="poster-title">Meridian</span></div><div class="tt">Meridian</div><div class="tm">4 seasons</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-island"/></svg><span class="poster-title">Island Hearts</span></div><div class="tt">Island Hearts</div><div class="tm">6 seasons</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-field"/></svg><span class="poster-title">The Long Field</span></div><div class="tt">The Long Field</div><div class="tm">3 seasons</div></div>
+          </div>
+          <div class="shelf" id="shelf-finished" role="tabpanel" aria-labelledby="tab-finished" hidden>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-copper"/></svg><span class="poster-title">Copper Basin</span></div><div class="tt">Copper Basin</div><div class="tm ember">Finished 2023</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-north"/></svg><span class="poster-title">Northline</span></div><div class="tt">Northline</div><div class="tm ember">Finished 2025</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-island"/></svg><span class="poster-title">Island Hearts</span></div><div class="tt">Island Hearts</div><div class="tm">Finished 2024</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-meridian"/></svg><span class="poster-title">Meridian</span></div><div class="tt">Meridian</div><div class="tm">Finished 2022</div></div>
+            <div class="tile"><div class="poster"><svg class="art"><use href="#art-city"/></svg><span class="poster-title">Twelve Floors</span></div><div class="tt">Twelve Floors</div><div class="tm">Finished 2021</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- Show pages + spoilers                                           -->
+  <!-- ============================================================== -->
+  <section class="section" id="shows" aria-labelledby="shows-title">
+    <div class="wrap">
+      <div class="chapter-head reveal">
+        <div>
+          <p class="eyebrow"><span lang="en">Show pages</span><span lang="de">Serienseiten</span></p>
+          <h2 class="h2" id="shows-title"><span lang="en">Every show, without the spoilers.</span><span lang="de">Jede Serie. Ohne Spoiler.</span></h2>
+        </div>
+        <p class="lead">
+          <span lang="en">Seasons, episodes, cast and what people think, set around the artwork. Turn on Hide spoilers and Seriel blurs stills, holds back episode titles and covers synopses until you&rsquo;ve watched them.</span>
+          <span lang="de">Staffeln, Folgen, Besetzung und was andere denken, rund um das Artwork. Mit &bdquo;Hide spoilers&ldquo; verschwimmen Standbilder, Folgentitel bleiben zurück und Inhaltsangaben verdeckt, bis du die Folge gesehen hast.</span>
+        </p>
+      </div>
+
+      <div class="panel reveal-scale">
+        <div class="spoiler-panel">
+          <div class="episodes spoilers-on" data-demo="episodes">
+            <div class="episodes-head"><b>Season 1</b><span>8 episodes · 2 watched</span></div>
+            <div class="ep watched">
+              <div class="still"><svg class="art" aria-hidden="true"><use href="#art-ferry"/></svg></div>
+              <div><div class="code">S01E02</div><div class="t">Two Ports</div><div class="syn">The night crew learns who boarded and who didn&rsquo;t.</div></div>
+              <div class="ring" aria-label="Watched"><svg aria-hidden="true"><use href="#i-check"/></svg></div>
+            </div>
+            <div class="ep watched">
+              <div class="still"><svg class="art" aria-hidden="true"><use href="#art-north"/></svg></div>
+              <div><div class="code">S01E03</div><div class="t">Fog Signal</div><div class="syn">A storm keeps the ferry in harbour for a night.</div></div>
+              <div class="ring" aria-label="Watched"><svg aria-hidden="true"><use href="#i-check"/></svg></div>
+            </div>
+            <div class="ep">
+              <div class="still"><svg class="art" aria-hidden="true"><use href="#art-saltmarsh"/></svg></div>
+              <div><div class="code">S01E04</div><div class="t"><span class="real">Harbour Watch</span><span class="masked">Episode 4</span></div><div class="syn"><span class="real">Someone on board has been lying about the crossing.</span><span class="masked"><i class="redacted" style="width:88%"></i></span></div></div>
+              <div class="ring" aria-label="Not watched"></div>
+            </div>
+            <div class="ep">
+              <div class="still"><svg class="art" aria-hidden="true"><use href="#art-kestrel"/></svg></div>
+              <div><div class="code">S01E05</div><div class="t"><span class="real">The Last Sailing</span><span class="masked">Episode 5</span></div><div class="syn"><span class="real">The missing passenger turns up where nobody looked.</span><span class="masked"><i class="redacted" style="width:72%"></i></span></div></div>
+              <div class="ring" aria-label="Not watched"></div>
+            </div>
+          </div>
+          <div>
+            <div class="control-card">
+              <div class="control-row">
+                <span class="glyph"><svg aria-hidden="true"><use href="#i-eye-slash"/></svg></span>
+                <div><b>Hide spoilers</b><p>Blur unwatched stills, redact descriptions and hold back episode titles until you&rsquo;ve watched.</p></div>
+                <button class="switch" type="button" role="switch" aria-checked="true" data-demo="spoilers" aria-label="Hide spoilers"></button>
+              </div>
+            </div>
+            <div class="control-card summary-card">
+              <div class="sc-head"><svg aria-hidden="true"><use href="#i-sparkles"/></svg>Review summary</div>
+              <div class="summary-cols">
+                <ul class="pos">
+                  <li><svg aria-hidden="true"><use href="#i-thumb"/></svg>Tense, slow-burn mystery</li>
+                  <li><svg aria-hidden="true"><use href="#i-thumb"/></svg>Gorgeous night photography</li>
+                  <li><svg aria-hidden="true"><use href="#i-thumb"/></svg>Strong ensemble cast</li>
+                </ul>
+                <ul class="neg">
+                  <li><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#i-thumb"/></svg>Middle episodes drag</li>
+                  <li><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#i-thumb"/></svg>Too many side plots</li>
+                  <li><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#i-thumb"/></svg>Rushed final reveal</li>
+                </ul>
+              </div>
+              <p class="summary-foot"><span lang="en">Summarised on your iPhone with Apple Intelligence.</span><span lang="de">Auf deinem iPhone mit Apple Intelligence zusammengefasst.</span></p>
+            </div>
+            <p class="try-hint"><span lang="en">Try it: flip the switch.</span><span lang="de">Probier es aus: Leg den Schalter um.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- Trakt                                                           -->
+  <!-- ============================================================== -->
+  <section class="section section-alt" id="trakt" aria-labelledby="trakt-title">
+    <div class="wrap">
+      <div class="chapter-head reveal">
+        <div>
+          <p class="eyebrow"><span lang="en">Trakt, if you want it</span><span lang="de">Trakt, wenn du willst</span></p>
+          <h2 class="h2" id="trakt-title"><span lang="en">Bring your history. Keep it in step.</span><span lang="de">Bring deinen Verlauf mit. Und halte ihn synchron.</span></h2>
+        </div>
+        <p class="lead">
+          <span lang="en">Copy a public Trakt profile into Seriel once, for free. With Seriel Pro, sign in for two-way sync. Before anything changes, Seriel lays out every difference and you pick which version stays, item by item.</span>
+          <span lang="de">Kopiere ein öffentliches Trakt-Profil einmalig und kostenlos in Seriel. Mit Seriel Pro meldest du dich für die Synchronisierung in beide Richtungen an. Bevor sich etwas ändert, zeigt Seriel jeden Unterschied, und du wählst Punkt für Punkt, welche Version bleibt.</span>
+        </p>
+      </div>
+
+      <div class="panel reveal-scale">
+        <div class="trakt-panel">
+          <div>
+            <div class="path-card">
+              <div class="k"><span lang="en">Free</span><span lang="de">Kostenlos</span></div>
+              <h3><span lang="en">Import from Trakt</span><span lang="de">Von Trakt importieren</span></h3>
+              <p><span lang="en">Shows and progress, watch dates, watchlist, ratings and reviews from a public profile. Nothing on Trakt changes.</span><span lang="de">Serien und Fortschritt, Daten, Merkliste, Bewertungen und Rezensionen aus einem öffentlichen Profil. Auf Trakt ändert sich nichts.</span></p>
+              <div class="handle-field" aria-hidden="true"><span>@</span><i>yourname</i><span class="caret"></span></div>
+            </div>
+            <div class="path-card">
+              <div class="k">Seriel Pro</div>
+              <h3><span lang="en">Two-way sync</span><span lang="de">Synchronisierung in beide Richtungen</span></h3>
+              <p><span lang="en">What you watch, rate and write in Seriel reaches Trakt, and what changes on Trakt comes back. Sign out any time and keep your library.</span><span lang="de">Was du in Seriel schaust, bewertest und schreibst, landet auf Trakt, und Änderungen auf Trakt kommen zurück. Abmelden geht jederzeit, deine Bibliothek bleibt.</span></p>
+            </div>
+          </div>
+          <div class="merge">
+            <div class="k">Trakt sync</div>
+            <h3>Here&rsquo;s where Seriel and Trakt differ.</h3>
+            <p>Pick the version that stays for each one. Seriel&rsquo;s goes to Trakt, Trakt&rsquo;s comes into Seriel.</p>
+            <div class="merge-group">Ratings</div>
+            <div class="mrow">
+              <div class="poster"><svg class="art" aria-hidden="true"><use href="#art-copper"/></svg></div>
+              <div><b>Copper Basin</b><span>Seriel ★★★★★, Trakt ★★★★ · edited in Seriel</span></div>
+              <div class="seg" role="group" aria-label="Copper Basin rating"><button type="button" aria-pressed="true">Seriel&rsquo;s</button><button type="button" aria-pressed="false">Trakt&rsquo;s</button></div>
+            </div>
+            <div class="merge-group">Watches</div>
+            <div class="mrow">
+              <div class="poster"><svg class="art" aria-hidden="true"><use href="#art-kestrel"/></svg></div>
+              <div><b>Kestrel Road</b><span>6 new watches, each with its date</span></div>
+              <div class="seg" role="group" aria-label="Kestrel Road watches"><button type="button" aria-pressed="true">Seriel&rsquo;s</button><button type="button" aria-pressed="false">Trakt&rsquo;s</button></div>
+            </div>
+            <div class="merge-group">Watchlist</div>
+            <div class="mrow">
+              <div class="poster"><svg class="art" aria-hidden="true"><use href="#art-north"/></svg></div>
+              <div><b>Northline</b><span>Taken off on Trakt, still in Seriel</span></div>
+              <div class="seg" role="group" aria-label="Northline watchlist"><button type="button" aria-pressed="false">Seriel&rsquo;s</button><button type="button" aria-pressed="true">Trakt&rsquo;s</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- The little things                                               -->
+  <!-- ============================================================== -->
+  <section class="section" id="more" aria-labelledby="more-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow"><span lang="en">And the little things</span><span lang="de">Und die kleinen Dinge</span></p>
+        <h2 class="h2" id="more-title"><span lang="en">Thought through, end to end.</span><span lang="de">Durchdacht, bis ins Detail.</span></h2>
+      </div>
+
+      <div class="bento">
+        <article class="tilebox wide reveal" style="--d:0">
+          <h3><span lang="en">Hall of Fame</span><span lang="de">Hall of Fame</span></h3>
+          <p><span lang="en">Every show you rate four and a half stars or higher hangs on the wall, framed, next to your review.</span><span lang="de">Jede Serie, die du mit viereinhalb Sternen oder mehr bewertest, hängt gerahmt an der Wand, neben deiner Rezension.</span></p>
+          <div class="vis" aria-hidden="true">
+            <div class="frames">
+              <div class="frame"><div class="poster"><svg class="art"><use href="#art-copper"/></svg></div></div>
+              <div class="frame"><div class="poster"><svg class="art"><use href="#art-north"/></svg></div></div>
+              <div class="frame"><div class="poster"><svg class="art"><use href="#art-meridian"/></svg></div></div>
+            </div>
+            <p class="wall-text"><b>Copper Basin</b> · Finished March 2023</p>
+          </div>
+        </article>
+
+        <article class="tilebox wide reveal" style="--d:1">
+          <h3><span lang="en">Set reality apart</span><span lang="de">Reality für sich</span> <span class="pro-tag">PRO</span></h3>
+          <p><span lang="en">Give reality TV its own section, out of Today, Schedule and Library, and still never miss an episode.</span><span lang="de">Gib Reality-TV einen eigenen Bereich, getrennt von Heute, Programm und Bibliothek, ohne eine Folge zu verpassen.</span></p>
+          <div class="vis" aria-hidden="true">
+            <div class="reality-card">
+              <svg class="art"><use href="#art-island"/></svg>
+              <small>Reality</small>
+              <b>Your reality shows</b>
+              <span>3 shows, kept out of your main feed</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="tilebox reveal" style="--d:0">
+          <h3><span lang="en">Where to watch</span><span lang="de">Wo läuft es?</span> <span class="pro-tag">PRO</span></h3>
+          <p><span lang="en">See which streaming services carry a show in your country, with yours first.</span><span lang="de">Sieh, bei welchen Streamingdiensten eine Serie in deinem Land läuft, deine zuerst.</span></p>
+          <div class="vis" aria-hidden="true">
+            <div class="services">
+              <div class="svc" style="background:#0B6F69">L+</div>
+              <div class="svc" style="background:#5B4BD6">H</div>
+              <div class="svc" style="background:#C2552E">A</div>
+              <div class="svc dim" style="background:#2E3A55">O</div>
+            </div>
+            <p class="svc-caption"><span lang="en">Availability data provided by JustWatch.</span><span lang="de">Verfügbarkeitsdaten von JustWatch.</span></p>
+          </div>
+        </article>
+
+        <article class="tilebox reveal" style="--d:1">
+          <h3><span lang="en">On this day</span><span lang="de">An diesem Tag</span></h3>
+          <p><span lang="en">A quiet reminder of what you finished, years ago today.</span><span lang="de">Eine leise Erinnerung daran, was du heute vor Jahren beendet hast.</span></p>
+          <div class="vis" aria-hidden="true">
+            <div class="memory">
+              <svg class="art"><use href="#art-copper"/></svg>
+              <div class="mem-head">On this day · 3 years ago</div>
+              <div class="mem-foot">
+                <div class="poster"><svg class="art"><use href="#art-copper"/></svg></div>
+                <div><small>You finished</small><b>Copper Basin</b><span>5 seasons · 52 episodes</span></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tilebox reveal" style="--d:2">
+          <h3><span lang="en">Rewatches, with dates</span><span lang="de">Nochmal schauen, mit Datum</span></h3>
+          <p><span lang="en">Start a rewatch and every episode keeps each time you saw it.</span><span lang="de">Starte ein erneutes Anschauen, und jede Folge behält jedes Mal, an dem du sie gesehen hast.</span></p>
+          <div class="vis" aria-hidden="true">
+            <ul class="plays">
+              <li>Northline S01E01 <span>12 Mar 2023</span></li>
+              <li>Northline S01E02 <span>14 Mar 2023</span></li>
+              <li><span class="rw">Rewatch</span> Northline S01E01 <span>Today</span></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="tilebox reveal" style="--d:0">
+          <h3><span lang="en">Your record</span><span lang="de">Deine Bilanz</span></h3>
+          <p><span lang="en">Episodes watched, shows caught up, your average rating. Your TV life, in numbers.</span><span lang="de">Gesehene Folgen, aufgeholte Serien, deine Durchschnittsbewertung. Dein Serienleben in Zahlen.</span></p>
+          <div class="vis" aria-hidden="true">
+            <div class="record">
+              <div><b>2,418</b><span>episodes</span></div>
+              <div><b>74</b><span>caught up</span></div>
+              <div><b>3.9</b><span>your average</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tilebox reveal" style="--d:1">
+          <h3><span lang="en">Swipe through what&rsquo;s trending</span><span lang="de">Durch die Trends wischen</span></h3>
+          <p><span lang="en">Channel shows you one trending show at a time, full screen.</span><span lang="de">Channel zeigt dir eine angesagte Serie nach der anderen, im Vollbild.</span></p>
+          <div class="vis" aria-hidden="true">
+            <div class="channel">
+              <div class="poster"><svg class="art"><use href="#art-city"/></svg></div>
+              <div class="poster"><svg class="art"><use href="#art-field"/></svg></div>
+              <div class="poster"><svg class="art"><use href="#art-meridian"/></svg><span class="poster-title">Meridian</span></div>
+            </div>
+            <p class="channel-cap">Trending · 3 of 20</p>
+          </div>
+        </article>
+
+        <article class="tilebox reveal" style="--d:2">
+          <h3><span lang="en">Made for iOS</span><span lang="de">Gemacht für iOS</span></h3>
+          <p><span lang="en">Native, fast and comfortable to read, the way an iPhone app should feel.</span><span lang="de">Nativ, schnell und angenehm zu lesen, so wie sich eine iPhone-App anfühlen sollte.</span></p>
+          <div class="vis">
+            <ul class="ios-list">
+              <li><svg aria-hidden="true"><use href="#i-moon"/></svg><span lang="en">Dark Mode</span><span lang="de">Dunkelmodus</span></li>
+              <li><svg aria-hidden="true"><use href="#i-textsize"/></svg>Dynamic Type</li>
+              <li><svg aria-hidden="true"><use href="#i-access"/></svg>VoiceOver</li>
+              <li><svg aria-hidden="true"><use href="#i-ipad"/></svg>iPad</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- Pro                                                             -->
+  <!-- ============================================================== -->
+  <section class="section section-alt" id="pro" aria-labelledby="pro-title">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <p class="eyebrow">Seriel Pro</p>
+        <h2 class="h2" id="pro-title"><span lang="en">Free to start. Pro when you&rsquo;re ready.</span><span lang="de">Kostenlos starten. Pro, wenn du so weit bist.</span></h2>
+        <p class="lead">
+          <span lang="en">The free plan is the whole app for the shows you&rsquo;re watching now. Pro takes the limit off and adds the tools heavy viewers ask for.</span>
+          <span lang="de">Der kostenlose Plan ist die ganze App für die Serien, die du gerade schaust. Pro hebt die Grenze auf und bringt die Werkzeuge, die Vielschauer sich wünschen.</span>
+        </p>
+      </div>
+
+      <div class="plans">
+        <div class="plan reveal" style="--d:0">
+          <div class="plan-name">Seriel Free</div>
+          <p class="plan-sub"><span lang="en">For the shows you&rsquo;re watching now.</span><span lang="de">Für die Serien, die du gerade schaust.</span></p>
+          <div class="slots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
+          <p class="slots-cap"><span lang="en">7 of 10 shows in active sync. Your watchlist is unlimited.</span><span lang="de">7 von 10 Serien aktiv. Deine Merkliste ist unbegrenzt.</span></p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><div><b><span lang="en">Track up to 10 shows in live sync</span><span lang="de">Bis zu 10 Serien aktiv verfolgen</span></b><span lang="en">Up next, schedule and history stay current for the shows you&rsquo;re actively watching.</span><span lang="de">Als Nächstes, Programm und Verlauf bleiben für deine aktiven Serien aktuell.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><div><b><span lang="en">New-episode alerts for your active shows</span><span lang="de">Mitteilungen für deine aktiven Serien</span></b><span lang="en">A heads-up when something you&rsquo;re tracking airs.</span><span lang="de">Ein Hinweis, wenn etwas läuft, das du verfolgst.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><div><b><span lang="en">Watchlist as much as you like</span><span lang="de">Merkliste ohne Grenze</span></b><span lang="en">Save any number of shows for later. The limit is only on active tracking.</span><span lang="de">Merke dir beliebig viele Serien. Die Grenze gilt nur für aktives Verfolgen.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><div><b><span lang="en">Rate and review every episode</span><span lang="de">Jede Folge bewerten und rezensieren</span></b><span lang="en">Your history, ratings and reviews, kept on your device.</span><span lang="de">Dein Verlauf, deine Bewertungen und Rezensionen, auf deinem Gerät.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><div><b><span lang="en">One-time import from Trakt</span><span lang="de">Einmaliger Import von Trakt</span></b><span lang="en">Bring a public Trakt profile along when you start.</span><span lang="de">Bring zum Start ein öffentliches Trakt-Profil mit.</span></div></li>
+          </ul>
+        </div>
+
+        <div class="plan plan-pro reveal" style="--d:1">
+          <div class="pro-mark">Seriel <span>PRO</span></div>
+          <p class="plan-sub"><span lang="en">Everything in Free, plus:</span><span lang="de">Alles aus Free, und dazu:</span></p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-infinity"/></svg><div><b><span lang="en">Unlimited shows in live sync</span><span lang="de">Unbegrenzt viele aktive Serien</span></b><span lang="en">Your whole library stays current. Nothing paused.</span><span lang="de">Deine ganze Bibliothek bleibt aktuell. Nichts pausiert.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#i-sync"/></svg><div><b><span lang="en">Two-way Trakt sync</span><span lang="de">Trakt-Sync in beide Richtungen</span></b><span lang="en">Your history, ratings and reviews stay in step with every app you use.</span><span lang="de">Verlauf, Bewertungen und Rezensionen bleiben mit all deinen Apps im Gleichschritt.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#i-bell"/></svg><div><b><span lang="en">Alerts for every show</span><span lang="de">Mitteilungen für jede Serie</span></b><span lang="en">For your entire library, not just ten shows.</span><span lang="de">Für deine ganze Bibliothek, nicht nur zehn Serien.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#i-play-rect"/></svg><div><b><span lang="en">Where to watch</span><span lang="de">Wo läuft es?</span></b><span lang="en">Streaming availability on every show, for your country.</span><span lang="de">Streaming-Verfügbarkeit bei jeder Serie, für dein Land.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#i-eye-slash"/></svg><div><b><span lang="en">Hide spoilers</span><span lang="de">Spoiler verbergen</span></b><span lang="en">Blurred stills, held-back titles and covered synopses until you&rsquo;ve watched.</span><span lang="de">Verschwommene Standbilder, zurückgehaltene Titel und verdeckte Inhalte, bis du geschaut hast.</span></div></li>
+            <li><svg aria-hidden="true"><use href="#i-mask"/></svg><div><b><span lang="en">Set reality apart</span><span lang="de">Reality für sich</span></b><span lang="en">Reality TV in a section of its own.</span><span lang="de">Reality-TV in einem eigenen Bereich.</span></div></li>
+          </ul>
+          <p class="plan-billing">
+            <span lang="en"><b>Monthly, yearly or once, with no subscription.</b> Family Sharing included. You&rsquo;ll see the price for your country in the App Store before you buy, and you can cancel a subscription any time in your Apple account.</span>
+            <span lang="de"><b>Monatlich, jährlich oder einmalig ohne Abo.</b> Mit Familienfreigabe. Den Preis für dein Land siehst du vor dem Kauf im App Store, und ein Abo kannst du jederzeit in deinem Apple-Account kündigen.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- Maker                                                           -->
+  <!-- ============================================================== -->
+  <section class="section" aria-labelledby="maker-title">
+    <div class="wrap">
+      <div class="maker reveal">
+        <img class="maker-mark" src="/images/app-icon-512.png" alt="" width="132" height="132">
+        <div>
+          <h2 class="h3" id="maker-title"><span lang="en">Made by one person, in Hamburg.</span><span lang="de">Von einer Person gemacht, in Hamburg.</span></h2>
+          <p>
+            <span lang="en">Seriel is independent. No investors, no ads, no data deals. It&rsquo;s built by someone who watches too much television and wanted an app that remembers it properly. Pro is how it pays its way.</span>
+            <span lang="de">Seriel ist unabhängig. Keine Investoren, keine Werbung, kein Datenhandel. Gebaut von jemandem, der zu viel fernsieht und eine App wollte, die sich das ordentlich merkt. Pro ist das, was die App trägt.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- FAQ teaser                                                      -->
+  <!-- ============================================================== -->
+  <section class="section" id="questions" aria-labelledby="faq-title" style="padding-top:0">
+    <div class="wrap-narrow">
+      <div class="section-head reveal">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="h2" id="faq-title"><span lang="en">Questions, answered.</span><span lang="de">Fragen und Antworten.</span></h2>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary><span lang="en">Do I need an account?</span><span lang="de">Brauche ich ein Konto?</span></summary>
+          <div class="answer">
+            <p lang="en">No. Your library lives on your iPhone from the start. You can begin fresh, or copy a public Trakt profile in once. A Trakt account only comes into play if you choose two-way sync with Seriel Pro.</p>
+            <p lang="de">Nein. Deine Bibliothek liegt von Anfang an auf deinem iPhone. Du kannst neu anfangen oder einmalig ein öffentliches Trakt-Profil übernehmen. Ein Trakt-Konto brauchst du nur, wenn du mit Seriel Pro in beide Richtungen synchronisieren möchtest.</p>
+          </div>
+        </details>
+        <details>
+          <summary><span lang="en">Is Seriel free?</span><span lang="de">Ist Seriel kostenlos?</span></summary>
+          <div class="answer">
+            <p lang="en">Yes. The free plan keeps up to 10 shows in live sync, with alerts for them, an unlimited watchlist, ratings and reviews. Seriel Pro removes the limit and adds two-way Trakt sync, alerts for every show, where to watch, spoiler hiding and a separate reality section. Pro is available monthly, yearly or as a one-time purchase.</p>
+            <p lang="de">Ja. Der kostenlose Plan hält bis zu 10 Serien aktiv, mit Mitteilungen dafür, einer unbegrenzten Merkliste, Bewertungen und Rezensionen. Seriel Pro hebt die Grenze auf und bringt Trakt-Sync in beide Richtungen, Mitteilungen für jede Serie, Streaming-Verfügbarkeit, Spoilerschutz und einen eigenen Reality-Bereich. Pro gibt es monatlich, jährlich oder als Einmalkauf.</p>
+          </div>
+        </details>
+        <details>
+          <summary><span lang="en">What is Trakt, and do I need it?</span><span lang="de">Was ist Trakt, und brauche ich es?</span></summary>
+          <div class="answer">
+            <p lang="en"><a href="https://trakt.tv" rel="noopener">Trakt</a> is an independent service that many TV apps use to keep a shared watch history. Seriel gets show information from Trakt, but you don&rsquo;t need a Trakt account to use it. If you already have a history on Trakt, you can import it or, with Pro, keep both in sync.</p>
+            <p lang="de"><a href="https://trakt.tv" rel="noopener">Trakt</a> ist ein unabhängiger Dienst, über den viele Serien-Apps einen gemeinsamen Verlauf führen. Seriel bezieht Serieninformationen von Trakt, du brauchst aber kein Trakt-Konto. Hast du schon einen Verlauf bei Trakt, kannst du ihn importieren oder mit Pro beides synchron halten.</p>
+          </div>
+        </details>
+        <details>
+          <summary><span lang="en">Does Seriel collect my data?</span><span lang="de">Sammelt Seriel meine Daten?</span></summary>
+          <div class="answer">
+            <p lang="en">No. Seriel has no servers, no analytics and no ads. Your library stays on your device. To show you shows, artwork and air times, the app asks Trakt and TMDB for that information directly. The details are in the <a href="/privacy/">privacy policy</a>.</p>
+            <p lang="de">Nein. Seriel hat keine Server, keine Analyse-Tools und keine Werbung. Deine Bibliothek bleibt auf deinem Gerät. Für Serien, Bilder und Sendezeiten fragt die App diese Informationen direkt bei Trakt und TMDB ab. Die Details stehen in der <a href="/privacy/">Datenschutzerklärung</a>.</p>
+          </div>
+        </details>
+        <details>
+          <summary><span lang="en">Which devices does it run on?</span><span lang="de">Auf welchen Geräten läuft die App?</span></summary>
+          <div class="answer">
+            <p lang="en">iPhone and iPad with iOS or iPadOS 26 or later. The review summary uses Apple Intelligence and appears on devices that support it. The app is currently in English.</p>
+            <p lang="de">Auf iPhone und iPad mit iOS bzw. iPadOS 26 oder neuer. Die Zusammenfassung von Rezensionen nutzt Apple Intelligence und erscheint auf Geräten, die das unterstützen. Die App ist derzeit auf Englisch.</p>
+          </div>
+        </details>
+      </div>
+      <p class="more-link reveal"><a class="text-link" href="/faq/"><span lang="en">See all questions</span><span lang="de">Alle Fragen ansehen</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+    </div>
+  </section>
+
+  <!-- ============================================================== -->
+  <!-- Closer                                                          -->
+  <!-- ============================================================== -->
+  <section class="section section-alt closer" aria-labelledby="closer-title">
+    <div class="wrap reveal">
+      <img src="/images/app-icon-512.png" alt="" width="96" height="96">
+      <h2 class="h2" id="closer-title"><span lang="en">Your shows. Your record.</span><span lang="de">Deine Serien. Deine Bilanz.</span></h2>
+      <p class="lead"><span lang="en">Seriel is coming to the App Store for iPhone and iPad.</span><span lang="de">Seriel kommt für iPhone und iPad in den App Store.</span></p>
+      <div class="hero-actions">
+        <span class="store" data-store>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="3"/><path d="M10.3 5.3h3.4" stroke-linecap="round"/></svg>
+          <span>
+            <small data-store-soon><span lang="en">Coming soon on the</span><span lang="de">Bald erhältlich im</span></small>
+            <small data-store-live hidden><span lang="en">Download on the</span><span lang="de">Laden im</span></small>
+            <b>App Store</b>
+          </span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================================================================ -->
+<!-- Footer                                                            -->
+<!-- ================================================================ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a class="brand" href="/"><img src="/images/app-icon-192.png" alt="" width="24" height="24">Seriel</a>
+        <p style="margin-top:10px;max-width:22em"><span lang="en">Every show you watch, in one place. For iPhone and iPad.</span><span lang="de">Jede Serie, die du schaust, an einem Ort. Für iPhone und iPad.</span></p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <b>Seriel</b>
+          <ul>
+            <li><a href="/#features"><span lang="en">Features</span><span lang="de">Funktionen</span></a></li>
+            <li><a href="/#pro">Seriel Pro</a></li>
+            <li><a href="/help/"><span lang="en">Help</span><span lang="de">Hilfe</span></a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <b><span lang="en">Legal</span><span lang="de">Rechtliches</span></b>
+          <ul>
+            <li><a href="/privacy/"><span lang="en">Privacy Policy</span><span lang="de">Datenschutz</span></a></li>
+            <li><a href="/terms/"><span lang="en">Terms of Use</span><span lang="de">Nutzungsbedingungen</span></a></li>
+            <li><a href="/impressum/">Impressum</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <b><span lang="en">Contact</span><span lang="de">Kontakt</span></b>
+          <ul>
+            <li><a href="mailto:hello@seriel.app">hello@seriel.app</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-fine">
+      <p lang="en">Show information from <a href="https://trakt.tv" rel="noopener">Trakt</a>. Seriel uses the Trakt API but is not endorsed or certified by Trakt. Imagery and supplementary data from <a href="https://www.themoviedb.org" rel="noopener">TMDB</a>: Seriel uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB. Streaming availability by JustWatch.</p>
+      <p lang="de">Serieninformationen von <a href="https://trakt.tv" rel="noopener">Trakt</a>. Seriel nutzt die Trakt-API, ist aber nicht von Trakt geprüft oder zertifiziert. Bilder und ergänzende Daten von <a href="https://www.themoviedb.org" rel="noopener">TMDB</a>: Seriel uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB. Streaming-Verfügbarkeit von JustWatch.</p>
+      <p lang="en">The shows, artwork and streaming services pictured on this site are fictional. Apple, iPhone, iPad, iOS, iPadOS, App Store and Apple Intelligence are trademarks of Apple Inc. Seriel is not affiliated with Apple, Trakt, TMDB or JustWatch.</p>
+      <p lang="de">Die auf dieser Website gezeigten Serien, Bilder und Streamingdienste sind frei erfunden. Apple, iPhone, iPad, iOS, iPadOS, App Store und Apple Intelligence sind Marken von Apple Inc. Seriel steht in keiner Verbindung zu Apple, Trakt, TMDB oder JustWatch.</p>
+      <div class="footer-bottom">
+        <span>&copy; <span data-date="year">2026</span> David Cox, Hamburg</span>
+        <div class="lang" role="group" aria-label="Language / Sprache">
+          <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang-set="de" aria-pressed="false">DE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/site.js"></script>
 </body>
 </html>

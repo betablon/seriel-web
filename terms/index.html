@@ -1,353 +1,487 @@
 <!DOCTYPE html>
-<html lang="de" data-theme="ink" data-lang="de">
+<html lang="de" data-lang="de"
+      data-title-en="Terms of Use · Seriel"
+      data-title-de="Nutzungsbedingungen · Seriel">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutzungsbedingungen / Terms of Service — Seriel</title>
-    <meta name="description" content="Seriel terms of service — usage conditions for the iOS app and seriel.app website.">
-    <meta name="robots" content="noindex">
-    <meta name="theme-color" content="#0B0C10" media="(prefers-color-scheme: dark)">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Nutzungsbedingungen · Seriel</title>
+    <meta name="description" content="Terms of use for the Seriel app for iPhone and iPad, Seriel Pro and seriel.app.">
+    <link rel="canonical" href="https://seriel.app/terms/">
     <meta name="theme-color" content="#F5F2EB" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0B0C10" media="(prefers-color-scheme: dark)">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/legal.css">
+    <link rel="stylesheet" href="/css/site.css">
     <script>
         (function () {
-            try {
-                var stored = localStorage.getItem('seriel.theme');
-                var sysLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-                document.documentElement.setAttribute('data-theme', stored || (sysLight ? 'paper' : 'ink'));
-            } catch (e) {}
-            try {
-                var lang = localStorage.getItem('seriel.lang');
-                if (!lang) {
-                    var nav = (navigator.language || 'de').toLowerCase();
-                    lang = nav.indexOf('en') === 0 ? 'en' : 'de';
-                }
-                document.documentElement.setAttribute('data-lang', lang);
-                document.documentElement.setAttribute('lang', lang);
-            } catch (e) {}
+            var d = document.documentElement, l = null;
+            d.classList.add('js');
+            if (location.hash === '#de' || location.hash === '#en') l = location.hash.slice(1);
+            if (!l) { try { l = localStorage.getItem('seriel.lang'); } catch (e) {} }
+            if (l !== 'en' && l !== 'de') {
+                l = ((navigator.languages && navigator.languages[0]) || navigator.language || 'de').toLowerCase().indexOf('de') === 0 ? 'de' : 'en';
+            }
+            d.setAttribute('data-lang', l); d.setAttribute('lang', l);
+            var t = d.getAttribute('data-title-' + l); if (t) document.title = t;
         })();
     </script>
 </head>
 <body>
-    <header class="masthead" role="banner">
-        <div class="masthead-inner">
-            <div class="masthead-folio masthead-folio-left">
-                <span class="folio-label">SERIEL · LEGAL</span>
-            </div>
-            <a href="/" class="wordmark" aria-label="Seriel">SERIEL</a>
-            <div class="masthead-folio masthead-folio-right">
-                <div class="lang-toggle" role="group" aria-label="Language">
-                    <button type="button" class="lang-btn" data-lang-set="en">EN</button>
-                    <button type="button" class="lang-btn" data-lang-set="de">DE</button>
-                </div>
-                <button type="button" class="theme-toggle" aria-label="Toggle theme" id="theme-toggle">
-                    <span class="theme-toggle-label" data-when="ink" data-lang="en">PAPER</span>
-                    <span class="theme-toggle-label" data-when="ink" data-lang="de">PAPIER</span>
-                    <span class="theme-toggle-label" data-when="paper" data-lang="en">INK</span>
-                    <span class="theme-toggle-label" data-when="paper" data-lang="de">TINTE</span>
-                </button>
-            </div>
+
+<a class="skip-link" href="#main"><span lang="en">Skip to content</span><span lang="de">Zum Inhalt</span></a>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="Seriel">
+      <img src="/images/app-icon-192.png" alt="" width="28" height="28">Seriel
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="/#features"><span lang="en">Features</span><span lang="de">Funktionen</span></a></li>
+        <li><a href="/#pro">Pro</a></li>
+        <li><a href="/help/"><span lang="en">Help</span><span lang="de">Hilfe</span></a></li>
+        <li><a href="/faq/">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="nav-tools">
+      <div class="lang" role="group" aria-label="Language / Sprache">
+        <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang-set="de" aria-pressed="true">DE</button>
+      </div>
+      <button class="nav-menu-btn" type="button" aria-expanded="false" aria-controls="nav-sheet" data-label-en="Menu" data-label-de="Menü" aria-label="Menü"><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="nav-sheet" id="nav-sheet">
+    <ul>
+      <li><a href="/#features"><span lang="en">Features</span><span lang="de">Funktionen</span></a></li>
+      <li><a href="/#pro">Seriel Pro</a></li>
+      <li><a href="/help/"><span lang="en">Help</span><span lang="de">Hilfe</span></a></li>
+      <li><a href="/faq/">FAQ</a></li>
+    </ul>
+    <div class="lang" role="group" aria-label="Language / Sprache">
+      <button type="button" data-lang-set="en" aria-pressed="false">English</button>
+      <button type="button" data-lang-set="de" aria-pressed="true">Deutsch</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- =================================================================== -->
+<!-- DEUTSCH                                                              -->
+<!-- =================================================================== -->
+<div lang="de">
+  <section class="doc-hero">
+    <div class="wrap">
+      <p class="eyebrow">Rechtliches</p>
+      <h1 class="display">Nutzungs&shy;bedingungen</h1>
+      <p class="lead">Die Regeln für die App Seriel, Seriel Pro und diese Website. So klar wie möglich, so ausführlich wie nötig.</p>
+      <p class="stamp">Stand: 15. Oktober 2026 · <a class="text-link" href="#en" data-lang-set="en">English version</a></p>
+    </div>
+  </section>
+
+  <div class="wrap doc-layout">
+    <nav class="toc" aria-label="Inhalt">
+      <b>Inhalt</b>
+      <ol>
+        <li><a href="#de-1">Geltungsbereich</a></li>
+        <li><a href="#de-2">Was Seriel ist</a></li>
+        <li><a href="#de-3">Voraussetzungen</a></li>
+        <li><a href="#de-4">Seriel Pro und Käufe</a></li>
+        <li><a href="#de-5">Widerrufsrecht</a></li>
+        <li><a href="#de-6">Dienste Dritter</a></li>
+        <li><a href="#de-7">Deine Inhalte und Trakt</a></li>
+        <li><a href="#de-8">Nutzungsregeln</a></li>
+        <li><a href="#de-9">Änderungen und Verfügbarkeit</a></li>
+        <li><a href="#de-10">Gewährleistung</a></li>
+        <li><a href="#de-11">Haftung</a></li>
+        <li><a href="#de-12">Laufzeit und Ende</a></li>
+        <li><a href="#de-13">Testversionen</a></li>
+        <li><a href="#de-14">Änderungen der Bedingungen</a></li>
+        <li><a href="#de-15">App-Store-Bedingungen</a></li>
+        <li><a href="#de-16">Recht und Gerichtsstand</a></li>
+        <li><a href="#de-17">Schlussbestimmungen</a></li>
+      </ol>
+    </nav>
+
+    <article class="prose">
+      <section id="de-1" data-toc-section>
+        <h2>1. Geltungsbereich und Anbieter</h2>
+        <p>Diese Nutzungsbedingungen regeln die Nutzung der App &bdquo;Seriel&ldquo; für iPhone und iPad (die &bdquo;App&ldquo;), der kostenpflichtigen Funktionen &bdquo;Seriel&nbsp;Pro&ldquo; und der Website <a href="https://seriel.app">seriel.app</a>. Anbieter ist:</p>
+        <address>David Cox, Jütlandring 2, 22419 Hamburg, Deutschland, E-Mail: <a href="mailto:hello@seriel.app">hello@seriel.app</a> (&bdquo;wir&ldquo;).</address>
+        <p>Die App wird über Apples App Store bereitgestellt. Für die Nutzungslizenz gilt der Standard-Lizenzvertrag für Endnutzer von Apple (<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noopener">Licensed Application End User License Agreement</a>); diese Bedingungen ergänzen ihn. Abweichende Bedingungen von Nutzern gelten nicht.</p>
+      </section>
+
+      <section id="de-2" data-toc-section>
+        <h2>2. Was Seriel ist</h2>
+        <p>Seriel ist eine App, mit der du festhältst, welche Serien und Folgen du gesehen hast, siehst, wann neue Folgen erscheinen, und Serien bewertest und rezensierst. Deine Bibliothek wird auf deinem Gerät gespeichert; ein Nutzerkonto ist nicht nötig.</p>
+        <p><strong>Kostenlos</strong> kannst du die App mit bis zu zehn Serien in aktiver Synchronisierung nutzen, einschließlich Mitteilungen für diese Serien, einer unbegrenzten Merkliste, Bewertungen und Rezensionen sowie eines einmaligen Imports eines öffentlichen Trakt-Profils. Serien über dieser Grenze bleiben in deiner Bibliothek erhalten, werden aber nicht mehr aktualisiert (&bdquo;Tracking paused&ldquo;).</p>
+        <p><strong>Seriel&nbsp;Pro</strong> hebt diese Grenze auf und ergänzt insbesondere die Synchronisierung in beide Richtungen mit einem Trakt-Konto, Mitteilungen für alle Serien, die Anzeige der Streaming-Verfügbarkeit, den Spoilerschutz und einen eigenen Bereich für Reality-TV. Maßgeblich ist der Funktionsumfang, der in der App vor dem Kauf beschrieben wird.</p>
+        <p>Serieninformationen, Bilder und Verfügbarkeitsdaten stammen von Diensten Dritter (Abschnitt&nbsp;6). Wir erstellen diese Inhalte nicht selbst und prüfen sie nicht im Einzelnen.</p>
+      </section>
+
+      <section id="de-3" data-toc-section>
+        <h2>3. Voraussetzungen</h2>
+        <ul>
+          <li>ein iPhone oder iPad mit iOS bzw. iPadOS&nbsp;26 oder neuer und eine Internetverbindung zum Laden von Serieninformationen;</li>
+          <li>ein Mindestalter von 16&nbsp;Jahren; jüngere Personen nur mit Zustimmung ihrer Erziehungsberechtigten;</li>
+          <li>für die Synchronisierung mit Trakt ein Trakt-Konto. Dafür gelten die <a href="https://trakt.tv/terms" rel="noopener">Nutzungsbedingungen von Trakt</a> einschließlich der dortigen Altersvorgaben. Für die Sicherheit deiner Zugangsdaten bei Trakt bist du selbst verantwortlich.</li>
+        </ul>
+        <p>Die Zusammenfassung von Rezensionen setzt ein Gerät mit aktivierter Apple Intelligence voraus. Die App ist derzeit auf Englisch.</p>
+      </section>
+
+      <section id="de-4" data-toc-section>
+        <h2>4. Seriel Pro und Käufe</h2>
+        <h3>4.1 Angebote und Preise</h3>
+        <p>Seriel&nbsp;Pro gibt es als automatisch verlängerndes Abonnement (monatlich oder jährlich) oder als einmaligen Kauf (&bdquo;Lifetime&ldquo;). Die Preise einschließlich Umsatzsteuer werden dir vor dem Kauf im App Store bzw. in der App angezeigt. Ein Kauf kommt erst zustande, wenn du ihn im Kaufdialog von Apple bestätigst.</p>
+        <h3>4.2 Vertragspartner und Abwicklung</h3>
+        <p>Alle Käufe werden über den App Store abgewickelt und deinem Apple Account belastet. In der Europäischen Union und vielen weiteren Ländern verkauft Apple In-App-Käufe im eigenen Namen als Kommissionär; Vertragspartner des Kaufs ist dann Apple (in der EU die Apple Distribution International Ltd., Irland). In einigen Ländern, etwa den USA, handelt Apple als unser Vertreter, und der Kaufvertrag kommt mit uns zustande. Für den Kauf, die Zahlung, die Familienfreigabe und Rückerstattungen gelten in jedem Fall die <a href="https://www.apple.com/de/legal/internet-services/itunes/" rel="noopener">Bedingungen für Apple-Mediendienste</a>. Den Umfang von Seriel&nbsp;Pro legen wir fest (Abschnitt&nbsp;2).</p>
+        <h3>4.3 Abonnements</h3>
+        <p>Ein Abonnement verlängert sich automatisch um den gewählten Zeitraum, wenn du es nicht spätestens 24&nbsp;Stunden vor Ablauf des laufenden Zeitraums kündigst. Die Verlängerung wird innerhalb von 24&nbsp;Stunden vor Ablauf berechnet. Du kannst das Abonnement jederzeit in den Einstellungen deines Apple Accounts verwalten und kündigen; die Kündigung wirkt zum Ende des laufenden Zeitraums. Das Löschen der App beendet ein Abonnement nicht.</p>
+        <h3>4.4 Lifetime</h3>
+        <p>Der Lifetime-Kauf ist eine einmalige Zahlung ohne wiederkehrende Kosten. Er schaltet Seriel&nbsp;Pro für den verwendeten Apple Account (und über die Familienfreigabe) frei, solange wir die App anbieten und betreiben. &bdquo;Lifetime&ldquo; bezieht sich auf die Lebensdauer der App, nicht auf die des Nutzers. Wir wollen Seriel langfristig betreiben. Sollten wir die App dauerhaft einstellen, kündigen wir das mit angemessenem Vorlauf, in der Regel mindestens drei Monate vorher, in der App an. Deine gesetzlichen Rechte, insbesondere nach §§&nbsp;327&nbsp;ff. BGB, bleiben unberührt.</p>
+        <h3>4.5 Familienfreigabe</h3>
+        <p>Seriel&nbsp;Pro kann über Apples Familienfreigabe mit deiner Familiengruppe geteilt werden, wenn du die Freigabe von Käufen bzw. Abonnements aktiviert hast.</p>
+        <h3>4.6 Wenn Pro endet</h3>
+        <p>Endet ein Abonnement oder wird ein Kauf erstattet, bleibt deine Bibliothek vollständig erhalten. Es gelten wieder die Grenzen des kostenlosen Plans: Bis zu zehn Serien bleiben aktiv, weitere werden pausiert, die Synchronisierung mit Trakt wird angehalten und die Pro-Funktionen werden ausgeschaltet. Mit einem erneuten Kauf von Pro wird alles fortgesetzt.</p>
+      </section>
+
+      <section id="de-5" data-toc-section>
+        <h2>5. Widerrufsrecht</h2>
+        <p>Verbrauchern steht bei Käufen ein gesetzliches Widerrufsrecht zu. Ist Apple Vertragspartner des Kaufs (Abschnitt&nbsp;4.2, insbesondere in der EU), besteht das Widerrufsrecht gegenüber Apple; Apple informiert dich darüber im Kaufvorgang und bearbeitet Widerruf und Rückerstattung, zum Beispiel über <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a>. Bei digitalen Inhalten kann das Widerrufsrecht nach den gesetzlichen Vorschriften vorzeitig erlöschen, wenn die Ausführung mit deiner ausdrücklichen Zustimmung beginnt und du deine Kenntnis davon bestätigt hast. Deine gesetzlichen Rechte bleiben unberührt; bei Fragen kannst du dich jederzeit auch an uns wenden.</p>
+      </section>
+
+      <section id="de-6" data-toc-section>
+        <h2>6. Dienste Dritter</h2>
+        <p>Seriel nutzt insbesondere</p>
+        <ul>
+          <li><a href="https://trakt.tv" rel="noopener">Trakt</a> (trakt, inc., USA) für Serieninformationen, den Profil-Import und die Synchronisierung,</li>
+          <li><a href="https://www.themoviedb.org" rel="noopener">The Movie Database (TMDB)</a> für Bilder und ergänzende Daten sowie JustWatch-Daten zur Streaming-Verfügbarkeit, bereitgestellt über TMDB,</li>
+          <li>Apple für den Vertrieb, Käufe, Mitteilungen und Apple Intelligence auf dem Gerät.</li>
+        </ul>
+        <p>Diese Dienste stehen nicht unter unserer Kontrolle. Ihre Inhalte werden von den Anbietern und deren Communitys gepflegt und können unvollständig, verspätet oder fehlerhaft sein. Ändern Dritte ihre Schnittstellen oder Bedingungen oder stellen sie einen Dienst ein, können einzelne Funktionen der App sich ändern oder entfallen (Abschnitt&nbsp;9). Für dein Trakt-Konto gelten ausschließlich die Bedingungen von Trakt. Inhalte von Trakt und TMDB stellen wir dir nur zur persönlichen, nicht kommerziellen Nutzung in der App bereit.</p>
+        <p>Seriel steht in keiner Verbindung zu Trakt, TMDB, JustWatch oder Apple. Seriel nutzt die Trakt-API, ist aber nicht von Trakt geprüft oder zertifiziert. Seriel uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.</p>
+      </section>
+
+      <section id="de-7" data-toc-section>
+        <h2>7. Deine Inhalte und dein Trakt-Konto</h2>
+        <p>Bewertungen, Rezensionen und Kommentare, die du in Seriel schreibst, werden zunächst auf deinem Gerät gespeichert; wir erhalten sie nicht und erwerben keine Rechte daran. Synchronisierst du mit Trakt, werden sie an dein Trakt-Konto übertragen, dort mit deinem Benutzernamen öffentlich angezeigt und unterliegen den Bedingungen von Trakt. Trakt verlangt für Kommentare mindestens fünf Wörter.</p>
+        <p>Du bist für deine Inhalte verantwortlich. Sie dürfen nicht gegen geltendes Recht oder Rechte Dritter verstoßen; verrate in Rezensionen nichts ohne Spoiler-Hinweis, was andere nicht wissen möchten.</p>
+        <p>Beim Verbinden mit Trakt zeigt dir Seriel, worin sich deine Bibliothek und dein Trakt-Konto unterscheiden. Änderungen an deinem Trakt-Konto führt Seriel nur so aus, wie du sie in dieser Übersicht bestätigst; bitte prüfe deine Auswahl sorgfältig. Danach überträgt Seriel deine Aktionen laufend an Trakt und übernimmt Änderungen von dort.</p>
+      </section>
+
+      <section id="de-8" data-toc-section>
+        <h2>8. Nutzungsregeln</h2>
+        <p>Du verpflichtest dich, die App nicht missbräuchlich zu nutzen, insbesondere</p>
+        <ul>
+          <li>die App nicht für rechtswidrige Zwecke zu verwenden;</li>
+          <li>über die App keine automatisierten Massenabfragen an Trakt, TMDB oder andere Dienste zu richten;</li>
+          <li>die Grenze des kostenlosen Plans oder die Kaufprüfung nicht technisch zu umgehen;</li>
+          <li>die App nicht zu dekompilieren, zurückzuentwickeln oder zu verändern, soweit dies nicht nach §§&nbsp;69d, 69e UrhG oder anderem zwingenden Recht erlaubt ist.</li>
+        </ul>
+        <p>Alle Rechte an der App, ihrem Design, Code, Texten und Grafiken liegen bei uns, soweit nicht anders gekennzeichnet. Rechte an Serieninformationen und Bildern liegen bei den jeweiligen Rechteinhabern.</p>
+      </section>
+
+      <section id="de-9" data-toc-section>
+        <h2>9. Änderungen der App und Verfügbarkeit</h2>
+        <p>Wir entwickeln Seriel weiter. Wir können die App aus triftigem Grund ändern, etwa zur Anpassung an neue technische Umgebungen, an geänderte Schnittstellen oder Bedingungen von Trakt, TMDB oder Apple, an Rechtsänderungen oder aus Sicherheitsgründen. Änderungen an Seriel&nbsp;Pro verursachen keine zusätzlichen Kosten für dich, und wir informieren dich in geeigneter Weise, etwa in der App oder in den Versionshinweisen. Beeinträchtigt eine Änderung deinen Zugang zu Seriel&nbsp;Pro oder dessen Nutzbarkeit mehr als nur unerheblich, stehen dir die gesetzlichen Rechte zu, insbesondere nach §&nbsp;327r BGB.</p>
+        <p>Wir bemühen uns um eine möglichst störungsfreie Nutzung, können aber eine ununterbrochene Verfügbarkeit nicht zusagen, insbesondere soweit sie von Diensten Dritter, deinem Gerät oder deiner Internetverbindung abhängt.</p>
+      </section>
+
+      <section id="de-10" data-toc-section>
+        <h2>10. Gewährleistung</h2>
+        <p>Es gelten die gesetzlichen Gewährleistungsrechte, für digitale Produkte insbesondere die §§&nbsp;327&nbsp;ff. BGB. Ansprüche aus einem Kauf richten sich gegen den jeweiligen Vertragspartner des Kaufs (Abschnitt&nbsp;4.2). Inhalte Dritter (Abschnitt&nbsp;6) sind kein von uns geschuldeter Bestandteil der App; wir sorgen aber dafür, dass die App sie wie beschrieben abruft und anzeigt.</p>
+      </section>
+
+      <section id="de-11" data-toc-section>
+        <h2>11. Haftung</h2>
+        <ol>
+          <li>Wir haften unbeschränkt bei Vorsatz und grober Fahrlässigkeit, für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit, nach dem Produkthaftungsgesetz und im Umfang einer übernommenen Garantie.</li>
+          <li>Bei leichter Fahrlässigkeit haften wir nur für die Verletzung wesentlicher Vertragspflichten, also solcher Pflichten, deren Erfüllung die ordnungsgemäße Durchführung des Vertrags erst ermöglicht und auf deren Einhaltung du regelmäßig vertrauen darfst. In diesem Fall ist die Haftung auf den vorhersehbaren, vertragstypischen Schaden begrenzt.</li>
+          <li>Soweit wir Leistungen unentgeltlich erbringen, haften wir außerhalb von Absatz&nbsp;1 nur für Vorsatz und grobe Fahrlässigkeit.</li>
+          <li>Für den Verlust von Daten haften wir im Rahmen der vorstehenden Absätze nur in der Höhe, die auch bei regelmäßiger Datensicherung, etwa über ein iCloud-Backup, entstanden wäre.</li>
+          <li>Diese Regelungen gelten auch zugunsten unserer Erfüllungsgehilfen.</li>
+        </ol>
+      </section>
+
+      <section id="de-12" data-toc-section>
+        <h2>12. Laufzeit und Ende der Nutzung</h2>
+        <p>Du kannst die Nutzung jederzeit beenden, indem du die App löschst. Abonnements kündigst du in deinem Apple Account (Abschnitt&nbsp;4.3). Das Recht beider Seiten zur Kündigung aus wichtigem Grund bleibt unberührt.</p>
+      </section>
+
+      <section id="de-13" data-toc-section>
+        <h2>13. Testversionen</h2>
+        <p>Vorabversionen, die wir über Apples TestFlight bereitstellen, dienen dem Test und können Fehler enthalten. Damit jeder Test von einem sauberen Stand ausgeht, kann eine neue Testversion beim ersten Start alle lokal gespeicherten Daten zurücksetzen. Es gelten zusätzlich die Bedingungen von Apple für TestFlight. Feedback, das du uns gibst, dürfen wir zur Verbesserung der App verwenden.</p>
+      </section>
+
+      <section id="de-14" data-toc-section>
+        <h2>14. Änderungen dieser Bedingungen</h2>
+        <p>Wir können diese Bedingungen für die Zukunft ändern, etwa wenn sich die App, Dienste Dritter oder die Rechtslage ändern. Änderungen, die ein bestehendes Vertragsverhältnis mit dir betreffen, werden nur wirksam, wenn du ihnen zustimmst, zum Beispiel in der App. Stimmst du nicht zu, gelten für dich die bisherigen Bedingungen fort. Die jeweils aktuelle Fassung findest du auf dieser Seite.</p>
+      </section>
+
+      <section id="de-15" data-toc-section>
+        <h2>15. Ergänzende Bedingungen für den App Store</h2>
+        <ul>
+          <li><strong>Vertragsparteien.</strong> Diese Bedingungen gelten zwischen dir und uns, nicht zwischen dir und Apple. Apple ist für die App und ihre Inhalte nicht verantwortlich.</li>
+          <li><strong>Lizenz.</strong> Du erhältst ein nicht übertragbares Recht, die App auf Geräten der Marke Apple zu nutzen, die du besitzt oder kontrollierst, nach Maßgabe der Nutzungsregeln in den Bedingungen für Apple-Mediendienste; die App kann auch von anderen Accounts genutzt werden, die über die Familienfreigabe oder den Volumenkauf mit deinem Account verbunden sind.</li>
+          <li><strong>Wartung und Support.</strong> Dafür sind ausschließlich wir verantwortlich. Apple ist nicht verpflichtet, Wartungs- oder Supportleistungen zu erbringen.</li>
+          <li><strong>Gewährleistung.</strong> Entspricht die App einer anwendbaren Gewährleistung nicht, kannst du Apple informieren; Apple erstattet dir dann gegebenenfalls den Kaufpreis. Im gesetzlich zulässigen Umfang hat Apple keine weiteren Gewährleistungspflichten in Bezug auf die App.</li>
+          <li><strong>Ansprüche.</strong> Für Ansprüche von dir oder Dritten im Zusammenhang mit der App, etwa aus Produkthaftung, wegen Nichteinhaltung gesetzlicher Vorgaben, aus Verbraucher- oder Datenschutzrecht, sind wir und nicht Apple verantwortlich. Gleiches gilt für Ansprüche Dritter, die App oder ihre Nutzung verletze Rechte des geistigen Eigentums.</li>
+          <li><strong>Rechtliche Zusicherung.</strong> Du sicherst zu, dass du dich nicht in einem Land befindest, das einem Embargo der US-Regierung unterliegt oder von ihr als &bdquo;den Terrorismus unterstützend&ldquo; eingestuft ist, und dass du nicht auf einer Liste der US-Regierung über verbotene oder eingeschränkte Parteien geführt wirst.</li>
+          <li><strong>Bedingungen Dritter.</strong> Bei der Nutzung der App hältst du die Bedingungen der Dienste Dritter ein, die du dabei nutzt, etwa von Trakt.</li>
+          <li><strong>Drittbegünstigte.</strong> Apple und ihre Tochtergesellschaften sind Drittbegünstigte dieser Bedingungen und können sie dir gegenüber durchsetzen.</li>
+          <li><strong>Kontakt.</strong> Fragen, Beschwerden oder Ansprüche zur App richtest du an die Adresse in Abschnitt&nbsp;1.</li>
+        </ul>
+      </section>
+
+      <section id="de-16" data-toc-section>
+        <h2>16. Anwendbares Recht, Gerichtsstand, Streitbeilegung</h2>
+        <p>Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts. Bist du Verbraucher, bleiben dir die zwingenden Verbraucherschutzvorschriften des Staates erhalten, in dem du deinen gewöhnlichen Aufenthalt hast.</p>
+        <p>Bist du Kaufmann, eine juristische Person des öffentlichen Rechts oder ein öffentlich-rechtliches Sondervermögen, ist Hamburg ausschließlicher Gerichtsstand. Für Verbraucher gelten die gesetzlichen Gerichtsstände.</p>
+        <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. Schreib uns bei Problemen einfach direkt an.</p>
+      </section>
+
+      <section id="de-17" data-toc-section>
+        <h2>17. Schlussbestimmungen</h2>
+        <p>Sollte eine Bestimmung dieser Bedingungen unwirksam sein, bleiben die übrigen wirksam; an die Stelle der unwirksamen Bestimmung tritt die gesetzliche Regelung. Diese Bedingungen gibt es auf Deutsch und Englisch; maßgeblich ist die deutsche Fassung.</p>
+        <p>Fragen zu diesen Bedingungen beantworten wir gern unter <a href="mailto:hello@seriel.app">hello@seriel.app</a>. Informationen zum Datenschutz findest du in der <a href="/privacy/">Datenschutzerklärung</a>.</p>
+      </section>
+    </article>
+  </div>
+</div>
+
+<!-- =================================================================== -->
+<!-- ENGLISH                                                              -->
+<!-- =================================================================== -->
+<div lang="en">
+  <section class="doc-hero">
+    <div class="wrap">
+      <p class="eyebrow">Legal</p>
+      <h1 class="display">Terms of Use</h1>
+      <p class="lead">The rules for the Seriel app, Seriel Pro and this website. As clear as possible, as detailed as necessary.</p>
+      <p class="stamp">Last updated: 15 October 2026 · <a class="text-link" href="#de" data-lang-set="de">Deutsche Fassung</a></p>
+    </div>
+  </section>
+
+  <div class="wrap doc-layout">
+    <nav class="toc" aria-label="Contents">
+      <b>Contents</b>
+      <ol>
+        <li><a href="#en-1">Scope</a></li>
+        <li><a href="#en-2">What Seriel is</a></li>
+        <li><a href="#en-3">Requirements</a></li>
+        <li><a href="#en-4">Seriel Pro and purchases</a></li>
+        <li><a href="#en-5">Right of withdrawal</a></li>
+        <li><a href="#en-6">Third-party services</a></li>
+        <li><a href="#en-7">Your content and Trakt</a></li>
+        <li><a href="#en-8">Rules of use</a></li>
+        <li><a href="#en-9">Changes and availability</a></li>
+        <li><a href="#en-10">Warranty</a></li>
+        <li><a href="#en-11">Liability</a></li>
+        <li><a href="#en-12">Term and ending</a></li>
+        <li><a href="#en-13">Beta versions</a></li>
+        <li><a href="#en-14">Changes to these terms</a></li>
+        <li><a href="#en-15">App Store terms</a></li>
+        <li><a href="#en-16">Law and jurisdiction</a></li>
+        <li><a href="#en-17">Final provisions</a></li>
+      </ol>
+    </nav>
+
+    <article class="prose">
+      <section id="en-1" data-toc-section>
+        <h2>1. Scope and provider</h2>
+        <p>These terms of use govern the use of the &ldquo;Seriel&rdquo; app for iPhone and iPad (the &ldquo;app&rdquo;), the paid &ldquo;Seriel&nbsp;Pro&rdquo; features and the website <a href="https://seriel.app">seriel.app</a>. The provider is:</p>
+        <address>David Cox, Jütlandring 2, 22419 Hamburg, Germany, email: <a href="mailto:hello@seriel.app">hello@seriel.app</a> (&ldquo;we&rdquo;).</address>
+        <p>The app is distributed through Apple&rsquo;s App Store. Your licence to use it is governed by Apple&rsquo;s standard <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noopener">Licensed Application End User License Agreement</a>; these terms supplement it. Terms proposed by users do not apply.</p>
+      </section>
+
+      <section id="en-2" data-toc-section>
+        <h2>2. What Seriel is</h2>
+        <p>Seriel is an app for keeping track of the shows and episodes you have watched, seeing when new episodes come out, and rating and reviewing shows. Your library is stored on your device; no user account is needed.</p>
+        <p><strong>Free of charge</strong>, you can use the app with up to ten shows in active sync, including alerts for those shows, an unlimited watchlist, ratings and reviews, and a one-time import of a public Trakt profile. Shows above this limit stay in your library but are no longer updated (&ldquo;Tracking paused&rdquo;).</p>
+        <p><strong>Seriel&nbsp;Pro</strong> removes this limit and adds, in particular, two-way sync with a Trakt account, alerts for all shows, streaming availability, spoiler hiding and a separate section for reality TV. The features described in the app before purchase are what you buy.</p>
+        <p>Show information, images and availability data come from third-party services (section&nbsp;6). We don&rsquo;t create this content ourselves and don&rsquo;t check it item by item.</p>
+      </section>
+
+      <section id="en-3" data-toc-section>
+        <h2>3. Requirements</h2>
+        <ul>
+          <li>an iPhone or iPad with iOS or iPadOS&nbsp;26 or later, and an internet connection to load show information;</li>
+          <li>a minimum age of 16; younger people only with the consent of their parent or guardian;</li>
+          <li>a Trakt account for syncing with Trakt. <a href="https://trakt.tv/terms" rel="noopener">Trakt&rsquo;s terms</a>, including its age requirements, apply to it. You are responsible for keeping your Trakt credentials secure.</li>
+        </ul>
+        <p>Review summaries require a device with Apple Intelligence turned on. The app is currently in English.</p>
+      </section>
+
+      <section id="en-4" data-toc-section>
+        <h2>4. Seriel Pro and purchases</h2>
+        <h3>4.1 Offers and prices</h3>
+        <p>Seriel&nbsp;Pro is available as an auto-renewing subscription (monthly or yearly) or as a one-time purchase (&ldquo;Lifetime&rdquo;). Prices including VAT are shown to you in the App Store or in the app before you buy. A purchase is only made once you confirm it in Apple&rsquo;s purchase dialog.</p>
+        <h3>4.2 Contracting party and processing</h3>
+        <p>All purchases are processed through the App Store and charged to your Apple Account. In the European Union and many other countries, Apple sells in-app purchases in its own name as a commissionaire, so the contract of sale is with Apple (in the EU, Apple Distribution International Ltd., Ireland). In some countries, such as the United States, Apple acts as our agent and the contract of sale is with us. In every case, Apple&rsquo;s <a href="https://www.apple.com/legal/internet-services/itunes/" rel="noopener">Media Services Terms and Conditions</a> govern the purchase, payment, Family Sharing and refunds. We define what Seriel&nbsp;Pro includes (section&nbsp;2).</p>
+        <h3>4.3 Subscriptions</h3>
+        <p>A subscription renews automatically for the selected period unless you cancel it at least 24&nbsp;hours before the current period ends. The renewal is charged within the 24&nbsp;hours before the period ends. You can manage and cancel your subscription at any time in your Apple Account settings; cancellation takes effect at the end of the current period. Deleting the app does not cancel a subscription.</p>
+        <h3>4.4 Lifetime</h3>
+        <p>The Lifetime purchase is a single payment with no recurring charges. It unlocks Seriel&nbsp;Pro for the Apple Account used (and through Family Sharing) for as long as we offer and operate the app. &ldquo;Lifetime&rdquo; refers to the lifetime of the app, not of the user. We intend to run Seriel for the long term. Should we ever discontinue the app permanently, we will announce it in the app with reasonable notice, as a rule at least three months in advance. Your statutory rights, in particular under sections&nbsp;327 et seq. of the German Civil Code (BGB), remain unaffected.</p>
+        <h3>4.5 Family Sharing</h3>
+        <p>Seriel&nbsp;Pro can be shared with your family group through Apple&rsquo;s Family Sharing if you have turned on purchase or subscription sharing.</p>
+        <h3>4.6 When Pro ends</h3>
+        <p>If a subscription ends or a purchase is refunded, your library stays complete. The free plan&rsquo;s limits apply again: up to ten shows stay active and the rest are paused, Trakt sync is paused and the Pro features are switched off. Buying Pro again picks everything back up.</p>
+      </section>
+
+      <section id="en-5" data-toc-section>
+        <h2>5. Right of withdrawal</h2>
+        <p>Consumers have a statutory right of withdrawal for purchases. Where Apple is the contracting party (section&nbsp;4.2, in particular in the EU), the right of withdrawal is exercised against Apple; Apple informs you about it during the purchase and handles withdrawal and refunds, for example at <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a>. For digital content, the right of withdrawal may expire early under statutory law if performance begins with your express consent and you have acknowledged this. Your statutory rights remain unaffected, and you can always contact us with questions as well.</p>
+      </section>
+
+      <section id="en-6" data-toc-section>
+        <h2>6. Third-party services</h2>
+        <p>Seriel relies in particular on</p>
+        <ul>
+          <li><a href="https://trakt.tv" rel="noopener">Trakt</a> (trakt, inc., USA) for show information, profile import and sync,</li>
+          <li><a href="https://www.themoviedb.org" rel="noopener">The Movie Database (TMDB)</a> for images and supplementary data, and JustWatch data on streaming availability provided through TMDB,</li>
+          <li>Apple for distribution, purchases, notifications and on-device Apple Intelligence.</li>
+        </ul>
+        <p>These services are outside our control. Their content is maintained by the providers and their communities and may be incomplete, late or wrong. If third parties change their interfaces or terms or discontinue a service, individual features of the app may change or stop working (section&nbsp;9). Your Trakt account is governed solely by Trakt&rsquo;s terms. We provide content from Trakt and TMDB only for your personal, non-commercial use within the app.</p>
+        <p>Seriel is not affiliated with Trakt, TMDB, JustWatch or Apple. Seriel uses the Trakt API but is not endorsed or certified by Trakt. Seriel uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.</p>
+      </section>
+
+      <section id="en-7" data-toc-section>
+        <h2>7. Your content and your Trakt account</h2>
+        <p>Ratings, reviews and comments you write in Seriel are first stored on your device; we don&rsquo;t receive them and acquire no rights in them. If you sync with Trakt, they are sent to your Trakt account, shown publicly there under your username and governed by Trakt&rsquo;s terms. Trakt requires comments to be at least five words long.</p>
+        <p>You are responsible for your content. It must not break the law or infringe the rights of others; please mark spoilers in reviews.</p>
+        <p>When you connect to Trakt, Seriel shows you where your library and your Trakt account differ. Seriel only changes your Trakt account in the way you confirm in that overview, so please check your choices carefully. After that, Seriel continuously sends your actions to Trakt and brings in changes made there.</p>
+      </section>
+
+      <section id="en-8" data-toc-section>
+        <h2>8. Rules of use</h2>
+        <p>You agree not to misuse the app, and in particular</p>
+        <ul>
+          <li>not to use the app for unlawful purposes;</li>
+          <li>not to send automated bulk requests to Trakt, TMDB or other services through the app;</li>
+          <li>not to technically circumvent the free plan&rsquo;s limit or the purchase check;</li>
+          <li>not to decompile, reverse-engineer or modify the app, except where permitted by sections&nbsp;69d and 69e of the German Copyright Act or other mandatory law.</li>
+        </ul>
+        <p>All rights in the app, its design, code, text and graphics are ours unless stated otherwise. Rights in show information and images belong to their respective owners.</p>
+      </section>
+
+      <section id="en-9" data-toc-section>
+        <h2>9. Changes to the app and availability</h2>
+        <p>We keep developing Seriel. We may change the app for a valid reason, such as adapting it to new technical environments, to changed interfaces or terms of Trakt, TMDB or Apple, to changes in the law, or for security reasons. Changes to Seriel&nbsp;Pro come at no extra cost to you, and we will inform you appropriately, for example in the app or in the release notes. If a change impairs your access to or use of Seriel&nbsp;Pro more than insignificantly, you have the statutory rights, in particular under section&nbsp;327r BGB.</p>
+        <p>We aim for the app to work without interruption but cannot promise uninterrupted availability, especially where it depends on third-party services, your device or your internet connection.</p>
+      </section>
+
+      <section id="en-10" data-toc-section>
+        <h2>10. Warranty</h2>
+        <p>The statutory warranty rights apply, for digital products in particular sections&nbsp;327 et seq. BGB. Claims arising from a purchase are directed against the contracting party of that purchase (section&nbsp;4.2). Third-party content (section&nbsp;6) is not a part of the app that we owe; we do, however, make sure the app retrieves and displays it as described.</p>
+      </section>
+
+      <section id="en-11" data-toc-section>
+        <h2>11. Liability</h2>
+        <ol>
+          <li>We are liable without limitation for intent and gross negligence, for injury to life, body or health, under the German Product Liability Act and to the extent of any guarantee we have given.</li>
+          <li>For slight negligence, we are only liable for breaches of essential contractual obligations, meaning obligations whose fulfilment makes the proper performance of the contract possible in the first place and on whose fulfilment you may regularly rely. In that case liability is limited to the foreseeable damage typical for this type of contract.</li>
+          <li>Where we provide services free of charge, we are liable, outside paragraph&nbsp;1, only for intent and gross negligence.</li>
+          <li>For loss of data, we are liable within the limits above only for the amount that would also have arisen with regular backups, for example an iCloud backup.</li>
+          <li>These provisions also apply in favour of those we engage to perform our obligations.</li>
+        </ol>
+      </section>
+
+      <section id="en-12" data-toc-section>
+        <h2>12. Term and ending use</h2>
+        <p>You can stop using the app at any time by deleting it. You cancel subscriptions in your Apple Account (section&nbsp;4.3). Both sides&rsquo; right to terminate for good cause remains unaffected.</p>
+      </section>
+
+      <section id="en-13" data-toc-section>
+        <h2>13. Beta versions</h2>
+        <p>Pre-release versions we make available through Apple&rsquo;s TestFlight are for testing and may contain bugs. So that every test starts from a clean slate, a new beta build may reset all locally stored data the first time it launches. Apple&rsquo;s TestFlight terms also apply. We may use feedback you give us to improve the app.</p>
+      </section>
+
+      <section id="en-14" data-toc-section>
+        <h2>14. Changes to these terms</h2>
+        <p>We may change these terms for the future, for example when the app, third-party services or the law change. Changes that affect an existing contract with you only take effect if you agree to them, for example in the app. If you don&rsquo;t agree, the previous terms continue to apply to you. The current version is always available on this page.</p>
+      </section>
+
+      <section id="en-15" data-toc-section>
+        <h2>15. Additional terms for the App Store</h2>
+        <ul>
+          <li><strong>Parties.</strong> These terms are between you and us, not between you and Apple. Apple is not responsible for the app or its content.</li>
+          <li><strong>Licence.</strong> You receive a non-transferable right to use the app on Apple-branded products that you own or control, as permitted by the Usage Rules in the Apple Media Services Terms and Conditions; the app may also be used by other accounts associated with yours through Family Sharing or volume purchasing.</li>
+          <li><strong>Maintenance and support.</strong> We alone are responsible for them. Apple has no obligation to provide any maintenance or support services.</li>
+          <li><strong>Warranty.</strong> If the app fails to conform to any applicable warranty, you may notify Apple, and Apple may refund the purchase price to you. To the maximum extent permitted by law, Apple has no other warranty obligation with respect to the app.</li>
+          <li><strong>Claims.</strong> We, not Apple, are responsible for addressing any claims by you or third parties relating to the app, such as product liability claims, claims that the app fails to conform to legal or regulatory requirements, and claims under consumer protection or privacy law. The same applies to third-party claims that the app or your use of it infringes intellectual property rights.</li>
+          <li><strong>Legal compliance.</strong> You represent that you are not located in a country subject to a U.S. Government embargo or designated by the U.S. Government as a &ldquo;terrorist supporting&rdquo; country, and that you are not listed on any U.S. Government list of prohibited or restricted parties.</li>
+          <li><strong>Third-party terms.</strong> When using the app, you comply with the terms of any third-party services you use with it, such as Trakt.</li>
+          <li><strong>Third-party beneficiary.</strong> Apple and its subsidiaries are third-party beneficiaries of these terms and may enforce them against you.</li>
+          <li><strong>Contact.</strong> Please send any questions, complaints or claims about the app to the address in section&nbsp;1.</li>
+        </ul>
+      </section>
+
+      <section id="en-16" data-toc-section>
+        <h2>16. Governing law, jurisdiction, dispute resolution</h2>
+        <p>German law applies, excluding the UN Convention on Contracts for the International Sale of Goods. If you are a consumer, you keep the protection of the mandatory consumer law of the country where you habitually live.</p>
+        <p>If you are a merchant, a legal entity under public law or a special fund under public law, Hamburg is the exclusive place of jurisdiction. For consumers, the statutory places of jurisdiction apply.</p>
+        <p>We are neither willing nor obliged to take part in dispute resolution proceedings before a consumer arbitration board. If something goes wrong, just write to us directly.</p>
+      </section>
+
+      <section id="en-17" data-toc-section>
+        <h2>17. Final provisions</h2>
+        <p>If any provision of these terms is invalid, the rest remain valid and the statutory rules take the place of the invalid provision. These terms are available in German and English; the German version is authoritative.</p>
+        <p>We&rsquo;re happy to answer questions about these terms at <a href="mailto:hello@seriel.app">hello@seriel.app</a>. Information on data protection is in the <a href="/privacy/">privacy policy</a>.</p>
+      </section>
+    </article>
+  </div>
+</div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a class="brand" href="/"><img src="/images/app-icon-192.png" alt="" width="24" height="24">Seriel</a>
+        <p style="margin-top:10px;max-width:22em"><span lang="en">Every show you watch, in one place. For iPhone and iPad.</span><span lang="de">Jede Serie, die du schaust, an einem Ort. Für iPhone und iPad.</span></p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <b>Seriel</b>
+          <ul>
+            <li><a href="/#features"><span lang="en">Features</span><span lang="de">Funktionen</span></a></li>
+            <li><a href="/#pro">Seriel Pro</a></li>
+            <li><a href="/help/"><span lang="en">Help</span><span lang="de">Hilfe</span></a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
         </div>
-        <div class="hairline"></div>
-    </header>
-
-    <section class="doc-folio">
-        <div class="doc-folio-inner">
-            <p class="doc-kind">TERMS &middot; JULY 2026</p>
-            <p class="doc-title" data-lang="de">Nutzungs&shy;bedingungen</p>
-            <p class="doc-title" data-lang="en" hidden>Terms of Service</p>
+        <div class="footer-col">
+          <b><span lang="en">Legal</span><span lang="de">Rechtliches</span></b>
+          <ul>
+            <li><a href="/privacy/"><span lang="en">Privacy Policy</span><span lang="de">Datenschutz</span></a></li>
+            <li><a href="/terms/" aria-current="page"><span lang="en">Terms of Use</span><span lang="de">Nutzungsbedingungen</span></a></li>
+            <li><a href="/impressum/">Impressum</a></li>
+          </ul>
         </div>
-    </section>
-
-    <main class="legal-content">
-
-        <!-- GERMAN VERSION -->
-        <article id="de" class="legal-text" lang="de">
-            <h1>Nutzungsbedingungen</h1>
-            <p class="legal-date">Stand: Juli 2026</p>
-
-            <h2>1. Geltungsbereich</h2>
-            <p>Diese Nutzungsbedingungen gelten f&uuml;r die Nutzung der iOS-App &bdquo;Seriel&ldquo; (im Folgenden &bdquo;App&ldquo;) sowie der Website <a href="https://seriel.app">seriel.app</a> (im Folgenden &bdquo;Website&ldquo;), bereitgestellt von:</p>
-            <p>
-                David Cox<br>
-                J&uuml;tlandring 2<br>
-                22419 Hamburg<br>
-                Deutschland<br>
-                E-Mail: <a href="mailto:hello@seriel.app">hello@seriel.app</a>
-            </p>
-            <p>Mit der Nutzung der App oder Website erkl&auml;ren Sie sich mit diesen Nutzungsbedingungen einverstanden. Wenn Sie nicht einverstanden sind, nutzen Sie die App und Website bitte nicht.</p>
-
-            <h2>2. Leistungsbeschreibung</h2>
-            <p>Seriel ist eine iOS-App zum Verfolgen von TV-Serien. Die App erm&ouml;glicht es Nutzern, &uuml;ber die Trakt.tv-API:</p>
-            <ul>
-                <li>Gesehene Serien und Episoden zu verfolgen</li>
-                <li>Serien und Episoden zu bewerten und zu rezensieren</li>
-                <li>Eine pers&ouml;nliche Watchlist zu verwalten</li>
-                <li>Neue Serien zu entdecken</li>
-                <li>Benachrichtigungen &uuml;ber neue Episoden zu erhalten</li>
-            </ul>
-            <p>Die App ist in einer kostenlosen Basisversion nutzbar. Bestimmte erweiterte Funktionen (&bdquo;Seriel Pro&ldquo;) k&ouml;nnen &uuml;ber einen optionalen kostenpflichtigen Kauf freigeschaltet werden (siehe Abschnitt&nbsp;8).</p>
-            <p>Seriel ist nicht Anbieter der Trakt.tv-Dienste. F&uuml;r die Trakt.tv-Plattform und deren Inhalte ist ausschlie&szlig;lich Trakt, Inc. verantwortlich. Ebenso stammen Bilder und Metadaten von The Movie Database (TMDB), betrieben von Fandango Media, LLC.</p>
-
-            <h2>3. Voraussetzungen</h2>
-            <p>Die Nutzung der App ist Personen ab 16 Jahren vorbehalten. Personen unter 16 Jahren ben&ouml;tigen die Zustimmung eines Erziehungsberechtigten. Mit der Nutzung der App best&auml;tigen Sie, dass Sie mindestens 16 Jahre alt sind oder die Zustimmung eines Erziehungsberechtigten haben.</p>
-            <p>F&uuml;r die Nutzung der App ist ein Trakt.tv-Konto erforderlich. Die Registrierung bei Trakt unterliegt den <a href="https://trakt.tv/terms" target="_blank" rel="noopener">Nutzungsbedingungen von Trakt</a>. Sie sind selbst f&uuml;r die Sicherheit Ihrer Zugangsdaten verantwortlich.</p>
-
-            <h2>4. Verf&uuml;gbarkeit und Haftung</h2>
-            <p>Die App und Website werden in der jeweils verf&uuml;gbaren Form bereitgestellt. Ein Anspruch auf einen bestimmten Funktionsumfang oder ununterbrochene Verf&uuml;gbarkeit besteht nicht. Insbesondere:</p>
-            <ul>
-                <li>Die Funktionsf&auml;higkeit der App h&auml;ngt von der Verf&uuml;gbarkeit der Trakt.tv-API und TMDB ab.</li>
-                <li>Wir haften nicht f&uuml;r Datenverluste, die durch St&ouml;rungen bei Drittanbietern verursacht werden.</li>
-                <li>Wir behalten uns vor, die App oder einzelne Funktionen jederzeit zu &auml;ndern, einzuschr&auml;nken oder einzustellen.</li>
-                <li>Wir haften nicht f&uuml;r St&ouml;rungen, Verz&ouml;gerungen oder Ausf&auml;lle, die auf Ereignissen au&szlig;erhalb unseres zumutbaren Einflussbereichs beruhen (h&ouml;here Gewalt).</li>
-            </ul>
-
-            <h3>4.1 Haftungsbeschr&auml;nkung</h3>
-            <p>Wir haften unbeschr&auml;nkt f&uuml;r Vorsatz und grobe Fahrl&auml;ssigkeit. F&uuml;r leichte Fahrl&auml;ssigkeit haften wir nur bei Verletzung wesentlicher Vertragspflichten (Kardinalpflichten), und dies beschr&auml;nkt auf den vorhersehbaren, vertragstypischen Schaden. Die Haftung f&uuml;r Sch&auml;den aus der Verletzung des Lebens, des K&ouml;rpers oder der Gesundheit bleibt unber&uuml;hrt.</p>
-
-            <h3>4.2 Gew&auml;hrleistung</h3>
-            <p>Die App wird in der jeweils verf&uuml;gbaren Form (&bdquo;wie besehen&ldquo;) bereitgestellt. Wir &uuml;bernehmen insbesondere keine Gew&auml;hr daf&uuml;r, dass die App unterbrechungs- oder fehlerfrei l&auml;uft, dass s&auml;mtliche neuen Episoden rechtzeitig erkannt und angezeigt werden oder dass die von Trakt.tv und TMDB bezogenen Informationen vollst&auml;ndig oder zutreffend sind. Zwingende gesetzliche Gew&auml;hrleistungsrechte, insbesondere f&uuml;r digitale Produkte gem&auml;&szlig; &sect;&sect;&nbsp;327&nbsp;ff. BGB, bleiben unber&uuml;hrt.</p>
-
-            <h2>5. Geistiges Eigentum</h2>
-            <p>Alle Rechte an der App, einschlie&szlig;lich Design, Code, Grafiken und Texten, liegen beim Anbieter, sofern nicht anders gekennzeichnet. Die Nutzung der App gew&auml;hrt Ihnen kein Eigentum an geistigem Eigentum des Anbieters.</p>
-            <p>Serien-Metadaten, Poster und Bilder stammen von Trakt.tv und TMDB und unterliegen den jeweiligen Lizenzbedingungen dieser Dienste.</p>
-            <p>&bdquo;Trakt&ldquo; ist eine Marke von Trakt, Inc.; &bdquo;TMDB&ldquo; und &bdquo;The Movie Database&ldquo; sind Marken von Fandango Media, LLC. Seriel nutzt die Trakt-API, ist jedoch nicht von Trakt gepr&uuml;ft, zertifiziert oder unterst&uuml;tzt. Dieses Produkt verwendet die TMDB-API, ist aber nicht von TMDB gebilligt oder zertifiziert. Seriel ist weder mit Trakt, Inc. noch mit Fandango Media, LLC verbunden.</p>
-
-            <h2>6. Nutzerpflichten</h2>
-            <p>Sie verpflichten sich:</p>
-            <ul>
-                <li>Die App nicht f&uuml;r rechtswidrige Zwecke zu nutzen</li>
-                <li>Keine automatisierten Zugriffe auf die App oder die genutzten APIs durchzuf&uuml;hren</li>
-                <li>Die App nicht zu dekompilieren, zu reverse-engineeren oder zu manipulieren, soweit dies nicht durch zwingendes Recht (insbesondere &sect;&nbsp;69e UrhG zu Zwecken der Interoperabilit&auml;t) gestattet ist</li>
-                <li>Keine falschen oder irref&uuml;hrenden Bewertungen oder Rezensionen zu verfassen</li>
-            </ul>
-
-            <h2>7. Nutzergenerierte Inhalte</h2>
-            <p>Bewertungen und Kommentare, die Sie &uuml;ber die App bei Trakt.tv ver&ouml;ffentlichen, unterliegen den <a href="https://trakt.tv/terms" target="_blank" rel="noopener">Nutzungsbedingungen von Trakt.tv</a>. Sie sind f&uuml;r die Rechtm&auml;&szlig;igkeit Ihrer ver&ouml;ffentlichten Inhalte selbst verantwortlich. Sie stellen sicher, dass Ihre Beitr&auml;ge keine Rechte Dritter verletzen und nicht gegen geltendes Recht versto&szlig;en.</p>
-
-            <h2>8. Kosten und In-App-K&auml;ufe</h2>
-            <p>Die Basisfunktionen von Seriel sind kostenlos nutzbar. Erweiterte Funktionen (&bdquo;Seriel Pro&ldquo;) k&ouml;nnen &uuml;ber einen optionalen kostenpflichtigen Kauf freigeschaltet werden. Seriel Pro wird angeboten als:</p>
-            <ul>
-                <li>automatisch verl&auml;ngerndes Abonnement (monatlich oder j&auml;hrlich) oder</li>
-                <li>einmaliger &bdquo;Lifetime&ldquo;-Kauf (Einmalzahlung ohne wiederkehrende Geb&uuml;hren).</li>
-            </ul>
-            <p>Alle K&auml;ufe werden &uuml;ber den Apple&nbsp;App&nbsp;Store abgewickelt und Ihrem Apple-Account belastet. Die jeweils g&uuml;ltigen Preise werden Ihnen vor Kaufabschluss im App&nbsp;Store bzw. in der App angezeigt; ein Kauf erfordert stets Ihre ausdr&uuml;ckliche Best&auml;tigung.</p>
-            <p><strong>Abonnement.</strong> Ein Abonnement verl&auml;ngert sich automatisch um den jeweils gew&auml;hlten Zeitraum, sofern es nicht mindestens 24&nbsp;Stunden vor Ablauf des laufenden Zeitraums gek&uuml;ndigt wird. Die Abrechnung der Verl&auml;ngerung erfolgt innerhalb von 24&nbsp;Stunden vor Ablauf des laufenden Zeitraums. Sie k&ouml;nnen Ihr Abonnement jederzeit in den Einstellungen Ihres Apple-Accounts verwalten oder k&uuml;ndigen; die K&uuml;ndigung wird zum Ende des laufenden Abrechnungszeitraums wirksam.</p>
-            <p><strong>Lifetime-Kauf.</strong> Der &bdquo;Lifetime&ldquo;-Kauf ist eine einmalige, nicht wiederkehrende Zahlung. Er schaltet die zum Kaufzeitpunkt in Seriel&nbsp;Pro enthaltenen Funktionen dauerhaft f&uuml;r den verwendeten Apple-Account frei, solange die App angeboten und von uns betrieben wird. &bdquo;Lifetime&ldquo; bezieht sich auf die Lebensdauer der App bzw. des Dienstes Seriel, <em>nicht</em> auf die Lebensdauer des Nutzers. Es besteht kein Anspruch auf einen zeitlich unbefristeten Weiterbetrieb der App. Wird der Dienst dauerhaft eingestellt, ergibt sich hieraus &ndash; soweit gesetzlich nicht zwingend vorgeschrieben &ndash; kein Anspruch auf eine (anteilige) R&uuml;ckerstattung. Der Lifetime-Kauf umfasst keine Zusage, dass k&uuml;nftige, gesondert angebotene Funktionen ohne weitere Kosten enthalten sind.</p>
-            <p>Zahlungsabwicklung, R&uuml;ckerstattungen und die Verwaltung s&auml;mtlicher K&auml;ufe erfolgen &uuml;ber den Apple&nbsp;App&nbsp;Store und unterliegen den <a href="https://www.apple.com/legal/internet-services/itunes/" target="_blank" rel="noopener">Bedingungen von Apple</a>.</p>
-
-            <h2>9. Widerrufsrecht</h2>
-            <p>Verbrauchern steht bei kostenpflichtigen K&auml;ufen ein gesetzliches Widerrufsrecht gem&auml;&szlig; &sect;&sect;&nbsp;355&nbsp;ff. BGB zu.</p>
-            <p>Bei digitalen Inhalten und digitalen Dienstleistungen erlischt das Widerrufsrecht gem&auml;&szlig; &sect;&nbsp;356 Abs.&nbsp;5 BGB vorzeitig, wenn wir mit der Ausf&uuml;hrung des Vertrags begonnen haben, nachdem Sie ausdr&uuml;cklich zugestimmt haben, dass wir vor Ablauf der Widerrufsfrist mit der Ausf&uuml;hrung beginnen, und Sie Ihre Kenntnis davon best&auml;tigt haben, dass Sie hierdurch Ihr Widerrufsrecht verlieren. Da Seriel&nbsp;Pro unmittelbar nach dem Kauf bereitgestellt wird, ist dies regelm&auml;&szlig;ig der Fall.</p>
-            <p>Da s&auml;mtliche K&auml;ufe &uuml;ber den Apple&nbsp;App&nbsp;Store abgewickelt werden, richten sich R&uuml;ckerstattungen zus&auml;tzlich nach den Richtlinien von Apple. Apple stellt die Widerrufsinformationen und ein Muster-Widerrufsformular im Rahmen des Kaufvorgangs bereit; einen Antrag auf R&uuml;ckerstattung k&ouml;nnen Sie &uuml;ber <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a> oder Ihren Apple-Account stellen. Ihre gesetzlichen Verbraucherrechte bleiben hiervon unber&uuml;hrt.</p>
-
-            <h2>10. Datenschutz</h2>
-            <p>Informationen zur Verarbeitung personenbezogener Daten finden Sie in unserer <a href="/privacy">Datenschutzerkl&auml;rung</a>.</p>
-
-            <h2>11. &Auml;nderungen der Nutzungsbedingungen</h2>
-            <p>Wir behalten uns vor, diese Nutzungsbedingungen mit Wirkung f&uuml;r die Zukunft zu &auml;ndern. Bei wesentlichen &Auml;nderungen werden wir Sie mindestens 14 Tage im Voraus per E-Mail oder in der App informieren und Ihre ausdr&uuml;ckliche Zustimmung einholen. Stimmen Sie den ge&auml;nderten Bedingungen nicht zu, k&ouml;nnen Sie die Nutzung der App einstellen und Ihr Konto trennen.</p>
-
-            <h2>12. Apple App Store &ndash; Erg&auml;nzende Bedingungen (EULA)</h2>
-            <p>Die App wird &uuml;ber den Apple&nbsp;App&nbsp;Store bereitgestellt. Erg&auml;nzend zu diesen Nutzungsbedingungen gilt die Standard-Lizenzvereinbarung f&uuml;r Endnutzer (&bdquo;Licensed Application End User License Agreement&ldquo;) von Apple, abrufbar unter <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">apple.com/legal/internet-services/itunes/dev/stdeula</a>. Bei Widerspr&uuml;chen gehen die zwingenden Vorgaben von Apple diesen Bedingungen vor. Insbesondere gilt:</p>
-            <ul>
-                <li><strong>Vertragsparteien.</strong> Diese Nutzungsbedingungen werden ausschlie&szlig;lich zwischen Ihnen und dem Anbieter (David Cox) geschlossen, nicht mit Apple. Apple ist nicht Vertragspartei und f&uuml;r die App und deren Inhalte nicht verantwortlich.</li>
-                <li><strong>Lizenzumfang.</strong> Ihnen wird eine nicht &uuml;bertragbare Lizenz zur Nutzung der App auf jedem Apple-Ger&auml;t einger&auml;umt, das Sie besitzen oder kontrollieren, nach Ma&szlig;gabe der Nutzungsregeln der Apple-Media-Dienste.</li>
-                <li><strong>Wartung und Support.</strong> F&uuml;r Wartung und Support der App ist allein der Anbieter verantwortlich. Apple ist hierzu nicht verpflichtet.</li>
-                <li><strong>Gew&auml;hrleistung.</strong> Sollte die App einer geltenden Gew&auml;hrleistung nicht entsprechen, k&ouml;nnen Sie Apple hier&uuml;ber informieren; Apple erstattet Ihnen dann gegebenenfalls den Kaufpreis. Im gesetzlich zul&auml;ssigen Umfang trifft Apple dar&uuml;ber hinaus keine Gew&auml;hrleistungspflicht; f&uuml;r etwaige weitergehende Anspr&uuml;che ist allein der Anbieter verantwortlich.</li>
-                <li><strong>Anspr&uuml;che und Produkthaftung.</strong> F&uuml;r die Bearbeitung von Anspr&uuml;chen im Zusammenhang mit der App (z.&nbsp;B. Produkthaftung, Nichteinhaltung gesetzlicher Vorgaben, Verbraucherschutz) sowie f&uuml;r Anspr&uuml;che wegen der Verletzung von Rechten des geistigen Eigentums Dritter ist allein der Anbieter, nicht Apple, verantwortlich.</li>
-                <li><strong>Rechtliche Zusicherungen.</strong> Sie sichern zu, dass Sie sich nicht in einem Land befinden, das einem Embargo der US-Regierung unterliegt oder von dieser als &bdquo;Terrorismus unterst&uuml;tzend&ldquo; eingestuft wurde, und dass Sie nicht auf einer Liste verbotener oder eingeschr&auml;nkter Parteien der US-Regierung gef&uuml;hrt werden.</li>
-                <li><strong>Apple als Drittbeg&uuml;nstigter.</strong> Apple und seine Tochtergesellschaften sind Drittbeg&uuml;nstigte dieser Nutzungsbedingungen und berechtigt, diese Ihnen gegen&uuml;ber durchzusetzen.</li>
-            </ul>
-
-            <h2>13. Anwendbares Recht und Gerichtsstand</h2>
-            <p>Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts. F&uuml;r Verbraucher gelten zus&auml;tzlich die zwingenden Verbraucherschutzvorschriften des Staates, in dem sie ihren gew&ouml;hnlichen Aufenthalt haben.</p>
-            <p>F&uuml;r Verbraucher mit gew&ouml;hnlichem Aufenthalt in der EU sind die Gerichte ihres Wohnsitzstaates zust&auml;ndig. F&uuml;r alle &uuml;brigen Streitigkeiten sind &mdash; soweit dem keine zwingenden gesetzlichen Vorschriften entgegenstehen &mdash; die Gerichte in Hamburg, Deutschland, zust&auml;ndig.</p>
-            <p>Hinweis gem&auml;&szlig; &sect;&nbsp;36 Verbraucherstreitbeilegungsgesetz (VSBG): Wir sind nicht bereit und nicht verpflichtet, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. Informationen zu Verbraucherrechten und anerkannten Streitbeilegungsstellen in der EU stellt die Europ&auml;ische Kommission unter <a href="https://consumer-redress.ec.europa.eu" target="_blank" rel="noopener">consumer-redress.ec.europa.eu</a> bereit.</p>
-
-            <h2>14. Salvatorische Klausel</h2>
-            <p>Sollte eine Bestimmung dieser Nutzungsbedingungen unwirksam sein oder werden, bleibt die Wirksamkeit der &uuml;brigen Bestimmungen unber&uuml;hrt. An die Stelle der unwirksamen Bestimmung treten die einschl&auml;gigen gesetzlichen Regelungen.</p>
-
-            <h2>15. Kontakt</h2>
-            <p>Bei Fragen zu diesen Nutzungsbedingungen kontaktieren Sie uns unter <a href="mailto:hello@seriel.app">hello@seriel.app</a>.</p>
-        </article>
-
-        <!-- ENGLISH VERSION -->
-        <article id="en" class="legal-text" lang="en" hidden>
-            <h1>Terms of Service</h1>
-            <p class="legal-date">Last updated: July 2026</p>
-
-            <h2>1. Scope</h2>
-            <p>These Terms of Service govern the use of the iOS app "Seriel" (the "App") and the website <a href="https://seriel.app">seriel.app</a> (the "Website"), provided by:</p>
-            <p>
-                David Cox<br>
-                J&uuml;tlandring 2<br>
-                22419 Hamburg<br>
-                Germany<br>
-                Email: <a href="mailto:hello@seriel.app">hello@seriel.app</a>
-            </p>
-            <p>By using the App or Website, you agree to these Terms of Service. If you do not agree, please do not use the App or Website.</p>
-
-            <h2>2. Description of Service</h2>
-            <p>Seriel is an iOS app for tracking TV shows. The App allows users to, via the Trakt.tv API:</p>
-            <ul>
-                <li>Track watched shows and episodes</li>
-                <li>Rate and review shows and episodes</li>
-                <li>Manage a personal watchlist</li>
-                <li>Discover new shows</li>
-                <li>Receive notifications about new episodes</li>
-            </ul>
-            <p>The App is usable in a free base version. Certain enhanced features ("Seriel Pro") can be unlocked through an optional paid purchase (see Section&nbsp;8).</p>
-            <p>Seriel is not the provider of Trakt.tv services. Trakt, Inc. is solely responsible for the Trakt.tv platform and its content. Likewise, images and metadata are sourced from The Movie Database (TMDB), operated by Fandango Media, LLC.</p>
-
-            <h2>3. Requirements</h2>
-            <p>Use of the App is restricted to persons aged 16 or older. Persons under 16 require the consent of a parent or legal guardian. By using the App, you confirm that you are at least 16 years old or have parental consent.</p>
-            <p>A Trakt.tv account is required to use the App. Registration with Trakt is subject to <a href="https://trakt.tv/terms" target="_blank" rel="noopener">Trakt's Terms of Use</a>. You are responsible for maintaining the security of your login credentials.</p>
-
-            <h2>4. Availability and Liability</h2>
-            <p>The App and Website are provided in their currently available form. There is no entitlement to a specific scope of features or uninterrupted availability. In particular:</p>
-            <ul>
-                <li>The App's functionality depends on the availability of the Trakt.tv API and TMDB.</li>
-                <li>We are not liable for data loss caused by disruptions of third-party services.</li>
-                <li>We reserve the right to modify, restrict, or discontinue the App or individual features at any time.</li>
-                <li>We are not liable for disruptions, delays, or outages resulting from events beyond our reasonable control (force majeure).</li>
-            </ul>
-
-            <h3>4.1 Limitation of Liability</h3>
-            <p>We are fully liable for intent and gross negligence. For slight negligence, we are only liable for breaches of essential contractual obligations (cardinal obligations), limited to foreseeable, typically occurring damages. Liability for damages arising from injury to life, body, or health remains unaffected.</p>
-
-            <h3>4.2 Disclaimer of Warranties</h3>
-            <p>The App is provided in its currently available form ("as is"). In particular, we do not warrant that the App will run uninterrupted or error-free, that all new episodes will be detected and displayed in a timely manner, or that the information sourced from Trakt.tv and TMDB will be complete or accurate. Mandatory statutory warranty rights, in particular for digital products under &sect;&sect;&nbsp;327 et seq. BGB, remain unaffected.</p>
-
-            <h2>5. Intellectual Property</h2>
-            <p>All rights to the App, including design, code, graphics, and text, belong to the provider unless otherwise indicated. Use of the App does not grant you ownership of any intellectual property.</p>
-            <p>TV show metadata, posters, and images are sourced from Trakt.tv and TMDB and are subject to the respective licensing terms of those services.</p>
-            <p>"Trakt" is a trademark of Trakt, Inc.; "TMDB" and "The Movie Database" are trademarks of Fandango Media, LLC. Seriel uses the Trakt API but is not endorsed or certified by Trakt. This product uses the TMDB API but is not endorsed or certified by TMDB. Seriel is not affiliated with Trakt, Inc. or Fandango Media, LLC.</p>
-
-            <h2>6. User Obligations</h2>
-            <p>You agree to:</p>
-            <ul>
-                <li>Not use the App for unlawful purposes</li>
-                <li>Not perform automated access to the App or the APIs it uses</li>
-                <li>Not decompile, reverse-engineer, or tamper with the App, except where permitted by mandatory applicable law (in particular &sect;&nbsp;69e UrhG for interoperability purposes)</li>
-                <li>Not submit false or misleading ratings or reviews</li>
-            </ul>
-
-            <h2>7. User-Generated Content</h2>
-            <p>Reviews and comments you publish via the App on Trakt.tv are subject to <a href="https://trakt.tv/terms" target="_blank" rel="noopener">Trakt.tv's Terms of Use</a>. You are solely responsible for the legality of your published content. You ensure that your contributions do not infringe third-party rights or violate applicable law.</p>
-
-            <h2>8. Costs and In-App Purchases</h2>
-            <p>Seriel's core features are free to use. Enhanced features ("Seriel Pro") can be unlocked through an optional paid purchase. Seriel Pro is offered as:</p>
-            <ul>
-                <li>an auto-renewing subscription (monthly or annual), or</li>
-                <li>a one-time "Lifetime" purchase (a single payment with no recurring fees).</li>
-            </ul>
-            <p>All purchases are processed through the Apple&nbsp;App&nbsp;Store and charged to your Apple account. The applicable prices are shown to you before purchase in the App&nbsp;Store or in the app; a purchase always requires your explicit confirmation.</p>
-            <p><strong>Subscription.</strong> A subscription automatically renews for the selected period unless cancelled at least 24&nbsp;hours before the end of the current period. Renewal is charged within 24&nbsp;hours before the end of the current period. You can manage or cancel your subscription at any time in your Apple account settings; cancellation takes effect at the end of the current billing period.</p>
-            <p><strong>Lifetime purchase.</strong> The "Lifetime" purchase is a one-time, non-recurring payment. It permanently unlocks the features included in Seriel&nbsp;Pro at the time of purchase for the Apple account used, for as long as the App is offered and operated by us. "Lifetime" refers to the lifetime of the Seriel app or service, <em>not</em> the lifetime of the user. There is no entitlement to indefinite continued operation of the App. If the service is permanently discontinued, this does not give rise to a claim for a (pro-rata) refund, unless mandatorily required by law. The Lifetime purchase does not include any promise that future, separately offered features will be included at no additional cost.</p>
-            <p>Payment processing, refunds, and management of all purchases are handled through the Apple&nbsp;App&nbsp;Store and are subject to <a href="https://www.apple.com/legal/internet-services/itunes/" target="_blank" rel="noopener">Apple's terms</a>.</p>
-
-            <h2>9. Right of Withdrawal</h2>
-            <p>For paid purchases, consumers are granted a statutory right of withdrawal in accordance with &sect;&sect;&nbsp;355 et seq. BGB.</p>
-            <p>For digital content and digital services, the right of withdrawal expires prematurely pursuant to &sect;&nbsp;356(5) BGB if we have begun performance of the contract after you have expressly consented to us beginning performance before the withdrawal period has expired and have acknowledged that you thereby lose your right of withdrawal. As Seriel&nbsp;Pro is made available immediately after purchase, this is regularly the case.</p>
-            <p>As all purchases are processed through the Apple&nbsp;App&nbsp;Store, refunds are additionally governed by Apple's policies. Apple provides the withdrawal information and a model withdrawal form during the purchase flow; you can request a refund via <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a> or through your Apple account. Your statutory rights as a consumer remain unaffected.</p>
-
-            <h2>10. Privacy</h2>
-            <p>For information on how we process personal data, please refer to our <a href="/privacy">Privacy Policy</a>.</p>
-
-            <h2>11. Changes to These Terms</h2>
-            <p>We reserve the right to amend these Terms of Service with future effect. For material changes, we will notify you at least 14 days in advance via email or in the app and request your explicit consent. If you do not agree to the amended terms, you may discontinue use of the App and disconnect your account.</p>
-
-            <h2>12. Apple App Store &ndash; Additional Terms (EULA)</h2>
-            <p>The App is made available through the Apple&nbsp;App&nbsp;Store. In addition to these Terms, Apple's standard Licensed Application End User License Agreement, available at <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">apple.com/legal/internet-services/itunes/dev/stdeula</a>, applies. In the event of a conflict, Apple's mandatory requirements prevail over these Terms. In particular:</p>
-            <ul>
-                <li><strong>Parties.</strong> These Terms are concluded solely between you and the provider (David Cox), not with Apple. Apple is not a party to these Terms and is not responsible for the App or its content.</li>
-                <li><strong>Scope of licence.</strong> You are granted a non-transferable licence to use the App on any Apple-branded device that you own or control, subject to the Usage Rules of the Apple Media Services.</li>
-                <li><strong>Maintenance and support.</strong> The provider is solely responsible for maintenance and support of the App. Apple has no obligation to furnish any maintenance or support services.</li>
-                <li><strong>Warranty.</strong> If the App fails to conform to any applicable warranty, you may notify Apple, and Apple may refund the purchase price to you. To the maximum extent permitted by law, Apple has no other warranty obligation whatsoever; any further claims are the sole responsibility of the provider.</li>
-                <li><strong>Claims and product liability.</strong> The provider, not Apple, is solely responsible for addressing any claims relating to the App (e.g., product liability, failure to conform to legal or regulatory requirements, consumer protection) and any third-party claim that the App infringes intellectual property rights.</li>
-                <li><strong>Legal representations.</strong> You represent that you are not located in a country subject to a U.S. Government embargo or designated by the U.S. Government as a "terrorist-supporting" country, and that you are not listed on any U.S. Government list of prohibited or restricted parties.</li>
-                <li><strong>Apple as third-party beneficiary.</strong> Apple and its subsidiaries are third-party beneficiaries of these Terms and have the right to enforce them against you.</li>
-            </ul>
-
-            <h2>13. Governing Law and Jurisdiction</h2>
-            <p>German law applies, excluding the UN Convention on Contracts for the International Sale of Goods (CISG). For consumers, the mandatory consumer protection provisions of the country of their habitual residence also apply.</p>
-            <p>For consumers whose habitual residence is in the EU, the courts of their country of residence have jurisdiction. For all other disputes, the courts in Hamburg, Germany shall have jurisdiction, unless mandatory statutory provisions require otherwise.</p>
-            <p>Notice pursuant to &sect;&nbsp;36 of the German Consumer Dispute Resolution Act (VSBG): We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board. The European Commission provides information on consumer rights and recognised dispute resolution bodies in the EU at <a href="https://consumer-redress.ec.europa.eu" target="_blank" rel="noopener">consumer-redress.ec.europa.eu</a>.</p>
-
-            <h2>14. Severability</h2>
-            <p>If any provision of these Terms of Service is or becomes invalid, the remaining provisions shall remain unaffected. The relevant statutory provisions shall apply in place of the invalid provision.</p>
-
-            <h2>15. Contact</h2>
-            <p>If you have questions about these Terms of Service, contact us at <a href="mailto:hello@seriel.app">hello@seriel.app</a>.</p>
-        </article>
-
-    </main>
-
-    <footer class="footer" role="contentinfo">
-        <div class="page">
-            <div class="footer-inner">
-                <div class="footer-mast">
-                    <span class="wordmark wordmark-sm">SERIEL</span>
-                    <span class="folio-label">LEGAL</span>
-                </div>
-                <div class="hairline"></div>
-                <nav class="footer-links" aria-label="Legal">
-                    <a href="/impressum">Impressum</a>
-                    <a href="/privacy">Privacy</a>
-                    <a href="/terms">Terms</a>
-                    <a href="/support">Support</a>
-                    <a href="mailto:hello@seriel.app">Contact</a>
-                </nav>
-                <p class="footer-copy">&copy; 2026 Seriel. Hamburg.</p>
-            </div>
+        <div class="footer-col">
+          <b><span lang="en">Contact</span><span lang="de">Kontakt</span></b>
+          <ul><li><a href="mailto:hello@seriel.app">hello@seriel.app</a></li></ul>
         </div>
-    </footer>
+      </div>
+    </div>
+    <div class="footer-fine">
+      <p lang="en">Show information from <a href="https://trakt.tv" rel="noopener">Trakt</a>. Seriel uses the Trakt API but is not endorsed or certified by Trakt. Imagery and supplementary data from <a href="https://www.themoviedb.org" rel="noopener">TMDB</a>: Seriel uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB. Streaming availability by JustWatch.</p>
+      <p lang="de">Serieninformationen von <a href="https://trakt.tv" rel="noopener">Trakt</a>. Seriel nutzt die Trakt-API, ist aber nicht von Trakt geprüft oder zertifiziert. Bilder und ergänzende Daten von <a href="https://www.themoviedb.org" rel="noopener">TMDB</a>: Seriel uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB. Streaming-Verfügbarkeit von JustWatch.</p>
+      <div class="footer-bottom">
+        <span>&copy; <span data-date="year">2026</span> David Cox, Hamburg</span>
+        <div class="lang" role="group" aria-label="Language / Sprache">
+          <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
+          <button type="button" data-lang-set="de" aria-pressed="true">DE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
-    <script>
-        (function () {
-            var btn = document.getElementById('theme-toggle');
-            if (btn) {
-                btn.addEventListener('click', function () {
-                    var current = document.documentElement.getAttribute('data-theme') || 'ink';
-                    var next = current === 'ink' ? 'paper' : 'ink';
-                    document.documentElement.setAttribute('data-theme', next);
-                    try { localStorage.setItem('seriel.theme', next); } catch (e) {}
-                });
-            }
-        })();
-
-        (function () {
-            function setLang(lang) {
-                if (lang !== 'en' && lang !== 'de') return;
-                document.querySelectorAll('.legal-text').forEach(function (t) {
-                    t.hidden = t.id !== lang;
-                });
-                document.querySelectorAll('[data-lang]').forEach(function (el) {
-                    if (!el.classList.contains('lang-btn')) {
-                        el.hidden = el.dataset.lang !== lang;
-                    }
-                });
-                document.documentElement.setAttribute('lang', lang);
-                document.documentElement.setAttribute('data-lang', lang);
-                try { localStorage.setItem('seriel.lang', lang); } catch (e) {}
-            }
-
-            if (location.hash === '#en' || location.hash === '#de') {
-                setLang(location.hash.slice(1));
-            } else {
-                setLang(document.documentElement.getAttribute('data-lang') || 'de');
-            }
-
-            document.querySelectorAll('.lang-btn[data-lang-set]').forEach(function (btn) {
-                btn.addEventListener('click', function () {
-                    setLang(btn.dataset.langSet);
-                });
-            });
-        })();
-    </script>
+<script src="/js/site.js"></script>
 </body>
 </html>
