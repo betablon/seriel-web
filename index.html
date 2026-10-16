@@ -102,9 +102,39 @@
     <linearGradient id="g-north-sea" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#40607A"/><stop offset="1" stop-color="#1A2A3A"/>
     </linearGradient>
+    <linearGradient id="g-glass-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#17393D"/><stop offset=".55" stop-color="#4F7F72"/><stop offset="1" stop-color="#E3B978"/>
+    </linearGradient>
+    <radialGradient id="g-glass-glow" cx=".5" cy=".75" r=".7">
+      <stop offset="0" stop-color="#FFE7B0"/><stop offset=".6" stop-color="#F2B866"/><stop offset="1" stop-color="#C98642"/>
+    </radialGradient>
+    <linearGradient id="g-pine-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E7ECEA"/><stop offset="1" stop-color="#B7C6C9"/>
+    </linearGradient>
+    <linearGradient id="g-pine-mist" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EEF2F1" stop-opacity="0"/><stop offset=".5" stop-color="#EEF2F1" stop-opacity=".75"/><stop offset="1" stop-color="#EEF2F1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="g-market-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0F0C22"/><stop offset="1" stop-color="#2E1A3A"/>
+    </linearGradient>
+    <linearGradient id="g-signal-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#271F52"/><stop offset=".55" stop-color="#8A4E7A"/><stop offset="1" stop-color="#F29C78"/>
+    </linearGradient>
+    <radialGradient id="g-signal-light" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#FF5A4A" stop-opacity=".9"/><stop offset="1" stop-color="#FF5A4A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="g-dune-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3DDB8"/><stop offset="1" stop-color="#FAF0DE"/>
+    </linearGradient>
   </defs>
 
   <!-- Icons: 24×24, drawn as strokes -->
+  <symbol id="sb-signal" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></symbol>
+  <symbol id="sb-battery" viewBox="0 0 26 12"><rect x=".5" y=".5" width="22" height="11" rx="3.2" fill="none" stroke="currentColor" stroke-opacity=".45"/><rect x="2" y="2" width="17" height="8" rx="2" fill="currentColor"/><rect x="24" y="4" width="2" height="4" rx="1" fill="currentColor" opacity=".45"/></symbol>
+  <symbol id="i-xmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+  <symbol id="i-updown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9.5l4-4 4 4M8 14.5l4 4 4-4"/></symbol>
+  <symbol id="i-flashlight" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M8 3h8v3.5l-2 3.5v11h-4V10L8 6.5z"/><path d="M8 6.5h8"/><circle cx="12" cy="14" r="1" fill="currentColor"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3.5 8.5a2 2 0 0 1 2-2h2.4l1.6-2.2h5l1.6 2.2h2.4a2 2 0 0 1 2 2v9.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.6"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.6 4.6L19.2 7.5"/></symbol>
   <symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="8.1" stroke-width="3" stroke-dasharray="2.55 3.81"/><circle cx="12" cy="12" r="5.7" stroke-width="1.8"/><circle cx="12" cy="12" r="2.2" stroke-width="1.8"/></symbol>
   <symbol id="i-tv" viewBox="0 0 24 24"><rect x="2.5" y="3.5" width="19" height="13.5" rx="2.6" fill="currentColor"/><path d="M10 7.6v5.3l4.5-2.65z" fill="var(--icon-cut, #fff)"/><rect x="7.5" y="19" width="9" height="1.8" rx=".9" fill="currentColor"/></symbol>
@@ -236,6 +266,56 @@
     <path d="M470 256l130-20v26H470z" fill="#2C3E4F"/>
     <path d="M540 196h12l4 44h-20z" fill="#F2F5F7"/><rect x="537" y="214" width="18" height="6" fill="#C4553C"/><rect x="541" y="187" width="10" height="9" fill="#F7D774"/>
   </symbol>
+  <symbol id="art-glasshouse" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" fill="url(#g-glass-sky)"/>
+    <circle cx="476" cy="246" r="30" fill="#F6D9A0" opacity=".85"/>
+    <path d="M0 292c120-12 240-8 600-6v114H0z" fill="#1B2E2A"/>
+    <path d="M170 292V190l130-70 130 70v102z" fill="url(#g-glass-glow)"/>
+    <g fill="#24412F"><circle cx="210" cy="274" r="24"/><circle cx="248" cy="264" r="30"/><circle cx="352" cy="268" r="28"/><circle cx="394" cy="278" r="20"/><path d="M290 292c-4-40 6-70 16-92 8 24 16 54 10 92z"/></g>
+    <path d="M170 292V190l130-70 130 70v102z" fill="none" stroke="#12201C" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M213 292V167M257 292V143M300 292V120M343 292V143M387 292V167M170 238h260M170 190h260" stroke="#12201C" stroke-width="2.6"/>
+    <path d="M0 330c150-14 300-6 600-16v86H0z" fill="#10201C"/>
+  </symbol>
+
+  <symbol id="art-pinehollow" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" fill="url(#g-pine-sky)"/>
+    <circle cx="410" cy="110" r="38" fill="#F7F8F4" opacity=".8"/>
+    <path d="M-64 236L-47 168L-30 236zM-23 236L-6 145L11 236zM31 236L48 165L65 236zM72 236L89 142L106 236zM113 236L130 163L147 236zM153 236L170 139L187 236zM194 236L211 160L228 236zM235 236L252 137L269 236zM289 236L306 158L323 236zM330 236L347 134L364 236zM371 236L388 155L405 236zM412 236L429 176L446 236zM452 236L469 152L486 236zM493 236L510 173L527 236zM534 236L551 150L568 236zM588 236L605 170L622 236zM629 236L646 147L663 236z" fill="#A9BABE"/><rect y="235" width="600" height="165" fill="#A9BABE"/>
+    <rect y="196" width="600" height="80" fill="url(#g-pine-mist)"/>
+    <path d="M-64 300L-41 199L-18 300zM-11 300L12 167L35 300zM55 300L78 196L101 300zM107 300L130 164L153 300zM160 300L183 192L206 300zM212 300L235 160L258 300zM265 300L288 188L311 300zM317 300L340 157L363 300zM383 300L406 185L429 300zM435 300L458 153L481 300zM488 300L511 181L534 300zM540 300L563 209L586 300zM593 300L616 178L639 300zM646 300L669 206L692 300z" fill="#6E8891"/><rect y="299" width="600" height="101" fill="#6E8891"/>
+    <rect y="262" width="600" height="70" fill="url(#g-pine-mist)" opacity=".7"/>
+    <path d="M-124 372L-89 208L-54 372zM-51 372L-16 165L19 372zM35 372L70 203L105 372zM108 372L143 160L178 372zM181 372L216 198L251 372zM254 372L289 156L324 372zM327 372L362 193L397 372zM400 372L435 151L470 372zM486 372L521 188L556 372zM559 372L594 146L629 372zM632 372L667 184L702 372z" fill="#2C424A"/><rect y="371" width="600" height="29" fill="#2C424A"/>
+  </symbol>
+
+  <symbol id="art-market" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" fill="url(#g-market-sky)"/>
+    <g fill="#F4E6C8" opacity=".55"><circle cx="70" cy="40" r="1.3"/><circle cx="220" cy="28" r="1"/><circle cx="380" cy="50" r="1.2"/><circle cx="540" cy="30" r="1"/></g>
+    <path d="M-20 70Q150.0 160 320 90" fill="none" stroke="#3A2A3E" stroke-width="2"/><circle cx="29" cy="104" r="22" fill="#F7A43B" opacity=".18"/><rect x="22" y="94" width="14" height="20" rx="6" fill="#F7A43B"/><circle cx="77" cy="120" r="22" fill="#FFD27A" opacity=".18"/><rect x="70" y="110" width="14" height="20" rx="6" fill="#FFD27A"/><circle cx="126" cy="130" r="22" fill="#F2694A" opacity=".18"/><rect x="119" y="120" width="14" height="20" rx="6" fill="#F2694A"/><circle cx="174" cy="133" r="22" fill="#F7A43B" opacity=".18"/><rect x="167" y="123" width="14" height="20" rx="6" fill="#F7A43B"/><circle cx="223" cy="129" r="22" fill="#FFD27A" opacity=".18"/><rect x="216" y="119" width="14" height="20" rx="6" fill="#FFD27A"/><circle cx="271" cy="119" r="22" fill="#F2694A" opacity=".18"/><rect x="264" y="109" width="14" height="20" rx="6" fill="#F2694A"/>
+    <path d="M280 60Q460.0 180 640 100" fill="none" stroke="#3A2A3E" stroke-width="2"/><circle cx="331" cy="102" r="22" fill="#F2694A" opacity=".18"/><rect x="324" y="92" width="14" height="20" rx="6" fill="#F2694A"/><circle cx="383" cy="124" r="22" fill="#F7A43B" opacity=".18"/><rect x="376" y="114" width="14" height="20" rx="6" fill="#F7A43B"/><circle cx="434" cy="138" r="22" fill="#FFD27A" opacity=".18"/><rect x="427" y="128" width="14" height="20" rx="6" fill="#FFD27A"/><circle cx="486" cy="144" r="22" fill="#F2694A" opacity=".18"/><rect x="479" y="134" width="14" height="20" rx="6" fill="#F2694A"/><circle cx="537" cy="141" r="22" fill="#F7A43B" opacity=".18"/><rect x="530" y="131" width="14" height="20" rx="6" fill="#F7A43B"/><circle cx="589" cy="131" r="22" fill="#FFD27A" opacity=".18"/><rect x="582" y="121" width="14" height="20" rx="6" fill="#FFD27A"/>
+    <path d="M-20 170Q310.0 230 640 160" fill="none" stroke="#3A2A3E" stroke-width="2"/><circle cx="35" cy="191" r="22" fill="#FFD27A" opacity=".18"/><rect x="28" y="181" width="14" height="20" rx="6" fill="#FFD27A"/><circle cx="90" cy="198" r="22" fill="#F2694A" opacity=".18"/><rect x="83" y="188" width="14" height="20" rx="6" fill="#F2694A"/><circle cx="145" cy="204" r="22" fill="#F7A43B" opacity=".18"/><rect x="138" y="194" width="14" height="20" rx="6" fill="#F7A43B"/><circle cx="200" cy="208" r="22" fill="#FFD27A" opacity=".18"/><rect x="193" y="198" width="14" height="20" rx="6" fill="#FFD27A"/><circle cx="255" cy="209" r="22" fill="#F2694A" opacity=".18"/><rect x="248" y="199" width="14" height="20" rx="6" fill="#F2694A"/><circle cx="310" cy="210" r="22" fill="#F7A43B" opacity=".18"/><rect x="303" y="200" width="14" height="20" rx="6" fill="#F7A43B"/><circle cx="365" cy="208" r="22" fill="#FFD27A" opacity=".18"/><rect x="358" y="198" width="14" height="20" rx="6" fill="#FFD27A"/><circle cx="420" cy="204" r="22" fill="#F2694A" opacity=".18"/><rect x="413" y="194" width="14" height="20" rx="6" fill="#F2694A"/><circle cx="475" cy="199" r="22" fill="#F7A43B" opacity=".18"/><rect x="468" y="189" width="14" height="20" rx="6" fill="#F7A43B"/><circle cx="530" cy="192" r="22" fill="#FFD27A" opacity=".18"/><rect x="523" y="182" width="14" height="20" rx="6" fill="#FFD27A"/><circle cx="585" cy="183" r="22" fill="#F2694A" opacity=".18"/><rect x="578" y="173" width="14" height="20" rx="6" fill="#F2694A"/>
+    <path d="M0 400V290l60-28 60 28v-18l70-30 70 30v-8l70-30 70 30v12l60-26 60 26v-14l80-32v160z" fill="#160E1E"/>
+    <g fill="#F7B860" opacity=".85"><rect x="34" y="318" width="52" height="30" rx="3"/><rect x="160" y="304" width="64" height="34" rx="3"/><rect x="300" y="300" width="60" height="34" rx="3"/><rect x="430" y="312" width="58" height="30" rx="3"/></g>
+  </symbol>
+
+  <symbol id="art-signal" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" fill="url(#g-signal-sky)"/>
+    <g fill="#FCEFF2" opacity=".75"><circle cx="60" cy="50" r="1.3"/><circle cx="170" cy="90" r="1"/><circle cx="300" cy="36" r="1.2"/><circle cx="520" cy="60" r="1.1"/><circle cx="560" cy="130" r="1"/></g>
+    <path d="M0 400V330c90-40 200-96 330-104 120-8 200 30 270 60v114z" fill="#1B1430"/>
+    <path d="M0 400v-30c120-30 300-40 600-20v50z" fill="#110C20"/>
+    <g stroke="#1B1430" stroke-width="3" fill="none"><path d="M366 228L392 86l26 142M372 196h40M378 160h28M384 124h16M372 196l34-36M378 160l22-36"/></g>
+    <circle cx="392" cy="82" r="34" fill="url(#g-signal-light)"/>
+    <circle cx="392" cy="82" r="5" fill="#FF6A55"/>
+  </symbol>
+
+  <symbol id="art-dune" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+    <rect width="600" height="400" fill="url(#g-dune-sky)"/>
+    <circle cx="180" cy="120" r="40" fill="#FFF6E2"/>
+    <path d="M0 250c80-30 160-36 250-18 90 18 200-10 350-22v190H0z" fill="#E9B072"/>
+    <path d="M0 290c120-40 230-20 320 0 100 22 190-6 280-20v150H0z" fill="#D58C4E"/>
+    <path d="M0 340c140-30 260-6 380 10 90 12 160 0 220-10v60H0z" fill="#B86A3B"/>
+    <path d="M286 238h28l90 162H196z" fill="#3D3431"/>
+    <path d="M299 246h2l1 16h-4zM298 278h4l2 26h-8zM297 324h6l3 40h-12z" fill="#F4E1BE"/>
+  </symbol>
 </svg>
 
 <a class="skip-link" href="#main"><span lang="en">Skip to content</span><span lang="de">Zum Inhalt</span></a>
@@ -331,7 +411,7 @@
           <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 26 12" fill="currentColor"><rect x="0" y="0" width="23" height="12" rx="3.5" fill="none" stroke="currentColor" stroke-opacity=".4"/><rect x="2" y="2" width="17" height="8" rx="2"/><rect x="24" y="4" width="2" height="4" rx="1" opacity=".4"/></svg></span></div>
           <div class="glass-btn gb-2"><span class="avatar"></span></div>
           <div class="glass-btn gb-1"><svg><use href="#i-gear"/></svg></div>
-          <div class="app-large-title">Schedule</div>
+          <div class="app-large-title"><span lang="en">Schedule</span><span lang="de">Programm</span></div>
           <div class="week" data-week>
             <div data-day class="is-today"><div class="wd">Wed</div><div class="dn">14</div><div class="dot"></div></div>
             <div data-day><div class="wd">Thu</div><div class="dn">15</div><div class="dot"></div></div>
@@ -341,11 +421,11 @@
             <div data-day><div class="wd">Mon</div><div class="dn">19</div><div class="dot"></div></div>
             <div data-day><div class="wd">Tue</div><div class="dn">20</div><div class="dot"></div></div>
           </div>
-          <div class="app-day-head"><b>Today</b><span data-date="app-long">Wednesday 14 October</span></div>
+          <div class="app-day-head"><b><span lang="en">Today</span><span lang="de">Heute</span></b><span data-date="app-long">Wednesday 14 October</span></div>
           <div class="feature-card">
             <svg class="art"><use href="#art-field"/></svg>
             <div class="fc-text">
-              <div class="fc-kicker">Out now · Premiere · S03E01</div>
+              <div class="fc-kicker"><span lang="en">Out now · Premiere · S03E01</span><span lang="de">Jetzt da · Premiere · S03E01</span></div>
               <div class="fc-title">The Long Field</div>
               <div class="fc-meta">Atlas</div>
             </div>
@@ -353,21 +433,16 @@
           <div class="app-rows">
             <div class="app-row">
               <div class="still"><svg class="art"><use href="#art-saltmarsh"/></svg></div>
-              <div><div class="code">S02E06</div><div class="t">Saltmarsh</div><div class="m">9:00 pm · Lumen+</div></div>
+              <div><div class="code">S02E06</div><div class="t">Saltmarsh</div><div class="m"><span lang="en">9:00 pm</span><span lang="de">21:00</span> · Lumen+</div></div>
               <div></div>
             </div>
             <div class="app-row">
               <div class="still"><svg class="art"><use href="#art-ferry"/></svg></div>
-              <div><div class="code">S01E05</div><div class="t">Night Ferry</div><div class="m">10:15 pm · Halcyon</div></div>
+              <div><div class="code">S01E05</div><div class="t">Night Ferry</div><div class="m"><span lang="en">10:15 pm</span><span lang="de">22:15</span> · Halcyon</div></div>
               <div></div>
             </div>
           </div>
-          <div class="tabbar">
-            <div class="tab"><svg><use href="#i-tv"/></svg>Today</div>
-            <div class="tab is-on"><svg><use href="#i-calendar"/></svg>Schedule</div>
-            <div class="tab"><svg><use href="#i-stack"/></svg>Library</div>
-            <div class="tab"><svg><use href="#i-search"/></svg>Search</div>
-          </div>
+          <div class="tabbar" aria-hidden="true"><div class="tab"><svg><use href="#i-tv"/></svg><span lang="en">Today</span><span lang="de">Heute</span></div><div class="tab is-on"><svg><use href="#i-calendar"/></svg><span lang="en">Schedule</span><span lang="de">Programm</span></div><div class="tab"><svg><use href="#i-stack"/></svg><span lang="en">Library</span><span lang="de">Bibliothek</span></div><div class="tab"><svg><use href="#i-search"/></svg><span lang="en">Search</span><span lang="de">Suche</span></div></div>
         </div>
       </div>
 
@@ -384,31 +459,26 @@
               <div class="app-title">Saltmarsh</div>
               <div class="app-hero-meta">
                 <div>
-                  <div class="app-dateline"><span data-date="app-long">Wednesday 14 October</span> · Where you left off</div>
+                  <div class="app-dateline"><span data-date="app-long">Wednesday 14 October</span> · <span lang="en">Where you left off</span><span lang="de">Wo du aufgehört hast</span></div>
                   <div class="app-epline">S02E05 · The Low Light · 52 min</div>
                 </div>
                 <div class="check-disc"><svg><use href="#i-check"/></svg></div>
               </div>
             </div>
           </div>
-          <div class="app-section-title">Your queue</div>
+          <div class="app-section-title"><span lang="en">Your queue</span><span lang="de">Deine Liste</span></div>
           <div class="app-rail">
             <div class="queue-card">
               <svg class="art"><use href="#art-kestrel"/></svg>
               <div class="check-disc"><svg><use href="#i-check"/></svg></div>
-              <div class="qc-text"><div class="qc-title">Kestrel Road</div><div class="qc-meta">S01E07 · 4 left</div></div>
+              <div class="qc-text"><div class="qc-title">Kestrel Road</div><div class="qc-meta">S01E07 · <span lang="en">4 left</span><span lang="de">noch 4</span></div></div>
             </div>
             <div class="queue-card">
               <svg class="art"><use href="#art-city"/></svg>
-              <div class="qc-text"><div class="qc-title">Twelve Floors</div><div class="qc-meta">S02E08 · 6 left</div></div>
+              <div class="qc-text"><div class="qc-title">Twelve Floors</div><div class="qc-meta">S02E08 · <span lang="en">6 left</span><span lang="de">noch 6</span></div></div>
             </div>
           </div>
-          <div class="tabbar">
-            <div class="tab is-on"><svg><use href="#i-tv"/></svg>Today</div>
-            <div class="tab"><svg><use href="#i-calendar"/></svg>Schedule</div>
-            <div class="tab"><svg><use href="#i-stack"/></svg>Library</div>
-            <div class="tab"><svg><use href="#i-search"/></svg>Search</div>
-          </div>
+          <div class="tabbar" aria-hidden="true"><div class="tab is-on"><svg><use href="#i-tv"/></svg><span lang="en">Today</span><span lang="de">Heute</span></div><div class="tab"><svg><use href="#i-calendar"/></svg><span lang="en">Schedule</span><span lang="de">Programm</span></div><div class="tab"><svg><use href="#i-stack"/></svg><span lang="en">Library</span><span lang="de">Bibliothek</span></div><div class="tab"><svg><use href="#i-search"/></svg><span lang="en">Search</span><span lang="de">Suche</span></div></div>
         </div>
       </div>
 
@@ -425,7 +495,7 @@
               <div class="app-title">Night Ferry</div>
               <div class="app-hero-meta">
                 <div>
-                  <div class="app-upnext">Up next</div>
+                  <div class="app-upnext"><span lang="en">Up next</span><span lang="de">Als Nächstes</span></div>
                   <div class="app-epline">S01E04 · Harbour Watch · 48 min</div>
                 </div>
                 <div class="check-disc"><svg><use href="#i-check"/></svg></div>
@@ -433,15 +503,10 @@
             </div>
           </div>
           <div class="app-about">
-            <b>About</b>
+            <b><span lang="en">About</span><span lang="de">Info</span></b>
             <p>The same crossing, every night. When a passenger goes missing between two ports, the night crew start keeping a closer watch on each other.</p>
           </div>
-          <div class="tabbar">
-            <div class="tab"><svg><use href="#i-tv"/></svg>Today</div>
-            <div class="tab"><svg><use href="#i-calendar"/></svg>Schedule</div>
-            <div class="tab is-on"><svg><use href="#i-stack"/></svg>Library</div>
-            <div class="tab"><svg><use href="#i-search"/></svg>Search</div>
-          </div>
+          <div class="tabbar" aria-hidden="true"><div class="tab"><svg><use href="#i-tv"/></svg><span lang="en">Today</span><span lang="de">Heute</span></div><div class="tab"><svg><use href="#i-calendar"/></svg><span lang="en">Schedule</span><span lang="de">Programm</span></div><div class="tab is-on"><svg><use href="#i-stack"/></svg><span lang="en">Library</span><span lang="de">Bibliothek</span></div><div class="tab"><svg><use href="#i-search"/></svg><span lang="en">Search</span><span lang="de">Suche</span></div></div>
         </div>
       </div>
     </div>
@@ -486,13 +551,13 @@
   </section>
 
   <!-- ============================================================== -->
-  <!-- Today                                                           -->
+  <!-- Today                                                          -->
   <!-- ============================================================== -->
   <section class="section section-alt" id="features" aria-labelledby="today-title">
     <div class="wrap">
       <div class="chapter-head reveal">
         <div>
-          <p class="eyebrow"><span lang="en">Today</span><span lang="de">Heute</span></p>
+          <p class="eyebrow eyebrow-tab"><svg aria-hidden="true"><use href="#i-tv"/></svg><span lang="en">Today</span><span lang="de">Heute</span></p>
           <h2 class="h2" id="today-title"><span lang="en">Pick up right where you left off.</span><span lang="de">Weiter, genau da, wo du aufgehört hast.</span></h2>
         </div>
         <p class="lead">
@@ -501,67 +566,80 @@
         </p>
       </div>
 
-      <div class="panel reveal-scale">
-        <div class="today-panel">
-          <div>
-            <div class="hero-card">
-              <svg class="art" aria-hidden="true"><use href="#art-saltmarsh"/></svg>
-              <div class="hero-card-text">
-                <div>
-                  <div class="hc-title">Saltmarsh</div>
-                  <div class="hc-dateline"><span data-date="app-long">Wednesday 14 October</span> · Where you left off</div>
-                  <div class="hc-ep">S02E05 · The Low Light · 52 min</div>
+      <div class="panel device-panel reveal-scale">
+        <div class="device">
+          <div class="phone" role="group" data-label-en="Seriel on iPhone: the Today tab" data-label-de="Seriel auf dem iPhone: der Tab Heute" aria-label="Seriel on iPhone: the Today tab">
+            <div class="screen" data-demo="today">
+              <div class="island"></div>
+              <div class="statusbar on-dark" aria-hidden="true"><span>9:41</span><span class="sb-icons"><svg viewBox="0 0 18 12"><use href="#sb-signal"/></svg><svg viewBox="0 0 26 12"><use href="#sb-battery"/></svg></span></div>
+              <div class="app-hero app-hero-today">
+                <svg class="art" aria-hidden="true"><use href="#art-saltmarsh"/></svg>
+                <div class="glass-btn on-art gb-2" aria-hidden="true"><span class="avatar"></span></div>
+              <div class="glass-btn on-art gb-1" aria-hidden="true"><svg><use href="#i-gear"/></svg></div>
+                <div class="app-hero-text">
+                  <div class="app-title">Saltmarsh</div>
+                  <div class="app-hero-meta">
+                    <div class="app-hero-ep" data-today-ep>
+                      <div class="app-dateline"><span data-date="app-long">Wednesday 14 October</span> · <span lang="en">Where you left off</span><span lang="de">Wo du aufgehört hast</span></div>
+                      <div class="app-epline" data-today-line>S02E05 · The Low Light · 52 min</div>
+                    </div>
+                    <button class="check-disc check-btn" type="button" data-today-check data-label-en="Mark Saltmarsh S02E05 watched" data-label-de="Saltmarsh S02E05 als gesehen markieren" aria-label="Mark Saltmarsh S02E05 watched"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.6 4.6L19.2 7.5"/></svg></button>
+                  </div>
                 </div>
-                <button class="watch-check" type="button" aria-pressed="false" data-demo="check"
-                        data-label-en="Mark Saltmarsh S02E05 watched" data-label-de="Saltmarsh S02E05 als gesehen markieren" aria-label="Mark Saltmarsh S02E05 watched">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.6 4.6L19.2 7.5"/></svg>
-                </button>
               </div>
-            </div>
-            <p class="try-hint"><span lang="en">Try it: tap the check.</span><span lang="de">Probier es aus: Tippe auf den Haken.</span></p>
-            <div class="rating-card" data-demo="rating" aria-hidden="true">
-              <div><b>How was it?</b><span>Saltmarsh · S02E05</span></div>
-              <div class="stars" role="group" data-label-en="Rate the episode" data-label-de="Folge bewerten" aria-label="Rate the episode">
-                <button type="button" aria-pressed="false" aria-label="1 star"><svg aria-hidden="true"><use href="#i-star"/></svg></button>
-                <button type="button" aria-pressed="false" aria-label="2 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></button>
-                <button type="button" aria-pressed="false" aria-label="3 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></button>
-                <button type="button" aria-pressed="false" aria-label="4 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></button>
-                <button type="button" aria-pressed="false" aria-label="5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></button>
+              <div class="app-rate" data-today-rate inert>
+                <div class="app-rate-clip">
+                  <div class="app-rate-card">
+                    <div class="still"><svg class="art" viewBox="300 180 300 169" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#art-saltmarsh" width="600" height="400"/></svg></div>
+                    <div class="ar-body">
+                      <div class="ar-head"><b><span lang="en">How was it?</span><span lang="de">Wie war&rsquo;s?</span></b><span data-rate-code>Saltmarsh · S02E05</span></div>
+                      <div class="app-stars" role="group" data-label-en="Rate the episode" data-label-de="Folge bewerten" aria-label="Rate the episode">
+                        <button type="button" aria-pressed="false" data-label-en="1 star" data-label-de="1 Stern" aria-label="1 star"><svg aria-hidden="true"><use href="#i-star"/></svg></button>
+                        <button type="button" aria-pressed="false" data-label-en="2 stars" data-label-de="2 Sterne" aria-label="2 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></button>
+                        <button type="button" aria-pressed="false" data-label-en="3 stars" data-label-de="3 Sterne" aria-label="3 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></button>
+                        <button type="button" aria-pressed="false" data-label-en="4 stars" data-label-de="4 Sterne" aria-label="4 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></button>
+                        <button type="button" aria-pressed="false" data-label-en="5 stars" data-label-de="5 Sterne" aria-label="5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
+              <div class="app-section-title"><span lang="en">Your queue</span><span lang="de">Deine Liste</span></div>
+              <div class="app-rail" aria-hidden="true">
+                <div class="queue-card">
+                  <svg class="art" aria-hidden="true"><use href="#art-kestrel"/></svg>
+                  <div class="check-disc"><svg><use href="#i-check"/></svg></div>
+                  <div class="qc-text"><div class="qc-title">Kestrel Road</div><div class="qc-meta">S01E07 · <span lang="en">4 left</span><span lang="de">noch 4</span></div></div>
+                </div>
+                <div class="queue-card">
+                  <svg class="art" aria-hidden="true"><use href="#art-city"/></svg>
+                  <div class="check-disc"><svg><use href="#i-check"/></svg></div>
+                  <div class="qc-text"><div class="qc-title">Twelve Floors</div><div class="qc-meta">S02E08 · <span lang="en">6 left</span><span lang="de">noch 6</span></div></div>
+                </div>
+              </div>
+              <div class="tabbar" aria-hidden="true"><div class="tab is-on"><svg><use href="#i-tv"/></svg><span lang="en">Today</span><span lang="de">Heute</span></div><div class="tab"><svg><use href="#i-calendar"/></svg><span lang="en">Schedule</span><span lang="de">Programm</span></div><div class="tab"><svg><use href="#i-stack"/></svg><span lang="en">Library</span><span lang="de">Bibliothek</span></div><div class="tab"><svg><use href="#i-search"/></svg><span lang="en">Search</span><span lang="de">Suche</span></div></div>
             </div>
           </div>
-          <div class="queue-col" aria-hidden="true">
-            <div class="label">Your queue</div>
-            <div class="qcard">
-              <svg class="art"><use href="#art-kestrel"/></svg>
-              <div class="mini-check"><svg><use href="#i-check"/></svg></div>
-              <div class="qtext"><div class="qtitle">Kestrel Road</div><div class="qmeta">S01E07 · 4 left</div></div>
-            </div>
-            <div class="qcard">
-              <svg class="art"><use href="#art-city"/></svg>
-              <div class="mini-check"><svg><use href="#i-check"/></svg></div>
-              <div class="qtext"><div class="qtitle">Twelve Floors</div><div class="qmeta">S02E08 · 6 left</div></div>
-            </div>
-          </div>
+          <p class="try-hint"><span lang="en">Try it: tap the check.</span><span lang="de">Probier es aus: Tippe auf den Haken.</span></p>
         </div>
-      </div>
 
-      <ul class="points">
-        <li class="reveal" style="--d:0"><svg aria-hidden="true"><use href="#i-play-circle"/></svg><b><span lang="en">One tap to mark it</span><span lang="de">Ein Tipp zum Abhaken</span></b><span lang="en">The same check everywhere: on Today, on your queue and on every episode.</span><span lang="de">Derselbe Haken überall: auf Heute, in deiner Liste und bei jeder Folge.</span></li>
-        <li class="reveal" style="--d:1"><svg aria-hidden="true"><use href="#i-star"/></svg><b><span lang="en">Rate while it&rsquo;s fresh</span><span lang="de">Bewerten, solange es frisch ist</span></b><span lang="en">Half stars included. Your ratings build your record and your Hall of Fame.</span><span lang="de">Halbe Sterne inklusive. Deine Bewertungen ergeben deine Bilanz und deine Hall of Fame.</span></li>
-        <li class="reveal" style="--d:2"><svg aria-hidden="true"><use href="#i-history"/></svg><b><span lang="en">On this day</span><span lang="de">An diesem Tag</span></b><span lang="en">Years later, Today remembers the day you finished a show.</span><span lang="de">Jahre später erinnert dich Heute an den Tag, an dem du eine Serie beendet hast.</span></li>
-      </ul>
+        <ul class="facts">
+          <li class="reveal" style="--d:0"><svg aria-hidden="true"><use href="#i-play-circle"/></svg><div><b><span lang="en">One tap to mark it</span><span lang="de">Ein Tipp zum Abhaken</span></b><span lang="en">The same check everywhere: on Today, on your queue and on every episode. Today moves straight on to the next one.</span><span lang="de">Derselbe Haken überall: auf Heute, in deiner Liste und bei jeder Folge. Heute springt sofort zur nächsten.</span></div></li>
+          <li class="reveal" style="--d:1"><svg aria-hidden="true"><use href="#i-star"/></svg><div><b><span lang="en">Rate while it&rsquo;s fresh</span><span lang="de">Bewerten, solange es frisch ist</span></b><span lang="en">Half stars included. Your ratings build your record and your Hall of Fame.</span><span lang="de">Halbe Sterne inklusive. Deine Bewertungen ergeben deine Bilanz und deine Hall of Fame.</span></div></li>
+          <li class="reveal" style="--d:2"><svg aria-hidden="true"><use href="#i-history"/></svg><div><b><span lang="en">On this day</span><span lang="de">An diesem Tag</span></b><span lang="en">Years later, Today remembers the day you finished a show.</span><span lang="de">Jahre später erinnert dich Heute an den Tag, an dem du eine Serie beendet hast.</span></div></li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <!-- ============================================================== -->
-  <!-- Schedule + alerts                                               -->
+  <!-- Schedule + alerts                                              -->
   <!-- ============================================================== -->
   <section class="section" id="schedule" aria-labelledby="schedule-title">
     <div class="wrap">
       <div class="chapter-head reveal">
         <div>
-          <p class="eyebrow"><span lang="en">Schedule and alerts</span><span lang="de">Programm und Mitteilungen</span></p>
+          <p class="eyebrow eyebrow-tab"><svg aria-hidden="true"><use href="#i-calendar"/></svg><span lang="en">Schedule and alerts</span><span lang="de">Programm und Mitteilungen</span></p>
           <h2 class="h2" id="schedule-title"><span lang="en">Know what&rsquo;s on before it&rsquo;s on.</span><span lang="de">Wissen, was läuft, bevor es läuft.</span></h2>
         </div>
         <p class="lead">
@@ -570,48 +648,71 @@
         </p>
       </div>
 
-      <div class="panel reveal-scale" data-observe>
-        <div class="schedule-panel">
-          <div class="guide" aria-hidden="true">
-            <div class="guide-card">
-              <div class="guide-week" data-week>
-                <div data-day class="is-today"><span class="wd">Wed</span><span class="dn">14</span><span class="dot"></span></div>
-                <div data-day><span class="wd">Thu</span><span class="dn">15</span><span class="dot"></span></div>
-                <div data-day><span class="wd">Fri</span><span class="dn">16</span><span class="dot"></span></div>
-                <div data-day><span class="wd">Sat</span><span class="dn">17</span><span class="dot off"></span></div>
-                <div data-day><span class="wd">Sun</span><span class="dn">18</span><span class="dot"></span></div>
-                <div data-day><span class="wd">Mon</span><span class="dn">19</span><span class="dot off"></span></div>
-                <div data-day><span class="wd">Tue</span><span class="dn">20</span><span class="dot"></span></div>
+      <div class="panel device-panel device-duo reveal-scale" data-observe>
+        <div class="device">
+          <div class="phone" role="group" data-label-en="Seriel on iPhone: the Schedule tab" data-label-de="Seriel auf dem iPhone: der Tab Programm" aria-label="Seriel on iPhone: the Schedule tab">
+            <div class="screen" data-demo="schedule">
+              <div class="island"></div>
+              <div class="statusbar" aria-hidden="true"><span>9:41</span><span class="sb-icons"><svg viewBox="0 0 18 12"><use href="#sb-signal"/></svg><svg viewBox="0 0 26 12"><use href="#sb-battery"/></svg></span></div>
+              <div class="glass-btn gb-2" aria-hidden="true"><span class="avatar"></span></div>
+              <div class="glass-btn gb-1" aria-hidden="true"><svg><use href="#i-gear"/></svg></div>
+              <div class="app-large-title"><span lang="en">Schedule</span><span lang="de">Programm</span></div>
+              <div class="week week-pick" data-week role="group" data-label-en="This week" data-label-de="Diese Woche" aria-label="This week">
+                <button type="button" data-day="0" class="is-today"><span class="wd">Wed</span><span class="dn">14</span><span class="dot"></span></button><button type="button" data-day="1"><span class="wd">Wed</span><span class="dn">15</span><span class="dot"></span></button><button type="button" data-day="2"><span class="wd">Wed</span><span class="dn">16</span><span class="dot"></span></button><button type="button" data-day="3" disabled><span class="wd">Wed</span><span class="dn">17</span><span class="dot off"></span></button><button type="button" data-day="4"><span class="wd">Wed</span><span class="dn">18</span><span class="dot"></span></button><button type="button" data-day="5" disabled><span class="wd">Wed</span><span class="dn">19</span><span class="dot off"></span></button><button type="button" data-day="6"><span class="wd">Wed</span><span class="dn">20</span><span class="dot"></span></button>
               </div>
-              <div class="guide-day"><b>Today</b><span data-date="app-long">Wednesday 14 October</span></div>
-              <div class="row">
-                <div class="still"><svg class="art"><use href="#art-saltmarsh"/></svg></div>
-                <div><div class="code">S02E06</div><div class="t">Saltmarsh</div><div class="m">Lumen+ · 9:00 pm</div></div>
-                <div class="when">Tonight</div>
+              <div class="sched-scroll" data-sched-scroll>
+                <div class="sched-list">
+                  <div class="sched-day" data-day-section="0">
+                    <div class="app-day-head"><b data-day-label="0">Today</b><span data-day-date="0">Wednesday 14 October</span></div>
+                    <div class="feature-card"><svg class="art" aria-hidden="true"><use href="#art-field"/></svg><div class="fc-text"><div class="fc-kicker"><span lang="en">Out now · Premiere · S03E01</span><span lang="de">Jetzt da · Premiere · S03E01</span></div><div class="fc-title">The Long Field</div><div class="fc-meta">Atlas</div></div></div>
+                    <div class="app-rows"><div class="app-row"><div class="still"><svg class="art" aria-hidden="true"><use href="#art-saltmarsh"/></svg></div><div><div class="code">S02E06</div><div class="t">Saltmarsh</div><div class="m"><span lang="en">9:00 pm</span><span lang="de">21:00</span> · Lumen+</div></div><div></div></div><div class="app-row"><div class="still"><svg class="art" aria-hidden="true"><use href="#art-ferry"/></svg></div><div><div class="code">S01E05</div><div class="t">Night Ferry</div><div class="m"><span lang="en">10:15 pm</span><span lang="de">22:15</span> · Halcyon</div></div><div></div></div></div>
+                  </div>
+                  <div class="sched-day" data-day-section="1">
+                    <div class="app-day-head"><b data-day-label="1">Today</b><span data-day-date="1">Wednesday 14 October</span></div>
+                    <div class="app-rows"><div class="app-row"><div class="still"><svg class="art" aria-hidden="true"><use href="#art-kestrel"/></svg></div><div><div class="code">S01E08</div><div class="t">Kestrel Road</div><div class="m"><span lang="en">8:00 pm</span><span lang="de">20:00</span> · Atlas</div></div><div></div></div></div>
+                  </div>
+                  <div class="sched-day" data-day-section="2">
+                    <div class="app-day-head"><b data-day-label="2">Today</b><span data-day-date="2">Wednesday 14 October</span></div>
+                    <div class="app-rows"><div class="app-row"><div class="still"><svg class="art" aria-hidden="true"><use href="#art-city"/></svg></div><div><div class="code">S02E09</div><div class="t">Twelve Floors</div><div class="m"><span lang="en">9:00 pm</span><span lang="de">21:00</span> · Lumen+</div></div><div></div></div><div class="app-row"><div class="still"><svg class="art" aria-hidden="true"><use href="#art-island"/></svg></div><div><div class="code">S06E03</div><div class="t">Island Hearts</div><div class="m"><span lang="en">9:00 pm</span><span lang="de">21:00</span> · Coral</div></div><div></div></div></div>
+                  </div>
+                  <div class="sched-day" data-day-section="4">
+                    <div class="app-day-head"><b data-day-label="4">Today</b><span data-day-date="4">Wednesday 14 October</span></div>
+                    <div class="app-rows"><div class="app-row"><div class="still"><svg class="art" aria-hidden="true"><use href="#art-field"/></svg></div><div><div class="code">S03E02</div><div class="t">The Long Field</div><div class="m"><span lang="en">9:00 am</span><span lang="de">09:00</span> · Atlas</div></div><div></div></div></div>
+                  </div>
+                  <div class="sched-day" data-day-section="6">
+                    <div class="app-day-head"><b data-day-label="6">Today</b><span data-day-date="6">Wednesday 14 October</span></div>
+                    <div class="app-rows"><div class="app-row"><div class="still"><svg class="art" aria-hidden="true"><use href="#art-island"/></svg></div><div><div class="code">S06E04</div><div class="t">Island Hearts</div><div class="m"><span lang="en">9:00 pm</span><span lang="de">21:00</span> · Coral</div></div><div></div></div></div>
+                  </div>
+                  <div class="sched-day">
+                    <div class="app-day-head"><b><span lang="en">Upcoming premieres</span><span lang="de">Kommende Premieren</span></b></div>
+                    <div class="app-rows"><div class="app-row"><div class="still"><svg class="art" aria-hidden="true"><use href="#art-meridian"/></svg></div><div><div class="code"><span lang="en">Season 4 premiere</span><span lang="de">Premiere Staffel 4</span></div><div class="t">Meridian</div><div class="m">Orbit · <span data-date="plus9">23 October</span></div></div><div class="count"><b>9</b><span><span lang="en">days</span><span lang="de">Tage</span></span></div></div><div class="app-row"><div class="still"><svg class="art" aria-hidden="true"><use href="#art-pinehollow"/></svg></div><div><div class="code"><span lang="en">Season 2 premiere</span><span lang="de">Premiere Staffel 2</span></div><div class="t">Pinehollow</div><div class="m">Halcyon · <span data-date="plus12">26 October</span></div></div><div class="count"><b>12</b><span><span lang="en">days</span><span lang="de">Tage</span></span></div></div></div>
+                  </div>
+                </div>
               </div>
-              <div class="row">
-                <div class="still"><svg class="art"><use href="#art-ferry"/></svg></div>
-                <div><div class="code">S01E05</div><div class="t">Night Ferry</div><div class="m">Halcyon · 10:15 pm</div></div>
-                <div class="when">Tonight</div>
-              </div>
-              <div class="guide-day"><b>Upcoming premieres</b></div>
-              <div class="row">
-                <div class="still"><svg class="art"><use href="#art-meridian"/></svg></div>
-                <div><div class="code">Season 4 premiere</div><div class="t">Meridian</div><div class="m">Orbit · Fri 3:00 am</div></div>
-                <div class="count"><b>9</b><span>days</span></div>
-              </div>
+              <div class="tabbar" aria-hidden="true"><div class="tab"><svg><use href="#i-tv"/></svg><span lang="en">Today</span><span lang="de">Heute</span></div><div class="tab is-on"><svg><use href="#i-calendar"/></svg><span lang="en">Schedule</span><span lang="de">Programm</span></div><div class="tab"><svg><use href="#i-stack"/></svg><span lang="en">Library</span><span lang="de">Bibliothek</span></div><div class="tab"><svg><use href="#i-search"/></svg><span lang="en">Search</span><span lang="de">Suche</span></div></div>
             </div>
           </div>
-          <div class="lockscreen" role="img" data-label-en="An iPhone lock screen with three Seriel notifications: Now Airing, Coming Up and Renewed." data-label-de="Ein iPhone-Sperrbildschirm mit drei Mitteilungen von Seriel: Now Airing, Coming Up und Renewed." aria-label="An iPhone lock screen with three Seriel notifications: Now Airing, Coming Up and Renewed.">
-            <svg class="art" aria-hidden="true"><use href="#art-ferry"/></svg>
-            <div class="ls-date" data-date="lock">Wednesday 14 October</div>
-            <div class="ls-time">21:00</div>
-            <div class="notes">
-              <div class="note"><img src="/images/app-icon-192.png" alt=""><div><b>Now Airing</b><p>Saltmarsh S02E06, &ldquo;Undertow&rdquo;</p></div><time>now</time></div>
-              <div class="note"><img src="/images/app-icon-192.png" alt=""><div><b>Coming Up</b><p>Meridian returns for Season 4 on Friday</p></div><time>2h ago</time></div>
-              <div class="note"><img src="/images/app-icon-192.png" alt=""><div><b>Renewed</b><p>Night Ferry is coming back</p></div><time>Mon</time></div>
+          <p class="try-hint"><span lang="en">Try it: tap a day.</span><span lang="de">Probier es aus: Tippe auf einen Tag.</span></p>
+        </div>
+
+        <div class="device device-lock">
+          <div class="phone" role="img" data-label-en="An iPhone lock screen with three notifications from Seriel: Now Airing, Coming Up and Renewed." data-label-de="Ein iPhone-Sperrbildschirm mit drei Mitteilungen von Seriel: Läuft jetzt, Demnächst und Verlängert." aria-label="An iPhone lock screen with three notifications from Seriel: Now Airing, Coming Up and Renewed.">
+            <div class="screen lock">
+              <svg class="art" aria-hidden="true"><use href="#art-ferry"/></svg>
+              <div class="island"></div>
+              <div class="statusbar on-dark" aria-hidden="true"><span></span><span class="sb-icons"><svg viewBox="0 0 18 12"><use href="#sb-signal"/></svg><svg viewBox="0 0 26 12"><use href="#sb-battery"/></svg></span></div>
+              <div class="lock-date" data-date="lock">Wednesday 14 October</div>
+              <div class="lock-time"><span lang="en">9:00</span><span lang="de">21:00</span></div>
+              <div class="notes">
+                <div class="note"><img src="/images/app-icon-192.png" alt=""><div><b><span lang="en">Now Airing</span><span lang="de">Läuft jetzt</span></b><p>Saltmarsh S02E06, <span lang="en">&ldquo;Undertow&rdquo;</span><span lang="de">&bdquo;Undertow&ldquo;</span></p></div><time><span lang="en">now</span><span lang="de">jetzt</span></time></div>
+                <div class="note"><img src="/images/app-icon-192.png" alt=""><div><b><span lang="en">Coming Up</span><span lang="de">Demnächst</span></b><p><span lang="en">Meridian returns for Season 4 on <span data-date="plus9">23 October</span></span><span lang="de">Meridian kehrt am <span data-date="plus9">23. Oktober</span> mit Staffel 4 zurück</span></p></div><time><span lang="en">2h ago</span><span lang="de">vor 2 Std.</span></time></div>
+                <div class="note"><img src="/images/app-icon-192.png" alt=""><div><b><span lang="en">Renewed</span><span lang="de">Verlängert</span></b><p><span lang="en">Night Ferry is coming back</span><span lang="de">Night Ferry kommt zurück</span></p></div><time><span lang="en">Yesterday</span><span lang="de">Gestern</span></time></div>
+              </div>
+              <div class="lock-actions" aria-hidden="true"><span><svg><use href="#i-flashlight"/></svg></span><span><svg><use href="#i-camera"/></svg></span></div>
+              <div class="home-bar" aria-hidden="true"></div>
             </div>
           </div>
+          <p class="try-hint quiet"><span lang="en">Alerts arrive once, at air time.</span><span lang="de">Mitteilungen kommen einmal, zur Sendezeit.</span></p>
         </div>
       </div>
 
@@ -625,13 +726,13 @@
   </section>
 
   <!-- ============================================================== -->
-  <!-- Library                                                         -->
+  <!-- Library                                                        -->
   <!-- ============================================================== -->
   <section class="section section-alt" id="library" aria-labelledby="library-title">
     <div class="wrap">
       <div class="chapter-head reveal">
         <div>
-          <p class="eyebrow"><span lang="en">Library</span><span lang="de">Bibliothek</span></p>
+          <p class="eyebrow eyebrow-tab"><svg aria-hidden="true"><use href="#i-stack"/></svg><span lang="en">Library</span><span lang="de">Bibliothek</span></p>
           <h2 class="h2" id="library-title"><span lang="en">Everything you&rsquo;ve watched, kept beautifully.</span><span lang="de">Alles, was du gesehen hast. Schön aufbewahrt.</span></h2>
         </div>
         <p class="lead">
@@ -640,114 +741,112 @@
         </p>
       </div>
 
-      <div class="panel reveal-scale">
-        <div class="library-panel">
-          <div class="pills" role="tablist" data-label-en="Library filters" data-label-de="Bibliotheksfilter" aria-label="Library filters">
-            <button class="pill" type="button" role="tab" aria-selected="true" aria-controls="shelf-progress" id="tab-progress" data-shelf-tab>In progress <small>12</small></button>
-            <button class="pill" type="button" role="tab" aria-selected="false" aria-controls="shelf-waiting" id="tab-waiting" data-shelf-tab tabindex="-1">Waiting <small>8</small></button>
-            <button class="pill" type="button" role="tab" aria-selected="false" aria-controls="shelf-watchlist" id="tab-watchlist" data-shelf-tab tabindex="-1">Watchlist <small>23</small></button>
-            <button class="pill" type="button" role="tab" aria-selected="false" aria-controls="shelf-finished" id="tab-finished" data-shelf-tab tabindex="-1">Finished <small>64</small></button>
+      <div class="panel device-panel flip reveal-scale">
+        <div class="device">
+          <div class="phone" role="group" data-label-en="Seriel on iPhone: the Library tab" data-label-de="Seriel auf dem iPhone: der Tab Bibliothek" aria-label="Seriel on iPhone: the Library tab">
+            <div class="screen" data-demo="library">
+              <div class="island"></div>
+              <div class="statusbar" aria-hidden="true"><span>9:41</span><span class="sb-icons"><svg viewBox="0 0 18 12"><use href="#sb-signal"/></svg><svg viewBox="0 0 26 12"><use href="#sb-battery"/></svg></span></div>
+              <div class="glass-btn gb-2" aria-hidden="true"><span class="avatar"></span></div>
+              <div class="glass-btn gb-1" aria-hidden="true"><svg><use href="#i-gear"/></svg></div>
+              <div class="app-large-title"><span lang="en">Library</span><span lang="de">Bibliothek</span></div>
+              <div class="app-pills" role="tablist" data-label-en="Library filters" data-label-de="Bibliotheksfilter" aria-label="Library filters">
+                <button class="app-pill" type="button" role="tab" aria-selected="true" aria-controls="shelf-progress" id="tab-progress" data-shelf-tab><span lang="en">In progress</span><span lang="de">Angefangen</span> <small>12</small></button>
+                <button class="app-pill" type="button" role="tab" aria-selected="false" aria-controls="shelf-waiting" id="tab-waiting" data-shelf-tab tabindex="-1"><span lang="en">Waiting</span><span lang="de">Wartend</span> <small>8</small></button>
+                <button class="app-pill" type="button" role="tab" aria-selected="false" aria-controls="shelf-watchlist" id="tab-watchlist" data-shelf-tab tabindex="-1"><span lang="en">Watchlist</span><span lang="de">Merkliste</span> <small>23</small></button>
+                <button class="app-pill" type="button" role="tab" aria-selected="false" aria-controls="shelf-finished" id="tab-finished" data-shelf-tab tabindex="-1"><span lang="en">Finished</span><span lang="de">Beendet</span> <small>64</small></button>
+              </div>
+              <div class="app-shelf" id="shelf-progress" role="tabpanel" aria-labelledby="tab-progress"><div class="lib-card"><small><span lang="en">Last watched yesterday</span><span lang="de">Zuletzt gesehen gestern</span></small><div class="lib-art"><svg class="art" aria-hidden="true"><use href="#art-saltmarsh"/></svg><span class="lib-logo">Saltmarsh</span><i class="lib-fill" style="--f:0.5"></i></div><div class="lib-cap">S02E05 · <span lang="en">4 left</span><span lang="de">noch 4</span></div></div><div class="lib-card"><small><span lang="en">Last watched 3 days ago</span><span lang="de">Zuletzt gesehen vor 3 Tagen</span></small><div class="lib-art"><svg class="art" aria-hidden="true"><use href="#art-ferry"/></svg><span class="lib-logo">Night Ferry</span><i class="lib-fill" style="--f:0.375"></i></div><div class="lib-cap">S01E04 · <span lang="en">5 left</span><span lang="de">noch 5</span></div></div></div>
+              <div class="app-shelf" id="shelf-waiting" role="tabpanel" aria-labelledby="tab-waiting" hidden><div class="lib-label"><span lang="en">Returning soon</span><span lang="de">Kommt bald zurück</span></div><div class="lib-grid"><div class="lib-tile"><div class="poster"><svg class="art" aria-hidden="true"><use href="#art-meridian"/></svg><span class="poster-title">Meridian</span></div><span class="lib-date"><span data-date="plus9-short">23 Oct</span></span></div><div class="lib-tile"><div class="poster"><svg class="art" aria-hidden="true"><use href="#art-pinehollow"/></svg><span class="poster-title">Pinehollow</span></div><span class="lib-date"><span data-date="plus12-short">26 Oct</span></span></div></div><div class="lib-label"><span lang="en">Indefinite</span><span lang="de">Unbestimmt</span></div><div class="lib-grid"><div class="lib-tile"><div class="poster"><svg class="art" aria-hidden="true"><use href="#art-glasshouse"/></svg><span class="poster-title">Glasshouse</span></div><span class="lib-date"><span lang="en">Date TBA</span><span lang="de">Termin offen</span></span></div></div></div>
+              <div class="app-shelf" id="shelf-watchlist" role="tabpanel" aria-labelledby="tab-watchlist" hidden><div class="lib-label"><span lang="en">On the shelf</span><span lang="de">Im Regal</span></div><div class="lib-kicker"><span lang="en">Just added</span><span lang="de">Neu hinzugefügt</span></div><div class="lib-row"><div class="poster"><svg class="art" aria-hidden="true"><use href="#art-market"/></svg></div><div><b>Night Market</b><span>2026 · <span lang="en">1 season</span><span lang="de">1 Staffel</span></span></div></div><div class="lib-row"><div class="poster"><svg class="art" aria-hidden="true"><use href="#art-signal"/></svg></div><div><b>Signal Hill</b><span>2019 · <span lang="en">4 seasons</span><span lang="de">4 Staffeln</span></span></div></div><div class="lib-kicker"><span lang="en">Still waiting</span><span lang="de">Wartet noch</span></div><div class="lib-row"><div class="poster"><svg class="art" aria-hidden="true"><use href="#art-dune"/></svg></div><div><b>Dune Road</b><span>2023 · <span lang="en">2 seasons</span><span lang="de">2 Staffeln</span></span></div></div></div>
+              <div class="app-shelf" id="shelf-finished" role="tabpanel" aria-labelledby="tab-finished" hidden><div class="lib-record"><div><b>64</b><span><span lang="en">shows</span><span lang="de">Serien</span></span></div><div><b><span lang="en">2,418</span><span lang="de">2.418</span></b><span><span lang="en">episodes</span><span lang="de">Folgen</span></span></div><div><b><span lang="en">1,730</span><span lang="de">1.730</span></b><span><span lang="en">hours</span><span lang="de">Stunden</span></span></div></div><div class="lib-label">Hall of Fame</div><div class="lib-frames"><div class="frame"><div class="poster"><svg class="art" aria-hidden="true"><use href="#art-copper"/></svg></div></div><div class="frame"><div class="poster"><svg class="art" aria-hidden="true"><use href="#art-north"/></svg></div></div></div><p class="lib-wall"><b>Copper Basin</b> · <span lang="en">Finished March 2023</span><span lang="de">Beendet März 2023</span></p></div>
+              <div class="tabbar" aria-hidden="true"><div class="tab"><svg><use href="#i-tv"/></svg><span lang="en">Today</span><span lang="de">Heute</span></div><div class="tab"><svg><use href="#i-calendar"/></svg><span lang="en">Schedule</span><span lang="de">Programm</span></div><div class="tab is-on"><svg><use href="#i-stack"/></svg><span lang="en">Library</span><span lang="de">Bibliothek</span></div><div class="tab"><svg><use href="#i-search"/></svg><span lang="en">Search</span><span lang="de">Suche</span></div></div>
+            </div>
           </div>
-
-          <div class="shelf" id="shelf-progress" role="tabpanel" aria-labelledby="tab-progress">
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-saltmarsh"/></svg><span class="poster-title">Saltmarsh</span></div><div class="meter"><i style="width:62%"></i></div><div class="tt">Saltmarsh</div><div class="tm">3 left</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-kestrel"/></svg><span class="poster-title">Kestrel Road</span></div><div class="meter"><i style="width:58%"></i></div><div class="tt">Kestrel Road</div><div class="tm">4 left</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-city"/></svg><span class="poster-title">Twelve Floors</span></div><div class="meter"><i style="width:40%"></i></div><div class="tt">Twelve Floors</div><div class="tm">6 left</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-ferry"/></svg><span class="poster-title">Night Ferry</span></div><div class="meter"><i style="width:30%"></i></div><div class="tt">Night Ferry</div><div class="tm">5 left</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-field"/></svg><span class="poster-title">The Long Field</span></div><div class="meter"><i style="width:8%"></i></div><div class="tt">The Long Field</div><div class="tm">Season 3 is out</div></div>
-          </div>
-          <div class="shelf" id="shelf-waiting" role="tabpanel" aria-labelledby="tab-waiting" hidden>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-meridian"/></svg><span class="poster-title">Meridian</span></div><div class="tt">Meridian</div><div class="tm tide">Returns in 9 days</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-island"/></svg><span class="poster-title">Island Hearts</span></div><div class="tt">Island Hearts</div><div class="tm">Returning soon</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-north"/></svg><span class="poster-title">Northline</span></div><div class="tt">Northline</div><div class="tm">Renewed</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-copper"/></svg><span class="poster-title">Copper Basin</span></div><div class="tt">Copper Basin</div><div class="tm">Returning later</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-kestrel"/></svg><span class="poster-title">Kestrel Road</span></div><div class="tt">Kestrel Road</div><div class="tm">Indefinite</div></div>
-          </div>
-          <div class="shelf" id="shelf-watchlist" role="tabpanel" aria-labelledby="tab-watchlist" hidden>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-north"/></svg><span class="poster-title">Northline</span></div><div class="tt">Northline</div><div class="tm">3 seasons</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-copper"/></svg><span class="poster-title">Copper Basin</span></div><div class="tt">Copper Basin</div><div class="tm">5 seasons</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-meridian"/></svg><span class="poster-title">Meridian</span></div><div class="tt">Meridian</div><div class="tm">4 seasons</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-island"/></svg><span class="poster-title">Island Hearts</span></div><div class="tt">Island Hearts</div><div class="tm">6 seasons</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-field"/></svg><span class="poster-title">The Long Field</span></div><div class="tt">The Long Field</div><div class="tm">3 seasons</div></div>
-          </div>
-          <div class="shelf" id="shelf-finished" role="tabpanel" aria-labelledby="tab-finished" hidden>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-copper"/></svg><span class="poster-title">Copper Basin</span></div><div class="tt">Copper Basin</div><div class="tm ember">Finished 2023</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-north"/></svg><span class="poster-title">Northline</span></div><div class="tt">Northline</div><div class="tm ember">Finished 2025</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-island"/></svg><span class="poster-title">Island Hearts</span></div><div class="tt">Island Hearts</div><div class="tm">Finished 2024</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-meridian"/></svg><span class="poster-title">Meridian</span></div><div class="tt">Meridian</div><div class="tm">Finished 2022</div></div>
-            <div class="tile"><div class="poster"><svg class="art"><use href="#art-city"/></svg><span class="poster-title">Twelve Floors</span></div><div class="tt">Twelve Floors</div><div class="tm">Finished 2021</div></div>
-          </div>
+          <p class="try-hint"><span lang="en">Try it: switch filters.</span><span lang="de">Probier es aus: Wechsle den Filter.</span></p>
         </div>
+
+        <ul class="facts facts-pick">
+          <li class="reveal" style="--d:0"><button type="button" data-shelf-pick="tab-progress" aria-pressed="true"><svg aria-hidden="true"><use href="#i-play-circle"/></svg><div><b><span lang="en">In progress</span><span lang="de">Angefangen</span></b><span lang="en">Shows you&rsquo;re in the middle of, with the next episode and how much is left.</span><span lang="de">Serien, in denen du gerade steckst, mit der nächsten Folge und dem, was noch fehlt.</span></div></button></li>
+          <li class="reveal" style="--d:1"><button type="button" data-shelf-pick="tab-waiting" aria-pressed="false"><svg aria-hidden="true"><use href="#i-clock"/></svg><div><b><span lang="en">Waiting</span><span lang="de">Wartend</span></b><span lang="en">Caught up and waiting for more, sorted by when each show comes back.</span><span lang="de">Aufgeholt und wartend, sortiert danach, wann jede Serie zurückkommt.</span></div></button></li>
+          <li class="reveal" style="--d:2"><button type="button" data-shelf-pick="tab-watchlist" aria-pressed="false"><svg aria-hidden="true"><use href="#i-bookmark"/></svg><div><b><span lang="en">Watchlist</span><span lang="de">Merkliste</span></b><span lang="en">Shows saved for later, as many as you like.</span><span lang="de">Serien für später, so viele du willst.</span></div></button></li>
+          <li class="reveal" style="--d:3"><button type="button" data-shelf-pick="tab-finished" aria-pressed="false"><svg aria-hidden="true"><use href="#i-flag"/></svg><div><b><span lang="en">Finished</span><span lang="de">Beendet</span></b><span lang="en">Your record, your Hall of Fame and every show you completed, sorted by your rating.</span><span lang="de">Deine Bilanz, deine Hall of Fame und jede beendete Serie, sortiert nach deiner Bewertung.</span></div></button></li>
+        </ul>
       </div>
     </div>
   </section>
 
   <!-- ============================================================== -->
-  <!-- Show pages + spoilers                                           -->
+  <!-- Show pages + spoilers                                          -->
   <!-- ============================================================== -->
   <section class="section" id="shows" aria-labelledby="shows-title">
     <div class="wrap">
       <div class="chapter-head reveal">
         <div>
-          <p class="eyebrow"><span lang="en">Show pages</span><span lang="de">Serienseiten</span></p>
+          <p class="eyebrow eyebrow-tab"><svg aria-hidden="true"><use href="#i-play-rect"/></svg><span lang="en">Show pages</span><span lang="de">Serienseiten</span></p>
           <h2 class="h2" id="shows-title"><span lang="en">Every show, without the spoilers.</span><span lang="de">Jede Serie. Ohne Spoiler.</span></h2>
         </div>
         <p class="lead">
           <span lang="en">Seasons, episodes, cast and what people think, set around the artwork. Turn on Hide spoilers and Seriel blurs stills, holds back episode titles and covers synopses until you&rsquo;ve watched them.</span>
-          <span lang="de">Staffeln, Folgen, Besetzung und was andere denken, rund um das Artwork. Mit &bdquo;Hide spoilers&ldquo; verschwimmen Standbilder, Folgentitel bleiben zurück und Inhaltsangaben verdeckt, bis du die Folge gesehen hast.</span>
+          <span lang="de">Staffeln, Folgen, Besetzung und was andere denken, rund um das Artwork. Mit &bdquo;Spoiler ausblenden&ldquo; verschwimmen Standbilder, Folgentitel bleiben zurück und Inhaltsangaben verdeckt, bis du die Folge gesehen hast.</span>
         </p>
       </div>
 
-      <div class="panel reveal-scale">
-        <div class="spoiler-panel">
-          <div class="episodes spoilers-on" data-demo="episodes">
-            <div class="episodes-head"><b>Season 1</b><span>8 episodes · 2 watched</span></div>
-            <div class="ep watched">
-              <div class="still"><svg class="art" aria-hidden="true"><use href="#art-ferry"/></svg></div>
-              <div><div class="code">S01E02</div><div class="t">Two Ports</div><div class="syn">The night crew learns who boarded and who didn&rsquo;t.</div></div>
-              <div class="ring" aria-label="Watched"><svg aria-hidden="true"><use href="#i-check"/></svg></div>
-            </div>
-            <div class="ep watched">
-              <div class="still"><svg class="art" aria-hidden="true"><use href="#art-north"/></svg></div>
-              <div><div class="code">S01E03</div><div class="t">Fog Signal</div><div class="syn">A storm keeps the ferry in harbour for a night.</div></div>
-              <div class="ring" aria-label="Watched"><svg aria-hidden="true"><use href="#i-check"/></svg></div>
-            </div>
-            <div class="ep">
-              <div class="still"><svg class="art" aria-hidden="true"><use href="#art-saltmarsh"/></svg></div>
-              <div><div class="code">S01E04</div><div class="t"><span class="real">Harbour Watch</span><span class="masked">Episode 4</span></div><div class="syn"><span class="real">Someone on board has been lying about the crossing.</span><span class="masked"><i class="redacted" style="width:88%"></i></span></div></div>
-              <div class="ring" aria-label="Not watched"></div>
-            </div>
-            <div class="ep">
-              <div class="still"><svg class="art" aria-hidden="true"><use href="#art-kestrel"/></svg></div>
-              <div><div class="code">S01E05</div><div class="t"><span class="real">The Last Sailing</span><span class="masked">Episode 5</span></div><div class="syn"><span class="real">The missing passenger turns up where nobody looked.</span><span class="masked"><i class="redacted" style="width:72%"></i></span></div></div>
-              <div class="ring" aria-label="Not watched"></div>
+      <div class="panel device-panel reveal-scale">
+        <div class="device">
+          <div class="phone" role="group" data-label-en="Seriel on iPhone: a show page with its episodes" data-label-de="Seriel auf dem iPhone: eine Serienseite mit ihren Folgen" aria-label="Seriel on iPhone: a show page with its episodes">
+            <div class="screen" data-demo="show">
+              <div class="island"></div>
+              <div class="statusbar" aria-hidden="true"><span>9:41</span><span class="sb-icons"><svg viewBox="0 0 18 12"><use href="#sb-signal"/></svg><svg viewBox="0 0 26 12"><use href="#sb-battery"/></svg></span></div>
+              <div class="glass-btn gb-l" aria-hidden="true"><svg><use href="#i-chevron-left"/></svg></div>
+              <div class="app-navtitle" aria-hidden="true">Night Ferry</div>
+              <div class="glass-btn gb-1" aria-hidden="true"><svg><use href="#i-bookmark"/></svg></div>
+              <div class="season-head">
+                <b><span lang="en">Season 1</span><span lang="de">Staffel 1</span></b>
+                <span>2025 · <span lang="en">8 episodes · 3 watched</span><span lang="de">8 Folgen · 3 gesehen</span></span>
+                <div class="meter"><i style="width:37.5%"></i></div>
+              </div>
+              <div class="app-eps spoilers-on" data-demo="episodes">
+                <div class="app-ep watched"><div class="still"><svg class="art" viewBox="250 170 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#art-ferry" width="600" height="400"/></svg></div><div><div class="code">S01E02</div><div class="t">Two Ports</div><div class="syn">The night crew learns who boarded and who didn&rsquo;t.</div></div><div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.6 4.6L19.2 7.5"/></svg></div></div>
+                <div class="app-ep watched"><div class="still"><svg class="art" viewBox="40 30 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#art-ferry" width="600" height="400"/></svg></div><div><div class="code">S01E03</div><div class="t">Fog Signal</div><div class="syn">A storm keeps the ferry in harbour for a night.</div></div><div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.6 4.6L19.2 7.5"/></svg></div></div>
+                <div class="app-ep"><div class="still"><svg class="art" viewBox="300 236 280 158" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#art-ferry" width="600" height="400"/></svg></div><div><div class="code">S01E04</div><div class="t"><span class="real">Harbour Watch</span><span class="masked"><span lang="en">Episode 4</span><span lang="de">Folge 4</span></span></div><div class="syn"><span class="real">Someone on board has been lying about the crossing.</span><span class="masked"><i class="redacted" style="width:88%"></i><i class="redacted" style="width:52%"></i></span></div></div><div class="ring"></div></div>
+                <div class="app-ep"><div class="still"><svg class="art" viewBox="0 110 600 338" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#art-ferry" width="600" height="400"/></svg></div><div><div class="code">S01E05</div><div class="t"><span class="real">The Last Sailing</span><span class="masked"><span lang="en">Episode 5</span><span lang="de">Folge 5</span></span></div><div class="syn"><span class="real">The missing passenger turns up where nobody looked.</span><span class="masked"><i class="redacted" style="width:92%"></i><i class="redacted" style="width:40%"></i></span></div></div><div class="ring"></div></div>
+                <div class="app-ep"><div class="still"><svg class="art" viewBox="360 200 210 118" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#art-ferry" width="600" height="400"/></svg></div><div><div class="code">S01E06</div><div class="t"><span class="real">Crossing Back</span><span class="masked"><span lang="en">Episode 6</span><span lang="de">Folge 6</span></span></div><div class="syn"><span class="real">Nobody sleeps the night the harbour lights go out.</span><span class="masked"><i class="redacted" style="width:80%"></i><i class="redacted" style="width:60%"></i></span></div></div><div class="ring"></div></div>
+                <div class="app-ep"><div class="still"><svg class="art" viewBox="120 60 360 203" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#art-ferry" width="600" height="400"/></svg></div><div><div class="code">S01E07</div><div class="t"><span class="real">Lights Out</span><span class="masked"><span lang="en">Episode 7</span><span lang="de">Folge 7</span></span></div><div class="syn"><span class="real">The crew finds out what the captain has been carrying.</span><span class="masked"><i class="redacted" style="width:84%"></i><i class="redacted" style="width:46%"></i></span></div></div><div class="ring"></div></div>
+                <div class="app-ep"><div class="still"><svg class="art" viewBox="0 200 400 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#art-ferry" width="600" height="400"/></svg></div><div><div class="code">S01E08</div><div class="t"><span class="real">Last Crossing</span><span class="masked"><span lang="en">Episode 8</span><span lang="de">Folge 8</span></span></div><div class="syn"><span class="real">One more night between the two ports, and a choice.</span><span class="masked"><i class="redacted" style="width:90%"></i><i class="redacted" style="width:38%"></i></span></div></div><div class="ring"></div></div>
+              </div>
+              <div class="tabbar" aria-hidden="true"><div class="tab"><svg><use href="#i-tv"/></svg><span lang="en">Today</span><span lang="de">Heute</span></div><div class="tab"><svg><use href="#i-calendar"/></svg><span lang="en">Schedule</span><span lang="de">Programm</span></div><div class="tab is-on"><svg><use href="#i-stack"/></svg><span lang="en">Library</span><span lang="de">Bibliothek</span></div><div class="tab"><svg><use href="#i-search"/></svg><span lang="en">Search</span><span lang="de">Suche</span></div></div>
             </div>
           </div>
-          <div>
-            <div class="control-card">
-              <div class="control-row">
-                <span class="glyph"><svg aria-hidden="true"><use href="#i-eye-slash"/></svg></span>
-                <div><b>Hide spoilers</b><p>Blur unwatched stills, redact descriptions and hold back episode titles until you&rsquo;ve watched.</p></div>
-                <button class="switch" type="button" role="switch" aria-checked="true" data-demo="spoilers" aria-label="Hide spoilers"></button>
+          <p class="try-hint"><span lang="en">Try it: flip the switch.</span><span lang="de">Probier es aus: Leg den Schalter um.</span></p>
+        </div>
+
+        <div class="device-side">
+          <div class="ios-group reveal">
+            <div class="ios-group-head"><span lang="en">Settings</span><span lang="de">Einstellungen</span> <span aria-hidden="true">&rsaquo;</span> <span lang="en">Pro tools</span><span lang="de">Pro-Werkzeuge</span></div>
+            <div class="ios-group-card">
+              <div class="ios-row">
+                <span class="ios-icon"><svg aria-hidden="true"><use href="#i-eye-slash"/></svg></span>
+                <div><b><span lang="en">Hide spoilers</span><span lang="de">Spoiler ausblenden</span></b><p><span lang="en">Blur unwatched stills, redact descriptions and hold back episode titles until you&rsquo;ve watched.</span><span lang="de">Ungesehene Standbilder verwischen, Inhaltsangaben verdecken und Folgentitel zurückhalten, bis du sie gesehen hast.</span></p></div>
+                <button class="switch" type="button" role="switch" aria-checked="true" data-demo="spoilers" data-label-en="Hide spoilers" data-label-de="Spoiler ausblenden" aria-label="Hide spoilers"></button>
               </div>
             </div>
-            <div class="control-card summary-card">
-              <div class="sc-head"><svg aria-hidden="true"><use href="#i-sparkles"/></svg>Review summary</div>
-              <div class="summary-cols">
-                <ul class="pos">
-                  <li><svg aria-hidden="true"><use href="#i-thumb"/></svg>Tense, slow-burn mystery</li>
-                  <li><svg aria-hidden="true"><use href="#i-thumb"/></svg>Gorgeous night photography</li>
-                  <li><svg aria-hidden="true"><use href="#i-thumb"/></svg>Strong ensemble cast</li>
-                </ul>
-                <ul class="neg">
-                  <li><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#i-thumb"/></svg>Middle episodes drag</li>
-                  <li><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#i-thumb"/></svg>Too many side plots</li>
-                  <li><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#i-thumb"/></svg>Rushed final reveal</li>
-                </ul>
-              </div>
-              <p class="summary-foot"><span lang="en">Summarised on your iPhone with Apple Intelligence.</span><span lang="de">Auf deinem iPhone mit Apple Intelligence zusammengefasst.</span></p>
+          </div>
+          <div class="control-card summary-card reveal" style="--d:1">
+            <div class="sc-head"><svg aria-hidden="true"><use href="#i-sparkles"/></svg><span lang="en">Review summary</span><span lang="de">Zusammenfassung der Rezensionen</span></div>
+            <div class="summary-cols">
+              <ul class="pos">
+                <li><svg aria-hidden="true"><use href="#i-thumb"/></svg>Tense, slow-burn mystery</li>
+                <li><svg aria-hidden="true"><use href="#i-thumb"/></svg>Gorgeous night photography</li>
+                <li><svg aria-hidden="true"><use href="#i-thumb"/></svg>Strong ensemble cast</li>
+              </ul>
+              <ul class="neg">
+                <li><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#i-thumb"/></svg>Middle episodes drag</li>
+                <li><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#i-thumb"/></svg>Too many side plots</li>
+                <li><svg aria-hidden="true" style="transform:rotate(180deg)"><use href="#i-thumb"/></svg>Rushed final reveal</li>
+              </ul>
             </div>
-            <p class="try-hint"><span lang="en">Try it: flip the switch.</span><span lang="de">Probier es aus: Leg den Schalter um.</span></p>
+            <p class="summary-foot"><span lang="en">Summarised on your iPhone with Apple Intelligence.</span><span lang="de">Auf deinem iPhone mit Apple Intelligence zusammengefasst.</span></p>
           </div>
         </div>
       </div>
@@ -755,13 +854,13 @@
   </section>
 
   <!-- ============================================================== -->
-  <!-- Trakt                                                           -->
+  <!-- Trakt                                                          -->
   <!-- ============================================================== -->
   <section class="section section-alt" id="trakt" aria-labelledby="trakt-title">
     <div class="wrap">
       <div class="chapter-head reveal">
         <div>
-          <p class="eyebrow"><span lang="en">Trakt, if you want it</span><span lang="de">Trakt, wenn du willst</span></p>
+          <p class="eyebrow eyebrow-tab"><svg aria-hidden="true"><use href="#i-sync"/></svg><span lang="en">Trakt, if you want it</span><span lang="de">Trakt, wenn du willst</span></p>
           <h2 class="h2" id="trakt-title"><span lang="en">Bring your history. Keep it in step.</span><span lang="de">Bring deinen Verlauf mit. Und halte ihn synchron.</span></h2>
         </div>
         <p class="lead">
@@ -770,43 +869,48 @@
         </p>
       </div>
 
-      <div class="panel reveal-scale">
-        <div class="trakt-panel">
-          <div>
-            <div class="path-card">
-              <div class="k"><span lang="en">Free</span><span lang="de">Kostenlos</span></div>
-              <h3><span lang="en">Import from Trakt</span><span lang="de">Von Trakt importieren</span></h3>
-              <p><span lang="en">Shows and progress, watch dates, watchlist, ratings and reviews from a public profile. Nothing on Trakt changes.</span><span lang="de">Serien und Fortschritt, Daten, Merkliste, Bewertungen und Rezensionen aus einem öffentlichen Profil. Auf Trakt ändert sich nichts.</span></p>
-              <div class="handle-field" aria-hidden="true"><span>@</span><i>yourname</i><span class="caret"></span></div>
-            </div>
-            <div class="path-card">
-              <div class="k">Seriel Pro</div>
-              <h3><span lang="en">Two-way sync</span><span lang="de">Synchronisierung in beide Richtungen</span></h3>
-              <p><span lang="en">What you watch, rate and write in Seriel reaches Trakt, and what changes on Trakt comes back. Sign out any time and keep your library.</span><span lang="de">Was du in Seriel schaust, bewertest und schreibst, landet auf Trakt, und Änderungen auf Trakt kommen zurück. Abmelden geht jederzeit, deine Bibliothek bleibt.</span></p>
+      <div class="panel device-panel flip reveal-scale">
+        <div class="device">
+          <div class="phone" role="group" data-label-en="Seriel on iPhone: reviewing the differences before a Trakt sync" data-label-de="Seriel auf dem iPhone: die Unterschiede vor einer Trakt-Synchronisierung" aria-label="Seriel on iPhone: reviewing the differences before a Trakt sync">
+            <div class="screen sheet-screen" data-demo="merge">
+              <div class="island"></div>
+              <div class="statusbar on-dark" aria-hidden="true"><span>9:41</span><span class="sb-icons"><svg viewBox="0 0 18 12"><use href="#sb-signal"/></svg><svg viewBox="0 0 26 12"><use href="#sb-battery"/></svg></span></div>
+              <div class="sheet-parent" aria-hidden="true"></div>
+              <div class="sheet" data-cta="update">
+                <div class="glass-btn sheet-close" aria-hidden="true"><svg><use href="#i-xmark"/></svg></div>
+                <div class="sheet-body">
+                  <div class="merge-k"><span lang="en">Trakt sync</span><span lang="de">Trakt-Synchronisierung</span></div>
+                  <div class="merge-title"><span lang="en">Here&rsquo;s where Seriel and Trakt differ.</span><span lang="de">Hier unterscheiden sich Seriel und Trakt.</span></div>
+                  <p class="merge-text"><span lang="en">Pick the version that stays for each one. Seriel&rsquo;s goes to Trakt, Trakt&rsquo;s comes into Seriel.</span><span lang="de">Wähl bei jedem Punkt, welche Fassung bleibt. &bdquo;Seriel&ldquo; geht zu Trakt, &bdquo;Trakt&ldquo; kommt in Seriel.</span></p>
+                  <div class="grp-head"><span lang="en">Watches (1)</span><span lang="de">Sichtungen (1)</span></div><div class="grp"><div class="drow"><div class="poster"><svg class="art" aria-hidden="true"><use href="#art-kestrel"/></svg></div><div class="drow-text"><b>Kestrel Road</b><span><span lang="en">6 watches new to Trakt</span><span lang="de">6 Sichtungen neu für Trakt</span></span></div><button class="popup" type="button" aria-haspopup="menu" aria-expanded="false" data-merge="history" data-choice="seriel" data-title="Kestrel Road"><span class="v v-seriel"><span lang="en">Seriel&rsquo;s</span><span lang="de">Seriel</span></span><span class="v v-trakt"><span lang="en">Trakt&rsquo;s</span><span lang="de">Trakt</span></span><svg aria-hidden="true"><use href="#i-updown"/></svg></button></div></div>
+                  <div class="grp-head"><span lang="en">Watchlist (1)</span><span lang="de">Merkliste (1)</span></div><div class="grp"><div class="drow"><div class="poster"><svg class="art" aria-hidden="true"><use href="#art-north"/></svg></div><div class="drow-text"><b>Northline</b><span><span lang="en">Taken off on Trakt, still in Seriel</span><span lang="de">Auf Trakt entfernt, noch in Seriel</span></span></div><button class="popup" type="button" aria-haspopup="menu" aria-expanded="false" data-merge="watchlist" data-choice="trakt" data-title="Northline"><span class="v v-seriel"><span lang="en">Seriel&rsquo;s</span><span lang="de">Seriel</span></span><span class="v v-trakt"><span lang="en">Trakt&rsquo;s</span><span lang="de">Trakt</span></span><svg aria-hidden="true"><use href="#i-updown"/></svg></button></div></div>
+                  <div class="grp-head"><span lang="en">Ratings (1)</span><span lang="de">Bewertungen (1)</span></div><div class="grp"><div class="drow"><div class="poster"><svg class="art" aria-hidden="true"><use href="#art-copper"/></svg></div><div class="drow-text"><b>Copper Basin</b><span><span lang="en">Seriel 5&#9733;, Trakt 4&#9733; · changed in Seriel</span><span lang="de">Seriel 5&#9733;, Trakt 4&#9733; · in Seriel geändert</span></span></div><button class="popup" type="button" aria-haspopup="menu" aria-expanded="false" data-merge="rating" data-choice="seriel" data-title="Copper Basin"><span class="v v-seriel"><span lang="en">Seriel&rsquo;s</span><span lang="de">Seriel</span></span><span class="v v-trakt"><span lang="en">Trakt&rsquo;s</span><span lang="de">Trakt</span></span><svg aria-hidden="true"><use href="#i-updown"/></svg></button></div></div>
+                </div>
+                <div class="sheet-cta" aria-hidden="true">
+                  <div class="cta-btn"><span class="cta cta-update"><span lang="en">Update Trakt and sync</span><span lang="de">Trakt aktualisieren und synchronisieren</span></span><span class="cta cta-add"><span lang="en">Add to Trakt and sync</span><span lang="de">Zu Trakt hinzufügen und synchronisieren</span></span><span class="cta cta-from"><span lang="en">Sync from Trakt</span><span lang="de">Von Trakt synchronisieren</span></span></div>
+                  <div class="cta-2"><span lang="en">Not now</span><span lang="de">Nicht jetzt</span></div>
+                </div>
+                <div class="popmenu" role="menu" hidden data-popmenu>
+                  <button type="button" role="menuitemradio" aria-checked="true" data-pick="seriel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.6 4.6L19.2 7.5"/></svg><span><span lang="en">Seriel&rsquo;s</span><span lang="de">Seriel</span></span></button>
+                  <button type="button" role="menuitemradio" aria-checked="false" data-pick="trakt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.6 4.6L19.2 7.5"/></svg><span><span lang="en">Trakt&rsquo;s</span><span lang="de">Trakt</span></span></button>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="merge">
-            <div class="k">Trakt sync</div>
-            <h3>Here&rsquo;s where Seriel and Trakt differ.</h3>
-            <p>Pick the version that stays for each one. Seriel&rsquo;s goes to Trakt, Trakt&rsquo;s comes into Seriel.</p>
-            <div class="merge-group">Ratings</div>
-            <div class="mrow">
-              <div class="poster"><svg class="art" aria-hidden="true"><use href="#art-copper"/></svg></div>
-              <div><b>Copper Basin</b><span>Seriel ★★★★★, Trakt ★★★★ · edited in Seriel</span></div>
-              <div class="seg" role="group" aria-label="Copper Basin rating"><button type="button" aria-pressed="true">Seriel&rsquo;s</button><button type="button" aria-pressed="false">Trakt&rsquo;s</button></div>
-            </div>
-            <div class="merge-group">Watches</div>
-            <div class="mrow">
-              <div class="poster"><svg class="art" aria-hidden="true"><use href="#art-kestrel"/></svg></div>
-              <div><b>Kestrel Road</b><span>6 new watches, each with its date</span></div>
-              <div class="seg" role="group" aria-label="Kestrel Road watches"><button type="button" aria-pressed="true">Seriel&rsquo;s</button><button type="button" aria-pressed="false">Trakt&rsquo;s</button></div>
-            </div>
-            <div class="merge-group">Watchlist</div>
-            <div class="mrow">
-              <div class="poster"><svg class="art" aria-hidden="true"><use href="#art-north"/></svg></div>
-              <div><b>Northline</b><span>Taken off on Trakt, still in Seriel</span></div>
-              <div class="seg" role="group" aria-label="Northline watchlist"><button type="button" aria-pressed="false">Seriel&rsquo;s</button><button type="button" aria-pressed="true">Trakt&rsquo;s</button></div>
-            </div>
+          <p class="try-hint"><span lang="en">Try it: pick a side for each show.</span><span lang="de">Probier es aus: Wähl für jede Serie eine Seite.</span></p>
+        </div>
+
+        <div class="device-side">
+          <div class="path-card reveal">
+            <div class="k"><span lang="en">Free</span><span lang="de">Kostenlos</span></div>
+            <h3><span lang="en">Import from Trakt</span><span lang="de">Von Trakt importieren</span></h3>
+            <p><span lang="en">Shows and progress, watch dates, watchlist, ratings and reviews from a public profile. Nothing on Trakt changes.</span><span lang="de">Serien und Fortschritt, Daten, Merkliste, Bewertungen und Rezensionen aus einem öffentlichen Profil. Auf Trakt ändert sich nichts.</span></p>
+            <div class="handle-field" aria-hidden="true"><span>@</span><i>yourname</i><span class="caret"></span></div>
+          </div>
+          <div class="path-card reveal" style="--d:1">
+            <div class="k">Seriel Pro</div>
+            <h3><span lang="en">Two-way sync</span><span lang="de">Synchronisierung in beide Richtungen</span></h3>
+            <p><span lang="en">What you watch, rate and write in Seriel reaches Trakt, and what changes on Trakt comes back. Sign out any time and keep your library.</span><span lang="de">Was du in Seriel schaust, bewertest und schreibst, landet auf Trakt, und Änderungen auf Trakt kommen zurück. Abmelden geht jederzeit, deine Bibliothek bleibt.</span></p>
           </div>
         </div>
       </div>

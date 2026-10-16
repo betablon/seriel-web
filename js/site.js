@@ -8,8 +8,9 @@
 //                "Coming soon" badge becomes a link to the App Store.
 //   Navigation   Mobile sheet, hairline once the page scrolls.
 //   Reveal       Sections fade up as they enter the viewport.
-//   Demos        The check, rating stars, Library filters, spoiler
-//                switch and the Trakt choices on the home page.
+//   Demos        The home page's iPhones: Today's check and rating,
+//                Schedule's week strip, Library filters, the spoiler
+//                switch and the Trakt sync choices.
 //   Docs         Help search and the table of contents highlight.
 // =====================================================================
 
@@ -42,6 +43,7 @@
       el.setAttribute('aria-label', el.getAttribute('data-label-' + lang));
     });
     renderDates();
+    syncMergeLabels();
   }
 
   function bindLang() {
@@ -108,29 +110,45 @@
   }
 
   // ---------- Live dates in the app renderings -----------------------
+  //
+  // The app follows the device's language, so the dates on its screens
+  // follow the page's.
 
   function renderDates() {
     var now = new Date();
     var lang = currentLang();
     var locale = lang === 'de' ? 'de-DE' : 'en-GB';
-    var long = now.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
-    // The app is in English, so dates inside its screens stay English.
-    document.querySelectorAll('[data-date="app-long"]').forEach(function (el) {
-      el.textContent = long.replace(',', '');
-    });
-    document.querySelectorAll('[data-date="lock"]').forEach(function (el) {
-      el.textContent = now.toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'long' });
+    var dayAfter = function (n) { var d = new Date(now); d.setDate(now.getDate() + n); return d; };
+    var longDate = function (d) {
+      var text = d.toLocaleDateString(locale, { weekday: 'long', day: 'numeric', month: 'long' });
+      return lang === 'en' ? text.replace(',', '') : text;
+    };
+    document.querySelectorAll('[data-date="app-long"], [data-date="lock"]').forEach(function (el) {
+      el.textContent = longDate(now);
     });
     document.querySelectorAll('[data-week]').forEach(function (week) {
-      var cells = week.querySelectorAll('[data-day]');
-      cells.forEach(function (cell, i) {
-        var d = new Date(now);
-        d.setDate(now.getDate() + i);
+      week.querySelectorAll('[data-day]').forEach(function (cell, i) {
+        var d = dayAfter(i);
         var wd = cell.querySelector('.wd');
         var dn = cell.querySelector('.dn');
-        if (wd) wd.textContent = d.toLocaleDateString('en-GB', { weekday: 'short' });
+        if (wd) wd.textContent = d.toLocaleDateString(locale, { weekday: 'short' }).replace('.', '');
         if (dn) dn.textContent = String(d.getDate());
+        if (cell.tagName === 'BUTTON') cell.setAttribute('aria-label', longDate(d));
       });
+    });
+    document.querySelectorAll('[data-day-label]').forEach(function (el) {
+      var n = +el.getAttribute('data-day-label');
+      el.textContent = n === 0 ? (lang === 'de' ? 'Heute' : 'Today')
+        : n === 1 ? (lang === 'de' ? 'Morgen' : 'Tomorrow')
+        : dayAfter(n).toLocaleDateString(locale, { weekday: 'long' });
+    });
+    document.querySelectorAll('[data-day-date]').forEach(function (el) {
+      el.textContent = longDate(dayAfter(+el.getAttribute('data-day-date')));
+    });
+    document.querySelectorAll('[data-date^="plus"]').forEach(function (el) {
+      var m = /^plus(\d+)(-short)?$/.exec(el.getAttribute('data-date'));
+      if (!m) return;
+      el.textContent = dayAfter(+m[1]).toLocaleDateString(locale, { day: 'numeric', month: m[2] ? 'short' : 'long' });
     });
     document.querySelectorAll('[data-date="year"]').forEach(function (el) {
       el.textContent = String(now.getFullYear());
@@ -216,47 +234,107 @@
     update();
   }
 
-  // ---------- Demo: mark watched, then rate --------------------------
+  // ---------- Demo: Today, mark watched, then rate --------------------
+  //
+  // As in the app: the hero moves straight on to the next episode and
+  // "How was it?" comes up under it; a star rates it and the card goes.
 
-  function bindCheck() {
-    var check = document.querySelector('[data-demo="check"]');
-    var card = document.querySelector('[data-demo="rating"]');
-    if (!check || !card) return;
-    var stars = card.querySelectorAll('.stars button');
-    var starWrap = card.querySelector('.stars');
+  var TODAY_EPISODES = [
+    ['S02E05', 'The Low Light', 52],
+    ['S02E06', 'Undertow', 49],
+    ['S02E07', 'Slack Water', 55],
+    ['S02E08', 'High Tide', 58]
+  ];
+
+  function bindToday() {
+    var screen = document.querySelector('[data-demo="today"]');
+    if (!screen) return;
+    var check = screen.querySelector('[data-today-check]');
+    var ep = screen.querySelector('[data-today-ep]');
+    var line = screen.querySelector('[data-today-line]');
+    var rate = screen.querySelector('[data-today-rate]');
+    var code = screen.querySelector('[data-rate-code]');
+    var stars = rate.querySelectorAll('.app-stars button');
+    var index = 0;
+    var busy = false;
+    var closeTimer = null;
+
+    var clearStars = function () {
+      stars.forEach(function (s) { s.classList.remove('is-on'); s.setAttribute('aria-pressed', 'false'); });
+    };
+    var showRating = function (show) {
+      rate.classList.toggle('is-shown', show);
+      if (show) rate.removeAttribute('inert'); else rate.setAttribute('inert', '');
+    };
 
     check.addEventListener('click', function () {
-      var on = check.getAttribute('aria-pressed') !== 'true';
-      check.setAttribute('aria-pressed', String(on));
+      if (busy) return;
+      busy = true;
+      clearTimeout(closeTimer);
+      var marked = TODAY_EPISODES[index];
+      var fromKeyboard = check.matches(':focus-visible');
       check.classList.remove('pulse');
       void check.offsetWidth;
-      if (on) check.classList.add('pulse');
-      card.classList.toggle('is-shown', on);
-      card.setAttribute('aria-hidden', String(!on));
-      stars.forEach(function (s) { s.tabIndex = on ? 0 : -1; });
-      if (!on) {
-        starWrap.classList.remove('is-rated');
-        stars.forEach(function (s) { s.classList.remove('is-on'); s.setAttribute('aria-pressed', 'false'); });
-      }
+      check.classList.add('is-done', 'pulse');
+      setTimeout(function () {
+        ep.classList.add('is-swapping');
+        setTimeout(function () {
+          index = (index + 1) % TODAY_EPISODES.length;
+          var next = TODAY_EPISODES[index];
+          line.textContent = next[0] + ' · ' + next[1] + ' · ' + next[2] + ' min';
+          check.setAttribute('data-label-en', 'Mark Saltmarsh ' + next[0] + ' watched');
+          check.setAttribute('data-label-de', 'Saltmarsh ' + next[0] + ' als gesehen markieren');
+          check.setAttribute('aria-label', check.getAttribute('data-label-' + currentLang()));
+          code.textContent = 'Saltmarsh · ' + marked[0];
+          clearStars();
+          check.classList.remove('is-done');
+          ep.classList.remove('is-swapping');
+          showRating(true);
+          if (fromKeyboard) stars[0].focus({ preventScroll: true });
+          busy = false;
+        }, reduceMotion ? 0 : 280);
+      }, reduceMotion ? 0 : 650);
     });
 
     stars.forEach(function (star, i) {
-      star.tabIndex = -1;
       star.addEventListener('click', function () {
         stars.forEach(function (s, j) {
           s.classList.toggle('is-on', j <= i);
           s.setAttribute('aria-pressed', String(j === i));
         });
-        starWrap.classList.add('is-rated');
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(function () {
+          var hadFocus = rate.contains(document.activeElement);
+          showRating(false);
+          if (hadFocus) check.focus({ preventScroll: true });
+        }, reduceMotion ? 300 : 750);
+      });
+    });
+  }
+
+  // ---------- Demo: Schedule, the week strip jumps to a day -----------
+
+  function bindSchedule() {
+    var screen = document.querySelector('[data-demo="schedule"]');
+    if (!screen) return;
+    var scroller = screen.querySelector('[data-sched-scroll]');
+    screen.querySelectorAll('.week-pick [data-day]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = screen.querySelector('[data-day-section="' + btn.getAttribute('data-day') + '"]');
+        if (!target) return;
+        scroller.scrollTo({ top: target.offsetTop, behavior: reduceMotion ? 'auto' : 'smooth' });
       });
     });
   }
 
   // ---------- Demo: Library filters ----------------------------------
+  //
+  // The pills on the phone and the notes beside it pick the same filter.
 
   function bindShelves() {
     var tabs = document.querySelectorAll('[data-shelf-tab]');
     if (!tabs.length) return;
+    var picks = document.querySelectorAll('[data-shelf-pick]');
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function () { select(tab); });
       tab.addEventListener('keydown', function (e) {
@@ -270,7 +348,14 @@
         }
       });
     });
+    picks.forEach(function (pick) {
+      pick.addEventListener('click', function () {
+        var tab = document.getElementById(pick.getAttribute('data-shelf-pick'));
+        if (tab) select(tab);
+      });
+    });
     function select(tab) {
+      if (tab.getAttribute('aria-selected') === 'true') return;
       tabs.forEach(function (t) {
         var on = t === tab;
         t.setAttribute('aria-selected', String(on));
@@ -283,6 +368,9 @@
           void shelf.offsetWidth;
           shelf.classList.add('is-entering');
         }
+      });
+      picks.forEach(function (p) {
+        p.setAttribute('aria-pressed', String(p.getAttribute('data-shelf-pick') === tab.id));
       });
     }
   }
@@ -300,17 +388,105 @@
     });
   }
 
-  // ---------- Demo: Seriel's / Trakt's -------------------------------
+  // ---------- Demo: Trakt sync, Seriel's or Trakt's -------------------
+  //
+  // Each row's choice opens a pop-up menu, as in the app. The button at
+  // the foot names what the sync will do, decided the way the app does:
+  // anything that changes Trakt first, then anything new for Trakt.
 
-  function bindSegments() {
-    document.querySelectorAll('.seg').forEach(function (seg) {
-      var buttons = seg.querySelectorAll('button');
-      buttons.forEach(function (b) {
-        b.addEventListener('click', function () {
-          buttons.forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
-        });
+  var MERGE_WORDS = {
+    en: { seriel: 'Seriel’s', trakt: 'Trakt’s' },
+    de: { seriel: 'Seriel', trakt: 'Trakt' }
+  };
+
+  function syncMergeLabels() {
+    var words = MERGE_WORDS[currentLang()];
+    document.querySelectorAll('.popup[data-merge]').forEach(function (b) {
+      b.setAttribute('aria-label', b.getAttribute('data-title') + ': ' + words[b.getAttribute('data-choice')]);
+    });
+  }
+
+  function bindMerge() {
+    var sheet = document.querySelector('[data-demo="merge"] .sheet');
+    if (!sheet) return;
+    var menu = sheet.querySelector('[data-popmenu]');
+    var items = menu.querySelectorAll('[data-pick]');
+    var buttons = sheet.querySelectorAll('.popup[data-merge]');
+    var openFor = null;
+
+    var updateCta = function () {
+      var c = {};
+      buttons.forEach(function (b) { c[b.getAttribute('data-merge')] = b.getAttribute('data-choice'); });
+      var changesTrakt = c.rating === 'seriel' || c.watchlist === 'seriel';
+      var addsToTrakt = c.history === 'seriel';
+      sheet.setAttribute('data-cta', changesTrakt ? 'update' : addsToTrakt ? 'add' : 'from');
+    };
+
+    var close = function (focusBack) {
+      if (!openFor) return;
+      menu.hidden = true;
+      openFor.setAttribute('aria-expanded', 'false');
+      if (focusBack) openFor.focus();
+      openFor = null;
+    };
+
+    var open = function (btn) {
+      openFor = btn;
+      btn.setAttribute('aria-expanded', 'true');
+      var choice = btn.getAttribute('data-choice');
+      items.forEach(function (i) { i.setAttribute('aria-checked', String(i.getAttribute('data-pick') === choice)); });
+      menu.hidden = false;
+      // Below the button, or above it when the sheet runs out of room.
+      var scale = sheet.getBoundingClientRect().width / sheet.offsetWidth || 1;
+      var s = sheet.getBoundingClientRect();
+      var b = btn.getBoundingClientRect();
+      var below = (b.bottom - s.top) / scale + 4;
+      var above = (b.top - s.top) / scale - menu.offsetHeight - 4;
+      var fits = below + menu.offsetHeight < sheet.offsetHeight - 8;
+      menu.style.top = (fits ? below : above) + 'px';
+      menu.style.right = ((s.right - b.right) / scale) + 'px';
+      menu.style.transformOrigin = fits ? 'top right' : 'bottom right';
+      menu.style.animation = 'none';
+      void menu.offsetWidth;
+      menu.style.animation = '';
+      (menu.querySelector('[aria-checked="true"]') || items[0]).focus({ preventScroll: true });
+    };
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var wasOpen = openFor === btn;
+        close(false);
+        if (!wasOpen) open(btn);
       });
     });
+    items.forEach(function (item) {
+      item.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (!openFor) return;
+        openFor.setAttribute('data-choice', item.getAttribute('data-pick'));
+        updateCta();
+        syncMergeLabels();
+        close(true);
+      });
+    });
+    menu.addEventListener('keydown', function (e) {
+      var list = Array.prototype.slice.call(items);
+      var i = list.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        list[(i + (e.key === 'ArrowDown' ? 1 : list.length - 1)) % list.length].focus();
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        close(true);
+      } else if (e.key === 'Tab') {
+        close(false);
+      }
+    });
+    document.addEventListener('click', function (e) {
+      if (openFor && !menu.contains(e.target)) close(false);
+    });
+    updateCta();
   }
 
   // ---------- Help: filter articles ----------------------------------
@@ -387,10 +563,11 @@
     bindNav();
     bindReveal();
     bindStage();
-    bindCheck();
+    bindToday();
+    bindSchedule();
     bindShelves();
     bindSpoilers();
-    bindSegments();
+    bindMerge();
     bindHelpSearch();
     bindToc();
     openFromHash();
