@@ -89,7 +89,7 @@
       <p class="eyebrow">Datenschutz</p>
       <h1 class="display">Datenschutz&shy;erklärung</h1>
       <p class="lead">Seriel hat keine eigenen Server, kein Nutzerkonto, keine Werbung und keine Analyse-Tools. Hier steht genau, welche Daten trotzdem fließen, wohin und warum.</p>
-      <p class="stamp">Stand: 15. Oktober 2026 · <a class="text-link" href="#en" data-lang-set="en">English version</a></p>
+      <p class="stamp">Stand: 1. November 2026 · <a class="text-link" href="#en" data-lang-set="en">English version</a></p>
     </div>
   </section>
 
@@ -117,7 +117,7 @@
           <ul>
             <li><strong>Kein Konto, keine eigenen Server.</strong> Deine Bibliothek (Serien, Fortschritt, Bewertungen, Rezensionen, Einstellungen) wird nur auf deinem Gerät gespeichert. Wir haben keinen Zugriff darauf.</li>
             <li><strong>Keine Werbung, kein Tracking, keine Analyse-SDKs.</strong> Wir verkaufen keine Daten und erstellen keine Profile.</li>
-            <li><strong>Serieninformationen kommen direkt von Trakt und TMDB.</strong> Dafür verbindet sich die App mit deren Servern; diese erfahren dabei deine IP-Adresse und welche Inhalte abgerufen werden.</li>
+            <li><strong>Serieninformationen kommen direkt von Trakt und TMDB, Links zu Streamingdiensten von Wikidata.</strong> Dafür verbindet sich die App mit deren Servern; diese erfahren dabei deine IP-Adresse und welche Inhalte abgerufen werden.</li>
             <li><strong>Nur auf deine Veranlassung</strong> importiert Seriel ein öffentliches Trakt-Profil oder synchronisiert (mit Seriel&nbsp;Pro) mit deinem Trakt-Konto.</li>
             <li><strong>Käufe wickelt Apple ab.</strong> Wir erhalten keine Zahlungsdaten.</li>
           </ul>
@@ -140,7 +140,7 @@
 
       <section id="de-app" data-toc-section>
         <h2>2. Datenverarbeitung in der App</h2>
-        <p>Seriel funktioniert ohne Nutzerkonto und ohne eigene Server. Die App verbindet sich direkt von deinem Gerät aus mit den unten genannten Diensten. Wir als Anbieter erhalten dabei keine Daten über dich, deine Bibliothek oder dein Gerät. Ausnahmen sind nur E-Mails, die du uns schickst (Abschnitt&nbsp;3), Diagnosedaten, die du über Apple mit Entwicklern teilst (2.10), und die Teilnahme an Testversionen (2.11).</p>
+        <p>Seriel funktioniert ohne Nutzerkonto und ohne eigene Server. Die App verbindet sich direkt von deinem Gerät aus mit den unten genannten Diensten. Wir als Anbieter erhalten dabei keine Daten über dich, deine Bibliothek oder dein Gerät. Ausnahmen sind nur E-Mails, die du uns schickst (Abschnitt&nbsp;3), Diagnosedaten, die du über Apple mit Entwicklern teilst (2.11), und die Teilnahme an Testversionen (2.12).</p>
 
         <h3 id="de-lokal">2.1 Speicherung auf deinem Gerät</h3>
         <p>Die App speichert auf deinem Gerät:</p>
@@ -173,11 +173,21 @@
         <p>Mit JustWatch verbindet sich die App nicht direkt. Tippst du auf &bdquo;Provided by JustWatch&ldquo;, öffnet sich die Website von TMDB in deinem Browser; dort gilt die Datenschutzerklärung von TMDB.</p>
         <p>TMDB wird von TiVo Platform Technologies LLC, einem Unternehmen der Xperi-Gruppe, 2190 Gold Street, San Jose, CA 95002, USA, betrieben. TMDB verarbeitet die Daten als eigenständiger Verantwortlicher nach seiner <a href="https://www.themoviedb.org/privacy-policy" rel="noopener">Datenschutzerklärung</a>. <strong>Rechtsgrundlage</strong> ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO.</p>
 
-        <h3 id="de-import">2.4 Import eines öffentlichen Trakt-Profils</h3>
+        <h3 id="de-wikidata">2.4 Links zu Streamingdiensten über Wikidata (Seriel Pro)</h3>
+        <p>Bei &bdquo;Where to watch&ldquo; führt ein Tipp auf das Logo eines Streamingdienstes direkt zur Serie bei diesem Dienst. Dafür fragt die App, wenn du eine Serie öffnest, bei Wikidata, einer frei zugänglichen Wissensdatenbank, ab, unter welcher Kennung die Serie bei Netflix, Prime Video, Disney+, Apple TV, HBO Max, Hulu, Peacock, Crunchyroll und Tubi geführt wird. Das geschieht nur, wenn TMDB für die Serie Streamingdienste nennt und die Serie bei Wikidata erfasst ist, und nie im Hintergrund. Dabei werden übermittelt:</p>
+        <ul>
+          <li>deine IP-Adresse und technische Verbindungsdaten (Zeitpunkt sowie Name und Version der App und die Adresse dieser Website als Absenderkennung);</li>
+          <li>die Kennung der Serie bei Wikidata, die die App zuvor von TMDB erhalten hat.</li>
+        </ul>
+        <p>Weitere Angaben über dich, deine Bibliothek oder dein Gerät enthält die Anfrage nicht, und ein Konto bei Wikidata brauchst du nicht. Die App merkt sich das Ergebnis auf deinem Gerät und fragt dieselbe Serie frühestens nach einer Woche erneut ab.</p>
+        <p>Tippst du auf ein Logo, öffnet sich die Seite der Serie in der App des Dienstes oder in deinem Browser. Erst dann verbindest du dich mit dem Dienst; ab dann gilt dessen Datenschutzerklärung.</p>
+        <p>Wikidata wird von der Wikimedia Foundation, Inc., 1 Montgomery Street, Suite 1600, San Francisco, CA 94104, USA, betrieben. Sie verarbeitet die Daten als eigenständiger Verantwortlicher nach ihrer <a href="https://foundation.wikimedia.org/wiki/Policy:Privacy_policy/de" rel="noopener">Datenschutzerklärung</a>. <strong>Rechtsgrundlage</strong> ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO.</p>
+
+        <h3 id="de-import">2.5 Import eines öffentlichen Trakt-Profils</h3>
         <p>Gibst du bei der Einrichtung oder in den Einstellungen einen Trakt-Benutzernamen ein, ruft die App einmalig die öffentlichen Daten dieses Profils über die Trakt-API ab: Profilangaben (z.&nbsp;B. Benutzername und Anzeigename), gesehene Serien und Fortschritt, den Verlauf mit Datum, die Merkliste, Bewertungen sowie Rezensionen und Kommentare. Die Daten stammen aus dem öffentlich zugänglichen Trakt-Profil (Art.&nbsp;14 Abs.&nbsp;2 lit.&nbsp;f DSGVO) und werden nur auf deinem Gerät gespeichert. Auf Trakt ändert sich dabei nichts, und es entsteht keine laufende Synchronisierung. Private Profile oder Profilteile können nicht gelesen werden.</p>
         <p>Der Import ist für dein eigenes Profil gedacht. <strong>Rechtsgrundlage</strong> ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO.</p>
 
-        <h3 id="de-sync">2.5 Anmeldung bei Trakt und Synchronisierung (Seriel Pro)</h3>
+        <h3 id="de-sync">2.6 Anmeldung bei Trakt und Synchronisierung (Seriel Pro)</h3>
         <p>Mit Seriel&nbsp;Pro kannst du dich mit deinem Trakt-Konto anmelden. Die Anmeldung erfolgt über das Verfahren OAuth&nbsp;2.0 auf der Website von Trakt, die in einem sicheren Browserfenster des Systems angezeigt wird. Deine Zugangsdaten gibst du nur bei Trakt ein; wir sehen dein Passwort nie. Cookies, die Trakt in diesem Fenster setzt, verantwortet Trakt; iOS kann sie mit Safari teilen.</p>
         <p>Nach der Anmeldung stellt Trakt Zugangsschlüssel aus, die im iOS-Schlüsselbund auf deinem Gerät gespeichert werden. Mit ihnen</p>
         <ul>
@@ -189,26 +199,26 @@
         <p><strong>Abmelden:</strong> Beim Abmelden löscht die App die Zugangsschlüssel und deine Profilangaben auf dem Gerät. Du entscheidest, ob deine Bibliothek auf dem Gerät bleibt oder entfernt wird. Die Freigabe für Seriel auf Seiten von Trakt kannst du zusätzlich jederzeit in deinen Trakt-Einstellungen unter den <a href="https://trakt.tv/oauth/authorized_applications" rel="noopener">autorisierten Apps</a> widerrufen.</p>
         <p>Die Daten in deinem Trakt-Konto verarbeitet Trakt als eigenständiger Verantwortlicher. <strong>Rechtsgrundlage</strong> für die Synchronisierung ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO.</p>
 
-        <h3 id="de-mitteilungen">2.6 Mitteilungen</h3>
+        <h3 id="de-mitteilungen">2.7 Mitteilungen</h3>
         <p>Mitteilungen über neue Folgen, Staffeln, Verlängerungen und Serienenden erzeugt die App lokal auf deinem Gerät und plant sie über iOS ein. Es gibt keinen Push-Server; weder wir noch Dritte erhalten ein Gerätekennzeichen. Für das Bild in einer Mitteilung lädt die App das Poster von TMDB (Abschnitt&nbsp;2.3). Mitteilungen erscheinen nur, wenn du sie in iOS erlaubst; du kannst sie in der App je Art oder in den iOS-Einstellungen jederzeit abschalten. <strong>Rechtsgrundlage</strong> ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO.</p>
 
-        <h3 id="de-hintergrund">2.7 Aktualisierung im Hintergrund</h3>
-        <p>Wenn iOS es erlaubt (&bdquo;Hintergrundaktualisierung&ldquo;), aktualisiert die App gelegentlich auch geschlossen deine Serieninformationen und, falls du angemeldet bist, die Synchronisierung mit Trakt. Dabei werden die in den Abschnitten&nbsp;2.2, 2.3 und 2.5 genannten Daten verarbeitet. Du kannst das unter Einstellungen &rsaquo; Allgemein &rsaquo; Hintergrundaktualisierung abschalten.</p>
+        <h3 id="de-hintergrund">2.8 Aktualisierung im Hintergrund</h3>
+        <p>Wenn iOS es erlaubt (&bdquo;Hintergrundaktualisierung&ldquo;), aktualisiert die App gelegentlich auch geschlossen deine Serieninformationen und, falls du angemeldet bist, die Synchronisierung mit Trakt. Dabei werden die in den Abschnitten&nbsp;2.2, 2.3 und 2.6 genannten Daten verarbeitet. Du kannst das unter Einstellungen &rsaquo; Allgemein &rsaquo; Hintergrundaktualisierung abschalten.</p>
 
-        <h3 id="de-ki">2.8 Zusammenfassung von Rezensionen mit Apple Intelligence</h3>
+        <h3 id="de-ki">2.9 Zusammenfassung von Rezensionen mit Apple Intelligence</h3>
         <p>Auf Geräten mit Apple Intelligence fasst die App öffentliche, nicht als Spoiler markierte Rezensionen zu einer Serie mit Apples Sprachmodell auf dem Gerät (Foundation Models) zusammen. Die Verarbeitung findet vollständig auf deinem Gerät statt; die App sendet dafür keine Texte an uns oder an Apple. Es handelt sich nicht um eine automatisierte Entscheidung im Sinne des Art.&nbsp;22 DSGVO.</p>
 
-        <h3 id="de-kaeufe">2.9 Käufe (Seriel Pro)</h3>
+        <h3 id="de-kaeufe">2.10 Käufe (Seriel Pro)</h3>
         <p>Seriel&nbsp;Pro kaufst du über den App Store. Kauf, Zahlung, Rechnung, Familienfreigabe, &bdquo;Kaufanfrage&ldquo; und Rückerstattung wickelt Apple ab, in der EU Apple Distribution International Ltd., Hollyhill Industrial Estate, Hollyhill, Cork, Irland, als eigenständiger Verantwortlicher nach der <a href="https://www.apple.com/de/legal/privacy/" rel="noopener">Datenschutzrichtlinie von Apple</a>. Wir erhalten keine Zahlungsdaten und weder deinen Namen noch deine E-Mail-Adresse. Apple stellt uns Verkaufsberichte bereit, die keinen Rückschluss auf dich als Person zulassen.</p>
         <p>Ob dir Pro zusteht, prüft die App auf deinem Gerät über Apples StoreKit mit den Servern von Apple und speichert das Ergebnis auf dem Gerät. <strong>Rechtsgrundlage</strong> ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO.</p>
 
-        <h3 id="de-diagnose">2.10 App Store und Diagnosedaten über Apple</h3>
+        <h3 id="de-diagnose">2.11 App Store und Diagnosedaten über Apple</h3>
         <p>Für das Laden der App aus dem App Store gilt die Datenschutzrichtlinie von Apple. Hast du in iOS unter Datenschutz &amp; Sicherheit &rsaquo; Analyse &amp; Verbesserungen die Option &bdquo;Mit App-Entwicklern teilen&ldquo; aktiviert, stellt Apple uns Absturzberichte und zusammengefasste Nutzungsstatistiken bereit. Absturzberichte enthalten technische Angaben wie Gerätemodell, iOS- und App-Version, Zeitpunkt und den Programmzustand beim Absturz, aber keine Angaben, die dich direkt identifizieren. Wir nutzen sie nur, um Fehler zu beheben. <strong>Rechtsgrundlage</strong> ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO; unser berechtigtes Interesse ist eine stabile App. Die Weitergabe kannst du in iOS jederzeit abschalten.</p>
 
-        <h3 id="de-testflight">2.11 Testversionen (TestFlight)</h3>
+        <h3 id="de-testflight">2.12 Testversionen (TestFlight)</h3>
         <p>Nimmst du über Apples TestFlight an Tests von Vorabversionen teil, stellt Apple uns je nach Art der Einladung deinen Namen und deine E-Mail-Adresse, dein Gerätemodell, die Betriebssystemversion, Installations- und Sitzungsangaben, Absturzberichte sowie Feedback und Screenshots bereit, die du selbst sendest. Wir nutzen diese Daten nur, um die Tests durchzuführen und Fehler zu beheben. <strong>Rechtsgrundlage</strong> ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO. Es gilt außerdem die Datenschutzrichtlinie von Apple für TestFlight.</p>
 
-        <h3 id="de-kein-tracking">2.12 Keine Werbung, kein Tracking, keine Analyse</h3>
+        <h3 id="de-kein-tracking">2.13 Keine Werbung, kein Tracking, keine Analyse</h3>
         <p>Die App enthält keine Werbung und keine Analyse-, Tracking- oder Absturzmelde-Software von Drittanbietern. Sie verfolgt dich nicht über Apps oder Websites anderer Unternehmen hinweg, verkauft keine Daten und erstellt kein Profil von dir.</p>
       </section>
 
@@ -239,6 +249,7 @@
             <tbody>
               <tr><td>trakt, inc. (USA)</td><td>Serieninformationen, Profil-Import, Synchronisierung (Pro)</td><td>eigener Verantwortlicher</td></tr>
               <tr><td>TMDB / TiVo Platform Technologies LLC (USA)</td><td>Bilder, ergänzende Daten, Streaming-Verfügbarkeit</td><td>eigener Verantwortlicher</td></tr>
+              <tr><td>Wikimedia Foundation, Inc. (USA)</td><td>Links zu Streamingdiensten über Wikidata (Pro)</td><td>eigener Verantwortlicher</td></tr>
               <tr><td>Apple Distribution International Ltd. (Irland) und Apple Inc. (USA)</td><td>App Store, Käufe, Diagnosedaten, TestFlight, Backups</td><td>eigener Verantwortlicher</td></tr>
               <tr><td>Apple (iCloud Mail)</td><td>unser E-Mail-Postfach</td><td>Dienstleister</td></tr>
               <tr><td>GitHub, Inc. (USA)</td><td>Hosting der Website</td><td>Dienstleister; Sicherheitsprotokolle in eigener Verantwortung</td></tr>
@@ -251,7 +262,7 @@
 
       <section id="de-drittland" data-toc-section>
         <h2>6. Übermittlung in Drittländer</h2>
-        <p>Die genannten Anbieter haben ihren Sitz in den USA oder verarbeiten Daten auch dort. Für die USA hat die Europäische Kommission am 10.&nbsp;Juli 2023 einen Angemessenheitsbeschluss erlassen (EU-US Data Privacy Framework), der für zertifizierte Unternehmen gilt. Nach eigenen Angaben sind Apple Inc., GitHub, Inc. und Cloudflare, Inc. zertifiziert. Trakt gibt an, Übermittlungen auf die Standardvertragsklauseln der Europäischen Kommission zu stützen. Soweit kein solcher Mechanismus greift, erfolgt die Übermittlung an Trakt und TMDB, weil sie für die von dir genutzten Funktionen erforderlich ist (Art.&nbsp;49 Abs.&nbsp;1 lit.&nbsp;b DSGVO). Bitte beachte, dass US-Behörden unter Umständen auf Daten zugreifen können.</p>
+        <p>Die genannten Anbieter haben ihren Sitz in den USA oder verarbeiten Daten auch dort. Für die USA hat die Europäische Kommission am 10.&nbsp;Juli 2023 einen Angemessenheitsbeschluss erlassen (EU-US Data Privacy Framework), der für zertifizierte Unternehmen gilt. Nach eigenen Angaben sind Apple Inc., GitHub, Inc. und Cloudflare, Inc. zertifiziert. Trakt gibt an, Übermittlungen auf die Standardvertragsklauseln der Europäischen Kommission zu stützen. Soweit kein solcher Mechanismus greift, erfolgt die Übermittlung an Trakt, TMDB und die Wikimedia Foundation, weil sie für die von dir genutzten Funktionen erforderlich ist (Art.&nbsp;49 Abs.&nbsp;1 lit.&nbsp;b DSGVO). Bitte beachte, dass US-Behörden unter Umständen auf Daten zugreifen können.</p>
       </section>
 
       <section id="de-speicherdauer" data-toc-section>
@@ -261,7 +272,7 @@
           <li><strong>Zugangsschlüssel für Trakt:</strong> bis zur Abmeldung oder bis zum Löschen der App.</li>
           <li><strong>E-Mails an uns:</strong> bis deine Anfrage erledigt ist, längstens bis zum Ende gesetzlicher Aufbewahrungsfristen.</li>
           <li><strong>Absturzberichte und TestFlight-Daten:</strong> solange Apple sie bereitstellt bzw. bis zum Ende des jeweiligen Tests.</li>
-          <li><strong>Bei Trakt, TMDB, Apple, GitHub und Cloudflare:</strong> nach den Datenschutzerklärungen dieser Anbieter.</li>
+          <li><strong>Bei Trakt, TMDB, der Wikimedia Foundation, Apple, GitHub und Cloudflare:</strong> nach den Datenschutzerklärungen dieser Anbieter.</li>
         </ul>
       </section>
 
@@ -303,7 +314,7 @@
       <p class="eyebrow">Privacy</p>
       <h1 class="display">Privacy Policy</h1>
       <p class="lead">Seriel has no servers of its own, no user account, no ads and no analytics. This page says exactly which data still moves, where to, and why.</p>
-      <p class="stamp">Last updated: 15 October 2026 · <a class="text-link" href="#de" data-lang-set="de">Deutsche Fassung</a></p>
+      <p class="stamp">Last updated: 1 November 2026 · <a class="text-link" href="#de" data-lang-set="de">Deutsche Fassung</a></p>
     </div>
   </section>
 
@@ -331,7 +342,7 @@
           <ul>
             <li><strong>No account, no servers of our own.</strong> Your library (shows, progress, ratings, reviews, settings) is stored only on your device. We have no access to it.</li>
             <li><strong>No ads, no tracking, no analytics SDKs.</strong> We don&rsquo;t sell data and we don&rsquo;t build profiles.</li>
-            <li><strong>Show information comes straight from Trakt and TMDB.</strong> The app connects to their servers for it, so they see your IP address and what is being requested.</li>
+            <li><strong>Show information comes straight from Trakt and TMDB, links to streaming services from Wikidata.</strong> The app connects to their servers for it, so they see your IP address and what is being requested.</li>
             <li><strong>Only when you ask</strong> does Seriel import a public Trakt profile or (with Seriel&nbsp;Pro) sync with your Trakt account.</li>
             <li><strong>Apple handles purchases.</strong> We never receive payment details.</li>
           </ul>
@@ -354,7 +365,7 @@
 
       <section id="en-app" data-toc-section>
         <h2>2. Data processing in the app</h2>
-        <p>Seriel works without a user account and without servers of its own. The app connects directly from your device to the services listed below. As the provider, we don&rsquo;t receive any data about you, your library or your device. The only exceptions are emails you send us (section&nbsp;3), diagnostics you choose to share with developers through Apple (2.10) and taking part in beta tests (2.11).</p>
+        <p>Seriel works without a user account and without servers of its own. The app connects directly from your device to the services listed below. As the provider, we don&rsquo;t receive any data about you, your library or your device. The only exceptions are emails you send us (section&nbsp;3), diagnostics you choose to share with developers through Apple (2.11) and taking part in beta tests (2.12).</p>
 
         <h3>2.1 Storage on your device</h3>
         <p>The app stores on your device:</p>
@@ -387,11 +398,21 @@
         <p>The app doesn&rsquo;t connect to JustWatch directly. If you tap &ldquo;Provided by JustWatch&rdquo;, TMDB&rsquo;s website opens in your browser, where TMDB&rsquo;s privacy policy applies.</p>
         <p>TMDB is operated by TiVo Platform Technologies LLC, an Xperi company, 2190 Gold Street, San Jose, CA 95002, USA, which processes the data as an independent controller under its <a href="https://www.themoviedb.org/privacy-policy" rel="noopener">privacy policy</a>. <strong>Legal basis:</strong> Art.&nbsp;6(1)(b) GDPR.</p>
 
-        <h3>2.4 Importing a public Trakt profile</h3>
+        <h3>2.4 Links to streaming services through Wikidata (Seriel Pro)</h3>
+        <p>In &ldquo;Where to watch&rdquo;, tapping a streaming service&rsquo;s logo takes you straight to the show on that service. For this, when you open a show, the app asks Wikidata, a freely accessible knowledge base, which identifiers the show has on Netflix, Prime Video, Disney+, Apple TV, HBO Max, Hulu, Peacock, Crunchyroll and Tubi. This only happens when TMDB lists streaming services for the show and the show has an entry on Wikidata, and never in the background. The following is transmitted:</p>
+        <ul>
+          <li>your IP address and technical connection data (time, plus the app&rsquo;s name and version and this website&rsquo;s address to identify the app);</li>
+          <li>the show&rsquo;s Wikidata identifier, which the app received from TMDB beforehand.</li>
+        </ul>
+        <p>The request contains nothing else about you, your library or your device, and you don&rsquo;t need a Wikidata account. The app keeps the result on your device and asks about the same show again after a week at the earliest.</p>
+        <p>If you tap a logo, the show&rsquo;s page opens in that service&rsquo;s app or in your browser. Only then do you connect to the service, and from then on its privacy policy applies.</p>
+        <p>Wikidata is operated by the Wikimedia Foundation, Inc., 1 Montgomery Street, Suite 1600, San Francisco, CA 94104, USA, which processes the data as an independent controller under its <a href="https://foundation.wikimedia.org/wiki/Policy:Privacy_policy" rel="noopener">privacy policy</a>. <strong>Legal basis:</strong> Art.&nbsp;6(1)(b) GDPR.</p>
+
+        <h3>2.5 Importing a public Trakt profile</h3>
         <p>If you enter a Trakt username during setup or in Settings, the app retrieves that profile&rsquo;s public data once through the Trakt API: profile details (such as username and display name), watched shows and progress, watch history with dates, watchlist, ratings, and reviews and comments. The data comes from the publicly accessible Trakt profile (Art.&nbsp;14(2)(f) GDPR) and is stored only on your device. Nothing changes on Trakt and no ongoing sync is set up. Private profiles, or private parts of a profile, can&rsquo;t be read.</p>
         <p>The import is meant for your own profile. <strong>Legal basis:</strong> Art.&nbsp;6(1)(b) GDPR.</p>
 
-        <h3>2.5 Signing in with Trakt and syncing (Seriel Pro)</h3>
+        <h3>2.6 Signing in with Trakt and syncing (Seriel Pro)</h3>
         <p>With Seriel&nbsp;Pro you can sign in with your Trakt account. Sign-in uses OAuth&nbsp;2.0 on Trakt&rsquo;s own website, shown in a secure system browser window. You enter your credentials only with Trakt; we never see your password. Cookies Trakt sets in that window are Trakt&rsquo;s responsibility; iOS may share them with Safari.</p>
         <p>After sign-in, Trakt issues access tokens that are stored in the iOS keychain on your device. With them the app</p>
         <ul>
@@ -403,26 +424,26 @@
         <p><strong>Signing out:</strong> the app deletes the access tokens and your profile details from the device, and you choose whether your library stays on the device or is removed. You can also revoke Seriel&rsquo;s access on Trakt&rsquo;s side at any time under <a href="https://trakt.tv/oauth/authorized_applications" rel="noopener">authorised apps</a> in your Trakt settings.</p>
         <p>Trakt processes the data in your Trakt account as an independent controller. <strong>Legal basis</strong> for syncing: Art.&nbsp;6(1)(b) GDPR.</p>
 
-        <h3>2.6 Notifications</h3>
+        <h3>2.7 Notifications</h3>
         <p>Alerts about new episodes, seasons, renewals and endings are created locally on your device and scheduled through iOS. There is no push server; neither we nor anyone else receives a device token. For the image in an alert, the app loads the poster from TMDB (section&nbsp;2.3). Alerts only appear if you allow them in iOS; you can switch them off per type in the app or entirely in iOS Settings. <strong>Legal basis:</strong> Art.&nbsp;6(1)(b) GDPR.</p>
 
-        <h3>2.7 Background refresh</h3>
-        <p>If iOS allows it (&ldquo;Background App Refresh&rdquo;), the app occasionally updates your show information while closed and, if you&rsquo;re signed in, your Trakt sync. This involves the data described in sections&nbsp;2.2, 2.3 and 2.5. You can turn it off under Settings &rsaquo; General &rsaquo; Background App Refresh.</p>
+        <h3>2.8 Background refresh</h3>
+        <p>If iOS allows it (&ldquo;Background App Refresh&rdquo;), the app occasionally updates your show information while closed and, if you&rsquo;re signed in, your Trakt sync. This involves the data described in sections&nbsp;2.2, 2.3 and 2.6. You can turn it off under Settings &rsaquo; General &rsaquo; Background App Refresh.</p>
 
-        <h3>2.8 Review summaries with Apple Intelligence</h3>
+        <h3>2.9 Review summaries with Apple Intelligence</h3>
         <p>On devices with Apple Intelligence, the app summarises public reviews of a show that aren&rsquo;t marked as spoilers, using Apple&rsquo;s on-device language model (Foundation Models). The processing happens entirely on your device; the app sends no text to us or to Apple for it. This is not automated decision-making within the meaning of Art.&nbsp;22 GDPR.</p>
 
-        <h3>2.9 Purchases (Seriel Pro)</h3>
+        <h3>2.10 Purchases (Seriel Pro)</h3>
         <p>You buy Seriel&nbsp;Pro through the App Store. Apple handles the purchase, payment, invoicing, Family Sharing, Ask to Buy and refunds, in the EU through Apple Distribution International Ltd., Hollyhill Industrial Estate, Hollyhill, Cork, Ireland, as an independent controller under <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple&rsquo;s privacy policy</a>. We receive no payment details and neither your name nor your email address. Apple gives us sales reports that don&rsquo;t identify you.</p>
         <p>The app checks on your device whether you&rsquo;re entitled to Pro, using Apple&rsquo;s StoreKit with Apple&rsquo;s servers, and stores the result on the device. <strong>Legal basis:</strong> Art.&nbsp;6(1)(b) GDPR.</p>
 
-        <h3>2.10 App Store and diagnostics through Apple</h3>
+        <h3>2.11 App Store and diagnostics through Apple</h3>
         <p>Downloading the app from the App Store is covered by Apple&rsquo;s privacy policy. If you have turned on &ldquo;Share With App Developers&rdquo; under Privacy &amp; Security &rsaquo; Analytics &amp; Improvements in iOS, Apple provides us with crash reports and aggregated usage statistics. Crash reports contain technical details such as device model, iOS and app version, time and the program state at the crash, but nothing that identifies you directly. We use them only to fix bugs. <strong>Legal basis:</strong> Art.&nbsp;6(1)(f) GDPR; our legitimate interest is a stable app. You can turn sharing off in iOS at any time.</p>
 
-        <h3>2.11 Beta versions (TestFlight)</h3>
+        <h3>2.12 Beta versions (TestFlight)</h3>
         <p>If you test pre-release versions through Apple&rsquo;s TestFlight, Apple provides us, depending on how you were invited, with your name and email address, device model, operating system version, installation and session details, crash reports, and feedback and screenshots you send. We use this data only to run the test and fix bugs. <strong>Legal basis:</strong> Art.&nbsp;6(1)(b) GDPR. Apple&rsquo;s privacy policy for TestFlight also applies.</p>
 
-        <h3>2.12 No ads, no tracking, no analytics</h3>
+        <h3>2.13 No ads, no tracking, no analytics</h3>
         <p>The app contains no advertising and no third-party analytics, tracking or crash-reporting software. It doesn&rsquo;t track you across other companies&rsquo; apps or websites, doesn&rsquo;t sell data and doesn&rsquo;t build a profile of you.</p>
       </section>
 
@@ -453,6 +474,7 @@
             <tbody>
               <tr><td>trakt, inc. (USA)</td><td>Show information, profile import, sync (Pro)</td><td>independent controller</td></tr>
               <tr><td>TMDB / TiVo Platform Technologies LLC (USA)</td><td>Images, supplementary data, streaming availability</td><td>independent controller</td></tr>
+              <tr><td>Wikimedia Foundation, Inc. (USA)</td><td>Links to streaming services through Wikidata (Pro)</td><td>independent controller</td></tr>
               <tr><td>Apple Distribution International Ltd. (Ireland) and Apple Inc. (USA)</td><td>App Store, purchases, diagnostics, TestFlight, backups</td><td>independent controller</td></tr>
               <tr><td>Apple (iCloud Mail)</td><td>Our mailbox</td><td>service provider</td></tr>
               <tr><td>GitHub, Inc. (USA)</td><td>Website hosting</td><td>service provider; security logs under its own responsibility</td></tr>
@@ -465,7 +487,7 @@
 
       <section id="en-transfers" data-toc-section>
         <h2>6. International transfers</h2>
-        <p>The providers above are based in the USA or also process data there. On 10&nbsp;July 2023 the European Commission adopted an adequacy decision for the USA (EU-US Data Privacy Framework) that covers certified companies. According to their own statements, Apple Inc., GitHub, Inc. and Cloudflare, Inc. are certified. Trakt states that it relies on the European Commission&rsquo;s standard contractual clauses. Where no such mechanism applies, data is transferred to Trakt and TMDB because this is necessary for the features you use (Art.&nbsp;49(1)(b) GDPR). Please note that US authorities may be able to access data in some circumstances.</p>
+        <p>The providers above are based in the USA or also process data there. On 10&nbsp;July 2023 the European Commission adopted an adequacy decision for the USA (EU-US Data Privacy Framework) that covers certified companies. According to their own statements, Apple Inc., GitHub, Inc. and Cloudflare, Inc. are certified. Trakt states that it relies on the European Commission&rsquo;s standard contractual clauses. Where no such mechanism applies, data is transferred to Trakt, TMDB and the Wikimedia Foundation because this is necessary for the features you use (Art.&nbsp;49(1)(b) GDPR). Please note that US authorities may be able to access data in some circumstances.</p>
       </section>
 
       <section id="en-retention" data-toc-section>
@@ -475,7 +497,7 @@
           <li><strong>Trakt access tokens:</strong> until you sign out or delete the app.</li>
           <li><strong>Emails to us:</strong> until your request has been dealt with, at most until statutory retention periods end.</li>
           <li><strong>Crash reports and TestFlight data:</strong> for as long as Apple makes them available, or until the end of the test.</li>
-          <li><strong>At Trakt, TMDB, Apple, GitHub and Cloudflare:</strong> according to those providers&rsquo; privacy policies.</li>
+          <li><strong>At Trakt, TMDB, the Wikimedia Foundation, Apple, GitHub and Cloudflare:</strong> according to those providers&rsquo; privacy policies.</li>
         </ul>
       </section>
 
