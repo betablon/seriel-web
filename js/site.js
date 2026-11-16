@@ -12,6 +12,11 @@
 //                Library's Watching / Finished on real screenshots, and
 //                the drawn Trakt sync choices.
 //   Docs         Help search and the table of contents highlight.
+//
+//   Caching      Cloudflare keeps css/ and js/ for 4 hours, but not the
+//                HTML. After changing site.css or site.js, bump the ?v=
+//                on their <link> and <script> in every page, or the new
+//                HTML runs on the old stylesheet and script.
 // =====================================================================
 
 (function () {
