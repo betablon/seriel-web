@@ -8,9 +8,9 @@
 //                "Coming soon" badge becomes a link to the App Store.
 //   Navigation   Mobile sheet, hairline once the page scrolls.
 //   Reveal       Sections fade up as they enter the viewport.
-//   Demos        The home page's iPhones: Today's check and rating,
-//                Schedule's week strip, Library filters, the spoiler
-//                switch and the Trakt sync choices.
+//   Demos        The home page's iPhones: Today's check and rating and
+//                Library's Watching / Finished on real screenshots, and
+//                the drawn Trakt sync choices.
 //   Docs         Help search and the table of contents highlight.
 // =====================================================================
 
@@ -234,158 +234,87 @@
     update();
   }
 
-  // ---------- Demo: Today, mark watched, then rate --------------------
+  // ---------- Demo: Today, mark it, then rate it ----------------------
   //
-  // As in the app: the hero moves straight on to the next episode and
-  // "How was it?" comes up under it; a star rates it and the card goes.
-
-  var TODAY_EPISODES = [
-    ['S02E05', 'The Low Light', 52],
-    ['S02E06', 'Undertow', 49],
-    ['S02E07', 'Slack Water', 55],
-    ['S02E08', 'High Tide', 58]
-  ];
+  // Two real screenshots: Today, and Today just after the check, with the
+  // next episode up and the receipt under it. The check fades to the
+  // second; a star fills the rating; Undo goes back.
 
   function bindToday() {
     var screen = document.querySelector('[data-demo="today"]');
     if (!screen) return;
     var check = screen.querySelector('[data-today-check]');
-    var ep = screen.querySelector('[data-today-ep]');
-    var line = screen.querySelector('[data-today-line]');
     var rate = screen.querySelector('[data-today-rate]');
-    var code = screen.querySelector('[data-rate-code]');
-    var stars = rate.querySelectorAll('.app-stars button');
-    var index = 0;
+    var undo = screen.querySelector('[data-today-undo]');
+    var stars = rate.querySelectorAll('.hotspot-star');
     var busy = false;
-    var closeTimer = null;
 
-    var clearStars = function () {
-      stars.forEach(function (s) { s.classList.remove('is-on'); s.setAttribute('aria-pressed', 'false'); });
-    };
-    var showRating = function (show) {
-      rate.classList.toggle('is-shown', show);
-      if (show) rate.removeAttribute('inert'); else rate.setAttribute('inert', '');
+    var setStars = function (n) {
+      stars.forEach(function (s, j) {
+        s.classList.toggle('is-on', j < n);
+        s.setAttribute('aria-pressed', String(j === n - 1));
+      });
     };
 
     check.addEventListener('click', function () {
       if (busy) return;
       busy = true;
-      clearTimeout(closeTimer);
-      var marked = TODAY_EPISODES[index];
       var fromKeyboard = check.matches(':focus-visible');
+      screen.classList.add('touched');
       check.classList.remove('pulse');
       void check.offsetWidth;
       check.classList.add('is-done', 'pulse');
       setTimeout(function () {
-        ep.classList.add('is-swapping');
-        setTimeout(function () {
-          index = (index + 1) % TODAY_EPISODES.length;
-          var next = TODAY_EPISODES[index];
-          line.textContent = next[0] + ' · ' + next[1] + ' · ' + next[2] + ' min';
-          check.setAttribute('data-label-en', 'Mark Saltmarsh ' + next[0] + ' watched');
-          check.setAttribute('data-label-de', 'Saltmarsh ' + next[0] + ' als gesehen markieren');
-          check.setAttribute('aria-label', check.getAttribute('data-label-' + currentLang()));
-          code.textContent = 'Saltmarsh · ' + marked[0];
-          clearStars();
-          check.classList.remove('is-done');
-          ep.classList.remove('is-swapping');
-          showRating(true);
-          if (fromKeyboard) stars[0].focus({ preventScroll: true });
-          busy = false;
-        }, reduceMotion ? 0 : 280);
-      }, reduceMotion ? 0 : 650);
+        screen.classList.add('is-b');
+        check.hidden = true;
+        check.classList.remove('is-done', 'pulse');
+        setStars(0);
+        rate.hidden = false;
+        if (fromKeyboard) stars[0].focus({ preventScroll: true });
+        busy = false;
+      }, reduceMotion ? 0 : 600);
     });
 
     stars.forEach(function (star, i) {
-      star.addEventListener('click', function () {
-        stars.forEach(function (s, j) {
-          s.classList.toggle('is-on', j <= i);
-          s.setAttribute('aria-pressed', String(j === i));
-        });
-        clearTimeout(closeTimer);
-        closeTimer = setTimeout(function () {
-          var hadFocus = rate.contains(document.activeElement);
-          showRating(false);
-          if (hadFocus) check.focus({ preventScroll: true });
-        }, reduceMotion ? 300 : 750);
-      });
+      star.addEventListener('click', function () { setStars(i + 1); });
+    });
+
+    undo.addEventListener('click', function () {
+      var fromKeyboard = undo.matches(':focus-visible');
+      screen.classList.remove('is-b');
+      rate.hidden = true;
+      setStars(0);
+      check.hidden = false;
+      if (fromKeyboard) check.focus({ preventScroll: true });
     });
   }
 
-  // ---------- Demo: Schedule, the week strip jumps to a day -----------
-
-  function bindSchedule() {
-    var screen = document.querySelector('[data-demo="schedule"]');
-    if (!screen) return;
-    var scroller = screen.querySelector('[data-sched-scroll]');
-    screen.querySelectorAll('.week-pick [data-day]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var target = screen.querySelector('[data-day-section="' + btn.getAttribute('data-day') + '"]');
-        if (!target) return;
-        scroller.scrollTo({ top: target.offsetTop, behavior: reduceMotion ? 'auto' : 'smooth' });
-      });
-    });
-  }
-
-  // ---------- Demo: Library filters ----------------------------------
+  // ---------- Demo: Library, Watching or Finished --------------------
   //
-  // The pills on the phone and the notes beside it pick the same filter.
+  // The two pills with a screenshot behind them switch between the shots.
 
   function bindShelves() {
-    var tabs = document.querySelectorAll('[data-shelf-tab]');
-    if (!tabs.length) return;
-    var picks = document.querySelectorAll('[data-shelf-pick]');
-    tabs.forEach(function (tab) {
+    var screen = document.querySelector('[data-demo="library"]');
+    if (!screen) return;
+    var tabs = Array.prototype.slice.call(screen.querySelectorAll('[data-shelf-tab]'));
+    tabs.forEach(function (tab, i) {
       tab.addEventListener('click', function () { select(tab); });
       tab.addEventListener('keydown', function (e) {
-        var list = Array.prototype.slice.call(tabs);
-        var i = list.indexOf(tab);
-        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-          e.preventDefault();
-          var next = list[(i + (e.key === 'ArrowRight' ? 1 : list.length - 1)) % list.length];
-          next.focus();
-          select(next);
-        }
-      });
-    });
-    picks.forEach(function (pick) {
-      pick.addEventListener('click', function () {
-        var tab = document.getElementById(pick.getAttribute('data-shelf-pick'));
-        if (tab) select(tab);
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        e.preventDefault();
+        var next = tabs[(i + 1) % tabs.length];
+        next.focus();
+        select(next);
       });
     });
     function select(tab) {
-      if (tab.getAttribute('aria-selected') === 'true') return;
       tabs.forEach(function (t) {
         var on = t === tab;
         t.setAttribute('aria-selected', String(on));
         t.tabIndex = on ? 0 : -1;
-        var shelf = document.getElementById(t.getAttribute('aria-controls'));
-        if (!shelf) return;
-        shelf.hidden = !on;
-        if (on) {
-          shelf.classList.remove('is-entering');
-          void shelf.offsetWidth;
-          shelf.classList.add('is-entering');
-        }
       });
-      picks.forEach(function (p) {
-        p.setAttribute('aria-pressed', String(p.getAttribute('data-shelf-pick') === tab.id));
-      });
+      screen.classList.toggle('is-b', tab.getAttribute('data-shelf-tab') === 'b');
     }
-  }
-
-  // ---------- Demo: spoilers -----------------------------------------
-
-  function bindSpoilers() {
-    var sw = document.querySelector('[data-demo="spoilers"]');
-    var list = document.querySelector('[data-demo="episodes"]');
-    if (!sw || !list) return;
-    sw.addEventListener('click', function () {
-      var on = sw.getAttribute('aria-checked') !== 'true';
-      sw.setAttribute('aria-checked', String(on));
-      list.classList.toggle('spoilers-on', on);
-    });
   }
 
   // ---------- Demo: Trakt sync, Seriel's or Trakt's -------------------
@@ -564,9 +493,7 @@
     bindReveal();
     bindStage();
     bindToday();
-    bindSchedule();
     bindShelves();
-    bindSpoilers();
     bindMerge();
     bindHelpSearch();
     bindToc();
