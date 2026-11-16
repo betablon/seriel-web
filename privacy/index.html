@@ -89,7 +89,7 @@
       <p class="eyebrow">Datenschutz</p>
       <h1 class="display">Datenschutz&shy;erklärung</h1>
       <p class="lead">Seriel hat keine eigenen Server, kein Nutzerkonto, keine Werbung und keine Analyse-Tools. Hier steht genau, welche Daten trotzdem fließen, wohin und warum.</p>
-      <p class="stamp">Stand: 1. November 2026 · <a class="text-link" href="#en" data-lang-set="en">English version</a></p>
+      <p class="stamp">Stand: 12. November 2026 · <a class="text-link" href="#en" data-lang-set="en">English version</a></p>
     </div>
   </section>
 
@@ -115,10 +115,11 @@
         <h2>Das Wichtigste in Kürze</h2>
         <div class="box emph">
           <ul>
-            <li><strong>Kein Konto, keine eigenen Server.</strong> Deine Bibliothek (Serien, Fortschritt, Bewertungen, Rezensionen, Einstellungen) wird nur auf deinem Gerät gespeichert. Wir haben keinen Zugriff darauf.</li>
+            <li><strong>Kein Konto, keine eigenen Server.</strong> Deine Bibliothek (Serien, Fortschritt, Bewertungen, Rezensionen, Einstellungen) wird auf deinem Gerät gespeichert, nicht bei uns. Wir haben keinen Zugriff darauf.</li>
             <li><strong>Keine Werbung, kein Tracking, keine Analyse-SDKs.</strong> Wir verkaufen keine Daten und erstellen keine Profile.</li>
             <li><strong>Serieninformationen kommen direkt von Trakt und TMDB, Links zu Streamingdiensten von Wikidata.</strong> Dafür verbindet sich die App mit deren Servern; diese erfahren dabei deine IP-Adresse und welche Inhalte abgerufen werden.</li>
             <li><strong>Nur auf deine Veranlassung</strong> importiert Seriel ein öffentliches Trakt-Profil oder synchronisiert (mit Seriel&nbsp;Pro) mit deinem Trakt-Konto.</li>
+            <li><strong>iCloud nur für das erneute Ansehen.</strong> Mit Seriel&nbsp;Pro gleicht die App über deine eigene iCloud ab, welche Serien du gerade erneut siehst. Diese Daten liegen in deinem Apple Account; wir sehen sie nicht.</li>
             <li><strong>Käufe wickelt Apple ab.</strong> Wir erhalten keine Zahlungsdaten.</li>
           </ul>
         </div>
@@ -140,7 +141,7 @@
 
       <section id="de-app" data-toc-section>
         <h2>2. Datenverarbeitung in der App</h2>
-        <p>Seriel funktioniert ohne Nutzerkonto und ohne eigene Server. Die App verbindet sich direkt von deinem Gerät aus mit den unten genannten Diensten. Wir als Anbieter erhalten dabei keine Daten über dich, deine Bibliothek oder dein Gerät. Ausnahmen sind nur E-Mails, die du uns schickst (Abschnitt&nbsp;3), Diagnosedaten, die du über Apple mit Entwicklern teilst (2.11), und die Teilnahme an Testversionen (2.12).</p>
+        <p>Seriel funktioniert ohne Nutzerkonto und ohne eigene Server. Die App verbindet sich direkt von deinem Gerät aus mit den unten genannten Diensten. Wir als Anbieter erhalten dabei keine Daten über dich, deine Bibliothek oder dein Gerät. Ausnahmen sind nur E-Mails, die du uns schickst (Abschnitt&nbsp;3), Diagnosedaten, die du über Apple mit Entwicklern teilst (2.12), und die Teilnahme an Testversionen (2.13).</p>
 
         <h3 id="de-lokal">2.1 Speicherung auf deinem Gerät</h3>
         <p>Die App speichert auf deinem Gerät:</p>
@@ -199,26 +200,38 @@
         <p><strong>Abmelden:</strong> Beim Abmelden löscht die App die Zugangsschlüssel und deine Profilangaben auf dem Gerät. Du entscheidest, ob deine Bibliothek auf dem Gerät bleibt oder entfernt wird. Die Freigabe für Seriel auf Seiten von Trakt kannst du zusätzlich jederzeit in deinen Trakt-Einstellungen unter den <a href="https://trakt.tv/oauth/authorized_applications" rel="noopener">autorisierten Apps</a> widerrufen.</p>
         <p>Die Daten in deinem Trakt-Konto verarbeitet Trakt als eigenständiger Verantwortlicher. <strong>Rechtsgrundlage</strong> für die Synchronisierung ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO.</p>
 
-        <h3 id="de-mitteilungen">2.7 Mitteilungen</h3>
-        <p>Mitteilungen über neue Folgen, Staffeln, Verlängerungen und Serienenden erzeugt die App lokal auf deinem Gerät und plant sie über iOS ein. Es gibt keinen Push-Server; weder wir noch Dritte erhalten ein Gerätekennzeichen. Für das Bild in einer Mitteilung lädt die App das Poster von TMDB (Abschnitt&nbsp;2.3). Mitteilungen erscheinen nur, wenn du sie in iOS erlaubst; du kannst sie in der App je Art oder in den iOS-Einstellungen jederzeit abschalten. <strong>Rechtsgrundlage</strong> ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO.</p>
+        <h3 id="de-icloud">2.7 Erneutes Ansehen über iCloud abgleichen (Seriel Pro)</h3>
+        <p>Siehst du eine Serie mit Seriel&nbsp;Pro erneut, gleicht die App diesen Durchgang über iCloud zwischen deinen Geräten ab, damit er auf iPhone und iPad gleich weiterläuft. Dafür nutzt die App CloudKit von Apple und speichert in der privaten iCloud-Datenbank deines Apple Accounts je Serie einen Eintrag mit:</p>
+        <ul>
+          <li>der Kennung der Serie bei Trakt und bei TMDB;</li>
+          <li>der Angabe, ob du die Serie gerade erneut siehst;</li>
+          <li>wie oft du ihre Folgen zu Beginn des Durchgangs schon gesehen hattest (damit jedes Gerät weiß, ab wann der neue Durchgang zählt);</li>
+          <li>dem Zeitpunkt der letzten Änderung.</li>
+        </ul>
+        <p>Andere Daten deiner Bibliothek, etwa Verlauf, Bewertungen oder Rezensionen, werden nicht über iCloud übertragen. Auf deine private iCloud-Datenbank haben wir keinen Zugriff. Die Daten liegen in deinem Apple Account; Apple verarbeitet sie als eigenständiger Verantwortlicher nach den Bedingungen für iCloud und der <a href="https://www.apple.com/de/legal/privacy/" rel="noopener">Datenschutzrichtlinie von Apple</a>. Dabei erfährt Apple auch deine IP-Adresse und technische Verbindungsdaten.</p>
+        <p>Damit Änderungen von einem anderen Gerät ankommen, meldet sich die App bei Apples Push-Dienst an. iCloud schickt der App dann stille Hinweise, die keine Mitteilung anzeigen. Das dafür nötige Gerätekennzeichen nutzt nur Apple; die App sendet es weder an uns noch an Dritte.</p>
+        <p>Der Abgleich setzt voraus, dass du auf dem Gerät mit deinem Apple Account bei iCloud angemeldet bist und iCloud für Seriel eingeschaltet ist. Du kannst ihn jederzeit abschalten: in den iOS-Einstellungen unter deinem Namen &rsaquo; iCloud, in der Liste der Apps, die iCloud verwenden. Die gespeicherten Einträge löschst du unter Einstellungen &rsaquo; dein Name &rsaquo; iCloud &rsaquo; Speicher verwalten &rsaquo; Seriel. Ohne iCloud funktioniert das erneute Ansehen weiter, nur eben auf jedem Gerät für sich. <strong>Rechtsgrundlage</strong> ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO.</p>
 
-        <h3 id="de-hintergrund">2.8 Aktualisierung im Hintergrund</h3>
-        <p>Wenn iOS es erlaubt (&bdquo;Hintergrundaktualisierung&ldquo;), aktualisiert die App gelegentlich auch geschlossen deine Serieninformationen und, falls du angemeldet bist, die Synchronisierung mit Trakt. Dabei werden die in den Abschnitten&nbsp;2.2, 2.3 und 2.6 genannten Daten verarbeitet. Du kannst das unter Einstellungen &rsaquo; Allgemein &rsaquo; Hintergrundaktualisierung abschalten.</p>
+        <h3 id="de-mitteilungen">2.8 Mitteilungen</h3>
+        <p>Mitteilungen über neue Folgen, Staffeln, Verlängerungen und Serienenden erzeugt die App lokal auf deinem Gerät und plant sie über iOS ein. Wir betreiben keinen Push-Server und erhalten kein Gerätekennzeichen; nur für den Abgleich über iCloud nutzt Apple eines (Abschnitt&nbsp;2.7). Für das Bild in einer Mitteilung lädt die App das Poster von TMDB (Abschnitt&nbsp;2.3). Mitteilungen erscheinen nur, wenn du sie in iOS erlaubst; du kannst sie in der App je Art oder in den iOS-Einstellungen jederzeit abschalten. <strong>Rechtsgrundlage</strong> ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO.</p>
 
-        <h3 id="de-ki">2.9 Zusammenfassung von Rezensionen mit Apple Intelligence</h3>
+        <h3 id="de-hintergrund">2.9 Aktualisierung im Hintergrund</h3>
+        <p>Wenn iOS es erlaubt (&bdquo;Hintergrundaktualisierung&ldquo;), aktualisiert die App gelegentlich auch geschlossen deine Serieninformationen und, falls du angemeldet bist, die Synchronisierung mit Trakt. Meldet iCloud eine Änderung von einem anderen Gerät, holt die App sie ebenfalls im Hintergrund ab. Dabei werden die in den Abschnitten&nbsp;2.2, 2.3, 2.6 und 2.7 genannten Daten verarbeitet. Du kannst das unter Einstellungen &rsaquo; Allgemein &rsaquo; Hintergrundaktualisierung abschalten.</p>
+
+        <h3 id="de-ki">2.10 Zusammenfassung von Rezensionen mit Apple Intelligence</h3>
         <p>Auf Geräten mit Apple Intelligence fasst die App öffentliche, nicht als Spoiler markierte Rezensionen zu einer Serie mit Apples Sprachmodell auf dem Gerät (Foundation Models) zusammen. Die Verarbeitung findet vollständig auf deinem Gerät statt; die App sendet dafür keine Texte an uns oder an Apple. Es handelt sich nicht um eine automatisierte Entscheidung im Sinne des Art.&nbsp;22 DSGVO.</p>
 
-        <h3 id="de-kaeufe">2.10 Käufe (Seriel Pro)</h3>
+        <h3 id="de-kaeufe">2.11 Käufe (Seriel Pro)</h3>
         <p>Seriel&nbsp;Pro kaufst du über den App Store. Kauf, Zahlung, Rechnung, Familienfreigabe, &bdquo;Kaufanfrage&ldquo; und Rückerstattung wickelt Apple ab, in der EU Apple Distribution International Ltd., Hollyhill Industrial Estate, Hollyhill, Cork, Irland, als eigenständiger Verantwortlicher nach der <a href="https://www.apple.com/de/legal/privacy/" rel="noopener">Datenschutzrichtlinie von Apple</a>. Wir erhalten keine Zahlungsdaten und weder deinen Namen noch deine E-Mail-Adresse. Apple stellt uns Verkaufsberichte bereit, die keinen Rückschluss auf dich als Person zulassen.</p>
         <p>Ob dir Pro zusteht, prüft die App auf deinem Gerät über Apples StoreKit mit den Servern von Apple und speichert das Ergebnis auf dem Gerät. <strong>Rechtsgrundlage</strong> ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO.</p>
 
-        <h3 id="de-diagnose">2.11 App Store und Diagnosedaten über Apple</h3>
+        <h3 id="de-diagnose">2.12 App Store und Diagnosedaten über Apple</h3>
         <p>Für das Laden der App aus dem App Store gilt die Datenschutzrichtlinie von Apple. Hast du in iOS unter Datenschutz &amp; Sicherheit &rsaquo; Analyse &amp; Verbesserungen die Option &bdquo;Mit App-Entwicklern teilen&ldquo; aktiviert, stellt Apple uns Absturzberichte und zusammengefasste Nutzungsstatistiken bereit. Absturzberichte enthalten technische Angaben wie Gerätemodell, iOS- und App-Version, Zeitpunkt und den Programmzustand beim Absturz, aber keine Angaben, die dich direkt identifizieren. Wir nutzen sie nur, um Fehler zu beheben. <strong>Rechtsgrundlage</strong> ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO; unser berechtigtes Interesse ist eine stabile App. Die Weitergabe kannst du in iOS jederzeit abschalten.</p>
 
-        <h3 id="de-testflight">2.12 Testversionen (TestFlight)</h3>
+        <h3 id="de-testflight">2.13 Testversionen (TestFlight)</h3>
         <p>Nimmst du über Apples TestFlight an Tests von Vorabversionen teil, stellt Apple uns je nach Art der Einladung deinen Namen und deine E-Mail-Adresse, dein Gerätemodell, die Betriebssystemversion, Installations- und Sitzungsangaben, Absturzberichte sowie Feedback und Screenshots bereit, die du selbst sendest. Wir nutzen diese Daten nur, um die Tests durchzuführen und Fehler zu beheben. <strong>Rechtsgrundlage</strong> ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO. Es gilt außerdem die Datenschutzrichtlinie von Apple für TestFlight.</p>
 
-        <h3 id="de-kein-tracking">2.13 Keine Werbung, kein Tracking, keine Analyse</h3>
+        <h3 id="de-kein-tracking">2.14 Keine Werbung, kein Tracking, keine Analyse</h3>
         <p>Die App enthält keine Werbung und keine Analyse-, Tracking- oder Absturzmelde-Software von Drittanbietern. Sie verfolgt dich nicht über Apps oder Websites anderer Unternehmen hinweg, verkauft keine Daten und erstellt kein Profil von dir.</p>
       </section>
 
@@ -250,7 +263,7 @@
               <tr><td>trakt, inc. (USA)</td><td>Serieninformationen, Profil-Import, Synchronisierung (Pro)</td><td>eigener Verantwortlicher</td></tr>
               <tr><td>TMDB / TiVo Platform Technologies LLC (USA)</td><td>Bilder, ergänzende Daten, Streaming-Verfügbarkeit</td><td>eigener Verantwortlicher</td></tr>
               <tr><td>Wikimedia Foundation, Inc. (USA)</td><td>Links zu Streamingdiensten über Wikidata (Pro)</td><td>eigener Verantwortlicher</td></tr>
-              <tr><td>Apple Distribution International Ltd. (Irland) und Apple Inc. (USA)</td><td>App Store, Käufe, Diagnosedaten, TestFlight, Backups</td><td>eigener Verantwortlicher</td></tr>
+              <tr><td>Apple Distribution International Ltd. (Irland) und Apple Inc. (USA)</td><td>App Store, Käufe, Abgleich über iCloud (Pro), Diagnosedaten, TestFlight, Backups</td><td>eigener Verantwortlicher</td></tr>
               <tr><td>Apple (iCloud Mail)</td><td>unser E-Mail-Postfach</td><td>Dienstleister</td></tr>
               <tr><td>GitHub, Inc. (USA)</td><td>Hosting der Website</td><td>Dienstleister; Sicherheitsprotokolle in eigener Verantwortung</td></tr>
               <tr><td>Cloudflare, Inc. (USA)</td><td>Auslieferung und Schutz der Website, DNS</td><td>Auftragsverarbeiter</td></tr>
@@ -269,6 +282,7 @@
         <h2>7. Speicherdauer</h2>
         <ul>
           <li><strong>Auf deinem Gerät:</strong> bis du die Daten in der App entfernst (z.&nbsp;B. Serien entfernen oder &bdquo;Abmelden und Bibliothek entfernen&ldquo;) oder die App löschst. Zwischengespeicherte Bilder und Daten kann iOS auch früher löschen. Daten in Backups bleiben erhalten, bis du die Backups löschst.</li>
+          <li><strong>In deiner iCloud (Seriel Pro):</strong> bis du die Einträge in den iOS-Einstellungen löschst (Abschnitt&nbsp;2.7). Das Löschen der App oder das Entfernen der Bibliothek in der App löscht sie nicht. Endet ein Durchgang, bleibt sein Eintrag bestehen und ist dann als beendet markiert.</li>
           <li><strong>Zugangsschlüssel für Trakt:</strong> bis zur Abmeldung oder bis zum Löschen der App.</li>
           <li><strong>E-Mails an uns:</strong> bis deine Anfrage erledigt ist, längstens bis zum Ende gesetzlicher Aufbewahrungsfristen.</li>
           <li><strong>Absturzberichte und TestFlight-Daten:</strong> solange Apple sie bereitstellt bzw. bis zum Ende des jeweiligen Tests.</li>
@@ -279,7 +293,7 @@
       <section id="de-rechte" data-toc-section>
         <h2>8. Deine Rechte</h2>
         <p>Du hast das Recht auf Auskunft (Art.&nbsp;15 DSGVO), Berichtigung (Art.&nbsp;16), Löschung (Art.&nbsp;17), Einschränkung der Verarbeitung (Art.&nbsp;18) und Datenübertragbarkeit (Art.&nbsp;20). Eine Einwilligung kannst du jederzeit mit Wirkung für die Zukunft widerrufen (Art.&nbsp;7 Abs.&nbsp;3). Schreib uns dafür an <a href="mailto:hello@seriel.app">hello@seriel.app</a>.</p>
-        <p>Weil wir die Daten deiner Bibliothek nicht erhalten, kannst du sie am einfachsten selbst verwalten: in der App, durch Löschen der App und gegebenenfalls deiner Backups. Daten bei Trakt, TMDB oder Apple verwaltest du direkt bei diesen Anbietern; wir helfen dir gern dabei.</p>
+        <p>Weil wir die Daten deiner Bibliothek nicht erhalten, kannst du sie am einfachsten selbst verwalten: in der App, durch Löschen der App und gegebenenfalls deiner Backups sowie, für das erneute Ansehen, in den iCloud-Einstellungen von iOS (Abschnitt&nbsp;2.7). Daten bei Trakt, TMDB oder Apple verwaltest du direkt bei diesen Anbietern; wir helfen dir gern dabei.</p>
         <div class="box">
           <p><strong>Widerspruchsrecht (Art.&nbsp;21 DSGVO):</strong> Soweit wir Daten auf Grundlage von Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO verarbeiten, kannst du jederzeit aus Gründen, die sich aus deiner besonderen Situation ergeben, widersprechen. Wir verarbeiten die Daten dann nicht mehr, es sei denn, wir können zwingende schutzwürdige Gründe nachweisen, die deine Interessen, Rechte und Freiheiten überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.</p>
         </div>
@@ -314,7 +328,7 @@
       <p class="eyebrow">Privacy</p>
       <h1 class="display">Privacy Policy</h1>
       <p class="lead">Seriel has no servers of its own, no user account, no ads and no analytics. This page says exactly which data still moves, where to, and why.</p>
-      <p class="stamp">Last updated: 1 November 2026 · <a class="text-link" href="#de" data-lang-set="de">Deutsche Fassung</a></p>
+      <p class="stamp">Last updated: 12 November 2026 · <a class="text-link" href="#de" data-lang-set="de">Deutsche Fassung</a></p>
     </div>
   </section>
 
@@ -340,10 +354,11 @@
         <h2>The short version</h2>
         <div class="box emph">
           <ul>
-            <li><strong>No account, no servers of our own.</strong> Your library (shows, progress, ratings, reviews, settings) is stored only on your device. We have no access to it.</li>
+            <li><strong>No account, no servers of our own.</strong> Your library (shows, progress, ratings, reviews, settings) is stored on your device, not with us. We have no access to it.</li>
             <li><strong>No ads, no tracking, no analytics SDKs.</strong> We don&rsquo;t sell data and we don&rsquo;t build profiles.</li>
             <li><strong>Show information comes straight from Trakt and TMDB, links to streaming services from Wikidata.</strong> The app connects to their servers for it, so they see your IP address and what is being requested.</li>
             <li><strong>Only when you ask</strong> does Seriel import a public Trakt profile or (with Seriel&nbsp;Pro) sync with your Trakt account.</li>
+            <li><strong>iCloud only for rewatches.</strong> With Seriel&nbsp;Pro, the app uses your own iCloud to keep track of which shows you&rsquo;re rewatching across your devices. That data sits in your Apple Account; we can&rsquo;t see it.</li>
             <li><strong>Apple handles purchases.</strong> We never receive payment details.</li>
           </ul>
         </div>
@@ -365,7 +380,7 @@
 
       <section id="en-app" data-toc-section>
         <h2>2. Data processing in the app</h2>
-        <p>Seriel works without a user account and without servers of its own. The app connects directly from your device to the services listed below. As the provider, we don&rsquo;t receive any data about you, your library or your device. The only exceptions are emails you send us (section&nbsp;3), diagnostics you choose to share with developers through Apple (2.11) and taking part in beta tests (2.12).</p>
+        <p>Seriel works without a user account and without servers of its own. The app connects directly from your device to the services listed below. As the provider, we don&rsquo;t receive any data about you, your library or your device. The only exceptions are emails you send us (section&nbsp;3), diagnostics you choose to share with developers through Apple (2.12) and taking part in beta tests (2.13).</p>
 
         <h3>2.1 Storage on your device</h3>
         <p>The app stores on your device:</p>
@@ -424,26 +439,38 @@
         <p><strong>Signing out:</strong> the app deletes the access tokens and your profile details from the device, and you choose whether your library stays on the device or is removed. You can also revoke Seriel&rsquo;s access on Trakt&rsquo;s side at any time under <a href="https://trakt.tv/oauth/authorized_applications" rel="noopener">authorised apps</a> in your Trakt settings.</p>
         <p>Trakt processes the data in your Trakt account as an independent controller. <strong>Legal basis</strong> for syncing: Art.&nbsp;6(1)(b) GDPR.</p>
 
-        <h3>2.7 Notifications</h3>
-        <p>Alerts about new episodes, seasons, renewals and endings are created locally on your device and scheduled through iOS. There is no push server; neither we nor anyone else receives a device token. For the image in an alert, the app loads the poster from TMDB (section&nbsp;2.3). Alerts only appear if you allow them in iOS; you can switch them off per type in the app or entirely in iOS Settings. <strong>Legal basis:</strong> Art.&nbsp;6(1)(b) GDPR.</p>
+        <h3 id="en-icloud">2.7 Syncing rewatches through iCloud (Seriel Pro)</h3>
+        <p>When you rewatch a show with Seriel&nbsp;Pro, the app keeps that rewatch in step between your devices through iCloud, so it carries on the same way on your iPhone and iPad. For this the app uses Apple&rsquo;s CloudKit and stores one record per show in the private iCloud database of your Apple Account, containing:</p>
+        <ul>
+          <li>the show&rsquo;s identifier at Trakt and at TMDB;</li>
+          <li>whether you&rsquo;re currently rewatching it;</li>
+          <li>how many times you had seen its episodes when the rewatch began (so every device knows where the new pass starts counting);</li>
+          <li>the time of the last change.</li>
+        </ul>
+        <p>No other part of your library, such as your history, ratings or reviews, is sent through iCloud. We have no access to your private iCloud database. The data sits in your Apple Account, and Apple processes it as an independent controller under the iCloud terms and <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple&rsquo;s privacy policy</a>. Apple also sees your IP address and technical connection data.</p>
+        <p>So that changes made on another device arrive, the app registers with Apple&rsquo;s push service. iCloud then sends the app silent notices that don&rsquo;t show an alert. Only Apple uses the device token this needs; the app doesn&rsquo;t send it to us or anyone else.</p>
+        <p>Syncing requires that you&rsquo;re signed in to iCloud with your Apple Account on the device and that iCloud is turned on for Seriel. You can turn it off at any time in the iOS Settings app under your name &rsaquo; iCloud, in the list of apps using iCloud. To delete the stored records, go to Settings &rsaquo; your name &rsaquo; iCloud &rsaquo; Manage Storage &rsaquo; Seriel. Without iCloud, rewatching still works, just separately on each device. <strong>Legal basis:</strong> Art.&nbsp;6(1)(b) GDPR.</p>
 
-        <h3>2.8 Background refresh</h3>
-        <p>If iOS allows it (&ldquo;Background App Refresh&rdquo;), the app occasionally updates your show information while closed and, if you&rsquo;re signed in, your Trakt sync. This involves the data described in sections&nbsp;2.2, 2.3 and 2.6. You can turn it off under Settings &rsaquo; General &rsaquo; Background App Refresh.</p>
+        <h3>2.8 Notifications</h3>
+        <p>Alerts about new episodes, seasons, renewals and endings are created locally on your device and scheduled through iOS. We run no push server and never receive a device token; only iCloud sync uses one, at Apple (section&nbsp;2.7). For the image in an alert, the app loads the poster from TMDB (section&nbsp;2.3). Alerts only appear if you allow them in iOS; you can switch them off per type in the app or entirely in iOS Settings. <strong>Legal basis:</strong> Art.&nbsp;6(1)(b) GDPR.</p>
 
-        <h3>2.9 Review summaries with Apple Intelligence</h3>
+        <h3>2.9 Background refresh</h3>
+        <p>If iOS allows it (&ldquo;Background App Refresh&rdquo;), the app occasionally updates your show information while closed and, if you&rsquo;re signed in, your Trakt sync. When iCloud reports a change from another device, the app fetches that in the background too. This involves the data described in sections&nbsp;2.2, 2.3, 2.6 and 2.7. You can turn it off under Settings &rsaquo; General &rsaquo; Background App Refresh.</p>
+
+        <h3>2.10 Review summaries with Apple Intelligence</h3>
         <p>On devices with Apple Intelligence, the app summarises public reviews of a show that aren&rsquo;t marked as spoilers, using Apple&rsquo;s on-device language model (Foundation Models). The processing happens entirely on your device; the app sends no text to us or to Apple for it. This is not automated decision-making within the meaning of Art.&nbsp;22 GDPR.</p>
 
-        <h3>2.10 Purchases (Seriel Pro)</h3>
+        <h3>2.11 Purchases (Seriel Pro)</h3>
         <p>You buy Seriel&nbsp;Pro through the App Store. Apple handles the purchase, payment, invoicing, Family Sharing, Ask to Buy and refunds, in the EU through Apple Distribution International Ltd., Hollyhill Industrial Estate, Hollyhill, Cork, Ireland, as an independent controller under <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple&rsquo;s privacy policy</a>. We receive no payment details and neither your name nor your email address. Apple gives us sales reports that don&rsquo;t identify you.</p>
         <p>The app checks on your device whether you&rsquo;re entitled to Pro, using Apple&rsquo;s StoreKit with Apple&rsquo;s servers, and stores the result on the device. <strong>Legal basis:</strong> Art.&nbsp;6(1)(b) GDPR.</p>
 
-        <h3>2.11 App Store and diagnostics through Apple</h3>
+        <h3>2.12 App Store and diagnostics through Apple</h3>
         <p>Downloading the app from the App Store is covered by Apple&rsquo;s privacy policy. If you have turned on &ldquo;Share With App Developers&rdquo; under Privacy &amp; Security &rsaquo; Analytics &amp; Improvements in iOS, Apple provides us with crash reports and aggregated usage statistics. Crash reports contain technical details such as device model, iOS and app version, time and the program state at the crash, but nothing that identifies you directly. We use them only to fix bugs. <strong>Legal basis:</strong> Art.&nbsp;6(1)(f) GDPR; our legitimate interest is a stable app. You can turn sharing off in iOS at any time.</p>
 
-        <h3>2.12 Beta versions (TestFlight)</h3>
+        <h3>2.13 Beta versions (TestFlight)</h3>
         <p>If you test pre-release versions through Apple&rsquo;s TestFlight, Apple provides us, depending on how you were invited, with your name and email address, device model, operating system version, installation and session details, crash reports, and feedback and screenshots you send. We use this data only to run the test and fix bugs. <strong>Legal basis:</strong> Art.&nbsp;6(1)(b) GDPR. Apple&rsquo;s privacy policy for TestFlight also applies.</p>
 
-        <h3>2.13 No ads, no tracking, no analytics</h3>
+        <h3>2.14 No ads, no tracking, no analytics</h3>
         <p>The app contains no advertising and no third-party analytics, tracking or crash-reporting software. It doesn&rsquo;t track you across other companies&rsquo; apps or websites, doesn&rsquo;t sell data and doesn&rsquo;t build a profile of you.</p>
       </section>
 
@@ -475,7 +502,7 @@
               <tr><td>trakt, inc. (USA)</td><td>Show information, profile import, sync (Pro)</td><td>independent controller</td></tr>
               <tr><td>TMDB / TiVo Platform Technologies LLC (USA)</td><td>Images, supplementary data, streaming availability</td><td>independent controller</td></tr>
               <tr><td>Wikimedia Foundation, Inc. (USA)</td><td>Links to streaming services through Wikidata (Pro)</td><td>independent controller</td></tr>
-              <tr><td>Apple Distribution International Ltd. (Ireland) and Apple Inc. (USA)</td><td>App Store, purchases, diagnostics, TestFlight, backups</td><td>independent controller</td></tr>
+              <tr><td>Apple Distribution International Ltd. (Ireland) and Apple Inc. (USA)</td><td>App Store, purchases, iCloud sync (Pro), diagnostics, TestFlight, backups</td><td>independent controller</td></tr>
               <tr><td>Apple (iCloud Mail)</td><td>Our mailbox</td><td>service provider</td></tr>
               <tr><td>GitHub, Inc. (USA)</td><td>Website hosting</td><td>service provider; security logs under its own responsibility</td></tr>
               <tr><td>Cloudflare, Inc. (USA)</td><td>Website delivery and protection, DNS</td><td>processor</td></tr>
@@ -494,6 +521,7 @@
         <h2>7. Retention</h2>
         <ul>
           <li><strong>On your device:</strong> until you remove the data in the app (for example by removing shows or choosing &ldquo;Sign Out and Remove Library&rdquo;) or delete the app. iOS may clear cached images and data sooner. Data in backups remains until you delete those backups.</li>
+          <li><strong>In your iCloud (Seriel Pro):</strong> until you delete the records in iOS Settings (section&nbsp;2.7). Deleting the app or removing your library in the app doesn&rsquo;t delete them. When a rewatch ends, its record stays, marked as ended.</li>
           <li><strong>Trakt access tokens:</strong> until you sign out or delete the app.</li>
           <li><strong>Emails to us:</strong> until your request has been dealt with, at most until statutory retention periods end.</li>
           <li><strong>Crash reports and TestFlight data:</strong> for as long as Apple makes them available, or until the end of the test.</li>
@@ -504,7 +532,7 @@
       <section id="en-rights" data-toc-section>
         <h2>8. Your rights</h2>
         <p>You have the right of access (Art.&nbsp;15 GDPR), rectification (Art.&nbsp;16), erasure (Art.&nbsp;17), restriction of processing (Art.&nbsp;18) and data portability (Art.&nbsp;20). You can withdraw any consent at any time with effect for the future (Art.&nbsp;7(3)). To exercise these rights, write to <a href="mailto:hello@seriel.app">hello@seriel.app</a>.</p>
-        <p>Because we never receive your library, the simplest way to manage it is yourself: in the app, by deleting the app and, if needed, your backups. Data held by Trakt, TMDB or Apple is managed directly with those providers; we&rsquo;re happy to help.</p>
+        <p>Because we never receive your library, the simplest way to manage it is yourself: in the app, by deleting the app and, if needed, your backups, and for rewatches in the iCloud settings of iOS (section&nbsp;2.7). Data held by Trakt, TMDB or Apple is managed directly with those providers; we&rsquo;re happy to help.</p>
         <div class="box">
           <p><strong>Right to object (Art.&nbsp;21 GDPR):</strong> where we process data on the basis of Art.&nbsp;6(1)(f) GDPR, you can object at any time on grounds relating to your particular situation. We will then stop processing the data unless we can demonstrate compelling legitimate grounds that override your interests, rights and freedoms, or the processing serves the establishment, exercise or defence of legal claims.</p>
         </div>
