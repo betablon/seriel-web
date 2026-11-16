@@ -603,27 +603,66 @@ a.store:active { transform: scale(.97); }
    Phone frame + the app's own UI, drawn in points of a 402pt screen
    --------------------------------------------------------------------- */
 
+/* An iPhone Pro Max to scale, measured from the Simulator's own device
+   chrome: a 440 × 956 pt screen (the App Store shot, exactly) with 62 pt
+   corners, in a 16 pt bezel of 6 pt metal band and 10 pt black glass,
+   78 pt outer corners. --u is one point of that device at width --w. */
 .phone {
   --w: 300px;
+  --u: calc(var(--w) / 472);
+  position: relative;
   width: var(--w);
-  aspect-ratio: 402 / 874;
   flex: none;
-  padding: calc(var(--w) * .03);
-  border-radius: calc(var(--w) * .165);
-  background: linear-gradient(145deg, #3a3c43, #15161a 40%, #2b2d33);
+  padding: calc(10 * var(--u));
+  border: calc(6 * var(--u)) solid transparent;
+  border-radius: calc(78 * var(--u));
+  background:
+    linear-gradient(#000, #000) padding-box,
+    linear-gradient(145deg, #6a6c73, #2c2d32 22%, #18191d 50%, #2c2d32 78%, #5f6168) border-box;
+  outline: 1px solid rgba(255, 255, 255, .12);
+  outline-offset: -1px;
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, .08),
-    0 0 0 1px rgba(0, 0, 0, .35),
+    0 0 0 .5px rgba(0, 0, 0, .55),
     var(--shadow-lg);
 }
 
+/* Side buttons, where the Simulator puts them (pt from the device's top
+   edge): Action 180-212, volume 268-330 and 354-416 on the left, the
+   side button 293-392 on the right, each 2.5 pt proud of the band. */
+.phone::before,
+.phone::after {
+  content: "";
+  position: absolute;
+  width: calc(3 * var(--u));
+  pointer-events: none;
+}
+.phone::before {
+  left: calc(-8.5 * var(--u));
+  top: calc(174 * var(--u));
+  height: calc(236 * var(--u));
+  border-radius: calc(1.5 * var(--u)) 0 0 calc(1.5 * var(--u));
+  background: linear-gradient(to bottom,
+    #2c2d32 0 calc(32 * var(--u)), transparent 0 calc(88 * var(--u)),
+    #2c2d32 0 calc(150 * var(--u)), transparent 0 calc(174 * var(--u)),
+    #2c2d32 0);
+}
+.phone::after {
+  right: calc(-8.5 * var(--u));
+  top: calc(287 * var(--u));
+  height: calc(99 * var(--u));
+  border-radius: 0 calc(1.5 * var(--u)) calc(1.5 * var(--u)) 0;
+  background: #2c2d32;
+}
+
+/* The screen holds the shot's own ratio, so a band snapped to whole
+   device pixels can never crop it; the frame grows around it. */
 .screen {
   --pt: calc(100cqw / 402);
   position: relative;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 440 / 956;
   overflow: hidden;
-  border-radius: calc(var(--w) * .138);
+  border-radius: calc(62 * var(--u));
   background: var(--paper);
   color: var(--ink);
   container-type: inline-size;
@@ -635,22 +674,25 @@ a.store:active { transform: scale(.97); }
   user-select: none;
 }
 
+/* The Dynamic Island in device points: 126 × 37.33 pt, 14 pt from the
+   top, centred on the status bar's time and battery in the shots. */
 .screen .island {
   position: absolute;
-  top: calc(11 * var(--pt));
+  top: calc(14 * var(--u));
   left: 50%;
-  width: calc(124 * var(--pt));
-  height: calc(36 * var(--pt));
-  margin-left: calc(-62 * var(--pt));
+  width: calc(126 * var(--u));
+  height: calc(37.33 * var(--u));
+  margin-left: calc(-63 * var(--u));
   border-radius: 999px;
   background: #000;
   z-index: 20;
 }
 
 /* ---------- Real screenshots in the frame ----------
-   1320 × 2868 App Store shots (440 pt) fill the 402 pt screen; the
-   simulator leaves out the Dynamic Island, so the frame draws it. Tap
-   spots sit at the shot's own controls, in % of the screen. */
+   1320 × 2868 App Store shots (440 pt) are the screen, edge to edge,
+   rounded only by the display's own corners; the simulator leaves out
+   the Dynamic Island, so the frame draws it. Tap spots sit at the
+   shot's own controls, in % of the screen (and so of the shot). */
 
 .screen.shot { background: #F5F2EB; }
 .shot-img {
@@ -740,17 +782,49 @@ a.store:active { transform: scale(.97); }
 
 /* ---------- iPad ---------- */
 
-.ipad-figure { max-width: 920px; margin: clamp(56px, 8vw, 96px) auto 0; text-align: center; }
+/* An iPad Pro 13-inch to scale, in landscape, from the Simulator's device
+   chrome: a 1376 × 1032 pt screen (the shot) with 30 pt corners, in a
+   45 pt bezel of 6 pt metal band and 39 pt black glass, 75 pt outer
+   corners, and the front camera centred in the long top bezel. */
+.ipad-figure {
+  max-width: 920px;
+  margin: clamp(56px, 8vw, 96px) auto 0;
+  text-align: center;
+  container-type: inline-size;
+}
 .ipad {
-  padding: clamp(7px, 1.5vw, 14px);
-  border-radius: clamp(16px, 3vw, 30px);
-  background: linear-gradient(145deg, #3a3c43, #15161a 40%, #2b2d33);
+  --u: calc(100cqw / 1466);
+  position: relative;
+  padding: calc(39 * var(--u));
+  border: calc(6 * var(--u)) solid transparent;
+  border-radius: calc(75 * var(--u));
+  background:
+    linear-gradient(#000, #000) padding-box,
+    linear-gradient(160deg, #6a6c73, #2c2d32 16%, #18191d 50%, #2c2d32 84%, #5f6168) border-box;
+  outline: 1px solid rgba(255, 255, 255, .12);
+  outline-offset: -1px;
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, .08),
-    0 0 0 1px rgba(0, 0, 0, .35),
+    0 0 0 .5px rgba(0, 0, 0, .55),
     var(--shadow-lg);
 }
-.ipad img { display: block; width: 100%; height: auto; border-radius: clamp(9px, 1.6vw, 16px); background: #F5F2EB; }
+.ipad::before {
+  content: "";
+  position: absolute;
+  top: calc(15.5 * var(--u));
+  left: 50%;
+  width: calc(8 * var(--u));
+  height: calc(8 * var(--u));
+  margin-left: calc(-4 * var(--u));
+  border-radius: 50%;
+  background: radial-gradient(circle, #1d2230 30%, #101115 62%);
+}
+.ipad img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(30 * var(--u));
+  background: #F5F2EB;
+}
 .ipad-figure figcaption { margin-top: 20px; font-size: 15px; line-height: 1.45; color: var(--ink-3); }
 
 .statusbar {
