@@ -882,7 +882,7 @@ a.store:active { transform: scale(.97); }
 /* Show page */
 
 /* ---------------------------------------------------------------------
-   Artwork (fictional shows, drawn in SVG)
+   Artwork (real posters as WebP; the lock screen keeps a drawn wallpaper)
    --------------------------------------------------------------------- */
 
 .art { display: block; width: 100%; height: 100%; }
@@ -1453,6 +1453,7 @@ a.store:active { transform: scale(.97); }
   background: #000;
 }
 .reality-card .art { position: absolute; inset: 0; }
+.reality-card img.art { object-fit: cover; }
 .reality-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0, 0, 0, .05), rgba(0, 0, 0, .7)); }
 .reality-card > *:not(.art) { position: relative; z-index: 1; }
 .reality-card small { font-size: 13px; font-weight: 600; opacity: .85; }
@@ -1485,7 +1486,8 @@ a.store:active { transform: scale(.97); }
   min-height: 200px;
   background: #000;
 }
-.memory .art { position: absolute; inset: 0; }
+/* No backdrop: the poster blown up, blurred and desaturated, as the app does. */
+.memory .mem-wash { position: absolute; inset: 0; object-fit: cover; filter: blur(18px) saturate(.5); transform: scale(1.25); }
 .memory::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0, 0, 0, .25), rgba(0, 0, 0, .1) 40%, rgba(0, 0, 0, .78)); }
 .memory .mem-head {
   position: absolute;
